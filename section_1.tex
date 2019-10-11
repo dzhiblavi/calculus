@@ -138,3 +138,58 @@ $f \colon X \xrightarrow[\text{на}]{1-1} Y$.
         пространства над полем $K$ размерности $n$. Мы ограничимся
         рассмотрением $\mathbb{R}^n$.
 \end{example}
+
+\begin{theorem}(Закон Де-Моргана)
+    Пусть $\{X_\a\}_{\a \in A}$ --- семейство множеств, и $Y$ --- множество.
+    Тогда справедливо
+\[
+    Y \setminus \Big( \bigcup_{\a \in A}{X_\a} \Big) =
+    \bigcap_{\a \in A}{\big( Y \setminus X_\a \big)}
+\]
+\end{theorem}
+\begin{proof}
+    Докажем, что $z$ принадлежит левой части $\Llra z$ принадлежит правой
+    части:
+\begin{align*}
+    z \in Y \setminus \Big( \bigcup_{\a \in A}{X_\a} \Big) \Llra
+    z \in Y \wedge z \notin \bigcup_{\a \in A}{X_\a} \Llra
+    z \in Y \wedge \forall \a \in A~z \notin X_\a \Llra \\
+    \forall \a \in A~ z \in Y \wedge z \notin X_\a \Llra
+    z \in \bigcap_{\a \in A}{\big( Y \setminus X_\a \big)}
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Неравенство Бернулли)
+    $(1 + x)^n \geqslant 1 + nx$ при $x \geqslant -1$, $n \in \mathbb{N}$
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] База индукции при $n = 1$: $1 + x \geqslant 1 + x$
+        \item[ii)] Индукционный переход:
+        \begin{align*}
+            (1 + x)^n = (1 + x)(1 + x)^{n-1} \geqslant (1 + x)(1 + (n - 1)x) = \\
+            1 + x + (n - 1)x + (n - 1)x^2 = 1 + nx + (n - 1)x^2 \geqslant 1 + nx
+        \end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Неравенство КБШ)
+\[
+    \Bigg|\sum_{i=1}^{n}{a_i b_i}\Bigg| \leqslant \sqrt{\sum_{i=1}^{n}{a_i^2}}\sqrt{\sum_{i=1}^{n}{b_i^2}}
+\]
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        0 \leqslant \frac{1}{2}\sum_{i,k=1}^{n}{(a_i b_k - a_k b_i)^2} =
+        \frac{1}{2}\sum_{i,k=1}^{n}{(a_i^2 b_k^2 + a_k^2 b_i^2 - 2a_i b_i a_k
+        b_k)} = \\ \frac{1}{2}\Bigg[ \Big(\sum_{i=1}^{n}{a_i^2}
+        \sum_{k=1}^{n}{b_k^2} \Big) + \Big(\sum_{i=1}^{n}{b_i^2}
+        \sum_{k=1}^{n}{a_k^2} \Big) - 2\Big(\sum_{i=1}^{n}{a_i b_i} \Big)\Big(
+        \sum_{k=1}^{n}{a_k b_k}\Big) \Bigg] = \\
+        \sum_{i=1}^{n}{a_i^2}\sum_{i=1}^{n}{b_i^2} -
+        \Big(\sum_{i=1}^{n}{a_i b_i} \Big)^2
+    \end{align*}
+\end{proof}
+
+\newpage
