@@ -1,0 +1,208 @@
+\chapter{Основы топологии}
+
+\section{Метрическое пространство}
+
+\begin{definition}
+    \textit{Метрикой} на множестве $X$ называют $\rho \colon X \to \mathbb{R}$,
+    удовлетворяющую аксиомам метрики:
+    \begin{itemize}
+        \item[i)] $\rho(x) \geqslant 0$
+        \item[ii)] $\rho(x, y) = \rho(y, x)$
+        \item[iii)] $\rho(x, y) + \rho(y, z) \geqslant \rho(x, z)$
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Пару $\langle X, \rho \rangle$, где $\rho$ --- метрика на $X$, называют
+    \textit{метрическим пространством}
+\end{definition}
+
+\begin{examples}
+    \enewline
+    \begin{itemize}
+        \item[i)] Стандартная метрика на $\mathbb{R}^n$: $\rho(x, y) = |x, y|_2$,
+        где $d_k(x, y) \defeq |x, y|_k = \sqrt[k]{\sum_{i=1}^{n}(x_i - y_i)^k}$
+        \item[ii)] $|., .|_k$ является метрикой на $\mathbb{R}$ при любых $k
+        \geqslant 1$
+        \item[iii)] $|x, y|_{\infty} = \max_{i=1}^{n}(x_i - y_i)$ --- метрика
+        на $\mathbb{R}$
+        \item[iv)] $\rho(x, y) = 1$ при $x \neq y$ и $\rho(x, y) = 0$ иначе ---
+        метрика, порождающая дискретное пространство.
+    \end{itemize}
+\end{examples}
+
+\textit{Далее, если не указано, речь идет о метрическом пространстве $X$}
+
+\begin{definition}
+    \textit{Шаром} радиуса $r$ с центром в точке $x$ называется
+\[
+    B_r(x) \defeq \{\, y \in X \mid \rho(x, y) < r \,\}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Замкнутым шаром} радиуса $r$ с центром в точке $x$ называется
+\[
+    \overline{B_r}(x) \defeq \{\, y \in X \mid \rho(x, y) \leqslant r \,\}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Расстоянием} от точки $x$ до множества $A$ называется
+\[
+    \rho(x, A) \defeq \inf_{y \in A}{\rho(x, y)}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Диаметром} множества $A$ называется
+\[
+    \diam(A) = \sup{\{\, \rho(x, y) \mid x, y \in A \,\}}
+\]
+\end{definition}
+
+\begin{definition}
+    В метрическом пространстве \textit{открытыми} называют множества $A$
+    такие, что
+\[
+    \forall x \in A~ \exists B_r(x) \subset A
+\]
+Иначе говоря, любая точка открытого множества входит в него с некоторым шаром.
+\end{definition}
+
+\begin{definition}
+    \textit{Окрестностью} точки $x$ называют любое открытое множество, содержащее
+    $x$
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{внутренней} для множества $A$, если она входит в
+    него с некоторой окрестностью:
+\[
+    \exists U(x) \colon~ U(x) \subset A
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{граничной} точкой множества $A$, если любая окрестность
+    точки $x$ имеет непустое пересечение как с $A$, так и с его дополнением:
+\[
+    \forall U(x)~~~ A \cap U(x) \neq \varnothing \wedge (X \setminus A) \cap U(x)
+    \neq \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{предельной} точкой множества $A$, если любая
+    окрестность точки $x$ имеет непустое пересечение с $A$:
+\[
+    \forall U(x)~~~ A \cap U(x) \neq \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+    Множество $A$ называют \textit{ограниченным}, если $\diam(A) < +\infty$
+\end{definition}
+
+\begin{theorem}
+    Множество $A$ ограниченно $\Llra$ его можно вписать в шар
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lra$] $m := \diam(A)$. Покажем, что $A$ можно вписать в
+        шар радиуса $m + 1$. Возьмем произвольную точку $x \in A$. Тогда
+        $\forall y \in A~\rho(x, y) \leqslant m < m + 1 \Lra y \in B_{m+1}(x)$
+        \item[$\Lla$] Пусть $y, z \in A$ и $A$ можно вписать в шар $B_r(x)$.
+        Тогда $2r > \rho(x, y) + \rho(x, z) \geqslant \rho(y, z) \Lra \rho(y, z)
+        < 2r \Lra A$ ограничено.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    \enewline
+    \begin{itemize}
+        \item[i)] Произольное объединение открытых множеств открыто
+        \item[ii)] Пересечение двух (а значит, и произвольного конечного числа)
+        открытых множеств открыто.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] Пусть $\{\, G_\a \,\}_{\a \in A}$ --- семейство открытых множеств. Тогда
+        \begin{gather*}
+            x \in \bigcup_{\a \in A}{G_\a} \Lra x \in G_\a \Lra \exists U(x)
+            \subset G_\a \subset \bigcup_{\a \in A}{G_\a}
+        \end{gather*}
+        \item[ii)] Пусть $A$ и $B$ --- открытые множества. Тогда
+        \begin{gather*}
+            x \in A \cap B \Lra x \in A ~\wedge~ x \in B \Lra \\
+            \exists B_{r_1}(x) \subset A ~\wedge~ B_{r_2}(x) \subset B \Lra \\
+            x \in B_{\min(r_1, r_2)}(x) \subset A \cap B
+        \end{gather*}
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Липшицево эквивалентными} называют отображения $f$ и $g$ в
+    $\mathbb{R}$, такие, что $\exists c_1, c_2 \colon~ c_1f \leqslant g \leqslant
+    c_2f$
+\end{definition}
+\begin{example}
+    В $\mathbb{R}^n$ метрики $d_1$ и $d_2$ липшицево эквивалентны
+\end{example}
+
+\newpage
+
+\section{Топологическое пространство}
+
+\begin{definition}
+    \textit{Топологией} на множестве $X$ называют $\O \subseteq \mathcal{P}(X)$,
+    удовлетворяющее следующим свойствам:
+    \begin{itemize}
+        \item[i)] $\varnothing, X \in \O$
+        \item[ii)] $A, B \in \O \Lra A \cap B \in \O$
+        \item[iii)] $\{\, X_\a \in \O \,\}_{\a \in A} \Lra \bigcup_{\a \in
+        A}{X_a}\in \O$
+    \end{itemize}
+    Иными словами, топология замкнута относительно конечных пересечений и
+    произвольных объединений её элементов.
+\end{definition}
+
+\begin{definition}
+    Пара $\langle X, \O \rangle$, где $\O$ --- топология на $X$, называется
+    \textit{топологическим пространством}.
+\end{definition}
+
+\begin{definition}
+    Элементы топологии называются \textit{открытыми множествами}. Дополнения
+    открытых множеств называются \textit{замкнутыми множествами}.
+\end{definition}
+
+\begin{examples}
+    \enewline
+    \begin{itemize}
+        \item[i)] $\O = \mathcal{P}(X)$ --- дискретная топология
+        \item[ii)] $\O = \{\, \varnothing, X \,\}$ --- антидискретная
+        топология
+        \item[iii)] Все метрические пространства являются топологическими
+        пространствами, порожденными метрикой.
+        \item[iv)] $\O = \varnothing \cup \{\, \text{все дополнения конечных
+        множеств} \,\}$
+    \end{itemize}
+\end{examples}
+
+\begin{definition}
+    \textit{Метризуемым} называется топологическое пространство, топология
+    которого может быть порождена метрикой.
+\end{definition}
+
+\begin{examples}
+    \enewline
+    \begin{itemize}
+        \item[i)] Дискретная топология метризуема ($\rho(x, x) = 0$, $\rho(x, y) =
+        1$ при $x \neq y$)
+        \item[ii)] Антидискретная топология не метризуема
+    \end{itemize}
+\end{examples}
