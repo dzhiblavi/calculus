@@ -205,3 +205,155 @@
         \item[ii)] Антидискретная топология не метризуема
     \end{itemize}
 \end{examples}
+
+\begin{theorem}
+    \enewline
+    \begin{itemize}
+        \item[i)] $\varnothing$, $X$ замкнуты
+        \item[ii)] $A$, $B$ замкнуты $\Lra$ $A \cup B$ замкнуто
+        \item[iii)] если $C_\a$ замнкнуты, то $\bigcap_{\a \in A}{C_\a}$ замкнуто
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] $X = X \setminus \varnothing$ --- замкнуто по опделелению.
+        Аналогично $\varnothing = X \setminus X$
+        \item[ii)] $A \cup B$ замкнуто $\Llra X \setminus (A \cap B)$ открыто
+        $\Llra (X \setminus A) \cup (X \setminus B)$ открыто $\Lla (X \setminus
+        A)$, $(X \setminus B)$ открыты $\Llra A$, $B$ замкнуты.
+        \item[iii)] Аналогично ii
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    $A$ открыто, $B$ замкнуто. Тогда
+
+    \begin{itemize}
+        \item[i)] $A \setminus B$ открыто
+        \item[ii)] $B \setminus A$ замкнуто
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] $A \setminus B = A \cap (X \setminus B)$ --- открыто
+        \item[ii)] $B \setminus A = B \cap (X \setminus A)$ --- замкнуто
+    \end{itemize}
+\end{proof}
+
+\section{Внутренность и замыкание}
+
+\begin{definition}
+    \textit{Внутренностью} множества $A$ называют наибольшее по включению
+    открытое множество, содержащееся в $A$, иначе говоря:
+\[
+    \Int(A) \defeq \bigcup_{\substack{U \subseteq A \\open_X(U)}}{U}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Замыканием} множества $A$ называют наименьшее по включению
+    замкнутое множество, сожержащее $A$, иначе говоря:
+\[
+    \Cl(A) \defeq \bigcap_{\substack{C \subseteq A \\cl_X(C)}}{C}
+\]
+\end{definition}
+
+\begin{theorem}(Свойства $\Int$)
+    \enewline
+    \begin{itemize}
+        \item[i)] $\Int(A)$ открыто
+        \item[ii)] $\Int(A) \subseteq A$
+        \item[iii)] $open_X(B),\, B \subseteq A \Lra B \subseteq \Int(A)$
+        \item[iv)] $\Int(A) = A \Llra open_X(A)$
+        \item[v)] $\Int(\Int(A)) = A$
+        \item[vi)] $A \subseteq B \Lra \Int(A) \subseteq \Int(B)$
+        \item[vii)] $\Int(A \cap B) = \Int(A) \cap \Int(B)$
+        \item[viii)] $\Int(A \cup B) \supseteq \Int(A) \cup \Int(B)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] $\Int(A)$ открыто как объединение открытых
+        \item[ii)] В объединения входят только подмножества $A$, поэтому
+        $\Int(A) \subseteq A$
+        \item[iii)] $B$ по определению войдет в объединение
+        \item[iv)] $\Lra$ по пункту (i). $\Lla$ по пункту (iii)
+        \item[v)] см. пункт (iv)
+        \item[vi)] Все открытые подмножества $A$ являются открытыми
+        подмножествами $B$
+        \item[vii)] $A \cap B \subseteq A,~ A \cap B \subseteq B \Lra \\
+        \Int(A \cap B) \subseteq \Int(A), \Int(B) \Lra \Int(A \cap B) \subseteq
+        \Int(A) \cap \Int(B)$ \\ \\
+        $\Int(A) \cap \Int(B) \subseteq \Int(A) \subseteq A$, аналогично
+        $\Int(A) \cap \Int(B) \subseteq B$, поэтому \\ $\Int(A) \cap \Int(B)
+        \subseteq A \cap B \Lra \Int(\Int(A) \cap \Int(B)) = \Int(A \cap B) \Lra
+        \Int(A) \cap \Int(B) \subseteq \Int(A \cap B)$
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Свойства $\Cl$)
+    \enewline
+    \begin{itemize}
+        \item[i)] $\Cl(A)$ замкнуто
+        \item[ii)] $\Cl(A) \supseteq A$
+        \item[iii)] $cl_X(B),\, B \supseteq A \Lra B \supseteq \Cl(A)$
+        \item[iv)] $\Cl(A) = A \Llra cl_X(A)$
+        \item[v)] $\Cl(\Cl(A)) = A$
+        \item[vi)] $A \subseteq B \Lra \Cl(A) \subseteq \Cl(B)$
+        \item[vii)] $\Cl(A \cup B) = \Cl(A) \cup \Cl(B)$
+        \item[viii)] $\Cl(A \cap B) \subseteq \Cl(A) \cap \Cl(B)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Можно доказать аналогично предыдущей теореме, а можно доказать, пользуясь
+    ей и переходом к дополнению.
+\end{proof}
+
+\begin{theorem}(Связь $\Int$ и $\Cl$)
+    \begin{itemize}
+        \item[i)] $X \setminus \Int(A) = \Cl(X \setminus A)$
+        \item[i)] $X \setminus \Cl(A) = \Int(X \setminus A)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] $$ X \setminus \Int(A) \defeq X \setminus
+        \big( \bigcup_{\substack{U \subseteq A \\open_X(U)}}{U} \big) =
+        \bigcap_{\substack{U \subseteq A \\open_X(U)}}{X \setminus U} \defeq
+        \Cl(X \setminus A) $$
+        так как множества вида $X \setminus U$ суть замкнутые множества,
+        содержащие $A$
+        \item[ii)] Аналогично
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Границей} множества $A$ называется
+\[
+    \Fr(A) \defeq \Cl(A) \setminus \Int(A)
+\]
+\end{definition}
+
+\begin{theorem}(Свойства $\Fr$)
+    \enewline
+    \begin{itemize}
+        \item[i)] $\Fr(A)$ замкнуто
+        \item[ii)] $\Fr(A) = \Fr(X \setminus A)$
+        \item[iii)] $A$ замкнуто $\Llra \Fr(A) \subseteq A$
+        \item[iv)] $A$ открыто $\Llra \Fr(A) \cap A = \varnothing$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i, ii)] Очевидно в свете предыдущих теорем
+        \item[iii)] $A$ замкнуто $\Llra \Cl(A) = A \Llra \Cl(A) \setminus \Int(A)
+        \subseteq A$
+        \item[iv)] $A$ открыто $\Llra \Int(A) = A \Llra \Fr(A) = \Cl(A) \setminus
+        A \Llra \Fr(A) \cap A = \varnothing$
+    \end{itemize}
+\end{proof}
