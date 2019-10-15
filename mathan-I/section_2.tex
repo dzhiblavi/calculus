@@ -1,0 +1,250 @@
+\section{Мощность множеств}
+
+\begin{definition}
+    \textit{Мощностью конечного множества} называют количество его различных элементов.
+\end{definition}
+
+\begin{definition}
+    Множества $A$ и $B$ \textit{равномощны}, если сущесвует
+    $f \colon A \xrightarrow[\text{на}]{1-1} B$ --- биекция
+\end{definition}
+
+\begin{lemma}
+    Равномощность --- отношение эквивалентности
+\end{lemma}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item $A \sim B \Lra \exists f \colon A \xrightarrow[\text{на}]{1-1} B
+        \Lra f^{-1} \colon B \xrightarrow[\text{на}]{1-1} A \Lra B \sim A$
+        \item $A \sim B \wedge B \sim C \Lra \exists
+        f \colon A \xrightarrow[\text{на}]{1-1} B,
+        g \colon B \xrightarrow[\text{на}]{1-1} C \Lra
+        f \circ g \colon A \xrightarrow[\text{на}]{1-1} C \Lra A \sim C$
+        \item $id_A \colon A \xrightarrow[\text{на}]{1-1} A \Lra A \sim A$
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Булеаном} множества $A$ называют множество всех подмножеств $A$.
+    Обозначают $\mathcal{P}(A)$ или $2^A$
+\end{definition}
+
+\begin{lemma}
+    $\mathcal{P}(A) \not\sim A$
+\end{lemma}
+\begin{proof}
+    Предположим обратное. Пусть $f \colon A \xrightarrow[\text{на}]{1-1}
+    \mathcal{P}(A)$. Рассмотрим
+\[
+    X = \{\, a \in A \mid a \notin f(a) \,\} \subseteq A
+\]
+    Тогда существует $x \in A \colon~ f(x) = X$. Но тогда
+\[
+    x \in X \Llra x \notin f(x) \Llra x \notin X
+\]
+Противоречие.
+\end{proof}
+
+\begin{definition}
+    Будем говорить, что множество $A$ по \textit{мощности не превосходит}
+    множество $B$, если $A$ равномощно некоторому подмножеству $B$.
+    Обозначается $A \preccurlyeq B$
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что множество $A$ по \textit{мощности не превосходит}
+    множество $B$, если существует инъекция $f \colon A \xrightarrow{1-1} B$
+\end{definition}
+
+\begin{remark}
+    Эти два определения эквивалентны.
+\end{remark}
+
+\begin{theorem}
+    Для произвольных $A$, $B$ выполнено
+    \begin{itemize}
+        \item[i)] $A \sim B \Lra A \preccurlyeq B$
+        \item[ii)] $A \preccurlyeq B \wedge B \preccurlyeq C \Lra A \preccurlyeq
+        C$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Без доказательства (тривиально).
+\end{proof}
+
+\begin{theorem}(Кантор-Бернштейн)
+    $A \preccurlyeq B \wedge B \preccurlyeq A \Llra A \sim B$
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lla$] Предыдущая теорема.
+        \item[$\Lra$] Положим $f \colon A \xrightarrow[\text{на}]{1-1} f(A)$ и
+        $g \colon B \xrightarrow[\text{на}]{1-1} g(B)$.
+        Тогда $f \circ g \colon A \xrightarrow[\text{на}]{1-1} g(f(A))$ \\
+        Обозначим
+        \begin{gather*}
+            A_0 := A \\
+            A_0' := g(B) \\
+            A_1 := g(f(A_0))
+        \end{gather*}
+        Тогда по построению $A_0 \supseteq A_0' \supseteq A_1$. Кроме того,
+        посредством $f \circ g$ получаем $A_0 \sim A_1$, и по условию $B \sim A_0'$
+        Тогда по транзитивности достаточно показать, что $A_0 \sim A_0'$.
+
+        \begin{gather*}
+            A_1' := g(f(A_0')) \sim A_0'
+        \end{gather*}
+        Потому что $A_0' \subseteq A$ и $f \circ g$ --- биекция (получается своего рода двустороннее сужение $f \circ g$, которое сохраняет его биективность). В том же духе продолжим
+        \begin{gather*}
+            A_{n+1} := g(f(A_n)) \sim A_n \\
+            A_{n+1}' := g(f(A_n')) \sim A_n'
+        \end{gather*}
+        причём для всех $n$ выполнено (аналогично первому шагу)
+\[
+        A_n \supseteq A_n' \supseteq A_{n+1}
+\]
+
+        Обозначим
+        \begin{gather*}
+            D := \bigcap_{n \in \mathbb{N}}{A_n} \\
+            M_n := A_n \setminus A_n' \\
+            M_n' := A_n' \setminus A_{n + 1} \\
+        \end{gather*}
+        Все эти множества попарно не пересекаются. При этом
+        \begin{gather*}
+            A_0 = D \sqcup M_0 \sqcup M_0' \sqcup M_1 \sqcup \ldots \\
+            A_0' = D ~~~~~~~~ \sqcup M_0' \sqcup M_1 \sqcup \ldots
+        \end{gather*}
+        Нетрудно понять, что $g(f(M_n)) = M_{n+1}$ и $g(f(M_n')) = M_{n+1}'$.
+        Тогда построим искомое соответствие следующим образом:
+        \begin{displaymath}
+            \xymatrix{ D \ar[d] & M_0 \ar[drr] & M_0' \ar[d] & M_1 \ar[drr]
+            & M_1' \ar[d] & \cdots \\
+                       D & & M_0' & M_1 & M_1' & M_2\cdots }
+        \end{displaymath}
+        Где все диагональные стрелки --- сужения $f \circ g$, а вертикальные ---
+        тождественные отображения.
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Множествами счетной мощности} называют множества, лежащие в одном
+    классе эквивалентности по $\sim$ с $\mathbb{N}$.
+\end{definition}
+
+\begin{theorem}(Свойства счетных множеств)
+    \begin{itemize}
+        \item[i)] Любое бесконечное множество сожержит счетное подмножество
+        \item[ii)] Объединение двух счетных множеств счетно
+        \item[iii)] $A$ --- бесконечно, $B \sim \mathbb{N} \Lra A \cup B \sim A$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] Пусть $A$ бесконечно. Тогда оно не пусто, то есть $\exists a
+        \in A$. Рассмотрим $A \setminus \{\, a \,\}$. Если оно пусто, то
+        множество $A$ не было бесконечным. Продолжим этот процесс и получим
+        cчетное подмножество $A$: $\{\, a_1, a_2, \ldots \,\}$.
+        \item[ii)] Пусть $A$ и $B$ --- счетные. Получим биекции этих множеств с
+        $\mathbb{N}$: $A = \{\, a_1, \ldots \,\}$ и $B = \{\, b_1, \ldots \,\}$.
+        Построим биекцию $(A \cup B)^* \to \mathbb{N}$: $A \cup B = \{\, a_1, b_1,
+        a_2, \ldots \,\}$, считая совпадающие элементы из разных множеств разными.
+        Тогда выполнено \\ $\mathbb{N} \sim A \preccurlyeq A \cup B \preccurlyeq
+        \mathbb{N}$, то есть $A \cup B \sim \mathbb{N}$ (теорема Кантора-
+        Бернштейна).
+        \item[iii)] В $A$ найдется счетное подмножество $C \subseteq A$.
+        \begin{gather*}
+            A = A' \cup C \\
+            A \cup B = A' \cup (C \cup B)
+        \end{gather*}
+        Причем $C \cup B$ счетно, то есть $C \cup B \sim C$. Тогда построим
+        соответствие:
+        \begin{displaymath}
+            \xymatrix{
+                A' \ar[d] & C \ar[d] \\
+                A' & (C \cup B)
+            }
+        \end{displaymath}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Счетность множества рациональных чисел)
+    $\mathbb{Q} \sim \mathbb{N}$
+\end{theorem}
+\begin{proof}
+    $\mathbb{Q} \sim \mathbb{Z} \times \mathbb{N} \sim \mathbb{N}$
+\end{proof}
+
+\begin{definition}
+    $Bin$ --- множество всех последовательностей из нулей и единиц.
+\end{definition}
+
+\begin{theorem}
+    $Bin \sim [0, 1] \subseteq \mathbb{R}$
+\end{theorem}
+\begin{proof}
+    Для доказательства теоремы разобъем $Bin = Bin^{\infty} \sqcup Bin^0$ ---
+    множества последовательностей бесконечной и конечной длинной (конечной в том
+    смысле, что с конечного места в последовательности идут только нули)
+    соответственно.
+    \begin{itemize}
+        \item[i)] $Bin^0 = \bigcap_{k=0}^{+\infty}{B_k}$, где $B_k$ --- множество
+        последовательностей длины $k$ --- счетное объединение конечных множеств.
+        Поэтому $Bin^0$ счетно.
+        \item[ii)] Отождествим элементы $Bin^{\infty}$ с числами полуинтервала
+        $(0, 1]$ как их двоичную запись. Поскольку любой элемент $(0, 1]$
+        представим в двоичной записи бесконечной длины (тривиально), получаем,
+        что $Bin^{\infty} \sim (0, 1]$.
+        \item[iii)] Теперь $Bin = Bin^0 \sqcup Bin^{\infty} \sim Bin^{\infty}
+        \sim (0, 1] \sim [0, 1]$.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Все промежутки вида $\langle a, b \rangle$, $a \neq b$ в $\mathbb{R}$
+    равномощны.
+\end{theorem}
+\begin{proof}
+    Ограничимся рассмотрением открытых интервалов. Добавление граничной точки
+    не меняет мощность множества.
+
+    Докажем, что $\forall a \neq b,~ c \neq d~(a, b) \sim (c, d)$.
+    Для этого построим биекцию между этими двумя множествами:
+    \begin{gather*}
+        f \colon (a, b) \to (c, d) \\
+        x \longmapsto \frac{(d - c)(x - a)}{b - a}
+    \end{gather*}
+\end{proof}
+
+\begin{theorem}
+    $\mathbb{R} \sim \mathbb{R}^n$
+\end{theorem}
+\begin{proof}
+    Построим биекцию меджу $\mathbb{R}^n$ и $Bin$, что и докажет утверждение.
+
+    Пусть $\psi \colon \mathbb{R} \to Bin$ --- функция, сопоставляющая
+    числу его двоичную запись. Тогда
+    \begin{gather*}
+        \phi \colon \mathbb{R}^n \to Bin \\
+        (x_1, x_2, \ldots, x_n) \longmapsto (\psi(x_1)_1, \psi(x_2)_1, \ldots,
+        \psi(x_1)_2, \psi(x_2)_2, \ldots)
+    \end{gather*}
+    осуществляет требуемое соответствие.
+\end{proof}
+
+\begin{theorem}
+    $\mathbb{R}^n$ несчетно
+\end{theorem}
+\begin{proof}
+    $\mathbb{R}^n \sim Bin \sim \mathcal{P}(\mathbb{N}) \not\sim \mathbb{N}$
+\end{proof}
+
+\begin{theorem}
+    \textit{Множеством мощности континуум} называют множество, равномощное
+    $[0, 1] \subseteq \mathbb{R}$
+\end{theorem}
+
+\newpage
