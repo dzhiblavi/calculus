@@ -71,36 +71,6 @@
 \end{definition}
 
 \begin{definition}
-    \textit{Окрестностью} точки $x$ называют любое открытое множество, содержащее
-    $x$
-\end{definition}
-
-\begin{definition}
-    Точка $x$ называется \textit{внутренней} для множества $A$, если она входит в
-    него с некоторой окрестностью:
-\[
-    \exists U(x) \colon~ U(x) \subset A
-\]
-\end{definition}
-
-\begin{definition}
-    Точка $x$ называется \textit{граничной} точкой множества $A$, если любая окрестность
-    точки $x$ имеет непустое пересечение как с $A$, так и с его дополнением:
-\[
-    \forall U(x)~~~ A \cap U(x) \neq \varnothing \wedge (X \setminus A) \cap U(x)
-    \neq \varnothing
-\]
-\end{definition}
-
-\begin{definition}
-    Точка $x$ называется \textit{предельной} точкой множества $A$, если любая
-    окрестность точки $x$ имеет непустое пересечение с $A$:
-\[
-    \forall U(x)~~~ A \cap U(x) \neq \varnothing
-\]
-\end{definition}
-
-\begin{definition}
     Множество $A$ называют \textit{ограниченным}, если $\diam(A) < +\infty$
 \end{definition}
 
@@ -163,8 +133,8 @@
     \begin{itemize}
         \item[i)] $\varnothing, X \in \O$
         \item[ii)] $A, B \in \O \Lra A \cap B \in \O$
-        \item[iii)] $\{\, X_\a \in \O \,\}_{\a \in A} \Lra \bigcup_{\a \in
-        A}{X_a}\in \O$
+        \item[iii)] $\displaystyle \{\, X_\a \in \O \,\}_{\a \in A} \Lra
+        \bigcup_{\a \in A}{X_a}\in \O$
     \end{itemize}
     Иными словами, топология замкнута относительно конечных пересечений и
     произвольных объединений её элементов.
@@ -205,6 +175,54 @@
         \item[ii)] Антидискретная топология не метризуема
     \end{itemize}
 \end{examples}
+
+\begin{definition}
+    \textit{Окрестностью} точки $x$ называют любое открытое множество, содержащее
+    $x$. Далее окрестность точки $x$ будет обозначаться $U(x)$.
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{внутренней} для множества $A$, если она входит в
+    него с некоторой окрестностью:
+\[
+    \exists U(x) \colon~ U(x) \subset A
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{граничной} точкой множества $A$, если любая окрестность
+    точки $x$ имеет непустое пересечение как с $A$, так и с его дополнением:
+\[
+    \forall U(x)~~ A \cap U(x) \neq \varnothing \wedge (X \setminus A) \cap U(x)
+    \neq \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{предельной} точкой множества $A$, если любая
+    окрестность точки $x$ имеет непустое пересечение с $A$:
+\[
+    \forall U(x)~~ A \cap U(x) \neq \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{внешней} точкой $A$, если
+\[
+    \exists U(x)~~ A \cap U(x) = \varnothing
+\]
+\end{definition}
+
+\begin{definition}
+    Точка $x$ называется \textit{точкой прикосновения} множества $A$, если
+\end{definition}
+\[
+    \forall U(x)~~ A \cap U(x) \neq \varnothing
+\]
+
+\begin{remark}
+    Точка прикосновения и внешняя точка --- формальные отрицания друг друга.
+\end{remark}
 
 \begin{theorem}
     \enewline
@@ -309,7 +327,7 @@
 \end{theorem}
 \begin{proof}
     Можно доказать аналогично предыдущей теореме, а можно доказать, пользуясь
-    ей и переходом к дополнению.
+    переходом к дополнению в предыдущей теореме.
 \end{proof}
 
 \begin{theorem}(Связь $\Int$ и $\Cl$)
@@ -358,16 +376,41 @@
     \end{itemize}
 \end{proof}
 
-\begin{theorem}(Характеризация открытых множеств)
+\begin{theorem}(Характеризация внутренности)
 
+    $\displaystyle \Int(A)$ --- множество всех внутренних точек $A$.
 \end{theorem}
 \begin{proof}
+    Докажем, что $x \in \Int(A) \Llra x$ --- внутренняя точка $A$
 
+    \item[$\Lra$] $x \in \Int(A)$ --- открыто $\Lra U(x) := \Int(A) \subseteq A
+    \Lra x$ --- внутренняя точка $A$
+    \item[$\Lla$] $x$ --- внутренняя для $A \Lra \exists U(x) \subseteq A
+    \Lra x \in \Int(A)$ так как по определению $\Int(A)$ --- это объединение всех
+    открытых множеств, содержащихся в $A$, в том числе и $U(x)$.
 \end{proof}
 
-\begin{theorem}(Характеризация замкнутых множеств)
+\begin{corollary}
 
+    $A$ открыто $\Llra \forall x \in A~ x$ --- внутренняя точка $A$
+\end{corollary}
+
+\begin{theorem}(Характеризация замыкания)
+
+    $\displaystyle \Cl(A)$ --- множество всех точек прикосновения $A$.
 \end{theorem}
 \begin{proof}
-
+\[
+    X \setminus \Cl(A) = \Int(X \setminus A) = \{\, \text{внешние точки } A \,\} =
+    X \setminus \{\, \text{точки прикосновения } A \,\}
+\]
 \end{proof}
+
+\begin{definition}
+    Множество $A$ называется \textit{всюду плотным}, если $\Cl(A) = X$.
+\end{definition}
+
+\begin{definition}
+    Топологическое пространство $X$ называют \textit{сепарабельным}, если
+    в нем существует не более чем счетное всюду плотное множество.
+\end{definition}
