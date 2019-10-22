@@ -1,0 +1,227 @@
+\section{Дифференцируемость и дифференциал функций нескольких переменных}
+
+\begin{definition}
+    Непустое множество $\O \subseteq \Rm$ называется \textit{областью},
+    если оно открыто и связно.
+\end{definition}
+
+\begin{definition}
+    Отображение $f \colon \O \to \Rn$, $\O$ --- область в $\Rm$ называется
+    \textit{дифференцируемым} в точке $\x \in \O$, если существуют $\cA \in
+    L(\Rm , \Rn)$, $\a \colon \O \to \Rn$ --- бесконечно малое в точке $\x$,
+    такие что
+\[
+    f(\x + \h) = f(\x) + \cA \h + \a(\h) \norm{\h},~\h \to 0
+\]
+    или, что то же самое
+\[
+    \lim_{\h \to 0}{\frac{\norm{f(\x + \h) - f(\x) - \cA \h}}{\norm{\h}}} = 0
+\]
+\end{definition}
+
+\begin{remark}
+    Функция $\a$ из определения дифференцируемости зависит не только от $\h$,
+    но и от $\x$.
+\end{remark}
+
+\begin{definition}
+    Оператор $\cA \in L(\Rm, \Rn)$ из определения дифференцируемости будем
+    называть \textit{дифференциалом} $f$ \textit{в точке} $\x$ и обозначать
+    $\der{f}{\x} = \cA$.
+\end{definition}
+
+\begin{remark}
+    Отображение $\x \mapsto \der{f}{\x}$, действующее из $\Rm$ в $L(\Rm, \Rn)$
+    называют \textit{дифференциалом} $f$.
+\end{remark}
+
+\begin{definition}
+    Матрицу, соответствующую производному оператору называют \textit{матрицей
+    Якоби отображения} $f$ \textit{в точке} $\x$.
+\end{definition}
+
+\begin{theorem}(Единственность производной)
+
+    $f \colon \O \to \Rn$, $\x \in \O$, $f$ дифференцируема в $\x$, тогда
+    существует единственный производный оператор $f$ в точке $\x$.
+\end{theorem}
+\begin{proof}
+    Проверим, что для любого $\z \in \Rm~ \cA \z$ задано однозначно.
+     Пусть $\h = t\z$ при $t \in \R$:
+\[
+    f(\x + t \z) = f(\x) + \cA(t \z) + \a(\norm{t\z}) \norm{t\z},~ t\z \to 0
+\]
+    Это эквивалентно
+\[
+    f(\x + t \z) = f(\x) + t\cA \z + t\a(t),~ t \to 0
+\]
+    Так как $\norm{\z}$ --- константа. Тогда
+\begin{gather*}
+    \cA\z = \frac{f(\x + t \z) - f(\x)}{t} - \a(t),~ t \to 0 \Llra \\
+    \cA\z = \lim_{t \to 0}{\frac{f(\x + t \z) - f(\x)}{t}}
+\end{gather*}
+\end{proof}
+
+\begin{proposition}(Производный оператор линейного отображения)
+
+    Пусть $\cA \in L(\Rm, \Rn)$, тогда $\cA$ дифференцируемо в каждой точке и
+    $\der{\cA}{\x} = \cA$
+\end{proposition}
+\begin{proof}
+\[
+    \cA(\x + \h) - \cA(\x) = \cA(\x + \h - \x) = \cA(\h)
+\]
+\end{proof}
+
+\begin{proposition}(Линейность производного оператора)
+
+    Пусть $f\!$, $\!\!g \colon \O \to \Rn$, $\O \subseteq \Rm$, дифференцируемы в
+    $\x$. Тогда отображение $\a f + \b g$ дифференцируемо в точке $\x$, причем
+    $\der{(\a f + \b g)}{\x} = \a \der{f}{\x} + \b \der{g}{\x}$
+\end{proposition}
+\begin{proof}
+\begin{align*}
+    &(\a f + \b g)(\x + \h) - (\a f + \b g)(\x) \\
+    &= [(\a f)(\x + \h) - (\a f)(\x)] + [(\b g)(\x + \h) - (\b g)(\x)] \\
+    &= [\der{f}{\x} + o] + [\der{g}{\x} + o] = \der{f}{\x} + \der{g}{\x} + o
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Дифференцируемость композиции)
+
+    Пусть $f \colon \O \to \O_{1}$, $g \colon \O_{1} \to \Rk$, $\O \subseteq
+    \Rm$, $\O_{1} \subseteq \Rn$ дифференцируемы в $\x$, тогда $F = g \circ f$
+    дифференцируема в $\x$, причем $\der{F}{\x} = \der{g}{f(\x)} \cdot
+    \der{f}{\x}$
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        g(f(\x + \h)) &= g(f(\x) + [\der{f}{\x}]\h + r(\h)) \\
+        &= \{\, \v = [\der{f}{\x}]\h + r(\h) \,\} \\
+        &= g(f(\x) + \v) = g(f(\x)) + [\der{g}{f(\x)}]\v + \widetilde{r}(\v) \\
+        &= g(f(\x)) + [\der{g}{f(\x)}][\der{f}{\x}]\h + [\der{g}{f(\x)}]r(\h) +
+        \widetilde{r}(\v) \\
+    \end{align*}
+    Осталось показать, что $[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v) =
+    o(\norm{\h})$.
+\[
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v)} \leqslant
+    \norm{[\der{g}{f(\x)}]\frac{r(\h)}{\norm{r(\h)}}\norm{r(\h)}} +
+    \widetilde{\a}(\norm{\v})\norm{\v}
+\]
+    Обозначим $\w = \frac{r(\h)}{\norm{r(\h)}}$, причем $\norm{\w} = 1$.
+    Из определения нормы оператора получаем
+\[
+    \norm{[\der{g}{f(\x)}]\w} \leqslant \norm{\der{g}{f(\x)}}
+\]
+    Кроме того, $\norm{\v} \leqslant \norm{\der{f}{\x}}\h +
+    \a(\norm{\h})\norm{\h}$. Окончательно получаем
+\[
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v)} \leqslant
+    \norm{\der{g}{f(\x)}}\norm{r(\h)} + \widetilde{\a}(\norm{\der{f}{\x}}\h +
+    \a(\norm{\h})\norm{\h})\norm{\v} \leqslant \b(\norm{\h})\norm{\h}
+\]
+    Для некоторой $\b(t) \xrightarrow[t \to 0]{} 0$.
+\end{proof}
+
+\begin{definition}
+    Пусть $\O \subseteq \Rm$, $f \colon \O \to \Rn$, $\{\, \elemvec{u}_1, \ldots,
+    \elemvec{u}_n \,\}$ --- стандартный базис $\Rn$, тогда отображения
+\[
+    f_i(x) \defeq \langle f(x), \elemvec{u}_i \rangle
+\]
+    где $f_i \colon \O \to \R$, называются \textit{координатными функциями}.
+\end{definition}
+
+\begin{theorem}(Дифференцируемость координатных функций)
+
+    Пусть $\O \subseteq \Rm$, $f \colon \O \to \Rn$, $\x \in \O$, тогда
+\[
+    f \text{ дифференцируемо в } \x \Llra \forall i~ f_i \text{ дифференцируемо в
+    } \x
+\]
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lla$]
+\[
+    f(x) = \sum_{i=1}^{n}{f_i(\x)\elemvec{u}_i} = \sum_{i=1}^{n}{g_i(f_i(\x))}
+\]
+        где $g_i(t) = t \elemvec{u}_i$ --- линейно, то есть дифференцируемо.
+        Тогда $f$ дифференцируемо как сумма композиций дифференцируемых функций.
+        \item[$\Lra$] $f_i$ дифференцируемы как композиции $f$ и соответствующей
+        проекции (проекция линейна, то есть дифференцируема).
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    Пусть $f \colon \O \to \Rm$, $\O \in \Rn$ --- область, тогда
+    \textit{производной по направлению} $\elemvec{u} \in \Rn$ в точке $\x$ называется
+\[
+    \dder{f}{\x}{\elemvec{u}} \defeq \lim_{\substack{t \to 0 \\ \x + t\elemvec{u}
+    \in \O}}{\frac{f(\x + t\elemvec{u}) - f(\x)}{t}}
+\]
+    если он существует.
+\end{definition}
+
+\begin{definition}
+    Пусть $f \colon \O \to \Rm$, $\O \in \Rn$, $\{\, \elemvec{u}_1, \ldots,
+    \elemvec{u}_n \,\}$ --- стандартный базис $\Rn$, тогда \textit{частной
+    производной $f$ по $k$ -й переменной} называется
+\[
+    \pderv{f}{x_k}(\x) \defeq f'_k \defeq \pderi{f}{k}(\x) \defeq
+    \dder{f}{\x}{\elemvec{u}_k}
+\]
+\end{definition}
+
+\begin{proposition}(Необходимое условие дифференцируемости)
+
+    Если $f$ дифференцируема в $\x$, то все $f_i$ дифференцируемы в $\x$, причем
+    матрица Якоби $f$ в точке $\x$ совпадает с матрицей, составленной из матриц
+    якоби $f_i$ в точке $\x$:
+\[
+    \der{f}{\x} = (\der{f_1}{\x}, \ldots, \der{f_n}{\x})
+\]
+\end{proposition}
+\begin{proof}
+
+    Подставим в определение дифференцируемости $\h = t \elemvec{e}_k$:
+\begin{align*}
+    f(\x + t \elemvec{e}_k) &= f(\x) + [\der{f}{\x}](t \elemvec{e}_k) +
+    \a(\norm{\h})\norm{\h} \\ &= f(\x) + t[\der{f}{\x}]\elemvec{e}_k +
+    \a{\norm{\h}}\norm{\h} (*)
+\end{align*}
+    Отсюда по определению частной производной получаем
+\[
+    \pderv{f}{x_k}(\x) \defeq \lim_{t \to 0}{\frac{f(\x +
+    t\elemvec{e}_k) - f(\x)}{t}} = [\der{f}{\x}]\elemvec{e}_k
+\]
+\end{proof}
+
+\begin{theorem}(Достаточное условие дифференцируемости)
+
+    Пусть $f \colon \O \subseteq \Rm \to \R$, $\ela \in \O$, $B(\ela) \subseteq
+    \O$, В $B(\ela)$ существуют все частные производные, причем они непрерывны в
+    точке $\ela$. Тогда $f$ дифференцируема в точке $\ela$.
+\end{theorem}
+\begin{proof}
+    Докажем теорему для случая $m = 2$. Схема, примененная в доказательстве
+    тривиально обобщается на произвольные $m$.
+
+\begin{align*}
+    f(\x_1, \x_2) - f(\ela_1, \ela_2) &= (f(\x_1, \x_2) - f(\ela_1, \x_2))
+    + (f(\ela_1, \x_2) - f(\ela_1, \ela_2)) \\
+    &\overset{\text{Лагранж}}{=} f'_{\x_1}(\tilde{\x}_1, \x_2)(\x_1 - \ela_1) +
+    f'_{\x_2}(\x_1, \tilde{\x}_2)(\x_2 - \ela_2) \\
+    &= f'_{\x_1}(\ela_1, \ela_2)(\x_1 - \ela_1) + f'_{\x_2}(\ela_1, \ela_2)(\x_2
+    - \ela_2) \\
+    &+ \left[\underbrace{(f'_{\x_1}(\tilde{\x}_1, \x_2) - f'_{\x_1}(\ela_1,
+    \ela_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_1 - \ela_1}{\norm{\x -
+    \ela}} + \underbrace{(f'_{\x_2}(\x_1, \tilde{\x}_2) - f'_{\x_2}(\ela_1,
+    \ela_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_2 - \ela_2}{\norm{\x -
+    \ela}}\right]\norm{\x - \ela} \\
+    &= f'_{\x_1}(\ela_1, \ela_2)(\x_1 - \ela_1) + f'_{\x_2}(\ela_1, \ela_2)(\x_2
+    - \ela_2) + \a(\x - \ela)\norm{\x - \ela}
+\end{align*}
+\end{proof}
