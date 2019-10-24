@@ -1,4 +1,4 @@
-\section{Дифференцируемость и дифференциал функций нескольких переменных}
+\section{Дифференцируемость и дифференциал отображений}
 
 \begin{definition}
     Непустое множество $\O \subseteq \Rm$ называется \textit{областью},
@@ -352,28 +352,6 @@
     \end{itemize}
 \end{proof}
 
-\begin{theorem}(Лагранж)
-    Пусть $f \in C([a, b], \Rn)$, дифференцируемо на $(a, b)$. Тогда
-\[
-    \exists c \in (a,b) \colon~ \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
-\]
-\end{theorem}
-\begin{proof}
-    Положим $\f(x) = \langle f(b) - f(a), f(t) - f(a) \rangle$. Тогда
-\[
-    \f(a) = 0, \f(b) = \langle f(b) - f(a), f(b) - f(a) \rangle = \norm{f(b) -
-    f(a)}^2
-\]
-    Применим теорему Лагранжа для $\f$:
-\begin{align*}
-    \exists c \in (a, b) \colon~ &\norm{f(b) - f(a)}^2 = \f(b) - \f(a)
-    \underset{\text{Лагранж}}{=} \f'(c) |b - a| =
-    \langle f(b) - f(a), f'(c) \rangle \cdot |b - a| \\
-    &\underset{\text{КБШ}}{\leqslant} \norm{f(b) - f(a)} \cdot \norm{f'(c)}
-    \Lra \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
-\end{align*}
-\end{proof}
-
 \begin{definition}
     Пусть $f \colon \O \subseteq \Rm \to \R$, $\x \in \O$. Тогда
     \textit{градиентом} $\f$ в точке $\x$ наывается вектор
@@ -406,4 +384,52 @@
     \langle \grad{f}{\x}, \h \rangle \leqslant \norm{\grad{f}{\x}} \norm{\h}
     = \norm{\grad{f}{\x}}
 \]
+\end{proof}
+
+\newpage
+\section{Теоремы Лагранжа для отображений}
+
+\begin{theorem}(Лагранжа для векторнозначных функций)
+
+    Пусть $f \in C([a, b], \Rn)$, дифференцируемо на $(a, b)$. Тогда
+\[
+    \exists c \in (a,b) \colon~ \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
+\]
+\end{theorem}
+\begin{proof}
+    Положим $\f(x) = \langle f(b) - f(a), f(t) - f(a) \rangle$. Тогда
+\[
+    \f(a) = 0, \f(b) = \langle f(b) - f(a), f(b) - f(a) \rangle = \norm{f(b) -
+    f(a)}^2
+\]
+    Применим теорему Лагранжа для $\f$:
+\begin{align*}
+    \exists c \in (a, b) \colon~ &\norm{f(b) - f(a)}^2 = \f(b) - \f(a)
+    \underset{\text{Лагранж}}{=} \f'(c) |b - a| =
+    \langle f(b) - f(a), f'(c) \rangle \cdot |b - a| \\
+    &\underset{\text{КБШ}}{\leqslant} \norm{f(b) - f(a)} \cdot \norm{f'(c)}
+    \Lra \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Лагранжа для отображений)
+
+    Пусть $f \colon \O \subseteq \Rm \to \Rn$, дифференцируемо на $\O$,
+    $[\ela, \elb] \subseteq \O$, тогда
+\[
+    \norm{f(\elb) - f(\ela)} \leqslant \sup_{\x \in [\ela,
+    \elb]}{\norm{\der{f}{\x}}} \cdot \norm{\elb - \ela}
+\]
+\end{theorem}
+\begin{proof}
+
+    $g = f(a + t(b - a))$ для $t \in [0, 1]$ --- дифференцируемо как композиция
+    дифференцируемых функций. По предыдущей теореме
+\begin{align*}
+    \exists t_0 \in (0, 1)\colon~ \norm{g(1) - g(0)} &\leqslant \norm{g'(t_0)}
+    = \norm{f'(\ela + t_0(\elb - \ela)) \cdot (\elb - \ela)} \\
+    &\leqslant \norm{f'(\ela + t(\elb - \ela))}
+    \norm{\elb - \ela} \leqslant \sup_{\x \in [\ela,
+    \elb]}{\norm{\der{f}{\x}}} \cdot \norm{\elb - \ela}
+\end{align*}
 \end{proof}
