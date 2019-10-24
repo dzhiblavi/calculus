@@ -397,7 +397,8 @@
 \]
 \end{theorem}
 \begin{proof}
-    Положим $\f(x) = \langle f(b) - f(a), f(t) - f(a) \rangle$. Тогда
+    При $f(a) = f(b)$ утверждение тривиально. Положим $\f(x) = \langle f(b) -
+    f(a), f(t) - f(a) \rangle$. Тогда
 \[
     \f(a) = 0, \f(b) = \langle f(b) - f(a), f(b) - f(a) \rangle = \norm{f(b) -
     f(a)}^2
@@ -407,8 +408,8 @@
     \exists c \in (a, b) \colon~ &\norm{f(b) - f(a)}^2 = \f(b) - \f(a)
     \underset{\text{Лагранж}}{=} \f'(c) |b - a| =
     \langle f(b) - f(a), f'(c) \rangle \cdot |b - a| \\
-    &\underset{\text{КБШ}}{\leqslant} \norm{f(b) - f(a)} \cdot \norm{f'(c)}
-    \Lra \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
+    &\underset{\text{КБШ}}{\leqslant} \norm{f(b) - f(a)}\cdot
+    \norm{f'(c)} |b - a| \Lra \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
 \end{align*}
 \end{proof}
 
@@ -423,8 +424,8 @@
 \end{theorem}
 \begin{proof}
 
-    $g = f(a + t(b - a))$ для $t \in [0, 1]$ --- дифференцируемо как композиция
-    дифференцируемых функций. По предыдущей теореме
+    $g = f(\ela + t(\elb - \ela))$ для $t \in [0, 1]$ --- дифференцируемо как
+    композиция дифференцируемых функций. По предыдущей теореме
 \begin{align*}
     \exists t_0 \in (0, 1)\colon~ \norm{g(1) - g(0)} &\leqslant \norm{g'(t_0)}
     = \norm{f'(\ela + t_0(\elb - \ela)) \cdot (\elb - \ela)} \\
