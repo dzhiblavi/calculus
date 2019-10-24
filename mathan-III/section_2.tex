@@ -8,10 +8,21 @@
 \begin{definition}
     Отображение $f \colon \O \to \Rn$, $\O$ --- область в $\Rm$ называется
     \textit{дифференцируемым} в точке $\x \in \O$, если существуют $\cA \in
-    L(\Rm , \Rn)$, $\a \colon \O \to \Rn$ --- бесконечно малое в точке $\x$,
-    такие что
+    L(\Rm , \Rn)$, $r \colon \O \to \Rn$, такие что
 \[
-    f(\x + \h) = f(\x) + \cA \h + \a(\h) \norm{\h},~\h \to 0
+    f(\x + \h) = f(\x) + \cA \h + r(\h)
+\]
+    Где $r(\h)$ удовлетворяет уловию
+\[
+    \lim_{\h \to 0}{\frac{\norm{r(\h)}}{\norm{\h}}} = 0
+\]
+    или, что то же самое
+\[
+    f(\x + \h) = f(\x) + \cA \h + \a(\h)\norm{\h}
+\]
+    Где $\a(\h)$ бесконечно малое, то есть
+\[
+    \lim_{\h \to 0}{\a(\h)} = 0
 \]
     или, что то же самое
 \[
@@ -20,7 +31,7 @@
 \end{definition}
 
 \begin{remark}
-    Функция $\a$ из определения дифференцируемости зависит не только от $\h$,
+    Функции $\a$, $r$ из определения дифференцируемости зависят не только от $\h$,
     но и от $\x$.
 \end{remark}
 
@@ -49,7 +60,7 @@
     Проверим, что для любого $\z \in \Rm~ \cA \z$ задано однозначно.
      Пусть $\h = t\z$ при $t \in \R$:
 \[
-    f(\x + t \z) = f(\x) + \cA(t \z) + \a(\norm{t\z}) \norm{t\z},~ t\z \to 0
+    f(\x + t \z) = f(\x) + \cA(t \z) + \a(t\z) \norm{t\z},~ t\z \to 0
 \]
     Это эквивалентно
 \[
@@ -75,7 +86,7 @@
 
 \begin{proposition}(Линейность производного оператора)
 
-    Пусть $f\!$, $\!\!g \colon \O \to \Rn$, $\O \subseteq \Rm$, дифференцируемы в
+    Пусть $f$, $g \colon \O \to \Rn$, $\O \subseteq \Rm$, дифференцируемы в
     $\x$. Тогда отображение $\a f + \b g$ дифференцируемо в точке $\x$, причем
     $\der{(\a f + \b g)}{\x} = \a \der{f}{\x} + \b \der{g}{\x}$
 \end{proposition}
@@ -118,8 +129,9 @@
     \a(\norm{\h})\norm{\h}$. Окончательно получаем
 \[
     \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v)} \leqslant
-    \norm{\der{g}{f(\x)}}\norm{r(\h)} + \widetilde{\a}(\norm{\der{f}{\x}}\h +
-    \a(\norm{\h})\norm{\h})\norm{\v} \leqslant \b(\norm{\h})\norm{\h}
+    \norm{\der{g}{f(\x)}}\norm{r(\h)} + \widetilde{\a}(\norm{\der{f}{\x}} \cdot
+    \norm{\h} + \a(\norm{\h}) \cdot \norm{\h})\norm{\v} \leqslant
+    \b(\norm{\h})\norm{\h}
 \]
     Для некоторой $\b(t) \xrightarrow[t \to 0]{} 0$.
 \end{proof}
@@ -140,6 +152,14 @@
     f \text{ дифференцируемо в } \x \Llra \forall i~ f_i \text{ дифференцируемо в
     } \x
 \]
+    причем
+\[
+    \der{f}{\x} = \begin{pmatrix}
+                           \der{f_1}{\x} \\
+                           \vdots \\
+                           \der{f_n}{\x}
+                  \end{pmatrix}
+\]
 \end{theorem}
 \begin{proof}
     \enewline
@@ -156,8 +176,9 @@
 \end{proof}
 
 \begin{definition}
-    Пусть $f \colon \O \to \Rm$, $\O \in \Rn$ --- область, тогда
-    \textit{производной по направлению} $\elemvec{u} \in \Rn$ в точке $\x$ называется
+    Пусть $f \colon \O \to \Rn$, $\O \in \Rm$ --- область, тогда
+    \textit{производной по направлению} $\elemvec{u} \in \Rn$ в точке $\x$
+    называется
 \[
     \dder{f}{\x}{\elemvec{u}} \defeq \lim_{\substack{t \to 0 \\ \x + t\elemvec{u}
     \in \O}}{\frac{f(\x + t\elemvec{u}) - f(\x)}{t}}
@@ -166,8 +187,8 @@
 \end{definition}
 
 \begin{definition}
-    Пусть $f \colon \O \to \Rm$, $\O \in \Rn$, $\{\, \elemvec{u}_1, \ldots,
-    \elemvec{u}_n \,\}$ --- стандартный базис $\Rn$, тогда \textit{частной
+    Пусть $f \colon \O \to \Rn$, $\O \in \Rm$, $\{\, \elemvec{u}_1, \ldots,
+    \elemvec{u}_n \,\}$ --- стандартный базис $\Rm$, тогда \textit{частной
     производной $f$ по $k$ -й переменной} называется
 \[
     \pderv{f}{x_k}(\x) \defeq f'_k \defeq \pderi{f}{k}(\x) \defeq
@@ -175,13 +196,76 @@
 \]
 \end{definition}
 
+\begin{proposition}
+    Пусть $f \colon \O \subseteq \Rm \to \Rn$, $\x \in \O$, $\elemvec{u} \in
+    \Rm$. Тогда
+\[
+    \exists \dder{f}{\x}{\elemvec{u}} = [\der{f}{\x}]\elemvec{u}
+\]
+\end{proposition}
+\begin{proof} Для любых $t \in \R$, $\x + t\elemvec{u} \in \O$ имеем
+\begin{align*}
+    &\frac{f(\x + t\elemvec{u}) - f(\x)}{t} =
+    \frac{[\der{f}{\x}](t\elemvec{u}) + r(t\elemvec{u})}{t} \\
+    &= [\der{f}{\x}]\elemvec{u} +
+    \frac{r(t\elemvec{u})}{t} \leqslant [\der{f}{\x}]\elemvec{u} +
+    \frac{\a(\elemvec{u})\norm{t\elemvec{u}}}{t} =
+    [\der{f}{\x}]\elemvec{u} + \a(\elemvec{u})\norm{\elemvec{u}}
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Вид матрицы Якоби)
+    Пусть $f \colon \O \subseteq \Rm \to \Rn$, $\x \in \O$, тогда
+\[
+    \der{f}{\x} = \begin{pmatrix}
+                    \dder{f_1}{\x}{1} & \dder{f_1}{\x}{2} & \cdots &
+                    \dder{f_1}{\x}{m} \\
+                    \dder{f_2}{\x}{1} & \dder{f_2}{\x}{2} & \cdots &
+                    \dder{f_2}{\x}{m} \\
+                    \vdots & \vdots & \cdots & \vdots \\
+                    \dder{f_n}{\x}{1} & \dder{f_n}{\x}{2} & \cdots &
+                    \dder{f_n}{\x}{m}
+                  \end{pmatrix}
+\]
+\end{theorem}
+\begin{proof}
+    Пусть $(\elemvec{e}_i)$ --- базис $\Rm$, $(\tilde{\elemvec{e}}_i)$ --- базис
+    $\Rn$, тогда
+\begin{align*}
+    [\der{f}{\x}]_{i, j} = \langle [\der{f}{\x}]\elemvec{e}_i,
+    \tilde{\elemvec{e}}_j \rangle
+    &= \left\langle \frac{[\der{f}{\x}](t\elemvec{e}_i)}{t},
+    \tilde{\elemvec{e}}_j \right\rangle
+    = \left\langle \lim_{t \to 0}{\frac{f(\x + t\elemvec{e}_i) - f(\x)}{t}},
+    \tilde{\elemvec{e}}_j \right\rangle \\
+    &= \lim_{t \to 0}{\left\langle \frac{f(\x + t\elemvec{e}_i) - f(\x)}{t},
+    \tilde{\elemvec{e}}_j \right\rangle}
+    = \lim_{t \to 0}{\frac{f_j(\x + t\elemvec{e}_i) - f_j(\x)}{t}}
+    = \dder{f_j}{\x}{i}
+\end{align*}
+\end{proof}
+
+\begin{proposition}
+    Пусть $f \colon \Rm \to \R$, $\elemvec{u} \in \Rm$. Тогда
+\[
+    \dder{f}{\x}{\elemvec{u}} = \langle \grad{f}{\x}, \elemvec{u} \rangle
+\]
+\end{proposition}
+\begin{proof}
+    \enewline
+\[
+    \dder{f}{\x}{\elemvec{u}} = [\der{f}{\x}]\elemvec{u} =
+    [\grad{f}{\x}]\elemvec{u} = \langle \grad{f}{\x}, \elemvec{u} \rangle
+\]
+\end{proof}
+
 \begin{proposition}(Необходимое условие дифференцируемости)
 
-    Если $f$ дифференцируема в $\x$, то все $f_i$ дифференцируемы в $\x$, причем
-    матрица Якоби $f$ в точке $\x$ совпадает с матрицей, составленной из матриц
-    якоби $f_i$ в точке $\x$:
+    Если $f$ дифференцируемо в $\x$, то существуют все частные производные в
+    точке $\x$, причем матрица Якоби $f$ в точке $\x$ совпадает с матрицей,
+    составленной из матриц якоби $f_i$ в точке $\x$:
 \[
-    \der{f}{\x} = (\der{f_1}{\x}, \ldots, \der{f_n}{\x})
+    \der{f}{\x} = \left(\pderv{f}{\x_1}(\x), \ldots, \pderv{f}{\x_m}(\x)\right)
 \]
 \end{proposition}
 \begin{proof}
@@ -189,8 +273,8 @@
     Подставим в определение дифференцируемости $\h = t \elemvec{e}_k$:
 \begin{align*}
     f(\x + t \elemvec{e}_k) &= f(\x) + [\der{f}{\x}](t \elemvec{e}_k) +
-    \a(\norm{\h})\norm{\h} \\ &= f(\x) + t[\der{f}{\x}]\elemvec{e}_k +
-    \a{\norm{\h}}\norm{\h}
+    \a(\h)\norm{\h} \\ &= f(\x) + t[\der{f}{\x}]\elemvec{e}_k +
+    \a(\h)\norm{\h}
 \end{align*}
     Отсюда по определению частной производной получаем
 \[
@@ -203,7 +287,7 @@
 
     Пусть $f \colon \O \subseteq \Rm \to \R$, $\ela \in \O$, $B(\ela) \subseteq
     \O$, В $B(\ela)$ существуют все частные производные, причем они непрерывны в
-    точке $\ela$. Тогда $f$ дифференцируема в точке $\ela$.
+    точке $\ela$. Тогда $f$ дифференцируемо в точке $\ela$.
 \end{theorem}
 \begin{proof}
     Докажем теорему для случая $m = 2$. Схема, примененная в доказательстве
@@ -224,4 +308,102 @@
     &= f'_{\x_1}(\ela_1, \ela_2)(\x_1 - \ela_1) + f'_{\x_2}(\ela_1, \ela_2)(\x_2
     - \ela_2) + \a(\x - \ela)\norm{\x - \ela}
 \end{align*}
+\end{proof}
+
+\begin{theorem}
+
+    Пусть $f$,$g \colon \O \subseteq \Rm \to \Rn$, $\lambda \colon \O \to
+    \R$, $\ela \in \O$, $f$,$g$,$\lambda$ дифференцируемы в $\ela$. Тогда
+    $\lambda f$, $\langle f, g \rangle$ дифференцируемы в $\ela$, причем
+    \begin{itemize}
+        \item $[\der{(\lambda f)}{\ela}]\h =
+        [\der{\lambda}{\ela}]\h \cdot f(\ela) + \lambda(\ela) \cdot
+        [\der{f}{\ela}]\h$
+        \item $[\der{\langle f, g \rangle}{\ela}]\h =
+        \langle [\der{f}{\ela}]\h, g(\ela) \rangle
+        + \langle f(\ela), [\der{g}{\ela}]\h \rangle$
+
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Докажем покоординатно:
+\begin{align*}
+    & (\lambda f_i)(\ela + \h) - (\lambda f_i)(\ela) \\
+    &= \lambda(\ela + \h) \cdot f_i(\ela + \h) - (\lambda f_i)(\ela) \\
+    &= (\lambda(\ela) + \der{\lambda}{\ela}\h + \a(\h)\norm{\h}) \cdot
+    (f_i(\ela) + \der{f_i}{\ela}\h + \b(\h)\norm{\h}) - (\lambda f_i)(\ela) \\
+    &= [\der{\lambda}{\ela}] \cdot f_i(\ela) + \lambda(\ela) \cdot
+    [\der{f_i}{\ela}]\h + o(\h)
+\end{align*}
+        \item
+\begin{align*}
+    & [\der{\langle f, g \rangle}{\ela}]\h = \der{\left[\sum_{i =
+    1}^n{f_i \cdot g_i}\right]}{\ela}\h = \sum_{i =
+    1}^n{\der{\left[{f_i \cdot g_i}\right]}{\ela}}\h =
+    \sum_{i = 1}^{n}{\left([\der{f_i}{\ela}]\h \cdot g_i(\ela) + f_i(\ela) \cdot
+    [\der{g_i}{\ela}]\h\right)} \\
+    &= \sum_{i = 1}^{n}{\left([\der{f_i}{\ela}]\h \cdot g_i(\ela)\right)} +
+    \sum_{i = 1}^{n}{\left(f_i(\ela) \cdot [\der{g_i}{\ela}]\h\right)} =
+    \langle [\der{f}{\ela}]\h, g(\ela) \rangle + \langle f(\ela),
+    [\der{g_i}{\ela}]\h \rangle
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Лагранж)
+    Пусть $f \in C([a, b], \Rn)$, дифференцируемо на $(a, b)$. Тогда
+\[
+    \exists c \in (a,b) \colon~ \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
+\]
+\end{theorem}
+\begin{proof}
+    Положим $\f(x) = \langle f(b) - f(a), f(t) - f(a) \rangle$. Тогда
+\[
+    \f(a) = 0, \f(b) = \langle f(b) - f(a), f(b) - f(a) \rangle = \norm{f(b) -
+    f(a)}^2
+\]
+    Применим теорему Лагранжа для $\f$:
+\begin{align*}
+    \exists c \in (a, b) \colon~ &\norm{f(b) - f(a)}^2 = \f(b) - \f(a)
+    \underset{\text{Лагранж}}{=} \f'(c) |b - a| =
+    \langle f(b) - f(a), f'(c) \rangle \cdot |b - a| \\
+    &\underset{\text{КБШ}}{\leqslant} \norm{f(b) - f(a)} \cdot \norm{f'(c)}
+    \Lra \norm{f(b) - f(a)} \leqslant \norm{f'(c)} |b - a|
+\end{align*}
+\end{proof}
+
+\begin{definition}
+    Пусть $f \colon \O \subseteq \Rm \to \R$, $\x \in \O$. Тогда
+    \textit{градиентом} $\f$ в точке $\x$ наывается вектор
+\[
+    \grad{f}{\x} \defeq \begin{pmatrix}
+        \pderv{f}{x_1}(\x) \\
+        \vdots \\
+        \pderv{f}{x_m}(\x)
+    \end{pmatrix}
+\]
+\end{definition}
+
+\begin{theorem}(Экстремальное свойство градиента)
+
+    Пусть $f \colon \O \subseteq \Rm \to \R$, $\x \in \O$, $f$ дифференцируемо
+    в $\x$, $\grad{f}{\x} \neq 0$ Тогда
+\[
+    \elemvec{l} = \frac{\grad{f}{\x}}{\norm{\grad{f}{\x}}}
+\]
+    --- направление наибольшего возрастания $f$, то есть
+\[
+    \forall \h \in \Rm, \norm{\h} = 1 \Lra \dder{f}{\x}{\h} \leqslant
+    \dder{f}{\x}{\elemvec{l}}
+\]
+\end{theorem}
+\begin{proof}
+    \enewline
+\[
+    \dder{f}{\x}{\h} = [\der{f}{\x}]\h = [\grad{f}{\x}]\h =
+    \langle \grad{f}{\x}, \h \rangle \leqslant \norm{\grad{f}{\x}} \norm{\h}
+    = \norm{\grad{f}{\x}}
+\]
 \end{proof}
