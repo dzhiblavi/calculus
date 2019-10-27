@@ -49,7 +49,7 @@
     Пусть $f \colon \O \subseteq \Rm \to \Rn$, $i_1, \ldots, i_k \in \{\, 1, 2,
     \ldots, m \,\}$, $\x \in \O$, $\exists B(\x, r) \subseteq \O$, причем
     в $B(\x, r)$ для любой перестановки индексов $\pi \in S_k$ существуют и
-    непрерывны в $\x$ частные производные $\pderi{f}{i_{\pi_1}, \ldots, 
+    непрерывны в $\x$ частные производные $\pderi{f}{i_{\pi_1}, \ldots,
     i_{\pi_k}}$. Тогда все они совпадают в точке $\x$.
 \end{corollary}
 \begin{proof}
@@ -63,3 +63,159 @@
     производные порядка не более $r$ существуют и непрерывны на $\O$, будем
     обозначать $C^r(\O)$
 \end{definition}
+
+\begin{definition}
+    Пусть $k_1, k_2, \ldots, k_m \in \mathbb{N}_0$, тогда набор
+    $k = (k_1, k_2, \ldots, k_m)$ будем называть \textit{мультииндексом}.
+    Используются обозначения $|k| = k_1 + \ldots + k_m$,
+\[
+    \frac{\partial^k}{\partial x^k}f \defeq
+    \frac{\partial^{|k|}}{\partial x_1^{k_1} \ldots \partial x_m^{k_m}}f
+\]
+\end{definition}
+
+\begin{lemma}(Полиномиальная формула)
+\[
+    (a_1 + \ldots + a_m)^r = \sum_{n_1 = 1}^{m}{\sum_{n_2 = 1}^{m}{\ldots
+    \sum_{n_r = 1}^{m}{a_{n_1} a_{n_2} \ldots a_{n_r}}}} =
+    \sum_{|k| = r}{\frac{r!}{k_1! \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots
+    a_m^{k_m}}
+\]
+\end{lemma}
+\begin{proof}
+    Первое равенство очевидно по правилам раскрытия скобок. Докажем второе
+    равенство индукцией по $r$.
+
+    \begin{itemize}
+        \item Для $r = 1$ утверждение очевидно.
+        \item Переход:
+\begin{align*}
+    &(a_1 + \ldots + a_m)^{r+1} = (a_1 + \ldots + a_m) \cdot (a_1 + \ldots +
+    a_m)^r \\
+    &= (a_1 + \ldots + a_m) \cdot \sum_{|k| = r}{\frac{r!}{k_1! \ldots k_m!}
+    a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} \\
+    &= \sum_{|k| = r}{\frac{r!}{k_1! \ldots k_m!}
+    a_1^{k_1 + 1} a_2^{k_2} \ldots a_m^{k_m}} + \ldots +
+    \sum_{|k| = r}{\frac{r!}{k_1! \ldots k_m!}
+    a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m + 1}} \\
+    &= [\text{переобозначим } k_i = k_i + 1 \text{ в } i \text{-й сумме}] \\
+    &= \sum_{\substack{|k| = r + 1 \\ k_1 \geqslant 1}}{\frac{r! \cdot k_1}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} + \ldots +
+    \sum_{\substack{|k| = r + 1 \\ k_m \geqslant 1}}{\frac{r! \cdot k_m}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} \\
+    &= [\text{добавим все пропущенные слагаемые с } k_i = 0]
+    \\ &= \sum_{|k| = r + 1}{\frac{r! \cdot k_1}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} + \ldots +
+    \sum_{|k| = r + 1}{\frac{r! \cdot k_m}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} \\
+    &= \sum_{|k| = r + 1}{\frac{r! \cdot (k_1 + k_2 \ldots + k_m)}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}} \\
+    &=\sum_{|k| = r + 1}{\frac{(r + 1)!}{k_1!
+    \ldots k_m!} a_1^{k_1} a_2^{k_2} \ldots a_m^{k_m}}
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{lemma}(О дифференцировании сдвига)
+
+    $f \colon \O \subseteq \Rm \to \R$, $\O$ --- область, $f \in C^r(\O)$, $\ela
+    \in \O$, $\h \in \Rm$, $\forall t \in [-1, 1]~~ \ela + t\h \in \O$, тогда
+    для отображения $\f(t) = f(\ela + t\h)$ и для $k \leqslant r$ выполнено
+\[
+    \f^{(k)}(0) = \sum_{|j| = k}{\frac{k!}{j!}\h^j \frac{\partial^j f}{\partial
+    x^j}(\ela)}
+\]
+\end{lemma}
+\begin{proof}
+    Для доказательства этого факта достаточно показать, что
+\[
+    \f^{(k)}(t) = \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
+    \frac{\partial}{\partial x_m}\h_m\right)^k \cdot f(\ela + t\h)
+\]
+    Докажем по индукции:
+    \begin{itemize}
+        \item Для $k = 0$ утверждение очевидно.
+        \item Переход:
+\begin{align*}
+        \f^{(k)}(t) &= (\f^{(k - 1)}(t))' =
+        \left(\left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ela +
+        t\h)\right)' \\
+        &= \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
+        \frac{\partial}{\partial x_m}\h_m\right) \cdot
+        \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ela +
+        t\h) \\
+        &= \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k} f(\ela +
+        t\h)
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Формула Тейлора в форме Лагранжа)
+
+    $f \colon \O \subseteq \Rm \to \R$, $f \in C^{r+1}(\O)$, $\O$ --- область,
+    $\ela \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
+\[
+    \exists \theta \in (0, 1)\colon~
+    f(\x) = \sum_{|k| \leqslant r}{\frac{1}{k!}
+    \frac{\partial^k f}{\partial x^k}(\ela) (\x - \ela)^k}
+    + \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela))(\x - \ela)^k}
+\]
+\end{theorem}
+\begin{proof}
+    Пусть $\f(t) = f(\ela + t\h)$ для $\x = \ela + \h$, $\h = \x - \ela$.
+    Выпишем формулу Тейлора в форме Лагранжа для $\f$:
+\[
+    \f(1) = \sum_{k = 0}^{r}{\frac{\f^{(k)}(0)}{k!}} +
+    \frac{\f^{(r+1)}(\theta)}{(r+1)!}
+\]
+    Пользуясь леммой о дифференцировании сдвига, получаем искомое равенство.
+\end{proof}
+
+\begin{theorem}(Формула Тейлора в форме Пеано)
+
+    $f \colon \O \subseteq \Rm \to \R$, $f \in C^{r+1}(\O)$, $\O$ --- область,
+    $\ela \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
+\[
+    \exists \theta \in (0, 1)\colon~
+    f(\x) = \sum_{|k| \leqslant r}{\frac{1}{k!}
+    \frac{\partial^k f}{\partial x^k}(\ela) (\x - \ela)^k}
+    + o(\norm{\x - \ela}^r)
+\]
+\end{theorem}
+\begin{proof}
+    Достаточно показать, что
+\[
+    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela))(\x - \ela)^k} = o(\norm{\x - \ela}^r)
+\]
+    Проверим это:
+\begin{align*}
+    &\sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela)) \frac{(\x - \ela)^k}{\norm{\x - \ela}^r}}
+    = \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1} \ldots (\x_m -
+    \ela_m)^{k_m}}{\norm{\x - \ela}^r}} \\
+    &= \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1}}{\norm{\x - \ela}^{k_1}} \ldots
+    \frac{(\x_m - \ela_m)^{k_m}}{\norm{\x - \ela}^{k_m}}} \norm{\x - \ela}
+\end{align*}
+    Все дроби вида
+\[
+    \frac{(\x_i - \ela_i)^{k_i}}{\norm{\x - \ela}^{k_i}}
+\]
+    меньше единицы, выражения вида
+\[
+    \frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela + \theta(\x - \ela))
+\]
+    постоянны. Поэтому
+\[
+    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
+    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1}}{\norm{\x - \ela}^{k_1}} \ldots
+    \frac{(\x_m - \ela_m)^{k_m}}{\norm{\x - \ela}^{k_m}}} \norm{\x - \ela} \to 0
+\]
+    При $\norm{\x - \ela} \to 0$.
+\end{proof}
