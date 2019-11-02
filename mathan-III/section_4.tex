@@ -186,3 +186,166 @@
 \begin{examples}
     TBD
 \end{examples}
+
+\section{Теоремы о равномерно сходящихся функциональных последовательностях}
+
+\begin{theorem}(Стокс-Зейдель)
+
+    Пусть $f_n, f \colon X \to \R$, $X$ --- топологическое пространство, $f_n$
+    непрерывны в $c \in E$, и $f_n \rcon f$ на $X$. Тогда $f$ непрерывна в $c$.
+    Иначе говоря, коммутативна следующая диаграмма:
+
+    \xymatrix{& & & & & & f_n(x) \ar@<-.5ex>[r] \ar@<.5ex>[r]
+    \ar[d]^{x \to c} & f(x) \ar@{-->}[d]^{x \to c} \\
+              & & & & & & f_n(c) \ar[r]^{n \to +\infty} & f(c)}
+\end{theorem}
+\begin{proof} Для любых $n$ выполнено
+\[
+    |f(x) - f(y)| \leqslant |f(x) - f_n(x)| + |f_n(x) - f_n(y)| + |f_n(y) - f(y)|
+\]
+    Воспользуемся равномерной сходимостью: выберем $n$ таким, чтобы
+\begin{align*}
+    |f(x) - f_n(x)| < \e \\
+    |f_n(y) - f(y)| < \e
+\end{align*}
+    Теперь воспользуемся непрерывностью $f_n$: выберем такую окрестность
+    $U(c)$, чтобы $\forall x, y \in U(c)$
+\[
+    |f_n(x) - f_n(y)| < \e
+\]
+     Тогда
+\[
+    |f(x) - f(y)| < 3\e
+\]
+    что и означает непрерывность $f$ в точке $c$.
+\end{proof}
+
+\begin{definition}
+    Будем говорить, что $f_n$ сходится \textit{локально равномерно} к $f$ на
+    $X$, если
+\[
+    \forall x \in X~ \exists U(x)\colon~ f_n \rcon f \text{ на } U(x)
+\]
+\end{definition}
+
+\begin{remark}
+    Для выполнения условия теоремы Стокса-Зейделя достаточно равномерной
+    сходимости на некоторой окрестности $c$.
+\end{remark}
+
+\begin{remark}
+    Для того, чтобы $f$ было непрерывным на $X$, достаточно, чтобы
+    $f_n$ локально равномерно на $X$ сходилось к $f$.
+\end{remark}
+
+\begin{theorem}(О предельном переходе под знаком интеграла)
+
+    Пусть $f_n \in C([a, b])$, $f_n \rcon f$ на $[a, b]$. Тогда
+\[
+    \int_a^b{f_n} \xrightarrow[n \to +\infty]{} \int_a^b{f}
+\]
+    иначе говоря, коммутативна следующая схема:
+
+    \xymatrix{& & & & & & f_n \ar@<-.5ex>[r] \ar@<.5ex>[r]
+    \ar[d]^{\int{}} & f \ar[d]^{\int{}} \\
+              & & & & & & \int_a^b{f_n} \ar@{-->}[r]^{n \to +\infty} &
+              \int_a^b{f}}
+\end{theorem}
+\begin{proof}
+    $f$ непрерывна на $[a, b]$ по теореме Стокса-Зейделя, поэтому интеграл имеет
+    смысл. Тогда
+\[
+    \left|\int_a^b{f_n} - \int_a^b{f}\right| \leqslant \int_a^b{|f_n - f|}
+    \leqslant \max_{x \in [a, b]}{|f_n(x) - f(x)|} \cdot |b - a|
+\]
+    Из равномерной сходимости имеем:
+\[
+    \max_{x \in [a, b]}{|f_n(x) - f(x)|} \xrightarrow[n \to +\infty]{} 0
+\]
+    тогда
+\[
+    \left|\int_a^b{f_n} - \int_a^b{f}\right| \leqslant \max_{x \in [a,
+    b]}{|f_n(x) - f(x)|} \cdot |b - a| \xrightarrow[n \to +\infty]{} 0
+\]
+\end{proof}
+
+\begin{theorem}(Правило Лейбница)
+
+    $f \colon [x_1, x_2] \times [y_1, y_2] \to \R$, $\exists f'_y$, $f'_y, f$
+    непрерывны. Пусть
+\[
+    \phi(y) = \int_{x_1}^{x_2}{f(x, y) dx}
+\]
+    Тогда $\phi$ дифференцируемо на $[y_1, y_2]$ и
+\[
+    \phi'(y) = \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+\end{theorem}
+\begin{proof}
+\[
+    \frac{\phi(y + \frac{1}{n}) - \phi(y)}{\frac{1}{n}} =
+    \frac{1}{n} \int_{x_1}^{x_2}{\left(f\left(x, y + \frac{1}{n}\right) - f(x,
+    y)\right) dx}
+    \underset{\text{Лагранж}}{=} \int_{x_1}^{x_2}{f'_y\left(x, y +
+    \frac{\theta}{n}\right) dx}
+\]
+    Обозначим
+\[
+    g_n(x, y) = \int_{x_1}^{x_2}{f'_y\left(x, y + \frac{\theta}{n}\right) dx}
+\]
+    $f'_y$ непрерывно на компакте, поэтому равномерно непрерывна на нём.
+    Воспользуемся этим:
+\[
+    \forall \e~ \exists \delta~ \forall n\colon \frac{1}{n} < \delta~
+    \forall x~~ \left| f'_y\left(x, y + \frac{1}{n}\right) - f'_y(x, y) \right|
+    < \e
+\]
+    Отсюда получаем по определению
+\[
+    g_n(x, y) \rcon f'_y(x, y) \text{ на } [x_1, x_2]
+\]
+    Воспользуемся теоремой о предельном переходе под знаком интеграла:
+\[
+    \int_{x_1}^{x_2}{g_n(x, y)} \xrightarrow[n \to +\infty]{}
+    \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+    Понятно, что вместо последовательности $\frac{1}{n}$ можно рассматривать
+    любую последовательность $h_n$, сходящуюся к $0$. То есть
+\[
+    \phi'(y) = \lim_{n \to +\infty}{\frac{\phi(y + h_n) - \phi(y)}{h_n}} =
+    \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+\end{proof}
+
+\begin{theorem}(О предельном переходе под знаком производной)
+
+    $f_n \in C^1([a, b])$, $f_n \to f$ поточечно на $\langle a, b \rangle$,
+    $f'_n \rcon \f$ на $\langle a, b \rangle$. Тогда
+    \begin{itemize}
+        \item $f \in C^1([a, b])$
+        \item $f' = \f$
+    \end{itemize}
+    иначе говоря, коммутативна следующая схема:
+
+    \xymatrix{& & & & & & f_n \ar[r]^{n \to +\infty}
+    \ar[d]^{\der{}{}} & f \ar@{-->}[d]^{\der{}{}} \\
+              & & & & & & f'_n \ar@<-.5ex>[r] \ar@<.5ex>[r] & \f}
+\end{theorem}
+\begin{proof}
+    Пусть $x_0, x_1 \in \langle a, b \rangle$, тогда $f'_n \rcon \f$ на $[x_0,
+    x_1]$. Тогда по теореме о предельном переходе под знаком интеграла:
+\[
+    \int_{x_0}^{x_1}{f'_n} \xrightarrow[n \to +\infty]{} \int_{x_0}^{x_1}{\f}
+\]
+    Откуда
+\[
+    f(x_1) - f(x_0) \xleftarrow[n \to +\infty]{} f_n(x_1) - f_n(x_0)
+    \xrightarrow[n \to +\infty]{} \int_{x_0}^{x_1}{\f}
+\]
+    То есть
+\[
+    \int_{x_0}^{x_1}{\f} = f(x_1) - f(x_0)
+\]
+    Тогда $f$ --- первообразная $\f$. $\f$ непрерывна по теореме Стокса-Зейделя.
+    Тогда получаем, что $f \in C^1([a, b])$ и $f' = \f$.
+\end{proof}
