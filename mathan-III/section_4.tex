@@ -537,7 +537,7 @@ $
 \[
     \sup_{x \in E \cup \{x_0\}}{\left|\sum_{n =
     N}^{+\infty}{\tilde{u}_n(x)}\right|} \leqslant \sup_{x \in E}{\left|
-    \sum_{n = N}^{+\infty}{u_n(x)} \right|} + \sup_{x \in \{x_0\}}{\left| 
+    \sum_{n = N}^{+\infty}{u_n(x)} \right|} + \sup_{x \in \{x_0\}}{\left|
     \sum_{n = N}^{+\infty}{a_n} \right|} \xrightarrow[N \to +\infty]{} 0
 \]
 \end{proof}
@@ -578,4 +578,69 @@ $
     \to +\infty}{f_n(x)}}
 \]
 
+\end{proof}
+
+\begin{theorem}(Признак Дирихле)
+
+    Пусть $a_n, b_n \colon X \to \R$, причем
+\begin{itemize}
+    \item $\displaystyle \exists C_a\colon \forall
+   N \forall x \in X~ \left| \sum_{i = 1}^{N}{a_n(x)} \right| \leqslant C_a$
+    \item $b_n \rcon 0$, $\forall x \in X~ b_n$ монотонна по $n$.
+\end{itemize}
+    Тогда
+    $\displaystyle \sum_{i = 1}^{+\infty}{a_n(x) b_n(x)} \rcon \bot$
+\end{theorem}
+\begin{proof}
+    Воспользуемся преобразованием Абеля:
+\[
+    \sum_{N \leqslant k \leqslant M}{a_k b_k} = A_N b_M - A_{N - 1}b_N +
+    \sum_{k = N}^{M - 1}{(b_k - b_{k + 1}) A_k}
+\]
+    тогда
+\begin{align*}
+    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant |A_N b_M|
+    + |A_{N - 1}b_N| + \left| \sum_{k = N}^{M - 1}{(b_k - b_{k + 1})A_k}
+    \right|\\
+    &\leqslant C_a \cdot |b_M| + C_a \cdot |b_N| + C_a \cdot
+    \sum_{k = N}^{M - 1}{|b_k - b_{k + 1}|}
+\end{align*}
+    Все слагаемые в сумме одного знака. Считая, что $b_k - b_{k + 1} \geqslant
+    0$, имеем:
+\begin{align*}
+    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant C_a \cdot |b_M| +
+    C_a \cdot |b_N| + C_a \cdot \sum_{k = N}^{M - 1}{(b_k - b_{k + 1})} \\
+    &\leqslant C_a \cdot (|b_M| + |b_N| + |b_M| + |b_N|) \xrightarrow[N, M \to
+    +\infty]{} 0
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Признак Абеля)
+
+    Пусть $a_n, b_n \colon X \to \R$, причем
+\begin{itemize}
+    \item $\displaystyle \sum_{n = 1}^{+\infty}{a_n(x)} \rcon \bot$
+    \item $\exists C_b\colon \forall N \forall x \in X~ |b_n(x)| \leqslant C_b,
+    \forall x \in X~ b_n(x)$ монотонна по $n$.
+\end{itemize}
+    Тогда
+    $\displaystyle \sum_{i = 1}^{+\infty}{a_n(x) b_n(x)} \rcon \bot$
+\end{theorem}
+\begin{proof}
+    Применим критерий Коши к ряду $a_n$:
+\[
+    \forall \varepsilon \exists N\colon \forall n > N~ \forall p \geqslant
+    1~ \forall x \in X~ |A_{n, p}(x)| = \left|\sum_{i = n + 1}^{n +
+    p}{a_n(x)}\right| < \varepsilon
+\]
+    Воспользуемся преобразованием Абеля:
+\begin{align*}
+    \left|\sum_{k = n + 1}^{n + p}{a_k b_k}\right| &\leqslant |b_{n + p}(x)A_{n,
+    p}(x)| + \left| \sum_{k = n + 1}^{n + p - 1}{(b_{k + 1}(x) - b_k(x))A_{n,
+    k}(x)} \right| \\
+    &\leqslant C \varepsilon + \varepsilon \sum_{k = n + 1}^{n + p - 1}{|b_{k +
+    1}(x) - b_k(x)|} \leqslant C \varepsilon + \varepsilon|b_{n + p}(x)| +
+    \varepsilon|b_n(x)| \\ &\leqslant C \varepsilon + 2C_b \varepsilon
+\end{align*}
+    Здесь мы воспользовались монотонностью и ограниченностью $b_n$.
 \end{proof}
