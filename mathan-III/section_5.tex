@@ -1,0 +1,67 @@
+\section{Относительный экстремум}
+
+\begin{definition}
+    Пусть $f \colon E \subseteq \R^{m + n} \to \R$, $\phi \colon E \to \R^n$,
+    $M_{\phi} = \{\,\x \in E \mid \phi(\x) = 0\,\}$, $\x_0 \in E$, $\phi(\x_0) =
+    0$ называется точкой локального \textit{относительного} экстремума, если
+    $x_0$ --- точка локального экстремума $f\big|_{M_{\phi}}$.
+\end{definition}
+
+\begin{theorem}(Необходимое условие относительного экстремума)
+
+    Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
+    E \to \R^n$, $\x_0 \in E$, $\phi(\x_0) = 0$, $\rank{\phi'(\x_0)} = n$,
+    $\x_0$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
+    \colon$
+\[
+    \begin{cases}
+        f'(\x_0) - \lambda \cdot \phi'(\x_0) = 0 \\
+        \phi(\x_0) = 0
+    \end{cases}
+\]
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(Достаточное условие относительного экстремума)
+
+    Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
+    E \to \R^n$, $\x_0 \in E$, $\phi(\x_0) = 0$, $\rank{\phi'(\x_0)} = n$,
+    выполнено необходимое условие относительного экстремума, то есть $\exists
+    \lambda \in \Rn \colon$
+ \[
+     \begin{cases}
+         f'(\x_0) - \lambda \cdot \phi'(\x_0) = 0 \\
+         \phi(\x_0) = 0
+     \end{cases}
+ \]
+    кроме того, пусть $\h = (\h_x \in \Rm, \h_y \in \Rn)$. Тогда, так как
+    $\rank{\phi'(\x_0)}$, по $\h_x$ можно однозначно восстановить $\h_y$ такой,
+    что $\phi'(\x_0)\h = 0$. Тогда рассмотрим квадратичную форму
+\[
+    Q(\h_x) = \d^2_{\x_0}{G(\h_x, \h_y)}
+\]
+    Где $G = f - \lambda \cdot \phi$ --- функция Лагранжа. В зависимости от
+    определенности $Q$ можно сделать вывод о наличии экстремума в точке $x_0$:
+    \begin{itemize}
+        \item $Q$ положительно определена $\Lra \x_0$ --- точка относительного
+        локального минимума.
+        \item $Q$ отрицательно определена $\Lra \x_0$ --- точка относительного
+        локального максимума.
+        \item $Q$ неопределена $\Lra \x_0$ --- не точка экстремума.
+        \item В остальных случаях требуется более детальное исследование.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(Вычисление нормы линейного опреатора)
+
+    Пусть $A \in Lin(\Rm, \Rn)$, $S$ --- множество собчтвенных чисел $A^T A$.
+    Тогда
+\[
+    \norm{A} = \max_{\lambda \in S}{\sqrt{\lambda}}
+\]
+\end{theorem}
