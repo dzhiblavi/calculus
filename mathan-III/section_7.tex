@@ -1,0 +1,131 @@
+\section{Степенные ряды}
+
+\begin{definition}
+    \textit{Степенным рядом} называется формальный ряд вида $\displaystyle
+    \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$, где $z$, $z_0 \in \C$.
+\end{definition}
+
+\begin{theorem}(О круге сходимости степенного ряда)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд. Тогда верно одно из трёх:
+    \begin{itemize}
+        \item Ряд сходится только при $z = z_0$
+        \item Ряд сходится при любых $z$
+        \item $\exists~ 0 < R < +\infty$ такое, что ряд сходится при $|z -
+        z_0| < R$, и расходится при $|z - z_0| > R$. Поведение на границе не
+        известно.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(О равномерной сходимости и непрерывности степенного ряда)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд, причем $0 < R \leqslant +\infty$. Тогда
+    \begin{itemize}
+        \item $\forall~ 0 < r < R$ ряд сходится равномерно на $B(z_0, r)$.
+        \item $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}
+        \in C(B(z_0, R))$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(О дифференцировании степенного ряда)
+
+    Пусть $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд, причем $0 < R \leqslant +\infty$, и $\displaystyle \f(z) =
+    \sum_{n = 1}^{+\infty}{n a_n (z - z_0)^{n - 1}}$. Тогда
+    \begin{itemize}
+        \item $\f$ имеет тот же радиус сходимости, что и $f$.
+        \item $f$ дифференцируемо на $B(z_0, R)$, причем $f'(z) = \f(z)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{definition}
+    \textit{Экпонентой} называется функция $\exp \colon \C \to \C$ такая,
+    что $\displaystyle z \underset{\exp}{\mapsto} \sum_{n =
+    0}^{+\infty}{\frac{z^n}{n!}}$
+\end{definition}
+
+\begin{theorem}(Свойства экспоненты)
+
+    \begin{itemize}
+        \item $\exp(0) = 1$
+        \item $\overline{\exp}(z) = \exp(z)$
+        \item $\exp'(z) = \exp(z)$
+        \item $\displaystyle \lim_{z \to 0}{\frac{\exp(z) - 1}{z}} = 1$
+        \item $\exp(z + w) = \exp(z) + \exp(w)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(Метод Абеля)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{c_n}$ --- сходящийся ряд.
+    Положим $\displaystyle f(x) = \sum_{n = 0}^{+\infty}{c_n x^n}$ при $|x| <
+    1$. Тогда \\ $\displaystyle \sum_{n = 0}^{+\infty}{c_n} = \lim_{x \to 1_{-
+    }}{f(x)}$
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\newpage
+\section{Ряды тейлора}
+
+\begin{definition}
+    $f \colon \R \to \R$ разложима в степенной ряд в точке $x_0$, если \\
+    $\displaystyle \exists U(x_0)~ \exists \sum_{n = 0}^{+\infty}{a_n (x -
+    x_0)^n} \colon~ \forall x \in U(x_0)~~ f(x) = \sum_{n = 0}^{+\infty}{a_n
+    (x - x_0)^n}$
+\end{definition}
+
+\begin{theorem}(Единственность разложения в ряд)
+
+    $f$ разложима в степенной ряд в $x_0 \Lra$ этот ряд единственный.
+\end{theorem}
+
+\begin{definition}
+    \textit{Рядом Тейлора} $f \in C^{\infty}(U(x_0))$ в точке $x_0$
+    называется формальный ряд $\displaystyle
+    \sum_{n = 0}^{+\infty}{\frac{f^{(n)}(x_0)}{n!}(x - x_0)^n}$
+\end{definition}
+
+\begin{theorem}(Разложение бинома в ряд Тейлора)
+
+    Пусть $\sigma \in \R$, $|x| < 1$, тогда
+\[
+    (1 + x)^{\sigma} = \sum_{n = 0}^{+\infty}{\binom{\sigma}{n}x^n}
+\]
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(Критерий разложимости в ряд Тейлора)
+
+    Пусть $f \in C^{\infty}([x_0 - h, x_0 + h])$. Тогда $f$ разложима в ряд
+    Тейлора в $U(x_0) \Llra \exists \delta, C, A\colon~ \forall n~
+    \forall |x - x_0| < \delta~~ |f^{(n)}(x)| < C A^n n!$
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\section{Суммирование по Чезаро}
+
+\begin{theorem}(Коши о перманентности метода средних арифметических)
+
+    $\displaystyle \sum_{n = 1}^{+\infty}{a_n} = S \Lra
+    \displaystyle \sum_{n = 1}^{+\infty}{a_n} \underset{c/a}{=} S$
+\end{theorem}
