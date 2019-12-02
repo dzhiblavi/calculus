@@ -18,21 +18,86 @@
     \end{itemize}
 \end{theorem}
 \begin{proof}
-    TBD
+    Изучим ряд на абсолютную сходимость, полуьзуясь признаком Коши: рассмотрим
+    величину $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n (z -
+    z_0)^n|}} = |z - z_0| \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}$:
+    \begin{itemize}
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} =
+        +\infty$,
+        тогда ряд сходится, очевидно, только при $z = z_0$.
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} = 0$,
+        тогда ряд сходится для любых $z$.
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} \in (0,
+        +\infty)$, тогда
+        \begin{itemize}
+            \item[a)] при $|z - z_0| < \frac{1}{\displaystyle \varlimsup_{n \to
+            +\infty}{\sqrt[n]{|a_n|}}}$ ряд сходится.
+            \item[b)] при $\displaystyle|z - z_0| > \frac{1}{\displaystyle
+            \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}}$ ряд расходится.
+        \end{itemize}
+    \end{itemize}
 \end{proof}
+
+\begin{corollary}(Формула Адамара)
+
+    Радиус сходимости степенного ряда можно вычислить по формуле
+\[
+    R = \frac{1}{\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}}
+\]
+\end{corollary}
+
+\begin{corollary}(О множестве сходимости степенного ряда)
+
+    Множеством сходимости степенного ряда является $B(z_0, R) \cup \Gamma$,
+    где $\Gamma \subseteq \Cl{B(z_0, R)}$, а $R$ --- радиус сходимости ряда.
+\end{corollary}
 
 \begin{theorem}(О равномерной сходимости и непрерывности степенного ряда)
 
     Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
     степенной ряд, причем $0 < R \leqslant +\infty$. Тогда
     \begin{itemize}
-        \item $\forall~ 0 < r < R$ ряд сходится равномерно на $B(z_0, r)$.
+        \item $\forall~ 0 < r < R$ ряд сходится равномерно на $\overline{B(z_0,
+        r)}$.
         \item $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}
         \in C(B(z_0, R))$.
     \end{itemize}
 \end{theorem}
 \begin{proof}
-    TBD
+    \enewline
+    \begin{itemize}
+        \item Применим признак Вейерштрасса: $|a_n (z - z_0)^n| \leqslant |a_n|
+        \cdot r^n$.
+    Ряд $\displaystyle \sum_{n = 0}^{+\infty}{|a_n| \cdot r^n}$ сходится
+    абсолютно, потому что исходный ряд сходится при $z = z_0 + r$.
+        \item Слагаемое непрерывно, есть равномерная сходимость на
+        $\overline{B(z_0, r)} \Lra$ во всех точках $B(z_0, R)$ сумма непрерывна.
+    \end{itemize}
+\end{proof}
+
+\begin{lemma}
+    $w, w_0 \in \C, |w|, |w_0| \leqslant r$. Тогда $|w^n - w^n_0|
+    \leqslant nr^{n - 1}|w - w_0|$
+\end{lemma}
+\begin{proof}
+\[
+    |w^n - w^n_0| = |w - w_0| \cdot |w^{n - 1} + w^{n - 2}w_0 + \ldots +
+    w^{n - 1}_0| \leqslant |w - w_0| \cdot ||w|^{n - 1} + \ldots + |w_0|^{n - 1}|
+    \leqslant |w - w_0|nr^{n - 1}
+\]
+\end{proof}
+
+\begin{lemma}
+    Степенные ряды $\displaystyle \sum_{n = 0}^{+\infty}{a_n x^n}$ и
+    $\displaystyle \sum_{n = 0}^{+\infty}{a_n x^{n + 1}}$ имеют одинаковый
+    радиус сходимости.
+\end{lemma}
+\begin{proof}
+    Пусть $S_N(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n x^n}$,
+    $\widetilde{S}_N(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n x^{n + 1}}$,
+    тогда $\widetilde{S}_N(x) = xS_N(x) \Lra \displaystyle \lim_{N \to
+    +\infty}{\widetilde{S}_N(x)} = x\lim_{N \to +\infty}{S_N(x)}$ --- существуют
+    на одном и том же множестве.
 \end{proof}
 
 \begin{theorem}(О дифференцировании степенного ряда)
@@ -46,8 +111,63 @@
     \end{itemize}
 \end{theorem}
 \begin{proof}
-    TBD
+    \enewline
+    \begin{itemize}
+        \item Найдем радиус сходимости $\hat{R}$ ряда $\f$ по формуле Адамара и
+        пользуясь последней леммой:
+\[
+    \hat{R} = \frac{1}{\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|n
+    \cdot a_n|}}} = \frac{1}{\displaystyle \varlimsup_{n \to
+    +\infty}{\sqrt[n]{n} \cdot \sqrt[n]{|a_n|}}} = R
+\]
+        \item Рассмотрим точку $a \in B(z_0, R)$ и покажем, что в этой точке
+        существует производная ряда, причем она равна тому, что ожидается.
+        Сузим круг до $B(z_0, r)$, гдe $r = \frac{R - |a - z_0|}{2}$.
+        Положим $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n(z - z_0)^n}$:
+\[
+    \frac{f(z) - f(a)}{z - a} = \sum_{n = 1}^{+\infty}{a_n \cdot
+    \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0) - (a - z_0)}}
+\]
+    Пусть $w = z - z_0: |w| < r$, $w_0 = a - z_0: |w_0| < r$. Тогда
+\[
+    \sum_{n = 0}^{+\infty}{a_n \cdot \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0)
+    - (a - z_0)}}
+    = \sum_{n = 0}^{+\infty}{a_n \cdot \frac{w^n - w^n_0}{w - w_0}}
+    \leqslant \sum_{n = 0}^{+\infty}{|a_n| \cdot nr^{n - 1}}
+\]
+    Последний рад сходится по первому пукнту теоремы. Тогда по признаку
+    Вейерштрасса ряд $\displaystyle \sum_{n = 1}^{+\infty}{a_n \cdot
+    \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0) - (a - z_0)}}$
+    сходится равномерно. Зная это, воспользуемся теоремой о предельном переходе
+    в сумме:
+\begin{align*}
+    f'(z) = \lim_{z \to a}{\frac{f(z) - f(a)}{z - a}} &= \lim_{z \to a}
+    {\sum_{n = 1}^{+\infty}{\frac{(z - z_0)^n + (a - z_0)^n}{z - a}}}
+    \\ &= \sum_{n = 1}^{+\infty}{\lim_{z \to a}{\frac{(z - z_0)^n - (a -
+    z_0)^n}{z - a}}} = \sum_{n = 1}^{+\infty}{a_n n(z - z_0)^{n - 1}}
+\end{align*}
+    \end{itemize}
 \end{proof}
+
+\begin{corollary}
+    $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n(z - z_0)^n} \in
+    C^{\infty}(B(z_0, R))$, причем все производные --- почленные.
+\end{corollary}
+
+\begin{corollary}(О почленном интегрировании степенного ряда)
+
+    Пусть $f(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n (x - x_0)^n}$ где
+    $a_n, x, x_0 \in \R$, $x \in B(x_0, R)$, тогда
+\begin{itemize}
+    \item $\displaystyle \sum_{n = 0}^{+\infty}{a_n \cdot \frac{(x - x_0)^{n +
+    1}}{n + 1}}$ имеет тот же радиус сходимости, что и $f$.
+    \item Выполняется равенство
+\[
+    \int_{x_0}^{x}{\sum_{n = 0}^{+\infty}{a_n (x - x_0)^n} dx}
+    = \sum_{n = 0}^{+\infty}{\int_{x_0}^{x}{a_n(x - x_0)^n dx}}
+\]
+\end{itemize}
+\end{corollary}
 
 \begin{definition}
     \textit{Экпонентой} называется функция $\exp \colon \C \to \C$ такая,
@@ -58,6 +178,7 @@
 \begin{theorem}(Свойства экспоненты)
 
     \begin{itemize}
+        \item Радиус сходимости равен $+\infty$
         \item $\exp(0) = 1$
         \item $\overline{\exp}(z) = \exp(z)$
         \item $\exp'(z) = \exp(z)$
@@ -66,7 +187,26 @@
     \end{itemize}
 \end{theorem}
 \begin{proof}
-    TBD
+    Докажем последние два утверждения. Остальные очевидны.
+    \begin{itemize}
+        \item
+$ \displaystyle
+    \lim_{z \to z_0}{\frac{e^z - 1}{z - z_0}}
+    = \lim_{z \to z_0}{\frac{e^z - e^0}{z - z_0}}
+    = (e^z)'\bigg|_0 = 1
+$
+        \item
+\begin{align*}
+    \exp(z + w) &= \sum_{n = 0}^{+\infty}{\frac{(z + w)^n}{n!}}
+    = \sum_{n = 0}^{+\infty}{\frac{1}{n!}\left(
+    \sum_{k = 0}^{n}{\binom{n}{k}~z^k w^{n - k}}\right)} \\
+    &= \sum_{n = 0}^{+\infty}{\sum_{k = 0}^{n}}{\frac{z^k}{k!}
+    \cdot \frac{w^{n - k}}{(n - k)!}}
+    = \left(\sum_{n = 0}^{+\infty}{\frac{z^n}{n!}}\right)
+    \cdot \left(\sum_{n = 0}^{+\infty}{\frac{w^n}{n!}}\right)
+    = \exp(z)\exp(w)
+\end{align*}
+    \end{itemize}
 \end{proof}
 
 \begin{theorem}(Метод Абеля)
@@ -77,7 +217,48 @@
     }}{f(x)}$
 \end{theorem}
 \begin{proof}
-    TBD
+    Для начала отметим, что $f$ задана корректно: при $0 < x < 1$ ряд сходится
+    равномерно по признаку Абеля. Так как $f$ --- ряд, то область его сходимости
+    симметрична, то есть для отрицательных $x~f$ тоже задана корректно.
+
+    Раз $f$ --- равномерно сходящийся ряд, причем $c_n x^n$ непрерывны, то по
+    теореме Стокса-Зейделя $f$ непрерывна. Раз так, имеем
+\[
+    \lim_{x \to 1_{-}} = f(1) = \sum_{n = 0}^{+\infty}{c_n}
+\]
+\end{proof}
+
+\begin{theorem}(Формула Григори-Лейбница)
+\[
+    1 - \frac{1}{3} + \frac{1}{5} - \ldots
+    = \sum_{n = 0}^{+\infty}{\frac{(-1)^n}{2n + 1}}
+    = \frac{\pi}{4}
+\]
+\end{theorem}
+\begin{proof}
+    Положим $\displaystyle f(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \ldots$,
+    тогда $\displaystyle f'(x) = 1 - x^2 + x^4 - \ldots = \frac{1}{1 + x^2} =
+    \arctan'{x}$. Тогда $f(x) = c + \arctan{x}$. Подставляя $x = 0$ убеждаемся,
+    что $c = 0$. Получаем $\displaystyle \lim_{x \to 1_{-}}{f(x)}
+    = \lim_{x \to 1_{-}}{\arctan{x}} = \frac{\pi}{4}$.
+\end{proof}
+
+\begin{corollary}(О сходимости произведения рядов)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n} = A$, $\displaystyle
+    \sum_{n = 0}^{+\infty}{b_n} = B$, $c_n = a_0 b_n + a_1 b_{n - 1} + \ldots
+    + a_n b_0$, тогда ряд $\displaystyle \sum_{n = 0}^{+\infty}{c_n}$ сходится,
+    причем $\displaystyle AB = \sum_{n = 0}^{+\infty}{c_n}$.
+\end{corollary}
+\begin{proof}
+
+    Положим $\displaystyle f(x) = \sum_{n = 0}^{+\infty}{a_n x^n}$,
+    $\displaystyle g(x) = \sum_{n = 0}^{+\infty}{b_n x^n}$, $\displaystyle h(x)
+    = \sum_{n = 0}^{+\infty}{a_n x^n}$, \\ $x \in [0, 1]$. при $x < 1$ ряды
+    сходятся абсолютно (вспомним теорему о круге сходимости: в ней мы доказывали
+    абсолютную сходимость), поэтому по старой теореме о произведении рядов $f(x)
+    g(x) = h(x)$. Осталось совершить предельный переход в этом равентсве, чтобы
+    получить требуемое.
 \end{proof}
 
 \newpage
@@ -129,3 +310,6 @@
     $\displaystyle \sum_{n = 1}^{+\infty}{a_n} = S \Lra
     \displaystyle \sum_{n = 1}^{+\infty}{a_n} \underset{c/a}{=} S$
 \end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
