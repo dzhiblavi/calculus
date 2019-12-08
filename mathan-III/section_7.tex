@@ -275,6 +275,20 @@ $
 
     $f$ разложима в степенной ряд в $x_0 \Lra$ этот ряд единственный.
 \end{theorem}
+\begin{proof}
+    Для доказательства этого непосредственно вычислим $a_i$.
+\[
+    f(x) = a_0 + a_1 (x - x_0) + a_2 (x - x_0)^2 + \ldots
+\]
+    Поэтому $f(x) \in C^{\infty}(U(x_0))$. Значит, можно дифференцировать.
+    Подставим $x = x_0$: $a_0 = f(x_0)$. Этим мы однозначно определили $a_0$.
+    Рассмотрим
+\[
+    f'(x) = a_1 + 2a_2 (x - x_0) + \ldots
+\]
+    Подставим $x = x_0$:
+    $a_1 = f'(x_0)$. Продолжая в том же духе, однозначно определим все $a_i$.
+\end{proof}
 
 \begin{definition}
     \textit{Рядом Тейлора} $f \in C^{\infty}(U(x_0))$ в точке $x_0$
@@ -290,8 +304,38 @@ $
 \]
 \end{theorem}
 \begin{proof}
-    TBD
+    Изучим ряд на абсолютную сходимость по признаку Даламбера:
+\[
+    \varlimsup_{n \to +\infty}{\left|\frac{a_{n + 1}}{a_n}\right|}
+    = \lim_{n \to +\infty}{\left|\frac{x(\sigma - n)}{n + 1}\right|} = |x| < 1
+\]
+    Значит, при $|x| < 1$ ряд сходится абсолютно. Раз ряд степенной, то
+    на круге сходимости он сходится и равномерно. Пусть
+    $\displaystyle S(x) = \sum_{n = 0}^{+\infty}{\binom{\sigma}{n}x^n}$.
+    Заметим, что
+\[
+    S'(x)(1 + x) = \sigma S(x)
+\]
+    Теперь положим $\displaystyle f(x) = \frac{S(x)}{(1 + x)^\sigma}$.
+    Достаточно показать, что $f(x) = 1$ при $|x| < 1$. Изучим производную $f$:
+\[
+    f'(x) = \frac{S'(x)(1 + x)^\sigma + S(x)\sigma(1 + x)^{\sigma - 1}}
+    {(1 + x)^{2\sigma}} = \frac{S'(x)}{(1 + x)^\sigma}
+    + \frac{\sigma S(x)}{(1 + x)^{\sigma - 1}} = 0
+\]
+    Осталось проверить $f(x) = 1$ в каком-нибудь $x$:
+\[
+    f(0) = \frac{1}{1} = 1
+\]
 \end{proof}
+
+\begin{remark}
+    Пусть $|t| < 1$, $m \in \N$. Тогда
+\[
+    \sum_{n = m}^{+\infty}{n(n - 1)\ldots(n - m + 1)\cdot t^{n - m}}
+    = \frac{m!}{(1 - t)^{m + 1}}
+\]
+\end{remark}
 
 \begin{theorem}(Критерий разложимости в ряд Тейлора)
 
@@ -300,7 +344,39 @@ $
     \forall |x - x_0| < \delta~~ |f^{(n)}(x)| < C A^n n!$
 \end{theorem}
 \begin{proof}
-    TBD
+    \enewline
+    \begin{itemize}
+        \item[($\Lla$)] Оценим остаток в форме Лагранжа:
+\begin{align*}
+    f(x) = T_nf(x_0) + \frac{f^{(n)}(\tilde{x})}{n!}(x - x_0)^n \\
+    \left|\frac{f^{(n)}(\tilde{x})}{n!}(x - x_0)^n\right| \leqslant
+    \frac{CA^n n!}{n!}|x - x_0|^n
+\end{align*}
+    Чтобы остаток стремился к нулю, нужно, чтобы $A|x - x_0| < 1$, откуда
+    получаем $U(x_0)\colon~ |x - x_0| < \min(\delta, \frac{1}{A})$. Поскольку
+    теперь остаток ряда стремится к нулю, то $\forall x \in U(x_0)~
+    T_nf(x) \to f(x)$, что и требовалось доказать.
+        \item[($\Lra$)] Пусть $\displaystyle f(x) = \sum_{n = 0}^{+\infty}
+        {\frac{f^{(n)}(x_0)}{n!}(x - x_0)^n}$ в $U(x_0)$. Ряд сходится, поэтому
+        для \\ (произвольного) $x = x_1 \neq 0$ имеем
+\[
+    \exists C_1\colon~ \left|\frac{f^{(n)}(x_0)}{n!}(x_1 - x_0)^n\right| \leqslant
+    C_1 \Lra |f^{(n)}(x_0)| \leqslant C_1 n! \frac{1}{|x_1 - x_0|^n}
+\]
+        Положим $\displaystyle B_n = \frac{1}{|x_1 - x_0|^n}$. Проанализируем
+        $m$-ю производную $f$:
+\begin{align*}
+    |f^{(m)}(x)| &\leqslant \sum_{n = m}^{+\infty}
+    {\left|\frac{f^{(n)}(x_0)}{(n - m)!}(x - x_0)^{n - m}\right|}
+    \leqslant \sum_{n = m}^{+\infty}{\left|C_1 \frac{B^n n!}{(n - m)!}(x - x_0)^{n
+    - m}\right|} \\
+    &= B^m C_1 \sum_{n = m}^{+\infty}{n(n - 1)\ldots(n - m + 1) \cdot |B(x -
+    x_0)|^{n - m}} \\
+    &= C_1 B^m \frac{m!}{(1 - |B(x - x_0)|)^{m + 1}}
+    \underset{x\colon~ B|x - x_0| < \frac{1}{2}}{\leqslant} \frac{C_1 m!
+    B^m}{\frac{1}{2^{m + 1}}} = C_1 m! B^m 2^{m + 1} = (2C_1)m! (2B)^m
+\end{align*}
+\end{itemize}
 \end{proof}
 
 \section{Суммирование по Чезаро}
@@ -311,5 +387,21 @@ $
     \displaystyle \sum_{n = 1}^{+\infty}{a_n} \underset{c/a}{=} S$
 \end{theorem}
 \begin{proof}
-    TBD
+    Обозначим $\displaystyle \sigma_n = \frac{1}{n + 1} (S_0 + \ldots + S_n)$.
+    По определению
+\[
+    \forall \e > 0~ \exists N_1\colon~ \forall N > N_1~ |S_N - S| < \e
+\]
+    Далее:
+\begin{align*}
+    |\sigma_N - S| =
+    \left|\frac{1}{N + 1}\sum_{n = 0}^{N}{(S_n - S)}\right|
+    \leqslant \frac{1}{N + 1}\sum_{n = 0}^{N}{|S_n - S|}
+    &\underset{N > N_1}{=}
+    \underbrace{\frac{1}{N + 1}\sum_{n = 0}^{N_1}{|S_n - S|}}_
+    {= \frac{c}{N + 1}\to 0} \\
+    &+ \underbrace{\frac{1}{N + 1}\sum_{n = N_1 + 1}^{N}{|S_n - S|}}
+    _{< \e}
+    \xrightarrow[N \to +\infty]{} 0
+\end{align*}
 \end{proof}
