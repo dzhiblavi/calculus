@@ -68,9 +68,9 @@
 \section{Потенциальные векторные поля}
 
 \begin{definition}
-    Пусть $\O$ --- область в $\Rm$, $V \colon \Od \to \Rm \in C$, тогда поле
+    Пусть $\Od$ --- область в $\Rm$, $V \colon \Od \to \Rm \in C$, тогда поле
     $V$ называется \textit{потенциальным}, если оно является градиентом какого-то
-    отображения, то есть $\exists f \in C^1(\O, \R)\colon~ V = \operatorname{grad}
+    отображения, то есть $\exists f \in C^1(\Od, \R)\colon~ V = \operatorname{grad}
     f$.
 \end{definition}
 
@@ -137,7 +137,7 @@
     Пусть $\Od \subseteq \Rm$ --- область, для всех $x$ задана окрестность $U(x)$,
     $\gamma \colon [a, b] \to \Od \in C(\Od)$, тогда существует такое дробление
     пути $a = t_0 < t_1 < \ldots < t_n = b$ и такие шары $B_k = B_k(x_k, r_k)
-    \subseteq U(x_k)$, что $\forall k~ \im{\gamma\big|[t_k - 1, t_k]} \subseteq
+    \subseteq U(x_k)$, что $\forall k~ \im{\gamma\big|_{[t_k - 1, t_k]}} \subseteq
     B_k$.
 \end{lemma}
 
@@ -146,10 +146,9 @@
 \end{definition}
 
 \begin{definition}
-    Пусть $V \colon \Od \to \Rm$ --- локально потенциальное поле. Пути \\ $\gamma_1,
-    \gamma_2 \colon [a, b] \to \Od \in C(\Od)$ будем называть \textit{похожими},
-    если у них есть общая $V$-гусеница. При этом ограничение идем именно на
-    гусеницу, то есть наборы $t_k$ могут быть разными.
+    Пути \\ $\gamma_1, \gamma_2 \colon [a, b] \to \Od \in C(\Od)$ будем называть
+    \textit{похожими}, если у них есть общая $V$-гусеница. При этом ограничение
+    идем именно на гусеницу, то есть наборы $t_k$ могут быть разными.
 \end{definition}
 
 \begin{lemma}
@@ -162,8 +161,8 @@
 \begin{lemma}
 
     $C([a, b]) \ni \gamma \colon [a, b] \to \Od \subseteq \Rm$, $\Od$ --- область,
-    тогда $\exists \delta > 0\colon~ \\ \forall \gamma_1, \gamma_2 \colon [a, b] \to
-    \Od\colon~ \forall t \in [a, b]~ |\gamma(t) - \gamma_1(t)| < \delta$,
+    тогда $\exists \delta > 0\colon~ \\ \text{Если} \gamma_1, \gamma_2 \colon [a,
+    b] \to \Od\colon~ \forall t \in [a, b]~ |\gamma(t) - \gamma_1(t)| < \delta$,
     $|\gamma(t) - \gamma_2(t)| < \delta$, тогда $\gamma, \gamma_1, \gamma_2$ похожи
     друг на друга.
 \end{lemma}
@@ -212,5 +211,6 @@
 \end{theorem}
 
 \begin{corollary}(Теорема Пуанкаре для односвязной области)
-    $\pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x) \Lra$ поле птенциально.
+    
+    $\pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x) \Lra$ поле потенциально.
 \end{corollary}
