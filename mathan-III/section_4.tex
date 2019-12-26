@@ -24,23 +24,71 @@
 \begin{lemma}(О почти локальной инъективности)
 
     Пусть $f \colon \Od \subseteq \Rm \to \Rm$, $\x_0 \in \Od$, $f$
-    дифференцируемо в $x_0$, $\det{f'(\x_0)} \neq 0$, тогда \\ $\exists c, \delta
+    дифференцируемо в $\x_0$, $\det{f'(\x_0)} \neq 0$, тогда \\ $\exists c, \delta
     > 0$ такие, что $\forall \h \colon \norm{\h} < \delta$~
 $
-    \norm{f(\x + \h) - f(\x)} \geqslant c \norm{\h}
+    \norm{f(\x_0 + \h) - f(\x_0)} \geqslant c \norm{\h}
 $
 \end{lemma}
 \begin{proof}
-    TBD
+\[
+    \norm{f(\x_0 + \h) - f(\x_0)} = \norm{f'(\x_0)\h + \a(\h)\norm{\h}}
+    \geqslant \norm{f'(\x_0)\h} - \norm{\a(\h)\norm{\h}} \geqslant \frac{c}{2}
+    \norm{\h}
+\]
+    Последнее неравенство выполнено по следующим причинам:
+    \begin{itemize}
+        \item $\norm{f'(\x_0)\h} \geqslant c \norm{\h}$, так как $f'(\x_0)$ обратим
+        \item $\displaystyle \norm{\a(\h)\norm{\h}} \leqslant \frac{c}{2}
+        \norm{\h}$ при достаточно малых $\h$, так как $\a(\h)$ --- бесконечно малое.
+    \end{itemize}
 \end{proof}
 
 \begin{theorem}(О сохранении области)
 
-    Пусть $f \colon \Od \subseteq \Rm \to \Rm$, $\forall \x \in \Od~ \det{f'(\x)} \neq 0$, тогда $f$ открыто.
+    Пусть $f \colon \Od \subseteq \Rm \to \Rm$, $\forall \x \in \Od~ \det{f'(\x)}
+    \neq 0$, тогда $f$ открыто.
 \end{theorem}
 \begin{proof}
-    TBD
+    Достаточно рассмотреть случай, когда $\Od$ открыто. Тогда нужно показать, что
+    $f(\Od)$ открыто. Зафиксируем $\x_0 \in \Od$ и $\y_0 = f(\x_0) \in f(\Od)$.
+    По лемме о почти локальной инъективности имеем $c, \delta > 0$ такие, что
+\[
+    \forall \h \in \overline{B(0, \delta)}~ \norm{f(\x_0 + \h) - f(\x_0)}
+    \geqslant c \norm{\h}
+\]
+    Положим
+\[
+    r = \frac{1}{2}\dist(\y_0, f(S(\x_0, \delta)))
+\]
+    Поскольку $f$ непрерывно, а сфера --- компакт, имеем, что $f(S(\x_0, \delta))$
+    --- компакт. В свою очередь, $\r$ является метрикой, то есть непрерывно. Тогда
+    $\r$ достигает минимума, то есть $r$ реализуется, а значит, не равно нулю
+    (см. оценку выше). Раз $r > 0$, то $B(\y_0, r)$ --- полноправный шар,
+    проверим, что он входит в образ $f$ целиком, что и закончит доказательство.
+    Пусть $\y \in B(\y_0, r)$. Положим $g(\x) = \norm{f(\x) - \y}$ на
+    $\overline{B(\x_0, \delta)}$; $g$ непрерывно, поэтому достигает минимума.
+    Попробуем этот минимум найти:
+\begin{itemize}
+    \item Рассмотрим поведение $g(\x)$ на $S(\x_0, \delta)$:
+\[
+    g(\x) = \norm{f(\x) - \y} \geqslant \norm{f(\x) - \y_0} - \norm{\y_0 - \y}
+    \geqslant 2r - r = r
+\]
+    \item $g(\x_0) = \norm{\y_0 - \y} < r$, так как $\y \in B(\y_0, r)$
+\end{itemize}
+    Тогда понятно, что минимум достигается не на границе. Раз так, он достигается
+    во внутренности. Отображение $l\colon \x \mapsto g^2(\x)$ достигает минимума в
+    той же точке, что и $g$, при этом $l'(\x) = f'(\x)(f(\x) - \y)$. Из
+    невырожденности производного оператора следует, что $f(\x) = \y$, что и
+    требовалось.
 \end{proof}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{fopen}
+    \caption{Теорема о сохранении области}
+\end{figure}
 
 \begin{corollary}
 
@@ -94,8 +142,7 @@ $
     $\det{f'_{\y}(\ela, \elb)} \neq 0$, тогда
     \begin{itemize}
         \item $\exists U(\ela)$, $\exists U(\elb)$, $\exists! \f \colon U(\ela)
-        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x))
-        = 0$
+        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x)) = 0$
         \item $\f'(\x) = -(f'_{\y}(\x, \f(\x)))^{-1} \cdot f'_{\x}(\x, \f(\x))$
     \end{itemize}
 \end{theorem}
@@ -178,7 +225,8 @@ $
 \begin{theorem}(О касательном пространстве к гладкому пути)
 
     Пусть $M$ --- гладкое многообразие. Тогда $\v \in T_p(M) \Llra \exists
-    \text{ гладкий путь } \gamma \colon [-1, 1] \to \Rm \colon~ \gamma([-1, 1]) \subseteq M$ такой, что $\gamma(0) = p$ и $\gamma'(0) = v$.
+    \text{ гладкий путь } \gamma \colon [-1, 1] \to \Rm \colon~ \gamma([-1, 1])
+    \subseteq M$ такой, что $\gamma(0) = p$ и $\gamma'(0) = v$.
 \end{theorem}
 \begin{proof}
     TBD

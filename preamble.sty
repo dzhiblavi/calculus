@@ -1,5 +1,14 @@
 \ProvidesPackage{preamble}
 
+\usepackage{lipsum}
+\usepackage{wrapfig}
+\usepackage{cutwin}
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
 \usepackage{XCharter}
 \usepackage[charter]{mathdesign}
 \usepackage[T1]{fontenc}
@@ -7,7 +16,7 @@
 \let\circledS\undefined
 \usepackage{amsmath}
 \usepackage[all]{xy}
-\usepackage{eufrak}
+% \usepackage{eufrak}
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{eucal}
@@ -23,7 +32,7 @@
 \usepackage{polynom}
 \usepackage{tensor}
 \usepackage{mleftright}
-\usepackage{xcolor}
+\usepackage{graphicx,xcolor}
 \usepackage{extarrows}
 \usepackage{stackrel}
 \usepackage{stackengine}
@@ -146,3 +155,10 @@
 \DeclarePairedDelimiter\scp{\langle}{\rangle}
 
 \makeindex[columns=2, title=Индекс, intoc]
+
+\graphicspath{{../assets/}}
+
+\newcommand{\incfig}[1]{
+    \def\svgwidth{\columnwidth}
+    \import{../assets/}{#1.pdf_tex}
+}
