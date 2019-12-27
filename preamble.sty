@@ -1,6 +1,5 @@
 \ProvidesPackage{preamble}
 
-\usepackage{lipsum}
 \usepackage{wrapfig}
 \usepackage{cutwin}
 
@@ -13,10 +12,8 @@
 \usepackage[charter]{mathdesign}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\let\circledS\undefined
 \usepackage{amsmath}
 \usepackage[all]{xy}
-% \usepackage{eufrak}
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{eucal}
@@ -41,12 +38,9 @@
 
 \newcommand{\tle}{\trianglelefteq}
 \newcommand{\tl}{\triangleleft}
+
+% greek? characters
 \renewcommand{\a}{\alpha}
-\newcommand{\ela}{\elemvec{a}}
-\newcommand{\elb}{\elemvec{b}}
-\newcommand{\elc}{\elemvec{c}}
-\newcommand{\elp}{\elemvec{p}}
-\newcommand{\Rbar}{\overline{\R}}
 \renewcommand{\b}{\beta}
 \newcommand{\e}{\varepsilon}
 \renewcommand{\f}{\varphi}
@@ -55,13 +49,33 @@
 \renewcommand{\k}{\kappa}
 \renewcommand{\r}{\rho}
 \newcommand{\s}{\sigma}
+\renewcommand{\l}{\lambda}
 \renewcommand{\o}{\omega}
 \renewcommand{\O}{\Omega}
-\newcommand{\mF}{\mathcal{F}}
+
+% bold characters
+\newcommand{\elemvec}[1]{\mathbf{#1}}
+\newcommand{\ela}{\elemvec{a}}
+\newcommand{\elb}{\elemvec{b}}
+\newcommand{\elc}{\elemvec{c}}
+\newcommand{\elp}{\elemvec{p}}
+\newcommand{\x}{\elemvec{x}}
+\newcommand{\h}{\elemvec{h}}
+\newcommand{\w}{\elemvec{w}}
+\newcommand{\y}{\elemvec{y}}
+\newcommand{\z}{\elemvec{z}}
+\renewcommand{\v}{\elemvec{v}}
+\renewcommand{\k}{\elemvec{k}}
+
+% arrows
 \newcommand{\Llra}{\Longleftrightarrow}
 \newcommand{\Lra}{\Longrightarrow}
 \newcommand{\Lla}{\Longleftarrow}
 \newcommand{\lra}{\longrightarrow}
+
+% math symbols
+\newcommand{\Rbar}{\overline{\R}}
+\newcommand{\mF}{\mathcal{F}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
@@ -71,35 +85,17 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Od}{\mathcal{O}}
 \renewcommand{\C}{\mathbb{C}}
-\newcommand{\x}{\elemvec{x}}
-\newcommand{\h}{\elemvec{h}}
-\newcommand{\w}{\elemvec{w}}
-\newcommand{\y}{\elemvec{y}}
-\newcommand{\z}{\elemvec{z}}
-\newcommand{\defeq}{\overset{def}{\underset{}{=}}}
 \newcommand{\Rm}{\mathbb{R}^m}
 \newcommand{\Rn}{\mathbb{R}^n}
 \newcommand{\Rk}{\mathbb{R}^k}
 \newcommand{\PP}{\mathcal{P}}
-\renewcommand{\v}{\elemvec{v}}
-\renewcommand{\k}{\elemvec{k}}
-\newcommand{\bcol}[2]{\begin{pmatrix}
-		#1 \\ #2
-\end{pmatrix}}
-\newcommand{\tcol}[3]{\begin{pmatrix}
-	#1 \\ #2 \\ #3
-\end{pmatrix}}
-\newcommand{\fcol}[4]{\begin{pmatrix}
-		#1 \\ #2 \\ #3 \\ #4
-\end{pmatrix}}
-% \newcommand{\w}[1]{\widetilde{#1}}
-\renewcommand{\l}{\lambda}
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\renewcommand{\implies}{\Longrightarrow}
-\renewcommand{\iff}{\Longleftrightarrow}
+
+\newcommand{\defeq}{\overset{def}{\underset{}{=}}}
+\newcommand{\rcon}{\rightrightarrows}
+\newcommand{\grad}[3][]{\operatorname{grad}#2#1(#3#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \renewcommand{\d}{\mathrm{d}}
-\newcommand{\rcon}{\rightrightarrows}
 \newcommand{\dd}{\,\mathrm{d}}
 \newcommand{\der}[3][]{\d_{#3}{#2}}
 \newcommand{\derv}[4][]{#1[\d_{#3}{#2}#1]#4}
@@ -107,9 +103,8 @@
 \newcommand{\pderi}[2]{D_{#2}#1}
 \newcommand{\pderv}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\dder}[3]{D_{#3}#1(#2)}
-\newcommand{\elemvec}[1]{\mathbf{#1}}
-\newcommand{\grad}[3][]{\operatorname{grad}#2#1(#3#1)}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+% empty line
 \newcommand{\enewline}{
 	$ $ \newline
 	\mbox{}
@@ -154,10 +149,8 @@
 \DeclarePairedDelimiterX{\innprod}[2]{(}{)}{#1, #2}
 \DeclarePairedDelimiter\scp{\langle}{\rangle}
 
-\makeindex[columns=2, title=Индекс, intoc]
-
+% graphics include
 \graphicspath{{../assets/}}
-
 \newcommand{\incfig}[1]{
     \def\svgwidth{\columnwidth}
     \import{../assets/}{#1.pdf_tex}
