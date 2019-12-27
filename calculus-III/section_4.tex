@@ -1,0 +1,379 @@
+\section{Диффеоморфизмы}
+
+\begin{definition}
+    \textit{Областью} называют открытое связное множество.
+\end{definition}
+
+\begin{definition}
+    Топологические пространства $X$, $Y$ \textit{гомеоморфны}, если
+    существует обратимое и в обе стороны непрерывное $f \colon X \to Y$.
+    $f$ называют \textit{гомеоморфизмом}.
+\end{definition}
+
+\begin{definition}
+    \textit{Диффеоморфизмом} гладких многообразий $M, N$ называется
+    обратимое и в обе стороны гладкое отображение $f \colon M \to N$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\Od$ --- область в $\Rm$. Тогда отображение $f \colon
+    \Od \to \Rm$ называется \textit{диффеоморфизмом}, если оно обратимо
+    и в обе стороны дифференцируемо.
+\end{definition}
+
+\begin{lemma}(О почти локальной инъективности)
+
+    Пусть $f \colon \Od \subseteq \Rm \to \Rm$, $\x_0 \in \Od$, $f$
+    дифференцируемо в $\x_0$, $\det{f'(\x_0)} \neq 0$, тогда \\ $\exists c, \delta
+    > 0$ такие, что $\forall \h \colon \norm{\h} < \delta$~
+$
+    \norm{f(\x_0 + \h) - f(\x_0)} \geqslant c \norm{\h}
+$
+\end{lemma}
+\begin{proof}
+\[
+    \norm{f(\x_0 + \h) - f(\x_0)} = \norm{f'(\x_0)\h + \a(\h)\norm{\h}}
+    \geqslant \norm{f'(\x_0)\h} - \norm{\a(\h)\norm{\h}} \geqslant \frac{c}{2}
+    \norm{\h}
+\]
+    Последнее неравенство выполнено по следующим причинам:
+    \begin{itemize}
+        \item $\norm{f'(\x_0)\h} \geqslant c \norm{\h}$, так как $f'(\x_0)$ обратим
+        \item $\displaystyle \norm{\a(\h)\norm{\h}} \leqslant \frac{c}{2}
+        \norm{\h}$ при достаточно малых $\h$, так как $\a(\h)$ --- бесконечно малое.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(О сохранении области)
+
+    Пусть $f \colon \Od \subseteq \Rm \to \Rm$, $\forall \x \in \Od~ \det{f'(\x)}
+    \neq 0$, тогда $f$ открыто.
+\end{theorem}
+\begin{proof}
+    Достаточно рассмотреть случай, когда $\Od$ открыто. Тогда нужно показать, что
+    $f(\Od)$ открыто. Зафиксируем $\x_0 \in \Od$ и $\y_0 = f(\x_0) \in f(\Od)$.
+    По лемме о почти локальной инъективности имеем $c, \delta > 0$ такие, что
+\[
+    \forall \h \in \overline{B(0, \delta)}~ \norm{f(\x_0 + \h) - f(\x_0)}
+    \geqslant c \norm{\h}
+\]
+    Положим
+\[
+    r = \frac{1}{2}\dist(\y_0, f(S(\x_0, \delta)))
+\]
+    Поскольку $f$ непрерывно, а сфера --- компакт, имеем, что $f(S(\x_0, \delta))$
+    --- компакт. В свою очередь, $\r$ является метрикой, то есть непрерывно. Тогда
+    $\r$ достигает минимума, то есть $r$ реализуется, а значит, не равно нулю
+    (см. оценку выше). Раз $r > 0$, то $B(\y_0, r)$ --- полноправный шар,
+    проверим, что он входит в образ $f$ целиком, что и закончит доказательство.
+    Пусть $\y \in B(\y_0, r)$. Положим $g(\x) = \norm{f(\x) - \y}$ на
+    $\overline{B(\x_0, \delta)}$; $g$ непрерывно, поэтому достигает минимума.
+    Попробуем этот минимум найти:
+\begin{itemize}
+    \item Рассмотрим поведение $g(\x)$ на $S(\x_0, \delta)$:
+\[
+    g(\x) = \norm{f(\x) - \y} \geqslant \norm{f(\x) - \y_0} - \norm{\y_0 - \y}
+    \geqslant 2r - r = r
+\]
+    \item $g(\x_0) = \norm{\y_0 - \y} < r$, так как $\y \in B(\y_0, r)$
+\end{itemize}
+    Тогда понятно, что минимум достигается не на границе. Раз так, он достигается
+    во внутренности. Отображение $l\colon \x \mapsto g^2(\x)$ достигает минимума в
+    той же точке, что и $g$, при этом $l'(\x) = f'(\x)(f(\x) - \y)$. Из
+    невырожденности производного оператора следует, что $f(\x) = \y$, что и
+    требовалось.
+\end{proof}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{fopen}
+    \caption{Теорема о сохранении области}
+\end{figure}
+
+\begin{corollary}
+
+    Пусть $f \colon \Od \subseteq \Rm \to \R^{l \leqslant m}$, $\forall \x \in
+    \Od~ \rank{f'(\x)} = l$, тогда $f$ открыто.
+\end{corollary}
+\begin{proof}
+    Построим оторбражение $\tilde{f} \colon \Od \to \Rm$ следующим образом:
+\begin{align*}
+    &\tilde{f}_i = f_i,~ 1 \leqslant i \leqslant l \\
+    &\tilde{f}_i = x_i, \text{ иначе}
+\end{align*}
+    Производный оператор тогда будет выглядеть так: \\
+\[
+    \tilde{f}' = \begin{pmatrix}
+                    & & f' \\
+                    0 & \cdots & 1 & \cdots & 0 \\
+                    0 & \cdots & 0 & \cdots & 1 \\
+                \end{pmatrix}
+\]
+    Где первая сверху единица стоит на $l + 1$-м месте. Тогда отображение
+    $\tilde{f}$ тоже дифференцируемо, и его производный оператор невырожден.
+    Применяя предыдущую теорему, получаем, что $\tilde{f}(A)$ открыто, если
+    множество $A$ открыто. Тогда $f(A)$ тоже открыто.
+\end{proof}
+
+\begin{theorem}(О гладкости обратного отображения)
+
+    Пусть $\Od \subseteq \Rm$ --- область, $T \in C^r(\Od, \Rm)$, $r \in \N \cup
+    \{\,+\infty\,\}$, $\forall \x \in \Od~ \det{T'(\x)} \neq 0$, \\ $T$ обратимо,
+    тогда $T^{-1} \in C^r$ и $(T^{-1})'(\y_0) = (T'(\x_0))^{-1}$, при $\y_0 =
+    T(\x_0)$.
+\end{theorem}
+\begin{proof}
+    Докажем теорему по индукции. В качестве базы рассмотрим случай $r = 1$.
+    Обозначим $S = T^{-1}$, $S \colon T(\Od) \to \Rm$ непрерывно, так как
+    по теореме о сохранении области $T$ открыто. Зафиксируем $\y_0 = T(\x_0)$
+    и проверим дифференцируемость $S$ в точке $\y_0$.
+    \begin{itemize}
+        \item По теореме о почти локальной инъективности имеем
+\[
+        \exists c, \delta > 0\colon~ \forall \x \in B(\x_0, \delta)~
+        \norm{T(\x) - T(\x_0)} \geqslant c \norm{\x - \x_0}
+\]
+        \item Воспользуемся дифференцируемостью $T$:
+\[
+        T(\x) - T(\x_0) = A(\x - \x_0) + \a(\x - \x_0) \norm{\x - \x_0}
+\]
+        Здесь $A = T'(\x_0)$. Положим $\y = T(\x)$:
+\[
+        \y - \y_0 = A(S(\y) - S(\y_0)) + \a(S(\y) - S(\y_0)) \norm{S(\y) - S(\y_0)}
+\]
+        Перепишем это равенство в виде, похожем на определение дифференцируемости
+        $S$:
+\[
+        S(\y) - S(\y_0) = A^{-1}(\y - \y_0) + A^{-1} \a(S(\y) - S(\y_0))
+        \norm{S(\y) - S(\y_0)}
+\]
+        Если мы поймем, что $\b(\y - \y_0) = A^{-1} \a(S(\y) - S(\y_0))
+        \norm{S(\y) - S(\y_0)}$ --- бесконечно малое при $\y \to \y_0$,
+        то мы получим определение дифференцируемости $S$ в точке $\y_0$.
+        Проверим это:
+\begin{align*}
+    \b(\y - \y_0) &\leqslant \norm{A^{-1}} \norm{\a(S(\y) - S(\y_0))}
+    \cdot \norm{\x - \x_0} \\
+    &\leqslant \norm{A^{-1}} \norm{\a(S(\y) - S(\y_0))}
+    \cdot \frac{1}{c} \norm{T(\x) - T(\x_0)} \\
+    &= \norm{A^{-1}} \norm{\a(S(\y) - S(\y_0))}
+    \cdot \frac{1}{c} \norm{\y - \y_0}
+\end{align*}
+        $S$ непрерывно, поэтому $\norm{\a(S(\y) - S(\y_0))}
+        \xrightarrow[\y \to \y_0]{} 0$, тогда $\b(\y - \y_0)
+        \xrightarrow[\y \to \y_0]{} 0$.
+    \end{itemize}
+    Теперь нужно доказать непрерывность $S'$. Из доказанного уже известно,
+    что $S'(\y) = (T'(\x))^{-1}$:
+\[
+    \y \mapsto S(\y) = T^{-1}(\y) = \x \mapsto T'(\x) \mapsto (T'(\x))^{-1} = S'(\y)
+\]
+    Эту схему можно переписать в привычном виде:
+\[
+    S'(\y) = (T'(\x))^{-1} = (T'(S(\y)))^{-1}
+\]
+    Таким образом получаем, что $S'$ --- композиция непрерывных отображений, то
+    есть непрерывно (в частности, отображение $GL(\Rm) \ni A \mapsto A^{-1}$
+    непрерывно). Таким образом, база доказана.
+
+    Для доказательства индукционного перехода нужно показать только
+    гладкость $S$. Пусть $T \in C^n$, $S \in C^n$, покажем, что тогда если вдруг
+    $T \in C^{n + 1}$, то и $S \in C^{n + 1}$. Для этого достаточно,
+    чтобы $S' \in C^{n}$:
+\[
+    S'(\y) = (T'(\x))^{-1} = (T'(S(\y)))^{-1}
+\]
+    $S \in C^n$ по предположению индукции, $T' \in C^n$ потому, что
+    $T \in C^{n + 1}$, обращение матрицы --- вообще класса $C^{\infty}$, то есть
+    переход доказан.
+\end{proof}
+
+\begin{lemma}(О приближении оботражения его линеаризацией)
+
+    Пусть $f \in C^1(\Od, \Rm)$, $\x_0 \in \Od$, тогда $\forall \h$
+\[
+    \norm{f(\x_0 + \h) - f(\x_0) - f'(\x_0)\h} \leqslant M \norm{\h}
+\]
+    где
+\[
+    M = \sup_{\z \in [\x_0, \x_0 + \h]}{\norm{f'(\z) - f'(\x_0)}}
+\]
+\end{lemma}
+\begin{proof}
+    Положим $F(\x) = f(\x) - f'(\x_0)(\x)$, тогда $F'(\x) = f'(\x) - f'(\x_0)$.
+    Применим теорему Лагранжа к $F$:
+\begin{align*}
+    \norm{f(\x_0 + \h) - f(\x_0) - f'(\x_0)\h} &=
+    \norm{F(\x_0 + \h) - F(\x_0)} \leqslant \sup_{\z \in [\x_0, \x_0 + \h]}
+    {\norm{F'(\z)}} \cdot \norm{\h} \\
+    &= \sup_{\z \in [\x_0, \x_0 + \h]} {\norm{f'(\z) - f'(\x_0)}} \cdot \norm{\h}
+\end{align*}
+\end{proof}
+
+\begin{theorem}(О локальной обратимости)
+
+    Пусть $f \in C^1(\Od, \Rm)$, $\x_0 \in \Od$, $\det{f'(\x_0)} \neq 0$,
+    тогда $\exists U(\x_0)$ такая, что $f\big|_U$ --- диффеоморфизм.
+\end{theorem}
+\begin{proof}
+    Если мы докажем, что $f$ обратимо в некоторой окрестности $U(\x_0)$,
+    то по теореме о гладкости обратного отображения мы получим требуемое
+    (невырожденность определителя в окрестности $\x_0$ следует из его непрерывности
+    и того, что $\det{f'(\x_0)} \neq 0$). Для начала заметим. что из невырожденности
+    оператора в точке $\x_0$ следует, что
+\[
+    \exists c > 0\colon~ \norm{f'(\x_0)\h} \geqslant c \norm{\h}
+\]
+    Попробуем построить окрестность. Пусть она будет содержать точки такие, что
+    одновременно выполнены условия:
+    \begin{itemize}
+        \item $\displaystyle \norm{f'(\x) - f'(\x_0)} \leqslant \frac{c}{4}$.
+            Эти точки есть вблизи $\x_0$ по теореме о непрерывно дифференцируемых
+            отображениях.
+        \item $\det{f'(\x)} \neq 0$.
+            Такие точки есть из непрерывности $\det$.
+    \end{itemize}
+    Проверим, что в этой окрестности $f$ не склеивает точки, что и будет означать
+    его обратимость; пусть $\y = \x + \h$, тогда:
+\[
+    f(\y) - f(\x) = (f(\y + \h) - f(\x) - f'(\x)\h) + (f'(\x) - f'(\x_0))\h
+    + f'(\x_0)\h
+\]
+\begin{align*}
+    \norm{f(\y) - f(\x)} &\geqslant \underbrace{\norm{f'(\x_0)} \norm{\h}}
+    _{\geqslant c \norm{\h}} -
+    \underbrace{\norm{f(\x + \h) - f(\x) - f'(\x)\h}}_{\leqslant M \norm{\h}
+    \leqslant \frac{c}{2} \norm{h}}
+    - \underbrace{\norm{f'(\x) - f'(\x_0)} \cdot \norm{\h}}_{\leqslant \frac{c}{4}
+    \norm{\h}} \\
+    &\geqslant \frac{c}{4} \norm{\h}
+\end{align*}
+    Где $M \norm{\h} \leqslant \frac{c}{2} \norm{\h}$ потому, что:
+\[
+    M \norm{\h} = \norm{\h} \sup{\norm{f'(\z) - f'(\x)}} \leqslant
+    \sup{\big(\underbrace{\norm{f'(\z) - f'(\x_0)}}_{\leqslant \frac{c}{4}} + \underbrace{\norm{f(\x_0) - f(\x)}}_{\leqslant \frac{c}{4}}\big)} \leqslant
+    \frac{c}{2}
+\]
+\end{proof}
+
+\begin{theorem}(О неявном отображении)
+
+    Пусть $\Od$ открыто, $f \colon \Od \subseteq \R^{m + n} \to \Rn$, $(\x \in
+    \Rm, \y \in \Rn) \underset{f}{\mapsto} f(\x, \y)$, $f \in
+    C^r$, \\ $(\ela, \elb) \in \Od \colon~ f(\ela, \elb) = 0$,
+    $\det{f'_{\y}(\ela, \elb)} \neq 0$, тогда
+    \begin{itemize}
+        \item $\exists U(\ela)$, $\exists U(\elb)$, $\exists! \f \colon U(\ela)
+        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x)) = 0$
+        \item $\f'(\x) = -(f'_{\y}(\x, \f(\x)))^{-1} \cdot f'_{\x}(\x, \f(\x))$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{definition}
+    $M \subseteq \Rm$ называют $k$\textit{-мерным многообразием} в $\Rm$,
+    если оно локально гомеоморфно $\Rk$. Иными словами,
+    $\forall \x \in M~ \exists U(\x)~ \exists \f \text{ --- гомеоморфизм}\colon
+    \\ U(\x) \underset{\f}{\simeq} \Rk$.
+\end{definition}
+
+\begin{definition}
+    $k$-мерное многообразие $M \subseteq \Rm$ называют \textit{простым}, если
+    оно гомеоморфно $\Rk$. Иными словами, в предыдущем определении можно
+    выбрать \\ $U(\x) = M$.
+\end{definition}
+
+\begin{definition}
+    Пара $\langle U(\x), \f \rangle$ из определения называется \textit{картой},
+    или \textit{параметризацией} многообразия в точке $\x$. Набор карт, который
+    покрывает все $M$, называется \textit{атласом}.
+\end{definition}
+
+\begin{definition}
+    Простое $k$-мерное многобразие $M$ называют $C^r$\textit{-гладким}, если \\
+    $\f \in C^r$ --- параметризация $M$ и $\forall \x \in
+    \Od~ \rank{\f'(\x)} = k$.
+\end{definition}
+
+\begin{theorem}(О задании гладкого многообразия системой уравнений)
+
+    Пусть $M \subseteq \Rm$, $1 \leqslant k < m$, $r \in \N \cup
+    \{\,+\infty\,\}$, тогда $\forall \elp \in M$ эквивалентны утверждения:
+    \begin{itemize}
+        \item $\exists U(\elp) \subseteq \Rm$ --- открытое такое, что
+        $M \cap U$ --- простое $k$-мерное $C^r$-гладкое многообразие.
+        \item $\exists \tilde{U}(\elp) \subseteq \Rm$ --- открытое такое,
+        что $M \cap \tilde{U}$ можно задать системой $C^r$-гладких уравнений,
+        иначе говоря: $\exists f_1, \ldots, f_{m - k} \colon \tilde{U} \to \R
+        \in C^r$ такие, что \\ $\x \in M \cap \tilde{U} \Llra \forall i~
+        f_i(\x) = 0$, причем $\{\,\grad{f_i}{\elp}\,\}$ линейно независимы.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{corollary}(О двух параметризациях)
+
+    Пусть $M$ --- $k$-мерное простое $C^r$-гладкое многообразие, $\elp \in M$,
+    причем $C^r \ni \f_1 \colon \Od_1 \subseteq \Rk \to U \cap M$,
+    $C^r \ni \f_2 \colon \Od_2 \subseteq \Rk \to U \cap M$ --- параметризации
+    $U(\elp) \cap M$. Тогда $\f_1$ и $\f_2$ отличаются на диффеоморфизм, а
+    именно, $\exists \psi \colon \Od_1 \to \Od_2$ --- диффеоморфизм, причем
+    $\f_1 = \f_2 \circ \psi$.
+\end{corollary}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{definition}
+
+    Пусть $M$ --- $C^r$-гладкое $k$-мерное многообразие в $\Rm$, $\elp \in M$,
+    \\ $\f \colon \Od \subseteq \Rk \to \Rm$ --- параметризация окрестности
+    $U(\elp)$, причем $\f(\ela) = \elp$. Тогда \textit{касательным
+    пространством} к $M$ в точке $\elp$ называется $T_p(M) = \im{\f'(\ela)}$.
+\end{definition}
+
+\begin{theorem}(О корректности определения касательного пространства)
+
+    Касательное пространство не зависит от выбора параметризации.
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(О касательном пространстве к гладкому пути)
+
+    Пусть $M$ --- гладкое многообразие. Тогда $\v \in T_p(M) \Llra \exists
+    \text{ гладкий путь } \gamma \colon [-1, 1] \to \Rm \colon~ \gamma([-1, 1])
+    \subseteq M$ такой, что $\gamma(0) = p$ и $\gamma'(0) = v$.
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(О касательном пространстве к графику функции)
+
+    Касательное пространство к графику $C^r \ni f \colon \Od \subseteq \Rm \to
+    \R$ в точке $\elp = (\x_0, f(\x_0))$ задается уравнением
+\[
+    y - f(\x_0) = f'_1(\x_1)(\x - \x_1) + \ldots + f'_m(\x_m)(\x - \x_m)
+\]
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}
+
+\begin{theorem}(О касательном пространстве к поверхности уровня)
+
+    Касательное пространство к поверхности уровня функции $f \colon \R^3 \to \R$
+    задается уравнением
+\[
+    f'_x(x_0)(x - x_0) + f'_y(y_0)(y - y_0) + f'_z(z_0)(z - z_0) = 0
+\]
+\end{theorem}
+\begin{proof}
+    TBD
+\end{proof}

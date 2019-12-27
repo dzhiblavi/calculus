@@ -1,0 +1,646 @@
+\chapter{Функциональные последовательности и ряды}
+
+\section{Поточечная и равномерная сходимости последовательностей функций}
+
+\begin{remark}
+    \textit{Здесь и далее запись вида $f \to \bot$ будет означать, что $f$
+    сходится. Знак $\bot$ используется, если не важно (или не известно), к чему
+    сходится $f$.}
+\end{remark}
+
+\begin{definition}
+    $f_n \colon E \to \R$ \textit{сходится поточечно} к $f \colon E \to \R$ на
+    $E$, если
+\[
+    \forall x_0 \in E~~ f_n(x_0) \to f(x_0)
+\]
+    иными словами, раскрывая определение сходимости последовательности:
+\[
+    \forall x_0 \in E~ \left[ \forall \e > 0~ \exists N \in \mathbb{N}\colon~
+    \forall n > N~~ |f_n(x_0) - f(x_0)| < \e \right]
+\]
+    Обозначение: $f_n \to f$.
+\end{definition}
+
+\begin{examples}
+    TBD
+\end{examples}
+
+\begin{definition}
+    $f_n \colon E \to \R$ \textit{сходится равномерно} к $f \colon E \to \R$ на
+    $E$, если
+\[
+    \sup_{\x \in E}|f_n(x) - f(x)| \xrightarrow[n \to +\infty]{} 0
+\]
+    или, раскрывая описание супремума
+\[
+    \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n > N~ [\forall x \in
+    E~~ |f_n(x) - f(x)| < \e]
+\]
+    Обозначение: $f_n \rcon f$.
+\end{definition}
+
+\begin{remark}
+    Из равномерной сходимости очевидным образом следует поточечная:
+\[
+    f_n \rcon f \Lra f_n \to f
+\]
+\end{remark}
+
+\textit{Про сходимость мы значем очень многое для случая метрических пространств.
+А нельзя ли переформулировать новые определения так, чтобы они оказались обычной
+сходимостью, просто в хитром метрическом пространстве?}
+\begin{present}(Метрическое пространство ограниченных функций)
+
+    Положим
+\[
+    \mathcal{F} \defeq \{\, X \to \mathbb{R} \mid f \text{ограничено} \,\}
+\]
+    На этом множестве тривиально задается структура линейного пространства:
+\begin{gather*}
+    (f + g)(x) = f(x) + g(x) \\
+    (\lambda f)(x) = \lambda f(x)
+\end{gather*}
+
+    Оказывается, можно ввести \textbf{метрику} на $\mathcal{F}$, сходимость
+    по которой есть равномерная сходимость. Для $f\!, \! g \in \mathcal{F}$
+    положим
+\[
+    \r(f, g) \defeq \sup_{x \in X}|f(x) - g(x)|
+\]
+    Проверим, что это --- метрика на $\mathcal{F}$
+
+    \begin{itemize}
+        \item[i)] Неотрицательность очевидна. Равенство нулю может выполнится
+        только для равных функций.
+        \item[ii)] Симметричность очевидна.
+        \item[iii)] Проверим неравенство треугольника. Применим техническое
+        описание супремума для $\r(f_1, f_2)$:
+\[
+            \forall \e > 0~ \exists x \colon~ \sup_{y \in X}|f_1(y) - f_2(y)| - \e
+            \leqslant |f_1(x) - f_2(x)|
+\]
+        Далее
+        \begin{align*}
+            \forall \e > 0~ \exists x \colon~  \sup_{y \in X}|f_1(y) - f_2(y)| -
+            \e &\leqslant |f_1(x) - f_2(x)| \leqslant |f_1(x) - f_3(x)| + |f_3(x)
+            - f_2(x)| \\ &\leqslant \sup_{y \in X}|f_1(y) - f_3(y)| + \sup_{y \in
+            X}|f_2(y) - f_3(y)| \\ &= \r(f_1, f_3) + \r(f_2, f_3)
+        \end{align*}
+        Получаем
+\[
+    \forall \e > 0~~ \r(f_1, f_2) - \e \leqslant \r(f_1, f_3)
+    + \r(f_2, f_3)
+\]
+        Откуда непосредственно следует
+\[
+    \r(f_1, f_2) \leqslant \r(f_1, f_3) + \r(f_2, f_3)
+\]
+    \end{itemize}
+
+    Осталось только понять, что теперь означает сходимость по этой метрике.
+    Пусть $(f_n)$ --- последовательность в $\mathcal{F}$, сходящаяся к $f$ по
+    метрике $\r$:
+\[
+    \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n > N~~ \r(f_n, f) <
+    \e
+\]
+    Раскроем значение $\r$:
+\[
+    \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n > N~~ [\forall x
+    \in X~~ |f_n(x) - f(x)| < \e]
+\]
+    А это --- обычное определение равномерной сходимости!
+\end{present}
+
+\textit{Подобную конструкцию, по всей видимости, не получится ввести для
+поточечной сходимости. Зато, можно построить хаусдорфово топологическое
+пространство, в котором сходимость будет означать поточечную сходимость.}
+\begin{present}(Топологическое пространство ограниченных функций)
+
+    Введем на $\mathcal{F}$ топологию, порожденную следующими множествами:
+\[
+    U_{\e}(f)_{x_1, \ldots, x_n} \defeq
+    \{\, g \colon X \to \R \mid \forall i~~ |g(x_i) - f(x_i)| < \e \,\}
+\]
+    Поймем теперь, что означает сходимость в этом топологическом пространстве:
+\[
+        f_n \to f \Llra \forall U_{\e}(f)_{x_1, \ldots, x_n} \exists N \in
+        \mathbb{N}\colon~ \forall n > N~~ f_n \in U_{\e}(f)_{x_1, \ldots, x_n}
+\]
+    Что означает
+\[
+    \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n > N~~ \forall i~~
+    |f_n(x_i) - f(x_i)| < \e
+\]
+    Что как раз и есть поточечная сходимость! Просто запись вида
+\[
+    [\forall x_0 \in X~ \forall \e > 0]~ \exists N \in \mathbb{N}\colon~ \forall
+    n > N~~ |f_n(x_0) - f(x_0)| < \e
+\]
+    В этом пространстве обретает вид
+\[
+    [\forall U_{\e}(f)_{x_0}]~ \exists N \in \mathbb{N}\colon~ \forall
+    n > N~~ |f_n(x_0) - f(x_0)| < \e
+\]
+\end{present}
+
+\begin{theorem}(Критерий Больцано-Коши равномерной сходимости)
+
+\[
+    f_n \rcon f \Llra \forall \e > 0~ \exists N \in \mathbb{N}\colon~
+    \forall n, m > N~ [\forall x~ |f_n(x) - f_m(x)| < \e]
+\]
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lra$] Обычное свойство всех последовательностей, сходящихся по
+        метрике (если все $f_n$ и $f$ лежат в $\mathcal{F}$). Общее
+        доказательство такое:
+\[
+            |f_n(x) - f_m(x)| \leqslant |f_n(x) - f(x)| + |f(x) - f_m(x)| <
+            \frac{\e}{2} + \frac{\e}{2} = \e
+\]
+
+        \item[$\Lla$] Зафиксируем $x$. Тогда $f_n(x)$ --- обычная фундаментальная
+        вещественная последовательность. Тогда, так как $\mathbb{R}$ --- полное,
+        получаем
+\[
+        \forall x~ \exists \lim_{n \to +\infty}f_n(x) =: f(x)
+\]
+        Покажем, что $f_n \rcon f$. Посмотрим на фундаментальность $f_n$:
+\[
+        \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n, m > N~~
+        [\forall x~ |f_n(x) - f_m(x)| < \e]
+\]
+        и перейдем к пределу $m \to +\infty$:
+\[
+        \forall \e > 0~ \exists N \in \mathbb{N}\colon~ \forall n > N~~
+        [\forall x~ |f_n(x) - f(x)| < \e]
+\]
+        Что и есть определение равномерной сходимости.
+    \end{itemize}
+\end{proof}
+
+\begin{examples}
+    TBD
+\end{examples}
+
+\section{Теоремы о равномерно сходящихся функциональных последовательностях}
+
+\begin{theorem}(Стокс-Зейдель)
+
+    Пусть $f_n, f \colon X \to \R$, $X$ --- топологическое пространство, $f_n$
+    непрерывны в $c \in E$, и $f_n \rcon f$ на $X$. Тогда $f$ непрерывна в $c$.
+\end{theorem}
+\begin{proof} Для любых $n$ выполнено
+\[
+    |f(x) - f(y)| \leqslant |f(x) - f_n(x)| + |f_n(x) - f_n(y)| + |f_n(y) - f(y)|
+\]
+    Воспользуемся равномерной сходимостью: выберем $n$ таким, чтобы
+\begin{align*}
+    |f(x) - f_n(x)| < \e \\
+    |f_n(y) - f(y)| < \e
+\end{align*}
+    Теперь воспользуемся непрерывностью $f_n$: выберем такую окрестность
+    $U(c)$, чтобы $\forall x, y \in U(c)$
+\[
+    |f_n(x) - f_n(y)| < \e
+\]
+     Тогда
+\[
+    |f(x) - f(y)| < 3\e
+\]
+    что и означает непрерывность $f$ в точке $c$.
+\end{proof}
+
+\begin{definition}
+    Будем говорить, что $f_n$ сходится \textit{локально равномерно} к $f$ на
+    $X$, если
+\[
+    \forall x \in X~ \exists U(x)\colon~ f_n \rcon f \text{ на } U(x)
+\]
+\end{definition}
+
+\begin{remark}
+    Для выполнения условия теоремы Стокса-Зейделя достаточно равномерной
+    сходимости на некоторой окрестности $c$.
+\end{remark}
+
+\begin{remark}
+    Для того, чтобы $f$ было непрерывным на $X$, достаточно, чтобы
+    $f_n$ локально равномерно на $X$ сходилось к $f$.
+\end{remark}
+
+\begin{theorem}(О предельном переходе под знаком интеграла)
+
+    Пусть $f_n \in C([a, b])$, $f_n \rcon f$ на $[a, b]$. Тогда
+\[
+    \int_a^b{f_n} \xrightarrow[n \to +\infty]{} \int_a^b{f}
+\]
+    иначе говоря, коммутативна следующая схема:
+
+    \xymatrix{& & & & & & f_n \ar@<-.5ex>[r] \ar@<.5ex>[r]
+    \ar[d]^{\int{}} & f \ar[d]^{\int{}} \\
+              & & & & & & \int_a^b{f_n} \ar@{-->}[r]^{n \to +\infty} &
+              \int_a^b{f}}
+\end{theorem}
+\begin{proof}
+    $f$ непрерывна на $[a, b]$ по теореме Стокса-Зейделя, поэтому интеграл имеет
+    смысл. Тогда
+\[
+    \left|\int_a^b{f_n} - \int_a^b{f}\right| \leqslant \int_a^b{|f_n - f|}
+    \leqslant \max_{x \in [a, b]}{|f_n(x) - f(x)|} \cdot |b - a|
+\]
+    Из равномерной сходимости имеем:
+\[
+    \max_{x \in [a, b]}{|f_n(x) - f(x)|} \xrightarrow[n \to +\infty]{} 0
+\]
+    тогда
+\[
+    \left|\int_a^b{f_n} - \int_a^b{f}\right| \leqslant \max_{x \in [a,
+    b]}{|f_n(x) - f(x)|} \cdot |b - a| \xrightarrow[n \to +\infty]{} 0
+\]
+\end{proof}
+
+\begin{theorem}(Правило Лейбница)
+
+    $f \colon [x_1, x_2] \times [y_1, y_2] \to \R$, $\exists f'_y$, $f'_y, f$
+    непрерывны. Пусть
+\[
+    \phi(y) = \int_{x_1}^{x_2}{f(x, y) dx}
+\]
+    Тогда $\phi$ дифференцируемо на $[y_1, y_2]$ и
+\[
+    \phi'(y) = \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+\end{theorem}
+\begin{proof}
+\[
+    \frac{\phi(y + \frac{1}{n}) - \phi(y)}{\frac{1}{n}} =
+    \frac{1}{n} \int_{x_1}^{x_2}{\left(f\left(x, y + \frac{1}{n}\right) - f(x,
+    y)\right) dx}
+    \underset{\text{Лагранж}}{=} \int_{x_1}^{x_2}{f'_y\left(x, y +
+    \frac{\theta}{n}\right) dx}
+\]
+    Обозначим
+\[
+    g_n(x, y) = f'_y\left(x, y + \frac{\theta}{n}\right)
+\]
+    $f'_y$ непрерывно на компакте, поэтому равномерно непрерывна на нём. Воспользуемся этим:
+\[
+    \forall \e~ \exists \delta~ \forall n\colon \frac{1}{n} < \delta~
+    \forall x~~ \left| f'_y\left(x, y + \frac{1}{n}\right) - f'_y(x, y) \right|
+    < \e
+\]
+    Отсюда получаем по определению
+\[
+    g_n(x, y) \rcon f'_y(x, y) \text{ на } [x_1, x_2]
+\]
+    Воспользуемся теоремой о предельном переходе под знаком интеграла:
+\[
+    \int_{x_1}^{x_2}{g_n(x, y)} \xrightarrow[n \to +\infty]{}
+    \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+    Понятно, что вместо последовательности $\frac{1}{n}$ можно рассматривать
+    любую последовательность $h_n$, сходящуюся к $0$. То есть
+\[
+    \phi'(y) = \lim_{n \to +\infty}{\frac{\phi(y + h_n) - \phi(y)}{h_n}} =
+    \int_{x_1}^{x_2}{f'_y(x, y) dx}
+\]
+\end{proof}
+
+\begin{theorem}(О предельном переходе под знаком производной)
+
+    $f_n \in C^1(\langle a, b \rangle)$, $f_n \to f$ поточечно на $\langle a, b
+    \rangle$, $f'_n \rcon \f$ на $\langle a, b \rangle$. Тогда
+    \begin{itemize}
+        \item $f \in C^1(\langle a, b \rangle)$
+        \item $f' = \f$
+    \end{itemize}
+    иначе говоря, коммутативна следующая схема:
+
+    \xymatrix{& & & & & & f_n \ar[r]^{n \to +\infty}
+    \ar[d]^{\der{}{}} & f \ar@{-->}[d]^{\der{}{}} \\
+              & & & & & & f'_n \ar@<-.5ex>[r] \ar@<.5ex>[r] & \f}
+\end{theorem}
+\begin{proof}
+    Пусть $x_0, x_1 \in \langle a, b \rangle$, тогда $f'_n \rcon \f$
+    на $[x_0, x_1]$. Тогда по теореме о предельном переходе под
+    знаком интеграла:
+\[
+    \int_{x_0}^{x_1}{f'_n} \xrightarrow[n \to +\infty]{}
+    \int_{x_0}^{x_1}{\f}
+\]
+    Откуда
+\[
+    f(x_1) - f(x_0) \xleftarrow[n \to +\infty]{} f_n(x_1) - f_n(x_0)
+    \xrightarrow[n \to +\infty]{} \int_{x_0}^{x_1}{\f}
+\]
+    То есть
+\[
+    \int_{x_0}^{x_1}{\f} = f(x_1) - f(x_0)
+\]
+    Тогда $f$ --- первообразная $\f$. $\f$ непрерывна по теореме
+    Стокса-Зейделя. Получаем, что $f \in C^1(\langle a, b \rangle)$ и $f' = \f$.
+\end{proof}
+
+\newpage
+\section{Равномерная сходимость функциональных рядов}
+
+\begin{definition}
+    Пусть $u_n \colon E \to \R$, тогда \textit{функциональным рядом} будем
+    называть $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)}$.
+\end{definition}
+
+\begin{definition}
+    Функциональный ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)}$
+    \textit{сходится поточечно} на $E$, если \\ $S_N(x) \to S(x)$.
+\end{definition}
+
+\begin{definition}
+    Функциональный ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)}$
+    \textit{сходится равномерно} на $E$, если \\ $S_N(x) \rcon S(x)$.
+\end{definition}
+
+\begin{remark}
+    Из равномерной сходимости следует поточечная.
+\end{remark}
+
+\begin{lemma}(Об остатке функционального ряда)
+
+    $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon 0 \Llra R_N(x) \rcon 0$
+\end{lemma}
+\begin{proof}
+$\displaystyle
+    \sup_{x \in E}{|R_{N + 1}(x)|} = \sup_{x \in E}{|S(x) -
+    S_N(x)|} \xrightarrow[N \to +\infty]{} 0
+$
+\end{proof}
+
+\begin{lemma}(Необходимое условие равномерной сходимости ряда)
+
+    $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon \bot \Lra u_n(x) \rcon
+    0$
+\end{lemma}
+\begin{proof}
+\[
+    \sup_{x \in E}{|u_N(x)|} = \sup_{x \in E}{| R_N(x) - R_{N + 1}(x)|}
+    \leqslant \sup_{x \in E}{|R_N(x)|} + \sup_{x \in E}{|R_{N + 1}(x)|}
+    \xrightarrow[N \to +\infty]{} 0
+\]
+\end{proof}
+
+\begin{theorem}(Признак Вейерштрасса равномерной сходимости)
+
+    $u_n \colon E \to \R$, $\exists c_n \colon \forall n, x~~ |u_n(x)|
+    \leqslant c_n$, $\displaystyle \sum_{n = 1}^{+\infty}{c_n} \to \bot$,
+    тогда $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon \bot$.
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    \sum_{n = 1}^{+\infty}{u_n(x)} \rcon \bot &\Llra
+    R_N(x) \rcon 0 \Llra \sup_{x \in E}{|R_N(x)|} \xrightarrow[N \to +\infty]{}
+    0 \\
+    &\Llra \sup_{x \in E}{\left| \sum_{n = N}^{+\infty}{u_n(x)} \right|}
+    \leqslant \sup_{x \in E}{\left| \sum_{n = N}^{+\infty}{c_n} \right|}
+    = \left|\sum_{n = N}^{+\infty}{c_n}\right| \xrightarrow[N \to +\infty]{} 0
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Критерий Больцано-Коши сходимости функционального ряда)
+
+    $\displaystyle \sum_{n = 1}^{+\infty}{u_n} \rcon S(x) \Llra
+    \forall \e~ \exists N \colon~ \forall m, n > N~~ \sup_{x \in E}{|S_n(x) -
+    S_m(x)|} < \e$
+\end{theorem}
+\begin{proof}
+    Это обычный критерий Больцано-Коши для $S_N(x) \rcon S(x)$
+\end{proof}
+
+\begin{theorem}(Стокс-Зейдель)
+
+    $u_n \colon E \to \R$, $u_n$ непрерывны в $x_0 \in E$, $\displaystyle
+    \sum_{n = 1}^{+\infty}{u_n(x)} \rcon S(x)$, тогда $S(x)$ непрерывна в
+    $x_0$.
+\end{theorem}
+\begin{proof}
+    $\forall N~ S_N(x)$ непрерывна в $x_0$ как конечная сумма непрерывных
+    функций. Тогда по теореме Стокса-Зейделя для функциональных
+    последовательностей $S_N(x) \rcon S(x)$, $S_N(x)$ непрерывны в $x_0$ $\Lra
+    S(x)$ непрерывна в $x_0$.
+\end{proof}
+
+\begin{theorem}(Интегрирование функциональных рядов)
+
+    $u_n \in C([a, b])$, $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon
+    S(x)$ на $[a, b]$, тогда
+\[
+    \int_a^b{S(x) \, dx} = \sum_{n = 1}^{+\infty}{\int_a^b{u_n(x) \, dx}}
+\]
+    иначе говоря:
+\[
+    \int_a^b{\sum_{n = 1}^{+\infty}{u_n(x)} \, dx} = \sum_{n =
+    1}^{+\infty}{\int_a^b{u_n(x) \, dx}}
+\]
+\end{theorem}
+\begin{proof}
+    $S \in C([a, b])$ по теореме Стокса-Зейделя, поэтому интеграл имеет
+    смысл. Применим аналогичную теорему для функциональных последовательностей
+    к $S_N(x) \rcon S(x)$:
+\[
+    \int_a^b{S_N(x) \, dx} \xrightarrow[N \to +\infty]{} \int_a^b{S(x) \, dx}
+\]
+    в левой части интеграл и сумму можно переставлять местами (так как сумма
+    конечная). Поэтому
+\[
+    \sum_{n = 1}^{N}{\int_a^b{u_n(x) \, dx}} =
+    \int_a^b{S_N(x) \, dx} \xrightarrow[N \to +\infty]{} \int_a^b{S(x) \, dx}
+\]
+    Слева стоят частичные суммы обычного числового ряда. Поэтому
+    по определению сходимости чисового ряда имеем:
+\[
+    \sum_{n = 1}^{+\infty}{\int_a^b{u_n(x) \, dx}} = \int_a^b{S(x) \, dx}
+\]
+\end{proof}
+
+\begin{theorem}(Дифференцирование функциональных рядов)
+
+    $u_n \in C^1(\langle a, b \rangle)$, $\displaystyle \sum_{n =
+    1}^{+\infty}{u_n(x)} \to S(x)$, $\displaystyle \sum_{n =
+    1}^{+\infty}{u'_n(x)} \rcon \f(x)$ на $\langle a, b \rangle$, \\ тогда
+    $S \in C^1(\langle a, b \rangle)$, причем $S'(x) = \f(x)$.
+\end{theorem}
+\begin{proof}
+    Введем функциональную последовательность: $S_N(x) \to S(x)$.
+    Поскольку $S_N(x)$ --- конечные суммы непрерывно дифференцируемых функций,
+    $S_N(x) \in C^1(\langle a, b \rangle)$, причем $S'_N(x) \rcon \f(x)$ на
+    $\langle a, b \rangle$. Тогда по аналогичной теореме для функциональных
+    последовательностей получаем требуемое.
+\end{proof}
+
+\begin{theorem}(О предельном переходе в функциональных рядах)
+
+    $u_n \colon E \to \R$, $x_0$ --- предельная точка $E$, $\displaystyle
+    \forall n~ \exists a_n = \lim_{x \to x_0}{u_n(x)} \in \R$, $\displaystyle
+    \sum_{n = 1}^{+\infty}{u_n(x)} \rcon \bot$ на $E$. Тогда $\displaystyle
+    \sum_{n = 1}^{+\infty}{a_n}$ сходится, причем $\displaystyle \sum_{n =
+    1}^{+\infty}{a_n} = \lim_{x \to x_0}{\sum_{n = 1}^{+\infty}{u_n(x)}}$.
+    Иначе говоря:
+\[
+    \sum_{n = 1}^{+\infty}{\lim_{x \to x_0}{u_n(x)}}
+    = \lim_{x \to x_0}{\sum_{n = 1}^{+\infty}{u_n(x)}}
+\]
+\end{theorem}
+\begin{proof}
+
+    Обозначим $\displaystyle S^a_N = \sum_{n = 1}^{+\infty}{a_n}$. Проверим
+    критерий Больцано-Коши \\ для $\displaystyle \sum_{n = 1}^{+\infty}{a_n}$:
+\[
+    |S^a_{n + p} - S^a_n| \leqslant |S^a_{n + p} - S_{n + p}(x)|
+    + |S_{n + p}(x) - S_n(x)|
+    + |S_n(x) - S^a_n|
+\]
+    Поскольку $S^a_{n + p}$ и $S_{n + p}(x)$ просто конечные суммы, в них
+    спокойно можно переставлять предел и сумму. Поэтому найдется такая
+    окрестность точки $x_0$, что \\ $|S^a_{n + p} - S_{n + p}(x)| < \e$.
+    Аналогично поступим с третьим слагаемым. Из критерия Больцано-Коши получаем
+    такое $N$, что для $\forall n, m > N~ |S_{n + p}(x) - S_n(x)| < \e$.
+    Таким образом имеем:
+\[
+    |S^a_{n + p} - S^a_n| < 3\e
+\]
+    Мы доказали сходимость ряда $a_n$. Проверим второе утверждение теоремы.
+    Положим
+\[
+    \tilde{u}(x) = \begin{cases}
+                    u_n(x),~ x \neq x_0 \\
+                    a_n,~~~~~~ x = x_0
+                    \end{cases}
+\]
+    Все $u_n$, очевидно, непрерывны в $x_0$. Если мы проверим, что
+    $\displaystyle \sum_{n = 1}^{+\infty}{\tilde{u}_n(x)} \rcon \tilde{S}(x)$
+    на $E \cup \{x_0\}$, то по теореме Стокса-Зейделя $\tilde{S}$ будет
+    непрерывной, что означает
+\[
+    \lim_{x \to x_0}{\tilde{S}(x)} = \tilde{S}(x_0) = \sum_{n =
+    1}^{+\infty}{a_n}
+\]
+    в левой части $x_0$ никогда не подставляется в $\tilde{S}$, поэтому
+\[
+    \lim_{x \to x_0}{S(x)} = \lim_{x \to x_0}{\tilde{S}(x)} = \tilde{S}(x_0) =
+    \sum_{n = 1}^{+\infty}{a_n}
+\]
+    Осталось проверить, что $\displaystyle \sum_{n =
+    1}^{+\infty}{\tilde{u}_n(x)} \rcon \tilde{S}(x)$ на $E \cup \{x_0\}$.
+\[
+    \sup_{x \in E \cup \{x_0\}}{\left|\sum_{n =
+    N}^{+\infty}{\tilde{u}_n(x)}\right|} \leqslant \sup_{x \in E}{\left|
+    \sum_{n = N}^{+\infty}{u_n(x)} \right|} + \sup_{x \in \{x_0\}}{\left|
+    \sum_{n = N}^{+\infty}{a_n} \right|} \xrightarrow[N \to +\infty]{} 0
+\]
+\end{proof}
+
+\begin{theorem}(О предельном переходе в функциональных последовательностях)
+
+    $f_n \colon E \subseteq X \to \R$, $X$ --- метрическое пространство,
+    $x_0$ --- предельная точка $E$, $f_n \rcon f$, $f_n(x) \xrightarrow[x \to
+    x_0]{} A_n$. Тогда $\displaystyle \exists \lim_{n \to +\infty}{A_n} = A \in
+    \R$, причем $f(x) \xrightarrow[x \to x_0]{} A$.
+    Иначе говоря, коммутативна следующая схема:
+
+    \xymatrix{& & & & & & f_n(x) \ar@<-.5ex>[r] \ar@<.5ex>[r]
+    \ar[d]^{x \to x_0} & f(x) \ar@{-->}[d]^{x \to x_0} \\
+              & & & & & & f_n(x_0) \ar[r]^{n \to +\infty} & f(x_0)}
+
+    или
+\[
+    \lim_{x \to x_0}{\lim_{n \to +\infty}{f_n(x)}}
+    = \lim_{n \to +\infty}{\lim_{x \to x_0}{f_n(x)}}
+\]
+\end{theorem}
+\begin{proof}
+    Введем обозначения: $u_1 = f_1, u_2 = f_2 - f_1, \ldots,$ $a_k = A_k -
+    A_{k - 1}$. Тогда $\displaystyle \sum_{k = 1}^{n}{u_k} = f_n$, то есть
+    $\displaystyle \sum_{n = 1}^{+\infty}{u_n} \rcon S(x)$ на $E$, причем
+    $u_k(x) \xrightarrow[x \to x_0]{} a_k$. Пользуясь аналогичной теоремой для
+    функциональных рядов, получаем, что
+\[
+    \lim_{n \to +\infty}{\lim_{x \to x_0}{f_n(x)}} = A = \lim_{n \to
+    +\infty}{A_n} = \lim_{n \to +\infty}{\sum_{k = 1}^{n}{a_k}} = \sum_{k =
+    1}^{+\infty}{a_k}
+\]
+    --- сходится. Кроме того имеем, что
+\[
+    \sum_{k = 1}^{+\infty}{a_k} = \lim_{x \to x_0}{\sum_{k =
+    1}^{+\infty}{u_k(x)}} = \lim_{x \to x_0}{f(x)} = \lim_{x \to x_0}{\lim_{n
+    \to +\infty}{f_n(x)}}
+\]
+
+\end{proof}
+
+\begin{theorem}(Признак Дирихле)
+
+    Пусть $a_n, b_n \colon X \to \R$, причем
+\begin{itemize}
+    \item $\displaystyle \exists C_a\colon \forall
+   N \forall x \in X~ \left| \sum_{i = 1}^{N}{a_n(x)} \right| \leqslant C_a$
+    \item $b_n \rcon 0$, $\forall x \in X~ b_n$ монотонна по $n$.
+\end{itemize}
+    Тогда
+    $\displaystyle \sum_{i = 1}^{+\infty}{a_n(x) b_n(x)} \rcon \bot$
+\end{theorem}
+\begin{proof}
+    Воспользуемся преобразованием Абеля:
+\[
+    \sum_{N \leqslant k \leqslant M}{a_k b_k} = A_N b_M - A_{N - 1}b_N +
+    \sum_{k = N}^{M - 1}{(b_k - b_{k + 1}) A_k}
+\]
+    тогда
+\begin{align*}
+    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant |A_N b_M|
+    + |A_{N - 1}b_N| + \left| \sum_{k = N}^{M - 1}{(b_k - b_{k + 1})A_k}
+    \right|\\
+    &\leqslant C_a \cdot |b_M| + C_a \cdot |b_N| + C_a \cdot
+    \sum_{k = N}^{M - 1}{|b_k - b_{k + 1}|}
+\end{align*}
+    Все слагаемые в сумме одного знака. Считая, что $b_k - b_{k + 1} \geqslant
+    0$, имеем:
+\begin{align*}
+    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant C_a \cdot |b_M| +
+    C_a \cdot |b_N| + C_a \cdot \sum_{k = N}^{M - 1}{(b_k - b_{k + 1})} \\
+    &\leqslant C_a \cdot (|b_M| + |b_N| + |b_M| + |b_N|) \xrightarrow[N, M \to
+    +\infty]{} 0
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Признак Абеля)
+
+    Пусть $a_n, b_n \colon X \to \R$, причем
+\begin{itemize}
+    \item $\displaystyle \sum_{n = 1}^{+\infty}{a_n(x)} \rcon \bot$
+    \item $\exists C_b\colon \forall N \forall x \in X~ |b_n(x)| \leqslant C_b,
+    \forall x \in X~ b_n(x)$ монотонна по $n$.
+\end{itemize}
+    Тогда
+    $\displaystyle \sum_{i = 1}^{+\infty}{a_n(x) b_n(x)} \rcon \bot$
+\end{theorem}
+\begin{proof}
+    Применим критерий Коши к ряду $a_n$:
+\[
+    \forall \varepsilon \exists N\colon \forall n > N~ \forall p \geqslant
+    1~ \forall x \in X~ |A_{n, p}(x)| = \left|\sum_{i = n + 1}^{n +
+    p}{a_n(x)}\right| < \varepsilon
+\]
+    Воспользуемся преобразованием Абеля:
+\begin{align*}
+    \left|\sum_{k = n + 1}^{n + p}{a_k b_k}\right| &\leqslant |b_{n + p}(x)A_{n,
+    p}(x)| + \left| \sum_{k = n + 1}^{n + p - 1}{(b_{k + 1}(x) - b_k(x))A_{n,
+    k}(x)} \right| \\
+    &\leqslant C \varepsilon + \varepsilon \sum_{k = n + 1}^{n + p - 1}{|b_{k +
+    1}(x) - b_k(x)|} \leqslant C \varepsilon + \varepsilon|b_{n + p}(x)| +
+    \varepsilon|b_n(x)| \\ &\leqslant C \varepsilon + 2C_b \varepsilon
+\end{align*}
+    Здесь мы воспользовались монотонностью и ограниченностью $b_n$.
+\end{proof}

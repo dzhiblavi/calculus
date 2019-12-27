@@ -1,0 +1,193 @@
+\section{Введение}
+
+\begin{definition}
+    \textit{Отображением} из множества $X$ в множество $Y$ называется
+    отношение $F \subseteq X \times Y$, для которого
+\[
+    \forall x \in X~\exists! y \in Y \colon ~(x, y) \in F
+\]
+Обозначается $F \colon X \to Y$ или $X \xrightarrow{F} Y$. Сам факт того, что $(x, y) \in F$ обозначается $f(x) = y$. $X$ называют \textit{областью определения}, а $Y$ --- \textit{областью значений} $f$.
+\end{definition}
+
+\begin{definition}
+    Отображение $f \colon X \lra Y$ называется \textit{инъективным}, если для него выполняется
+\[
+    x_1 \neq x_2 \Lra f(x_1) \neq f(x_2)
+\]
+Иначе говорят, что $f$ --- \textit{1-1 отображение}, и часто обозначают
+$f \colon X \xrightarrow{1-1} Y$.
+\end{definition}
+
+\begin{definition}
+    Отображение $f \colon X \to Y$ называется \textit{сюръективным}, если для него выполняется
+\[
+    \forall y \in Y~ \exists x \in X \colon~ f(x) = y
+\]
+Такие отображения называют отображениями \textit{на}, и часто обозначают
+$f \colon X \xrightarrow{\text{на}} Y$.
+
+\end{definition}
+
+\begin{definition}
+    Отображение $f \colon X \to Y$ называют \textit{биекцией}, если оно одновременно сюръективно и инъективно, иначе говоря
+\[
+    \forall y \in Y~ \exists! x \in X \colon~ f(x) = y
+\]
+Такие отображения, по аналогии с предыдущими определениями,
+называют \textit{1-1 на отображениями}, и часто обозначают
+$f \colon X \xrightarrow[\text{на}]{1-1} Y$.
+\end{definition}
+
+\begin{definition}
+    \textit{Образом} множества $A \subseteq X$ при отображении $f \colon X \to Y$
+    называют множество
+\[
+    f(A) \defeq \{\, f(x) \mid x \in A \,\}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Прообразом} множества $B \subseteq Y$ при отображении
+    $f \colon X \to Y$ называют множество
+\[
+    f^{-1}(B) \defeq \{\, x \in X \mid f(x) \in B \,\}
+\]
+\end{definition}
+
+\begin{definition}
+    \textit{Обратимым} называется отображение $f \colon X \to Y$, для которого
+    существует обратное относительно композиции отображение
+    $f^{-1} \colon Y \to X$, для которого выполняется
+\[
+    f^{-1} \circ f = id_X
+\]
+\end{definition}
+
+\begin{theorem}[Свойства прообраза]
+    Пусть $f \colon X \to Y$, \,$A, B \subseteq X$. Тогда справедливо
+    \begin{enumerate}
+        \item[i)] $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$
+        \item[ii)] $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Без доказательства (очевидно).
+\end{proof}
+
+\begin{theorem}
+    $f$ биективно $\Llra$ $f$ обратимо
+\end{theorem}
+\begin{proof}
+    Без доказательства (тривиально).
+\end{proof}
+
+\newpage
+
+\begin{definition}
+    \textit{Полем} называется тройка $\langle X, + \colon X \times X \to X,
+    \cdot \colon X \times X \to X \rangle$, \, где $X$ --- множество,
+    удовлетворяющая аксиомам поля:
+    \begin{itemize}
+        \item[+G1] $\a + (\b + \g) = (\a + \b) + \g$
+        \item[+G2] $\exists 0 \in X \colon~ \a + 0 = 0 + \a = \a$
+        \item[+G3] $\exists -\a \colon~ \a + -\a = 0$
+        \item[+G4] $\a + \b = \b + \a$
+        \item[$\cdot$G1] $\a(\b\g) = (\a\b)\g$
+        \item[$\cdot$G2] $\exists 1 \in X \colon~ 1\a = \a1 = \a$
+        \item[$\cdot$G3] $\a \neq 0 \Rightarrow \exists \a^{-1} \colon~
+         \a\a^{-1} = 1$
+        \item[$\cdot$G4] $\a\b = \b\a$
+        \item[D] $(\a + \b)\g = \a\g + \b\g$
+    \end{itemize}
+Для любых $\a, \b, \g \in X$. Аксиомы $+$G1-4 задают на $X$ структуры
+абелевой группы по $+$, аксиомы $\cdot$G1-4 задают на $X \setminus \{0\}$
+структуру абелевой группы по $\cdot$, аксиома дистрибутивности D связывает $+$
+и $\cdot$.
+\end{definition}
+\begin{examples}
+    \enewline
+    \begin{enumerate}
+        \item[i)] $\mathbb{R}$ --- поле. В дальнейшем можно под произвольным полем
+        понимать $\mathbb{R}$, общность от этого сильно не пострадает.
+        \item[ii)] $\mathbb{Z}_p$ тогда и только тогда поле, когда $p$ --- простое.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}
+    \textit{Векторным (линейным) пространством над полем} $K$ называют тройку
+    $\langle V, +_V \colon V \times V \to V, \cdot_V \colon V \times K \to V
+    \rangle$, где $V$ --- множество, удовлетворяющюю аксиомам:
+\begin{enumerate}
+    \item[$+_V$G1] $\x + (\y + \z) = (\x + \y) + \z$
+    \item[$+_V$G2] $\exists \elemvec{0} \in X \colon~ \x + \elemvec{0} =
+    \elemvec{0} + \x = \x$
+    \item[$+_V$G3] $\exists -\x \colon~ \x + -\x = \elemvec{0}$
+    \item[$+_V$G4] $\x + \y = \y + \z$
+    \item[V1] $(\a + \b)\x = \a\x + \b\x$
+    \item[V2] $(\a\b)\x = \a(\b\x)$
+    \item[V3] $\a(\x + \y) = \a\x + \a\y$
+    \item[V4] $1_K \x = \x$
+\end{enumerate}
+Для любых $\a, \b \in K$, $\x, \y \in V$.
+\end{definition}
+\begin{example}
+    $K^n \defeq \underbrace{K \oplus K \oplus \ldots \oplus K}_{n}$
+        --- векторное пространство, которому изоморфны все векторные
+        пространства над полем $K$ размерности $n$. Мы ограничимся
+        рассмотрением $\mathbb{R}^n$.
+\end{example}
+
+\begin{theorem}(Закон Де-Моргана)
+    Пусть $\{X_\a\}_{\a \in A}$ --- семейство множеств, и $Y$ --- множество.
+    Тогда справедливо
+\[
+    Y \setminus \Big( \bigcup_{\a \in A}{X_\a} \Big) =
+    \bigcap_{\a \in A}{\big( Y \setminus X_\a \big)}
+\]
+\end{theorem}
+\begin{proof}
+    Докажем, что $z$ принадлежит левой части $\Llra z$ принадлежит правой
+    части:
+\begin{align*}
+    z \in Y \setminus \Big( \bigcup_{\a \in A}{X_\a} \Big) \Llra
+    z \in Y \wedge z \notin \bigcup_{\a \in A}{X_\a} \Llra
+    z \in Y \wedge \forall \a \in A~z \notin X_\a \Llra \\
+    \forall \a \in A~ z \in Y \wedge z \notin X_\a \Llra
+    z \in \bigcap_{\a \in A}{\big( Y \setminus X_\a \big)}
+\end{align*}
+\end{proof}
+
+\begin{theorem}(Неравенство Бернулли)
+    $(1 + x)^n \geqslant 1 + nx$ при $x \geqslant -1$, $n \in \mathbb{N}$
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[i)] База индукции при $n = 1$: $1 + x \geqslant 1 + x$
+        \item[ii)] Индукционный переход:
+        \begin{align*}
+            (1 + x)^n = (1 + x)(1 + x)^{n-1} \geqslant (1 + x)(1 + (n - 1)x) = \\
+            1 + x + (n - 1)x + (n - 1)x^2 = 1 + nx + (n - 1)x^2 \geqslant 1 + nx
+        \end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Неравенство КБШ)
+\[
+    \Bigg|\sum_{i=1}^{n}{a_i b_i}\Bigg| \leqslant \sqrt{\sum_{i=1}^{n}{a_i^2}}\sqrt{\sum_{i=1}^{n}{b_i^2}}
+\]
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        0 \leqslant \frac{1}{2}\sum_{i,k=1}^{n}{(a_i b_k - a_k b_i)^2} =
+        \frac{1}{2}\sum_{i,k=1}^{n}{(a_i^2 b_k^2 + a_k^2 b_i^2 - 2a_i b_i a_k
+        b_k)} = \\ \frac{1}{2}\Bigg[ \Big(\sum_{i=1}^{n}{a_i^2}
+        \sum_{k=1}^{n}{b_k^2} \Big) + \Big(\sum_{i=1}^{n}{b_i^2}
+        \sum_{k=1}^{n}{a_k^2} \Big) - 2\Big(\sum_{i=1}^{n}{a_i b_i} \Big)\Big(
+        \sum_{k=1}^{n}{a_k b_k}\Big) \Bigg] = \\
+        \sum_{i=1}^{n}{a_i^2}\sum_{i=1}^{n}{b_i^2} -
+        \Big(\sum_{i=1}^{n}{a_i b_i} \Big)^2
+    \end{align*}
+\end{proof}
+
+\newpage

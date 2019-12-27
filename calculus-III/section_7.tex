@@ -1,0 +1,407 @@
+\section{Степенные ряды}
+
+\begin{definition}
+    \textit{Степенным рядом} называется формальный ряд вида $\displaystyle
+    \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$, где $z$, $z_0 \in \C$.
+\end{definition}
+
+\begin{theorem}(О круге сходимости степенного ряда)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд. Тогда верно одно из трёх:
+    \begin{itemize}
+        \item Ряд сходится только при $z = z_0$
+        \item Ряд сходится при любых $z$
+        \item $\exists~ 0 < R < +\infty$ такое, что ряд сходится при $|z -
+        z_0| < R$, и расходится при $|z - z_0| > R$. Поведение на границе не
+        известно.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Изучим ряд на абсолютную сходимость, полуьзуясь признаком Коши: рассмотрим
+    величину $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n (z -
+    z_0)^n|}} = |z - z_0| \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}$:
+    \begin{itemize}
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} =
+        +\infty$,
+        тогда ряд сходится, очевидно, только при $z = z_0$.
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} = 0$,
+        тогда ряд сходится для любых $z$.
+        \item $\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}} \in (0,
+        +\infty)$, тогда
+        \begin{itemize}
+            \item[a)] при $|z - z_0| < \frac{1}{\displaystyle \varlimsup_{n \to
+            +\infty}{\sqrt[n]{|a_n|}}}$ ряд сходится.
+            \item[b)] при $\displaystyle|z - z_0| > \frac{1}{\displaystyle
+            \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}}$ ряд расходится.
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}(Формула Адамара)
+
+    Радиус сходимости степенного ряда можно вычислить по формуле
+\[
+    R = \frac{1}{\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|a_n|}}}
+\]
+\end{corollary}
+
+\begin{corollary}(О множестве сходимости степенного ряда)
+
+    Множеством сходимости степенного ряда является $B(z_0, R) \cup \Gamma$,
+    где $\Gamma \subseteq \Cl{B(z_0, R)}$, а $R$ --- радиус сходимости ряда.
+\end{corollary}
+
+\begin{theorem}(О равномерной сходимости и непрерывности степенного ряда)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд, причем $0 < R \leqslant +\infty$. Тогда
+    \begin{itemize}
+        \item $\forall~ 0 < r < R$ ряд сходится равномерно на $\overline{B(z_0,
+        r)}$.
+        \item $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}
+        \in C(B(z_0, R))$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Применим признак Вейерштрасса: $|a_n (z - z_0)^n| \leqslant |a_n|
+        \cdot r^n$.
+    Ряд $\displaystyle \sum_{n = 0}^{+\infty}{|a_n| \cdot r^n}$ сходится
+    абсолютно, потому что исходный ряд сходится при $z = z_0 + r$.
+        \item Слагаемое непрерывно, есть равномерная сходимость на
+        $\overline{B(z_0, r)} \Lra$ во всех точках $B(z_0, R)$ сумма непрерывна.
+    \end{itemize}
+\end{proof}
+
+\begin{lemma}
+    $w, w_0 \in \C, |w|, |w_0| \leqslant r$. Тогда $|w^n - w^n_0|
+    \leqslant nr^{n - 1}|w - w_0|$
+\end{lemma}
+\begin{proof}
+\[
+    |w^n - w^n_0| = |w - w_0| \cdot |w^{n - 1} + w^{n - 2}w_0 + \ldots +
+    w^{n - 1}_0| \leqslant |w - w_0| \cdot ||w|^{n - 1} + \ldots + |w_0|^{n - 1}|
+    \leqslant |w - w_0|nr^{n - 1}
+\]
+\end{proof}
+
+\begin{lemma}
+    Степенные ряды $\displaystyle \sum_{n = 0}^{+\infty}{a_n x^n}$ и
+    $\displaystyle \sum_{n = 0}^{+\infty}{a_n x^{n + 1}}$ имеют одинаковый
+    радиус сходимости.
+\end{lemma}
+\begin{proof}
+    Пусть $S_N(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n x^n}$,
+    $\widetilde{S}_N(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n x^{n + 1}}$,
+    тогда $\widetilde{S}_N(x) = xS_N(x) \Lra \displaystyle \lim_{N \to
+    +\infty}{\widetilde{S}_N(x)} = x\lim_{N \to +\infty}{S_N(x)}$ --- существуют
+    на одном и том же множестве.
+\end{proof}
+
+\begin{theorem}(О дифференцировании степенного ряда)
+
+    Пусть $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n (z - z_0)^n}$ ---
+    степенной ряд, причем $0 < R \leqslant +\infty$, и $\displaystyle \f(z) =
+    \sum_{n = 1}^{+\infty}{n a_n (z - z_0)^{n - 1}}$. Тогда
+    \begin{itemize}
+        \item $\f$ имеет тот же радиус сходимости, что и $f$.
+        \item $f$ дифференцируемо на $B(z_0, R)$, причем $f'(z) = \f(z)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Найдем радиус сходимости $\hat{R}$ ряда $\f$ по формуле Адамара и
+        пользуясь последней леммой:
+\[
+    \hat{R} = \frac{1}{\displaystyle \varlimsup_{n \to +\infty}{\sqrt[n]{|n
+    \cdot a_n|}}} = \frac{1}{\displaystyle \varlimsup_{n \to
+    +\infty}{\sqrt[n]{n} \cdot \sqrt[n]{|a_n|}}} = R
+\]
+        \item Рассмотрим точку $a \in B(z_0, R)$ и покажем, что в этой точке
+        существует производная ряда, причем она равна тому, что ожидается.
+        Сузим круг до $B(z_0, r)$, гдe $r = \frac{R + |a - z_0|}{2}$.
+        Положим $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n(z - z_0)^n}$:
+\[
+    \frac{f(z) - f(a)}{z - a} = \sum_{n = 1}^{+\infty}{a_n \cdot
+    \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0) - (a - z_0)}}
+\]
+    Пусть $w = z - z_0: |w| < r$, $w_0 = a - z_0: |w_0| < r$. Тогда
+\[
+    \sum_{n = 0}^{+\infty}{a_n \cdot \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0)
+    - (a - z_0)}}
+    = \sum_{n = 0}^{+\infty}{a_n \cdot \frac{w^n - w^n_0}{w - w_0}}
+    \leqslant \sum_{n = 0}^{+\infty}{|a_n| \cdot nr^{n - 1}}
+\]
+    Последний рад сходится по первому пукнту теоремы. Тогда по признаку
+    Вейерштрасса ряд $\displaystyle \sum_{n = 1}^{+\infty}{a_n \cdot
+    \frac{(z - z_0)^n - (a - z_0)^n}{(z - z_0) - (a - z_0)}}$
+    сходится равномерно. Зная это, воспользуемся теоремой о предельном переходе
+    в сумме:
+\begin{align*}
+    f'(z) = \lim_{z \to a}{\frac{f(z) - f(a)}{z - a}} &= \lim_{z \to a}
+    {\sum_{n = 1}^{+\infty}{\frac{(z - z_0)^n + (a - z_0)^n}{z - a}}}
+    \\ &= \sum_{n = 1}^{+\infty}{\lim_{z \to a}{\frac{(z - z_0)^n - (a -
+    z_0)^n}{z - a}}} = \sum_{n = 1}^{+\infty}{a_n n(z - z_0)^{n - 1}}
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    $\displaystyle f(z) = \sum_{n = 0}^{+\infty}{a_n(z - z_0)^n} \in
+    C^{\infty}(B(z_0, R))$, причем все производные --- почленные.
+\end{corollary}
+
+\begin{corollary}(О почленном интегрировании степенного ряда)
+
+    Пусть $f(x) = \displaystyle \sum_{n = 0}^{+\infty}{a_n (x - x_0)^n}$ где
+    $a_n, x, x_0 \in \R$, $x \in B(x_0, R)$, тогда
+\begin{itemize}
+    \item $\displaystyle \sum_{n = 0}^{+\infty}{a_n \cdot \frac{(x - x_0)^{n +
+    1}}{n + 1}}$ имеет тот же радиус сходимости, что и $f$.
+    \item Выполняется равенство
+\[
+    \int_{x_0}^{x}{\sum_{n = 0}^{+\infty}{a_n (x - x_0)^n} dx}
+    = \sum_{n = 0}^{+\infty}{\int_{x_0}^{x}{a_n(x - x_0)^n dx}}
+\]
+\end{itemize}
+\end{corollary}
+
+\begin{definition}
+    \textit{Экпонентой} называется функция $\exp \colon \C \to \C$ такая,
+    что $\displaystyle z \underset{\exp}{\mapsto} \sum_{n =
+    0}^{+\infty}{\frac{z^n}{n!}}$
+\end{definition}
+
+\begin{theorem}(Свойства экспоненты)
+
+    \begin{itemize}
+        \item Радиус сходимости равен $+\infty$
+        \item $\exp(0) = 1$
+        \item $\overline{\exp}(z) = \exp(z)$
+        \item $\exp'(z) = \exp(z)$
+        \item $\displaystyle \lim_{z \to 0}{\frac{\exp(z) - 1}{z}} = 1$
+        \item $\exp(z + w) = \exp(z) + \exp(w)$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Докажем последние два утверждения. Остальные очевидны.
+    \begin{itemize}
+        \item
+$ \displaystyle
+    \lim_{z \to z_0}{\frac{e^z - 1}{z - z_0}}
+    = \lim_{z \to z_0}{\frac{e^z - e^0}{z - z_0}}
+    = (e^z)'\bigg|_0 = 1
+$
+        \item
+\begin{align*}
+    \exp(z + w) &= \sum_{n = 0}^{+\infty}{\frac{(z + w)^n}{n!}}
+    = \sum_{n = 0}^{+\infty}{\frac{1}{n!}\left(
+    \sum_{k = 0}^{n}{\binom{n}{k}~z^k w^{n - k}}\right)} \\
+    &= \sum_{n = 0}^{+\infty}{\sum_{k = 0}^{n}}{\frac{z^k}{k!}
+    \cdot \frac{w^{n - k}}{(n - k)!}}
+    = \left(\sum_{n = 0}^{+\infty}{\frac{z^n}{n!}}\right)
+    \cdot \left(\sum_{n = 0}^{+\infty}{\frac{w^n}{n!}}\right)
+    = \exp(z)\exp(w)
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Метод Абеля)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{c_n}$ --- сходящийся ряд.
+    Положим $\displaystyle f(x) = \sum_{n = 0}^{+\infty}{c_n x^n}$ при $|x| <
+    1$. Тогда \\ $\displaystyle \sum_{n = 0}^{+\infty}{c_n} = \lim_{x \to 1_{-
+    }}{f(x)}$
+\end{theorem}
+\begin{proof}
+    Для начала отметим, что $f$ задана корректно: при $0 < x < 1$ ряд сходится
+    равномерно по признаку Абеля. Так как $f$ --- ряд, то область его сходимости
+    симметрична, то есть для отрицательных $x~f$ тоже задана корректно.
+
+    Раз $f$ --- равномерно сходящийся ряд, причем $c_n x^n$ непрерывны, то по
+    теореме Стокса-Зейделя $f$ непрерывна. Раз так, имеем
+\[
+    \lim_{x \to 1_{-}} = f(1) = \sum_{n = 0}^{+\infty}{c_n}
+\]
+\end{proof}
+
+\begin{theorem}(Формула Григори-Лейбница)
+\[
+    1 - \frac{1}{3} + \frac{1}{5} - \ldots
+    = \sum_{n = 0}^{+\infty}{\frac{(-1)^n}{2n + 1}}
+    = \frac{\pi}{4}
+\]
+\end{theorem}
+\begin{proof}
+    Положим $\displaystyle f(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \ldots$,
+    тогда $\displaystyle f'(x) = 1 - x^2 + x^4 - \ldots = \frac{1}{1 + x^2} =
+    \arctan'{x}$. Тогда $f(x) = c + \arctan{x}$. Подставляя $x = 0$ убеждаемся,
+    что $c = 0$. Получаем $\displaystyle \lim_{x \to 1_{-}}{f(x)}
+    = \lim_{x \to 1_{-}}{\arctan{x}} = \frac{\pi}{4}$.
+\end{proof}
+
+\begin{corollary}(О сходимости произведения рядов)
+
+    Пусть $\displaystyle \sum_{n = 0}^{+\infty}{a_n} = A$, $\displaystyle
+    \sum_{n = 0}^{+\infty}{b_n} = B$, $c_n = a_0 b_n + a_1 b_{n - 1} + \ldots
+    + a_n b_0$, тогда ряд $\displaystyle \sum_{n = 0}^{+\infty}{c_n}$ сходится,
+    причем $\displaystyle AB = \sum_{n = 0}^{+\infty}{c_n}$.
+\end{corollary}
+\begin{proof}
+
+    Положим $\displaystyle f(x) = \sum_{n = 0}^{+\infty}{a_n x^n}$,
+    $\displaystyle g(x) = \sum_{n = 0}^{+\infty}{b_n x^n}$, $\displaystyle h(x)
+    = \sum_{n = 0}^{+\infty}{a_n x^n}$, \\ $x \in [0, 1]$. при $x < 1$ ряды
+    сходятся абсолютно (вспомним теорему о круге сходимости: в ней мы доказывали
+    абсолютную сходимость), поэтому по старой теореме о произведении рядов $f(x)
+    g(x) = h(x)$. Осталось совершить предельный переход в этом равентсве, чтобы
+    получить требуемое.
+\end{proof}
+
+\newpage
+\section{Ряды тейлора}
+
+\begin{definition}
+    $f \colon \R \to \R$ разложима в степенной ряд в точке $x_0$, если \\
+    $\displaystyle \exists U(x_0)~ \exists \sum_{n = 0}^{+\infty}{a_n (x -
+    x_0)^n} \colon~ \forall x \in U(x_0)~~ f(x) = \sum_{n = 0}^{+\infty}{a_n
+    (x - x_0)^n}$
+\end{definition}
+
+\begin{theorem}(Единственность разложения в ряд)
+
+    $f$ разложима в степенной ряд в $x_0 \Lra$ этот ряд единственный.
+\end{theorem}
+\begin{proof}
+    Для доказательства этого непосредственно вычислим $a_i$.
+\[
+    f(x) = a_0 + a_1 (x - x_0) + a_2 (x - x_0)^2 + \ldots
+\]
+    Поэтому $f(x) \in C^{\infty}(U(x_0))$. Значит, можно дифференцировать.
+    Подставим $x = x_0$: $a_0 = f(x_0)$. Этим мы однозначно определили $a_0$.
+    Рассмотрим
+\[
+    f'(x) = a_1 + 2a_2 (x - x_0) + \ldots
+\]
+    Подставим $x = x_0$:
+    $a_1 = f'(x_0)$. Продолжая в том же духе, однозначно определим все $a_i$.
+\end{proof}
+
+\begin{definition}
+    \textit{Рядом Тейлора} $f \in C^{\infty}(U(x_0))$ в точке $x_0$
+    называется формальный ряд $\displaystyle
+    \sum_{n = 0}^{+\infty}{\frac{f^{(n)}(x_0)}{n!}(x - x_0)^n}$
+\end{definition}
+
+\begin{theorem}(Разложение бинома в ряд Тейлора)
+
+    Пусть $\sigma \in \R$, $|x| < 1$, тогда
+\[
+    (1 + x)^{\sigma} = \sum_{n = 0}^{+\infty}{\binom{\sigma}{n}x^n}
+\]
+\end{theorem}
+\begin{proof}
+    Изучим ряд на абсолютную сходимость по признаку Даламбера:
+\[
+    \varlimsup_{n \to +\infty}{\left|\frac{a_{n + 1}}{a_n}\right|}
+    = \lim_{n \to +\infty}{\left|\frac{x(\sigma - n)}{n + 1}\right|} = |x| < 1
+\]
+    Значит, при $|x| < 1$ ряд сходится абсолютно. Раз ряд степенной, то
+    на круге сходимости он сходится и равномерно. Пусть
+    $\displaystyle S(x) = \sum_{n = 0}^{+\infty}{\binom{\sigma}{n}x^n}$.
+    Заметим, что
+\[
+    S'(x)(1 + x) = \sigma S(x)
+\]
+    Теперь положим $\displaystyle f(x) = \frac{S(x)}{(1 + x)^\sigma}$.
+    Достаточно показать, что $f(x) = 1$ при $|x| < 1$. Изучим производную $f$:
+\[
+    f'(x) = \frac{S'(x)(1 + x)^\sigma + S(x)\sigma(1 + x)^{\sigma - 1}}
+    {(1 + x)^{2\sigma}} = \frac{S'(x)}{(1 + x)^\sigma}
+    + \frac{\sigma S(x)}{(1 + x)^{\sigma - 1}} = 0
+\]
+    Осталось проверить $f(x) = 1$ в каком-нибудь $x$:
+\[
+    f(0) = \frac{1}{1} = 1
+\]
+\end{proof}
+
+\begin{remark}
+    Пусть $|t| < 1$, $m \in \N$. Тогда
+\[
+    \sum_{n = m}^{+\infty}{n(n - 1)\ldots(n - m + 1)\cdot t^{n - m}}
+    = \frac{m!}{(1 - t)^{m + 1}}
+\]
+\end{remark}
+
+\begin{theorem}(Критерий разложимости в ряд Тейлора)
+
+    Пусть $f \in C^{\infty}([x_0 - h, x_0 + h])$. Тогда $f$ разложима в ряд
+    Тейлора в $U(x_0) \Llra \exists \delta, C, A\colon~ \forall n~
+    \forall |x - x_0| < \delta~~ |f^{(n)}(x)| < C A^n n!$
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[($\Lla$)] Оценим остаток в форме Лагранжа:
+\begin{align*}
+    f(x) = T_nf(x_0) + \frac{f^{(n)}(\tilde{x})}{n!}(x - x_0)^n \\
+    \left|\frac{f^{(n)}(\tilde{x})}{n!}(x - x_0)^n\right| \leqslant
+    \frac{CA^n n!}{n!}|x - x_0|^n
+\end{align*}
+    Чтобы остаток стремился к нулю, нужно, чтобы $A|x - x_0| < 1$, откуда
+    получаем $U(x_0)\colon~ |x - x_0| < \min(\delta, \frac{1}{A})$. Поскольку
+    теперь остаток ряда стремится к нулю, то $\forall x \in U(x_0)~
+    T_nf(x) \to f(x)$, что и требовалось доказать.
+        \item[($\Lra$)] Пусть $\displaystyle f(x) = \sum_{n = 0}^{+\infty}
+        {\frac{f^{(n)}(x_0)}{n!}(x - x_0)^n}$ в $U(x_0)$. Ряд сходится, поэтому
+        для \\ (произвольного) $x = x_1 \neq x_0$ имеем
+\[
+    \exists C_1\colon~ \left|\frac{f^{(n)}(x_0)}{n!}(x_1 - x_0)^n\right| \leqslant
+    C_1 \Lra |f^{(n)}(x_0)| \leqslant C_1 n! \frac{1}{|x_1 - x_0|^n}
+\]
+        Положим $\displaystyle B_n = \frac{1}{|x_1 - x_0|^n}$. Проанализируем
+        $m$-ю производную $f$:
+\begin{align*}
+    |f^{(m)}(x)| &\leqslant \sum_{n = m}^{+\infty}
+    {\left|\frac{f^{(n)}(x_0)}{(n - m)!}(x - x_0)^{n - m}\right|}
+    \leqslant \sum_{n = m}^{+\infty}{\left|C_1 \frac{B^n n!}{(n - m)!}(x - x_0)^{n
+    - m}\right|} \\
+    &= B^m C_1 \sum_{n = m}^{+\infty}{n(n - 1)\ldots(n - m + 1) \cdot |B(x -
+    x_0)|^{n - m}} \\
+    &= C_1 B^m \frac{m!}{(1 - |B(x - x_0)|)^{m + 1}}
+    \underset{x\colon~ B|x - x_0| < \frac{1}{2}}{\leqslant} \frac{C_1 m!
+    B^m}{\frac{1}{2^{m + 1}}} = C_1 m! B^m 2^{m + 1} = (2C_1)m! (2B)^m
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\section{Суммирование по Чезаро}
+
+\begin{theorem}(Коши о перманентности метода средних арифметических)
+
+    $\displaystyle \sum_{n = 1}^{+\infty}{a_n} = S \Lra
+    \displaystyle \sum_{n = 1}^{+\infty}{a_n} \underset{c/a}{=} S$
+\end{theorem}
+\begin{proof}
+    Обозначим $\displaystyle \sigma_n = \frac{1}{n + 1} (S_0 + \ldots + S_n)$.
+    По определению
+\[
+    \forall \e > 0~ \exists N_1\colon~ \forall N > N_1~ |S_N - S| < \e
+\]
+    Далее:
+\begin{align*}
+    |\sigma_N - S| =
+    \left|\frac{1}{N + 1}\sum_{n = 0}^{N}{(S_n - S)}\right|
+    \leqslant \frac{1}{N + 1}\sum_{n = 0}^{N}{|S_n - S|}
+    &\underset{N > N_1}{=}
+    \underbrace{\frac{1}{N + 1}\sum_{n = 0}^{N_1}{|S_n - S|}}_
+    {= \frac{c}{N + 1}\to 0} \\
+    &+ \underbrace{\frac{1}{N + 1}\sum_{n = N_1 + 1}^{N}{|S_n - S|}}
+    _{< \e}
+    \xrightarrow[N \to +\infty]{} 0
+\end{align*}
+\end{proof}

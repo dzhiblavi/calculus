@@ -1,0 +1,218 @@
+\chapter{Многомерный анализ}
+
+\section{Сведения из линейной алгебры}
+
+\begin{definition}
+    $L(\Rm, \Rn)$ --- \textit{пространство линейных отображений} из $\Rm$ в $\Rn$
+\end{definition}
+
+\begin{definition}
+    Элементы $L(\Rm, \Rn)$ называются \textit{операторами}
+\end{definition}
+
+\begin{definition}
+    \textit{Нормой} на множестве $X$ называется отображение
+     $\norm{\phantom{x}} \colon X \to \mathbb{R}$, удовлетворяющее свойствам
+     \begin{itemize}
+         \item[i)] $\norm{\x} \geqslant 0$, $\norm{\x} = 0 \Llra \x = 0$
+         \item[ii)] $\norm{\a\x} = |\a|\norm{\x}$
+         \item[iii)] $\norm{\x + \y} \leqslant \norm{\x} + \norm{\y}$
+     \end{itemize}
+\end{definition}
+
+\begin{definition}
+    \textit{Нормированным пространством} называется пара $\langle X,
+    \norm{\phantom{x}} \rangle$
+\end{definition}
+
+\begin{remark}
+    Отображение, задаваемое формулой $d(\x, \y) = \norm{\x - \y}$ является
+    метрикой. Поэтому все нормированные пространства сразу можно считать
+    и метрическими.
+\end{remark}
+
+\begin{theorem}(Об эквивалентности норм в конечномерных пространствах)
+
+    Пусть $V$ --- конечномерное линейное пространство, а $\norm{\phantom{x}}_1$
+    и $\norm{\phantom{x}}_2$ --- нормы на $V$. Тогда
+\[
+    \exists c, C > 0\colon~ c\norm{\x}_1 \leqslant \norm{\x}_2 \leqslant
+    C\norm{\x}_1
+\]
+\end{theorem}
+\begin{proof}
+    Пусть $\displaystyle \norm{x} = \norm{c_1 e_1 + c_2 e_2 + \ldots + c_n e_n}
+    \defeq \sqrt{\sum_{i=1}^{n}{c_i^2}}$.
+
+    \begin{itemize}
+        \item[i)] $\norm{\phantom{x}}$ --- норма.
+            \begin{itemize}
+                \item[$\cdot$] $\displaystyle \sqrt{\sum_{i=1}^{n}{c_i^2}}
+                \geqslant 0$ --- очевидно
+                \item[$\cdot$] $\displaystyle \sqrt{\sum_{i=1}^{n}{(\a c_i)^2}}
+                = \a\sqrt{\sum_{i=1}^{n}{c_i^2}}$ --- очевидно
+                \item[$\cdot$] $\displaystyle \sqrt{\sum_{i=1}^{n}{(c_i +
+                b_i)^2}} \leqslant \sqrt{\sum_{i=1}^{n}{c_i^2}} +
+                \sqrt{\sum_{i=1}^{n}{b_i^2}}$ --- неравенство Минковского
+            \end{itemize}
+        \item[ii)] Проверим теперь, что все нормы на $V$ эквивалентны
+        $\norm{\phantom{x}}$.
+\[
+        \norm{x_1 e_1 + \ldots + x_n e_n}_1 \leqslant \sum_{i=1}^{n}{\norm{x_i
+        e_i}_1} = \sum_{i=1}^{n}{|x_i| \norm{e_i}_1} \leqslant_{\text{КБШ}}
+        \sqrt{\sum_{i=1}^{n}{|x_i|^2}} \sqrt{\sum_{i=1}^{n}{\norm{e_i}_1^2}} =
+        c\sqrt{\sum_{i=1}^{n}{|x_i|^2}}
+\]
+        тогда
+\[
+        |\norm{\x}_1 - \norm{\y}_1| \leqslant \norm{\x - \y}_1 \leqslant
+        c \norm{\x - \y}
+\]
+        Поэтому $\norm{\phantom{x}}_1$ --- непрерывное отображение $\Rm \to \R$.
+        Раз так, найдем максимум и минимум этого отображения на сфере (компакт,
+        поэтому максимум и минимум реализуются). Пусть
+        \begin{gather*}
+            c_1 := \min_{\x \in S^n}{\norm{\x}_1} \\
+            c_2 := \max_{\x \in S^n}{\norm{\x}_1}
+        \end{gather*}
+        Ни $c_1$, ни $c_2$ не равны нулю (потому что норма равна нулю только на
+        нулевом векторе, который сфере не принадлежит). Тогда
+        \begin{gather*}
+            \norm{\x}_1 = \norm{\frac{\x}{\norm{\x}}}_1 \norm{\x} \geqslant
+            c_1 \norm{\x} \\
+            \norm{\x}_1 = \norm{\frac{\x}{\norm{\x}}}_1 \norm{\x} \leqslant
+            c_2 \norm{\x}
+        \end{gather*}
+        что и доказывает утверждение теоремы.
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Нормой оператора} называется отображение $\norm{\phantom{x}} \colon L(\Rm, \Rn) \to \R$
+\[
+    \norm{\mathcal{A}} \defeq \sup_{\x \in S^m}{\norm{\mathcal{A}x}_{\Rn}}
+\]
+\end{definition}
+
+\begin{remark}
+    $\displaystyle \sup_{\norm{x} = 1}{\cA \x} = \sup_{\norm{x} \leqslant 1}{\cA
+    \x}$
+\end{remark}
+
+\begin{theorem}(Пространство линейных операторов)
+
+    $\norm{\phantom{x}} \colon L(\Rm, \Rn) \to \R$ --- действительно норма.
+\end{theorem}
+\begin{proof}
+\[
+    \norm{\mathcal{A}(x_1 e_1 + \ldots + x_n e_n)} \leqslant
+    \sum_{i=1}^{n}{|\x| \norm{\mathcal{A}e_i}} \leqslant_{\text{КБШ}}
+    \norm{\x} \sum_{i=1}^{n}{\norm{\mathcal{A}e_i}}
+\]
+    Поэтому супремум конечен для всех элементов $L(\Rm, \Rn)$, то есть
+    отображение определено корректно. Проверим свойства нормы:
+
+    \begin{itemize}
+        \item[i)] $\norm{\cA} = 0 \Llra \forall \x \in S^n~\cA \x = 0
+        \Llra \cA = 0$. Неотрицательность очевидна.
+        \item[ii)] $\displaystyle \norm{\a \cA} = \sup_{\x \in S^n}{\norm{\a \cA
+        \x}} = \sup_{\x \in S^n}{|\a| \norm{\cA \x}} = \a \norm{\cA}$
+        \item[iii)] $\displaystyle \norm{\cA + \cB} = \sup_{\x \in S^n}{\cA \x +
+        \cB \x} \leqslant \sup_{\x \in S^n}{\cA \x} + \sup_{\x \in S^n}{\cB \x}$
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}(Липшицевость линейных опрераторов)
+
+    $\cA \in L(\Rm, \Rn) \Lra \cA$ --- липшицево
+\end{theorem}
+\begin{proof}
+\[
+    \norm{\cA \x - \cA \y} = \norm{\cA(\x - \y)} = \norm{\cA \left(\frac{\x -
+    \y}{\norm{\x - \y}}\right)} \norm{\x - \y} \leqslant \norm{\cA} \norm{\x - \y}
+\]
+\end{proof}
+
+\begin{theorem}(О произведении линейных операторов)
+
+    $\cA \in L(\Rm, \Rn)$, $\cB \in L(\Rn, \mathbb{R}^l)$, тогда
+    $\cB \cA \in L(\Rm, \mathbb{R}^l)$, причем $\norm{\cB \cA} \leqslant
+    \norm{\cB} \norm{\cA}$
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        \norm{\cB \cA} &= \sup_{\x \in S^n}{\cB(\cA \x)} \\
+        &= \sup_{\x \in S^n}{\left(\norm{\cA \x} \cdot \cB\left(\frac{\cA
+        \x}{\norm{\cA \x}}\right)\right)} \\
+        &\leqslant \sup_{\x \in S^n}{\norm{\cA \x}} \cdot
+        \sup_{\x \in S^n}{\cB\left(\frac{\cA \x}{\norm{\cA \x}}\right)} \\
+        &\leqslant \norm{A} \norm{B}
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    $\O_m$ --- \text{пространство обратимых линейных операторов} на $\Rm$
+\end{definition}
+
+\begin{lemma}(Критерий обратимости линейного оператора)
+
+    $\cA \in L(\Rm, \Rn)$ обратим тогда и только тогда, когда $m = n$ и
+    $\Ker(\cA) = 0$
+\end{lemma}
+\begin{proof}
+    Линейная алгебра.
+\end{proof}
+
+\begin{lemma}(Об условиях, эквивалентных обратимости оператора)
+
+    $\cA \in L(\Rm, \Rm)$ обратим $\Llra \exists c>0~ \forall \x~ \norm{\cA \x}
+    \geqslant с\norm{\x}$, причем $\displaystyle \norm{\cA^{-1}} \leqslant
+    \frac{1}{c}$
+\end{lemma}
+\begin{proof}
+    $\displaystyle \norm{\cA \x} \geqslant c\norm{\x} \Llra \Ker(\cA) = 0 \Llra
+    \cA$ обратим.
+
+    $\displaystyle \norm{\cA \x} \geqslant c\norm{\x} \Llra \norm{\y} \geqslant
+    c\norm{\cA^{-1} \y} \Llra \norm{\cA^{-1} \y} \leqslant \frac{1}{c}\norm{\y}$
+\end{proof}
+
+\begin{theorem}(Об обратимости оператора, близкого к обратимому)
+
+    $\displaystyle \cA \in \O_m$, $\displaystyle \cB \in L(\Rm, \Rm)$,
+    $\displaystyle \norm{\cA - \cB} < \frac{1}{\norm{\cA^{-1}}}$, тогда
+
+    \begin{itemize}
+        \item[i)] $\cB \in \O_m$
+        \item[ii)] $\displaystyle \norm{\cB^{-1}} \leqslant \frac{1}{\norm{\cA^{-
+        1}}^{-1} - \norm{\cA - \cB}}$
+        \item[iii)] $\displaystyle \norm{\cA^{-1} - \cB^{-1}} \leqslant
+        \frac{\norm{\cA^{-1}}}{\norm{\cA^{-1}}^{-1} - \norm{\cA - \cB}}\norm{\cA
+        - \cB}$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \item[i, ii)]
+\[
+    \norm{\cB \x} \geqslant \norm{\cA \x} - \norm{(\cA - \cB)\x} \geqslant
+    \left( \frac{1}{\norm{\cA^{-1}}} - \norm{\cA - \cB} \right)\norm{\x}
+\]
+    первое неравенство --- неравенство треугольника, а второе выполнено потому,
+    что
+\[
+    \norm{\x} = \norm{\cA \cA^{-1} \x} \leqslant \norm{\cA} \norm{\cA^{-1} \x}
+\]
+    Далее по лемме получаем обратимость $\cB$ и оценку на его норму.
+    \item[iii)]
+    \begin{gather*}
+        \cA^{-1} - \cB^{-1} = \cA^{-1}(\cB - \cA)\cB^{-1} \\
+        \norm{\cA^{-1} - \cB^{-1}} \leqslant \norm{\cA^{-1}} \norm{\cB - \cA}
+        \norm{\cB^{-1}} \leqslant_{\text{i)}} \frac{\norm{\cA^{-1}}}{\norm{\cA^{-
+        1}}^{-1} - \norm{\cA - \cB}}\norm{\cA - \cB}
+    \end{gather*}
+\end{proof}
+
+\begin{corollary}
+    Множество $\O_m$ открыто в метрической топологии $\langle L(\Rm, \Rm),
+    \norm{\phantom{x }} \rangle$
+\end{corollary}
