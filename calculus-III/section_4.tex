@@ -260,17 +260,84 @@ $
 
     Пусть $\Od$ открыто, $f \colon \Od \subseteq \R^{m + n} \to \Rn$, $(\x \in
     \Rm, \y \in \Rn) \underset{f}{\mapsto} f(\x, \y)$, $f \in
-    C^r$, \\ $(\ela, \elb) \in \Od \colon~ f(\ela, \elb) = 0$,
+    C^r$, \\ $(\ela, \elb) \in \Od \colon~ f(\ela, \elb) = \elemvec{0}$,
     $\det{f'_{\y}(\ela, \elb)} \neq 0$, тогда
     \begin{itemize}
         \item $\exists U(\ela)$, $\exists U(\elb)$, $\exists! \f \colon U(\ela)
-        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x)) = 0$
-        \item $\f'(\x) = -(f'_{\y}(\x, \f(\x)))^{-1} \cdot f'_{\x}(\x, \f(\x))$
+        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x)) =
+        \elemvec{0}$ \item $\f'(\x) = -(f'_{\y}(\x, \f(\x)))^{-1} \cdot
+        f'_{\x}(\x, \f(\x))$
     \end{itemize}
 \end{theorem}
 \begin{proof}
-    TBD
+    \enewline
+    \begin{itemize}
+        \item Подготовим несколько объектов, полезных для доказательства.
+        Положим
+\begin{align*}
+    &T \colon \Od \to \R^{m + n} \\
+    &(\x, \y) \mapsto (\x, f(\x, \y))
+\end{align*}
+        Производный оператор этого отображения в блочном виде выглядит следующим
+        образом:
+\[
+        T' = \begin{pmatrix}
+                E & \elemvec{0} \\
+                f'_x & f'_y
+             \end{pmatrix}
+\]
+        Он обратим, так как $\det{T'} = 1 \cdot \det{f'_y} \neq 0$. Тогда по теореме о локальной
+        обратимости $\exists U(\ela, \elb)\colon T\big|_U$
+        --- диффеоморфизм. Без ограничения общности будем считать, что
+        $U = \tilde{P} \times Q$, где $\tilde{P} \subset \Rm$, $Q \subset \Rn$
+        открыты и $\ela \in \tilde{P}$, $\elb \in Q$. Будем обозначать
+        $S = T^{-1}$ и $V = T(U)$ --- открыто в $\R^{m + n}$ так как $T$ --- диффеоморфизм.
+        Заметим, что $T$ не меняет первую координату, то есть $S$ тоже её не меняет,
+        а значит, имеет вид $S(\x, \y) = (\x, H(\x, \y))$, где $H(\x, \y) \in C^r$,
+        так как $S \in C^r$.
+
+        \item Пусть $P = (\Rm \times \elemvec{0}_n) \cap V$ --- открытое в
+        $\Rm$ множество (само множество из $\R^{m + n}$, но нулевые координаты
+        отбросим, см. рисунок). Предъявим требуемое отображение:
+\[
+    \f(\x) = H(\x, \elemvec{0})
+\]
+
+        \item Проверим, что $\f$ подходит: $f \in C^r$, так как
+        $H \in C^r$. Проверим $f(\x, \f(\x)) = 0$ и единственность:
+\[
+    (\x, f(\x, \f(\x))) = T(\x, \f(\x)) = T(\x, H(\x, \elemvec{0})) =
+    T(S(\x, \elemvec{0})) = (\x, \elemvec{0})
+\]
+        С другой стороны, если $f(\x, \y) = \elemvec{0}$, то:
+\[
+    (\x, \y) = S(T(\x, \y)) = S(\x, f(\x, \y)) = S(\x, \elemvec{0}) = H(\x, \elemvec{0})
+\]
+        То есть $\y = H(\x, \elemvec{0})$, из чего следует, что $\f$ единственно.
+
+        \item Проверим второй пункт теоремы, вычислив производный оператор $\f$:
+\[
+    f(\x, \f(\x)) = \elemvec{0} \Lra \begin{pmatrix}
+                                f'_x & f'_y
+                           \end{pmatrix}
+                           \cdot
+                           \begin{pmatrix}
+                               E \\
+                               \f'
+                           \end{pmatrix} = \elemvec{0}
+\]
+    Откуда получаем:
+\[
+    f'_x + f'_y \cdot \f' = \elemvec{0} \Lra \f' = -(f'_y)^{-1}f'_x
+\]
+    \end{itemize}
 \end{proof}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{indirect}
+    \caption{Теорема о неявном отображении}
+\end{figure}
 
 \begin{definition}
     $M \subseteq \Rm$ называют $k$\textit{-мерным многообразием} в $\Rm$,
