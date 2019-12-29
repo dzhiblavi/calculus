@@ -2,59 +2,141 @@
 
 \begin{definition}
     Пусть $f \colon E \subseteq \R^{m + n} \to \R$, $\phi \colon E \to \R^n$,
-    $M_{\phi} = \{\,\x \in E \mid \phi(\x) = 0\,\}$, $\x_0 \in E$, $\phi(\x_0) =
-    0$ называется точкой локального \textit{относительного} экстремума, если
+    $M_{\phi} = \{\,\x \in E \mid \phi(\x) = \elemvec{0}\,\}$, $\x_0 \in E$, $\phi(\x_0) =
+    \elemvec{0}$ называется точкой локального \textit{относительного} экстремума, если
     $x_0$ --- точка локального экстремума $f\big|_{M_{\phi}}$.
 \end{definition}
 
 \begin{theorem}(Необходимое условие относительного экстремума)
 
     Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
-    E \to \R^n$, $\x_0 \in E$, $\phi(\x_0) = 0$, $\rank{\phi'(\x_0)} = n$,
-    $\x_0$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
+    E \to \R^n$, $\ela \in E$, $\phi(\ela) = \elemvec{0}$, $\rank{\phi'(\ela)} = n$,
+    $\ela$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
     \colon$
 \[
     \begin{cases}
-        f'(\x_0) - \lambda \cdot \phi'(\x_0) = 0 \\
-        \phi(\x_0) = 0
+        f'(\ela) - \lambda \cdot \phi'(\ela) = 0 \\
+        \phi(\ela) = \elemvec{0}
     \end{cases}
 \]
 \end{theorem}
 \begin{proof}
-    TBD
+    Будем обозначать $(\x \in \Rm, \y \in \Rn) \in \R^{m + n}$
+    Пусть ранг производного оператора $\phi'(\ela)$ реализуется на
+    последних $n$ столбцах. Тогда
+\[
+    \det{\left( \pderv{\phi_i}{\x_{m + j}}(\ela) \right)}_{\substack{i = 1..n
+    \\ j = 1..n}} \neq 0
+\]
+    Тогда можно применить теорему о неявном отображении:
+\[
+    \exists U(\ela_x), U(\ela_y)~ \exists C^r \ni \f \colon U(\ela_x) \to U(\ela_y)
+    \colon \phi(\x, \f(\x)) = \elemvec{0}
+\]
+    Рассмотрим функцию $g(\x) = f(\x, \f(\x))$. Тогда $\ela_x = (\ela_1, \ldots, \ela_m)$
+    является точкой обычного локального экстремума для функции $g$. Далее будут
+    использованы не совсем обычные, но понятные обозначения для частных производных.
+    Выпишем необходимое условие экстремума:
+\[
+    f'_{\x}(\ela_x, \f(\ela_x)) + f'_{\y}(\ela_x, \f(\ela_x)) \cdot \f'(\ela_x) =
+    \underbrace{f'_{\x}(\ela)}_{1 \times m} + \underbrace{f'_{\y}(\ela)}_{1 \times n}
+    \cdot \underbrace{\f'(\ela_x)}_{n \times m} = 0
+\]
+    Кроме того, нам известно, что $\phi(\x, \f(\x)) = \elemvec{0}$, тогда:
+\[
+    \underbrace{\phi'_{\x}(\ela)}_{n \times m} + \underbrace{\phi'_{\y}(\ela)}_{n \times n}
+    \cdot \underbrace{\f'_{\x}(\ela_x)}_{n \times m} = \elemvec{0} \Lra
+    \forall \l \in \Rn~~ \l \cdot \phi'_{\x}(\ela) + \l \cdot \phi'_{\y}(\ela) \cdot
+    \f'_{\x}(\ela_x) = 0
+\]
+    Вычтем из первого равенства второе:
+\[
+    (f'_{\x} - \l \cdot \phi'_{\x}) + (f'_{\y} - \l \cdot \phi'_{\y}) \f'_{\x} = 0
+\]
+    и положим
+\[
+    \l = f'_{\y}(\ela) \cdot (\phi'_{\y}(\ela))^{-1}
+\]
+    Убедимся в том, что $\l$ подходит:
+\begin{align*}
+    f'_{\x} - \l \cdot \phi'_{\x} &= f'_{\x} - f'_{\y} \cdot (\phi'_{\y})^{-1}
+    \cdot \phi'_{\x} = f'_{\x} - f'_{\y} \cdot (\phi'_{\y})^{-1} \cdot (-\phi'_{\y}
+    \cdot \f'_{\x}) = f'_{\x} + f'_{\y} \cdot \f'_{\x} = 0 \\
+    f'_{\y} - \l \cdot \phi'_{\y} &= f'_{\y} - f'_{\y} \cdot (\phi'_{\y})^{-1}
+    \cdot \phi'_{\y} = 0
+\end{align*}
 \end{proof}
+
+\begin{definition}
+    В терминах последней теоремы отображение
+\[
+    G = f - \l \phi
+\]
+    называется \textit{функцией Лагранжа}.
+\end{definition}
 
 \begin{theorem}(Достаточное условие относительного экстремума)
 
     Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
-    E \to \R^n$, $\x_0 \in E$, $\phi(\x_0) = 0$, $\rank{\phi'(\x_0)} = n$,
+    E \to \R^n$, $\ela \in E$, $\phi(\ela) = 0$, $\rank{\phi'(\ela)} = n$,
     выполнено необходимое условие относительного экстремума, то есть $\exists
     \lambda \in \Rn \colon$
  \[
      \begin{cases}
-         f'(\x_0) - \lambda \cdot \phi'(\x_0) = 0 \\
-         \phi(\x_0) = 0
+         f'(\ela) - \lambda \cdot \phi'(\ela) = 0 \\
+         \phi(\ela) = 0
      \end{cases}
  \]
     кроме того, пусть $\h = (\h_x \in \Rm, \h_y \in \Rn)$. Тогда, так как
-    $\rank{\phi'(\x_0)}$, по $\h_x$ можно однозначно восстановить $\h_y$ такой,
-    что $\phi'(\x_0)\h = 0$. Тогда рассмотрим квадратичную форму
+    $\rank{\phi'(\ela)} = n$, то по $\h_x$ можно однозначно восстановить $\h_y$ такой,
+    что $\phi'(\ela)\h = 0$. Тогда рассмотрим квадратичную форму
 \[
-    Q(\h_x) = \d^2_{\x_0}{G(\h_x, \h_y)}
+    Q(\h_x) = \d^2_{\ela}{G(\h_x, \h_y)}
 \]
     Где $G = f - \lambda \cdot \phi$ --- функция Лагранжа. В зависимости от
-    определенности $Q$ можно сделать вывод о наличии экстремума в точке $x_0$:
+    определенности $Q$ можно сделать вывод о наличии экстремума в точке $\ela$:
     \begin{itemize}
-        \item $Q$ положительно определена $\Lra \x_0$ --- точка относительного
+        \item $Q$ положительно определена $\Lra \ela$ --- точка относительного
         локального минимума.
-        \item $Q$ отрицательно определена $\Lra \x_0$ --- точка относительного
+        \item $Q$ отрицательно определена $\Lra \ela$ --- точка относительного
         локального максимума.
-        \item $Q$ неопределена $\Lra \x_0$ --- не точка экстремума.
+        \item $Q$ неопределена $\Lra \ela$ --- не точка экстремума.
         \item В остальных случаях требуется более детальное исследование.
     \end{itemize}
 \end{theorem}
+
+\begin{lemma}
+    Пусть $A$ --- матрица $m \times m$. Тогда
+\begin{itemize}
+    \item $A^T A$ симметрична
+    \item $\scp{A\x, A\x} = \scp{A^T A \x, \x}$
+    \item У $A^T A$ все собственные числа неотрицательны.
+\end{itemize}
+\end{lemma}
 \begin{proof}
-    TBD
+    \enewline
+
+    \begin{itemize}
+        \item Помним, что $(A^T)^T = A$ и $(AB)^T = B^T A^T$
+\[
+    (A^T A)^T = A^T (A^T)^T = A^T A
+\]
+        \item
+\begin{align*}
+    \scp{A \x, A \x} &= \sum_{i = 1}^{m}{(A\x)_i^2}
+    = \sum_{i = 1}^{m}{\left(\sum_{j = 1}^{m}{a_{ij} \x_j}\right)^2}
+    = \sum_{i = 1}^{m}{\left(\sum_{j = 1}^{m}{a_{ij} \x_j} \right)
+    \cdot \left(\sum_{k = 1}^{m}{a_{ik} \x_k}\right)} \\
+    &= \sum_{i = 1}^{m}{\sum_{j = 1}^{m}{\left(\sum_{k = 1}^{m}{a_{ij} a_{ik} \x_k}
+    \right) \x_j}} = \sum_{i = 1}^{m}{\sum_{j = 1}^{m}{(A^T A \x)_j} \x_j} \\
+    &= \scp{A^T A \x, \x}
+\end{align*}
+        \item
+\begin{align*}
+    \l \norm{\x}^2 = \scp{\l \x, \x} = \scp{A^T A \x, \x} =
+    \scp{A\x, A\x} = \norm{A\x}^2 \geqslant 0
+\end{align*}
+    \end{itemize}
 \end{proof}
 
 \begin{theorem}(Вычисление нормы линейного опреатора)
@@ -65,3 +147,54 @@
     \norm{A} = \max_{\lambda \in S}{\sqrt{\lambda}}
 \]
 \end{theorem}
+\begin{proof}
+    \enewline
+
+    \begin{itemize}
+    \item
+    Вычислим для начала максимум $f(\x) = \scp{A\x, \x} \colon \Rm \to \R$ на сфере
+    $\x_1^2 + \ldots + \x_m^2 = 1$, где $A$ --- симметричная матрица.
+\[
+    \begin{cases}
+        f(\x) = \sum{a_{ij} \x_i \x_j} \\
+        \x_1^2 + \ldots + \x_m^2 - 1 = 0
+    \end{cases}
+\]
+    Тогда функция Лагранжа имеет вид
+\[
+    G = \sum{a_{ij} \x_i \x_j} - \l \cdot \left( \sum_{i}{\x_i^2} - 1 \right)
+\]
+    Продифференцируем её:
+\[
+    G'_{\x_k} = 2 \sum{a_{kj} \x_j} - 2 \l \x_k
+\]
+    Здесь мы воспользовались симметричностью матрицы. Решим систему уравнений
+    $G' = \elemvec{0}$:
+\[
+    \begin{cases}
+        A \x - \l \x = 0 \\
+        \x_1^2 + \ldots + \x_m^2 = 1
+    \end{cases}
+\]
+    Решениями этой системы могут быть пары из собственных векторов $\x$
+    и собственных чисел $\l$ (причем все собственные числа попадут в пару).
+    Вычислим $f$ в собственных векторах матрицы $A$.
+\[
+    f(\x) = \scp{A \x, \x} = \scp{\l \x, \x} = \l \norm{\x} = \l
+\]
+    \item Докажем утверждение теоремы.
+\[
+    \norm{A}^2 = \max_{\x \in S^{m - 1}}{\norm{A \x}^2}
+    = \max_{\x \in S^{m - 1}}{\scp{A \x, A \x}} = \max_{x \in S^{m - 1}}
+    {\scp{(A^T A) \x, \x}} = \max_{\l \in \sigma{A^T A}}{\l}
+\]
+    По предыдущей лемме $A^T A$ симмметрична, тогда:
+\[
+    \max_{x \in S^{m - 1}} {\scp{A^T A \x, \x}} = \max_{\l \in \sigma{A^T A}}{\l}
+\]
+    Но тогда, так как $\l \geqslant 0$, имеем:
+\[
+    \norm{A} = \max_{\l \in \sigma{A^T A}}{\sqrt{\l}}
+\]
+    \end{itemize}
+\end{proof}

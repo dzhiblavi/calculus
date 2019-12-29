@@ -126,11 +126,7 @@
 \newtheorem*{exercise}{Упражнение}
 \newtheorem*{present}{Предложение}
 
-\setlength\parindent{0pt}
-\allowdisplaybreaks
-
-\counterwithin{equation}{section}
-
+% operators
 \DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Ker}{Ker}
@@ -146,10 +142,12 @@
 \DeclareMathOperator{\Fr}{Fr}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
-\DeclarePairedDelimiter\rb{(}{)}
-\DeclarePairedDelimiter\bb{[}{]}
-\DeclarePairedDelimiterX{\innprod}[2]{(}{)}{#1, #2}
 \DeclarePairedDelimiter\scp{\langle}{\rangle}
+
+\setlength\parindent{0pt}
+\allowdisplaybreaks
+
+\counterwithin{equation}{section}
 
 % graphics include
 \graphicspath{{../assets/}}
