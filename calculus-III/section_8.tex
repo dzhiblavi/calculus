@@ -64,6 +64,33 @@
         b]}{\norm{V(x)}} \cdot l(\gamma)$.
     \end{itemize}
 \end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[3.]
+\begin{align*}
+    I(V, \gamma) &= \int_a^b{\scp{V(\gamma(t)), \gamma'(t)}} \underset{t = \f(s)}{=}
+    \int_p^q{\scp{V(\gamma(\f(s))), \gamma'(\f(s))} \f'(s) ~ds} \\ &=
+    \int_p^q{\scp{V((\gamma \circ \f)(s)), (\gamma \circ \f)'(s)} ~ds} = I(V, \gamma \circ \f)
+\end{align*}
+        Поскольку любые две параметризации гладкого многообразия отличаются
+        на диффеоморфизм, интеграл зависит только от носителя пути.
+
+        \item[5.]
+\begin{align*}
+    I(V, \gamma^{-1}) &= \int_a^b{\scp{V(\gamma(a + b - t)), \gamma'(a + b - t)}
+    \cdot (-1) ~dt} \\
+    &\underset{\tau = a + b - t}{=} \int_a^b{\scp{V(\gamma(\tau)), \gamma'(\tau)} ~d\tau}
+    = I(V, \gamma)
+\end{align*}
+        \item[6.]
+\[
+    \left|I(V, \gamma)\right| \leqslant \int_a^b{\left|\scp{V(\gamma), \gamma'}\right|}
+    \leqslant \int_a^b{\norm{V(\gamma)} \cdot \norm{\gamma'}} \leqslant
+    \max_{\gamma}{\norm{V(\gamma)}} \cdot \int_a^b{\norm{\gamma'}}
+\]
+    \end{itemize}
+\end{proof}
 
 \section{Потенциальные векторные поля}
 
@@ -74,10 +101,10 @@
     f$.
 \end{definition}
 
-\begin{lemma}
+\begin{remark}
     Пусть $f_1$, $f_2$ --- отображения из определения потенциальности поля $V$.
     Тогда $f_1 - f_2 = c \in \R$.
-\end{lemma}
+\end{remark}
 
 \begin{theorem}(Обобщенная формула Ньютона-Лейбница)
 
@@ -88,6 +115,19 @@
     I(V, \gamma) = f(B) - f(A)
 \]
 \end{theorem}
+\begin{proof}
+    Докажем теорему для гладкого (не кусочно) пути. Тогда кусочно-гладкий путь
+    разобъем на гладкие пути и посчитаем интеграл как сумму интегралов по этим
+    путям. Сумма будет телескопической, получится заявленная формула.
+
+    Пусть $\f(t) = f(\gamma(t))$. Тогда
+\[
+    \f'(t) = f'(\gamma(t)) \cdot \gamma'(t) = V(\gamma(t)) \cdot \gamma'(t) =
+    \scp{V(\gamma(t)), \gamma'(t)}
+\]
+    То есть $\f$ --- первообразная подынтегрального выражения. Тогда работает
+    обычная формула Ньютона-Лейбница.
+\end{proof}
 
 \begin{definition}
     Интеграл векторного поля \textit{не зависит от пути} в $\Od$, если $\forall A, B~
@@ -95,15 +135,88 @@
     = I(V, \gamma_2)$.
 \end{definition}
 
+\begin{lemma}
+    Пусть $\Od$ --- область, $A \in \Od$, тогда $\forall \x \in \Od~ \exists
+    \gamma_\x \colon A \rightsquigarrow \x$ --- кусочно-гладкий.
+\end{lemma}
+\begin{proof}
+    Пусть $M_A = \{\, \x \in \Od \mid \exists \gamma_\x \,\}$, где $\gamma_\x$
+    --- путь из формулировки. Тогда $M_A$ открыто. Действительно, пусть
+    $\x \in \Od\colon \exists \gamma_\x$. Тогда, поскольку $\Od$ открыто,
+    $\exists U(\x) \subseteq \Od$. Но тогда $\forall \y \in U(\x)~ \exists \gamma_\y$,
+    получаемый произведением пути $\gamma_\x$ и прямого пути из $\x$ в $\y$.
+
+    Рассмотрим теперь множество $\Od \setminus M_A$: оно тоже открыто, так как
+    если до точки $\x$ нет пути, то и до ближайших точек его тоже нет, иначе можно
+    было бы достроить путь и до $\x$.
+
+    Получается, мы разбили $\Od$ на два открытых непересекающихся множества.
+    Поскольку $\Od$ связно, одно из них должно оказаться пустым. $M_A$ не пустое,
+    потому что совершенно очевидно, что $A \in M_A$. Поэтому $M_A = \Od$,
+    что и требовалось.
+\end{proof}
+
 \begin{theorem}(Характеризация потенциальных векторных полей в терминах интегралов)
 
-    $V \colon \Od \to \Rm$. эквивалентны утверждения:
+    $V \colon \Od \to \Rm$, $\Od$ --- область в $\Rm$. Эквивалентны утверждения:
     \begin{itemize}
-        \item $V$ --- потенциальное
-        \item $I(V, \gamma)$ не зависит от пути
-        \item $\forall$ кусочно-гладкой петли $\gamma~ I(V, \gamma) = 0$
+        \item[1.] $V$ --- потенциальное
+        \item[2.] $I(V, \gamma)$ не зависит от пути
+        \item[3.] $\forall$ кусочно-гладкой петли $\gamma~ I(V, \gamma) = 0$
     \end{itemize}
 \end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[1 $\Lra$ 2] см. обобщенную теорему Ньютона-Лейбница.
+        \item[2 $\Lra$ 3] Пусть $A$ --- точка на петле $\gamma_0$ и $\gamma$ ---
+        постоянный путь в точке $A$. Тогда
+\[
+    I(V, \gamma_0) \overset{(2)}{=} I(V, \gamma) = 0
+\]
+        \item[3 $\Lra$ 2] Пусть $\gamma_1$, $\gamma_2$ --- пути из $A$ в $B$.
+        Тогда рассмотрим кусочно-гладкую петлю \\ $\gamma_0 = \gamma_1 \gamma_2^{-1}$.
+        Имеем:
+\[
+    0 = I(V, \gamma_0) = I(V, \gamma_1 \gamma_2^{-1}) = I(V, \gamma_1) + I(V, \gamma_2^{-1})
+    = I(V, \gamma_1) - I(V, \gamma_2)
+\]
+        \item[2 $\Lra$ 1] Построим потанциал. Зафиксируем точку $A \in \Od$. Для
+        каждой точки $\x \in \Od$ зафиксируем кусочно-гладкий путь $\gamma_{\x} \colon
+        A \rightsquigarrow \x$ (см. лемму). Проверим, что $f(\x) = I(V, \gamma_{\x})$
+        --- потанциал $V$. Для этого докажем, что $f'_{\x_1}(\x) = V_1(\x)$ (число
+        $1$ здесь не играет никакой роли). Рассмотрим путь $\gamma_0 \colon
+        t \mapsto \x + t h \elu_1$ для $t \in [0, 1]$, где $\elu_1$ --- стандартный
+        базисный вектор. Тогда путь $\gamma_\x \gamma_0 \colon A \rightsquigarrow
+        \x + h \elu_1$ --- тоже кусочно-гладкий. Из аддитивности интеграла по пути
+        имеем:
+\[
+    f(\x + h \elu_1) - f(\x) = I(V, \gamma_\x \gamma_0) - I(V, \gamma_\x) = I(V, \gamma_0)
+\]
+        Здесь мы воспользовались (2) в первом переходе, позволив себе считать \\
+        $f(\x + h \elu_1)$ не через $\gamma_{\x + h \elu_1}$, а через $\gamma_\x \gamma_0$.
+        Далее
+\begin{align*}
+    I(V, \gamma_0) &= \int_0^1{\sum_{i = 1}^{m}{V_i ~d\x_i}}
+    \underset{\substack{d\x_1 = hdt \\ d\x_i = 0, i \geqslant 2}}{=}
+    \int_0^1{V_1(\x_1 + t h, \x_2, \ldots, \x_m) h ~dt}\\
+    &= V_1(\x_1 + \theta h, \x_2, \ldots, \x_m) h \cdot |1 - 0|
+\end{align*}
+        Тогда
+\[
+    \frac{f(\x + h\elu_1) - f(\x)}{h} = V_1(\x_1 + \theta h, \x_2, \ldots, \x_m)
+    \xrightarrow[h \to 0]{\text{непрер.}} V_1(\x_1, \ldots, \x_m)
+\]
+    \end{itemize}
+\end{proof}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \incfig{cpotential}
+    \caption{Теорема о характеризации потенциальных векторных полей}
+\end{figure}
 
 \section{Локально потенциальные векторные поля}
 
