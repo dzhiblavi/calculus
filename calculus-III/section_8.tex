@@ -221,16 +221,41 @@
 \section{Локально потенциальные векторные поля}
 
 \begin{lemma}
-    $V \colon \Od \to \Rm$ --- гладкое потенциальное векторное поле. Тогда\\
+    $V \colon \Od \to \Rm$ --- гладкое потенциальное векторное поле. Тогда \\
     $\forall \x \in \Od~ \forall k, j~~
     \pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x)$
 \end{lemma}
+\begin{definition}
+    Пользуемся теоремой о независимотсти частных производных от порядка дифференцирования:
+\[
+    \pderv{V_k}{\x_j} = \pderv{f}{\x_k \x_j} = \pderv{f}{\x_j \x_k} =
+    \pderv{V_j}{\k_k}
+\]
+\end{definition}
 
 \begin{theorem}(Лемма Пуанкаре)
 
     Пусть $\Od \subseteq \Rm$ --- выпуклая область, $V \colon \Od \to \Rm \in C^1$,
     $\pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x)$, тогда $V$ потенциально.
 \end{theorem}
+\begin{proof}
+     Зафиксируем точку $A \in \Od$. Положим
+\begin{align*}
+    \gamma_\x \colon [0, 1] \to \Rm \\
+    t \mapsto A + t(\x - A) \in \Od
+\end{align*}
+    Проверим, что $f(\x) = I(V, \gamma_\x)$ --- потанциал $V$. Поскольку
+    $V \in C^1$, можно использовать правило Лейбница:
+\begin{align*}
+    f(\x) &= \int_0^1{\sum_{i = 1}^{m}{V_i(A + t(\x - A)) \cdot (\x_i - A_i) ~dt}} \\
+    \pderv{f}{\x_j}(\x) &= \int_0^1{\left(V_j(A + t(\x - A)) \cdot 1 + \sum_{i = 1}^{m}
+    {\pderv{V_i}{\x_j}{(A + t(\x - A)) \cdot t} \cdot (\x_i - A_i)}\right)~dt} \\
+    &= \int_0^1{\left(V_j(A + t(\x - A)) \cdot 1 + \sum_{i = 1}^{m}
+    {\pderv{V_j}{\x_i}{(A + t(\x - A)) \cdot t} \cdot (\x_i - A_i)}\right)~dt} \\
+    &= \int_0^1{\left( t \cdot V_j(A + t(\x - A)) \right)'_t}
+    = t \cdot V_j(A + t(\x - A))\bigg|_0^1 = V_j(\x)
+\end{align*}
+\end{proof}
 
 \begin{definition}
     Поле $V \colon \Od \to \Rm$ называется \textit{локально потенциальным}, если
@@ -247,15 +272,55 @@
 
 \begin{lemma}(О гусенице)
 
-    Пусть $\Od \subseteq \Rm$ --- область, для всех $x$ задана окрестность $U(x)$,
+    Пусть $\Od \subseteq \Rm$ --- область, для всех $\x$ задана окрестность $U(\x)$,
     $\gamma \colon [a, b] \to \Od \in C(\Od)$, тогда существует такое дробление
-    пути $a = t_0 < t_1 < \ldots < t_n = b$ и такие шары $B_k = B_k(x_k, r_k)
-    \subseteq U(x_k)$, что $\forall k~ \im{\gamma\big|_{[t_k - 1, t_k]}} \subseteq
+    пути $a = t_0 < t_1 < \ldots < t_n = b$ и такие шары $B_k = B_k(\x_k, r_k)
+    \subseteq U(\x_k)$, что $\forall k~ \im{\gamma\big|_{[t_k - 1, t_k]}} \subseteq
     B_k$.
 \end{lemma}
+\begin{proof}
+    Зафиксируем за каждой точкой $c \in [a, b]$ шар $B_c = B(\gamma(c), r_c)$ такой,
+    чтобы $B_c \subseteq U(\gamma(c))$. Теперь вычислим для всех точек величины:
+\begin{align*}
+    \widetilde{\a}_c &= \inf_{\a \in [a, b]}{\{\,\a \mid \im{\gamma\big|_{[\a, c]}}
+            \subseteq B_c\,\}} \\
+    \widetilde{\b}_c &= \inf_{\b \in [a, b]}{\{\,\b \mid \im{\gamma\big|_{[c, \b]}}
+            \subseteq B_c\,\}}
+\end{align*}
+    Далее сузим $(\widetilde{\a}_c, \widetilde{\b}_c)$:
+\[
+    \widetilde{\a}_c < \a_c < c < \b_c < \widetilde{\b}_c
+\]
+    Теперь $\forall c~ \im{\gamma\big|_{(\a_c, \b_c)}} \subseteq B_c$. Кроме того:
+\[
+    [a, b] \subseteq \bigcup_{c \in [a, b]}{(\a_c, \b_c)} \Lra
+    \exists c_i\colon~ [a, b] \subseteq \bigcup_{i = 1}^{n}{(\a_{c_i}, \b_{c_i})}
+\]
+    Далее для краткости вместо $c_i$ будет использоваться просто $i$.
+    Уберем из покрытия множества, которые можно покрыть другими множествами
+    (это можно следать, поскольку покрытие конечное). Теперь на каждом
+    интервале $(\a_i, \b_i)$ есть точка $\d_i$, не принадлежащая ни одному
+    интервалу, кроме $i$-го. Выберем $t_1$ так, чтобы оно лежало сразу в 1 и
+    2 множествах. Тогда
+    $a = t_0 < d_1 < t_1$, и
+\[
+    d_1 \in [t_0, t_1] \subseteq (\a_1, \b_1)
+    \Lra \im{\gamma\big|_{[t_0, t_1]}} \subseteq B_1
+\]
+    Продолжая аналогичный процесс далее, получаем нужное дробление пути.
+\end{proof}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \incfig{caterpillar}
+    \caption{Теорема о гусенице}
+\end{figure}
 
 \begin{definition}
-    Объект из последней теоремы будем называть $V$-гусеницей.
+    Объект из последней теоремы, для которого окрестности $U(\x)$ соответствуют
+    окрестностям, на которых $V$ локально потенциально, будем называть $V$-гусеницей.
 \end{definition}
 
 \begin{definition}
@@ -270,6 +335,35 @@
     похожие кусочно-гладкие пути, $\gamma_1(a) = \gamma_2(a)$,
     $\gamma_1(b) = \gamma_2(b)$, тогда $I(V, \gamma_1) = I(V, \gamma_2)$.
 \end{lemma}
+\begin{proof}
+    Пусть $\Gamma$ --- общая $V$-гусеница путей, $f_k$ потенциал в $B_k$.
+    Подгоняя константы, следаем потенциалы одинаковыми на стыках шаров:
+\[
+    f_k = f_{k + 1} \text{ на } B_k \cap B_{k + 1}
+\]
+    Теперь посчитаем ингеграл по $\gamma_1$:
+\begin{align*}
+    I(V, \gamma_1) = \sum_{k = 1}^{n}{I\left(V, \gamma\big|_{[t_{k - 1}, t_k]}\right)}
+    = \sum_{k = 1}^{n}{f_k(\gamma(t_k)) - f_{k - 1}(\gamma(t_{k - 1}))}
+    = f_n(\gamma(b)) - f_0(\gamma(a))
+\end{align*}
+    Аналогично вычисляем второй интеграл: получится такая же формула.
+\end{proof}
+
+\begin{lemma}
+    Пусть $B$ открыто, $A \subseteq B$ --- компакт. Тогда $\exists \delta > 0\colon
+    ~ U(A, \delta) \subseteq B$, где $U(A, \delta) \defeq \{\, x \mid \r(x, A) < \delta \,\}$
+\end{lemma}
+\begin{proof}
+    Пусть
+\[
+    r = \dist(A, \Fr(B)) = \inf_{\substack{a \in A \\ b \in \Fr(B)}}{\r(a, b)}
+\]
+    Инфимум реализуется, так как $\dist$ вычисляется на прямом произведении
+    компактов (т.е. на компакте). Поэтому $r > 0$ (иначе $A$ зашло бы на границу
+    $B$, чего быть не может, т.к. $A \subseteq B$ и $B$ открыто). Выберем
+    $\displaystyle \delta = \frac{r}{2}$.
+\end{proof}
 
 \begin{lemma}
 
@@ -279,6 +373,15 @@
     $|\gamma(t) - \gamma_2(t)| < \delta$, тогда $\gamma, \gamma_1, \gamma_2$ похожи
     друг на друга.
 \end{lemma}
+\begin{proof}
+    Множества $\gamma([t_{k - 1}, t_k])$ компакты, $B_k$ открыты, поэтому
+\[
+    \forall k~\exists \delta_k\colon~ U(\gamma([t_{k - 1}, t_k]), \delta_k) \subseteq B_k
+\]
+    Выберем тогда $\delta = \min{\delta_k}$. В таком случае все три пути
+    окажутся в $\delta$-окрестности по условию, то есть будут заключены в
+    шары $B_k$.
+\end{proof}
 
 \begin{definition}(Интеграл локально потенциального поля по непрерывному пути)
 

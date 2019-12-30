@@ -166,15 +166,14 @@
 \begin{lemma}(Об условиях, эквивалентных обратимости оператора)
 
     $\cA \in L(\Rm, \Rm)$ обратим $\Llra \exists c>0~ \forall \x~ \norm{\cA \x}
-    \geqslant с\norm{\x}$, причем $\displaystyle \norm{\cA^{-1}} \leqslant
+    \geqslant c\norm{\x}$, причем $\displaystyle \norm{\cA^{-1}} \leqslant
     \frac{1}{c}$
 \end{lemma}
 \begin{proof}
-    $\displaystyle \norm{\cA \x} \geqslant c\norm{\x} \Llra \Ker(\cA) = 0 \Llra
-    \cA$ обратим.
-
-    $\displaystyle \norm{\cA \x} \geqslant c\norm{\x} \Llra \norm{\y} \geqslant
-    c\norm{\cA^{-1} \y} \Llra \norm{\cA^{-1} \y} \leqslant \frac{1}{c}\norm{\y}$
+\[
+    \norm{\cA^{-1} \y} \leqslant \norm{\cA^{-1}} \norm{\y} \Lra \norm{\y} =
+    \norm{\cA \x} \geqslant \frac{1}{\norm{\cA^{-1}}} \norm{\x}
+\]
 \end{proof}
 
 \begin{theorem}(Об обратимости оператора, близкого к обратимому)
