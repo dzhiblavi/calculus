@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="50mm"
+   viewBox="0 0 210 50"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="cpath.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="ExperimentalArrow"
+       orient="auto-start-reverse"
+       refY="3.0"
+       refX="5.0"
+       id="ExperimentalArrow"
+       inkscape:isstock="true">
+      <path
+         id="path1221"
+         d="m 10,3 -10,3 0,-6 z"
+         style="fill:context-stroke;stroke:#000000;stroke-opacity:1" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInS"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleInS"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1107"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(-0.2)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.7638462"
+     inkscape:cx="333.48546"
+     inkscape:cy="58.007119"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2880"
+     inkscape:window-height="1672"
+     inkscape:window-x="0"
+     inkscape:window-y="54"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-247)">
+    <circle
+       style="fill:#001a1a;fill-opacity:1;stroke:#000000;stroke-width:0.0915515;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.98275865;paint-order:markers fill stroke"
+       id="path815"
+       cx="71.033775"
+       cy="290.98685"
+       r="0.86463869" />
+    <circle
+       style="fill:#001a1a;fill-opacity:1;stroke:#000000;stroke-width:0.0915515;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.98275865;paint-order:markers fill stroke"
+       id="path815-3"
+       cx="149.7159"
+       cy="248.80161"
+       r="0.86463869" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583558px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="74.046082"
+       y="295.01367"
+       id="text834"><tspan
+         sodipodi:role="line"
+         id="tspan832"
+         x="74.046082"
+         y="295.01367"
+         style="stroke-width:0.06139589">$\gamma(t_{i - 1})$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="152.74648"
+       y="254.35971"
+       id="text834-6"><tspan
+         sodipodi:role="line"
+         id="tspan832-7"
+         x="152.74648"
+         y="254.35971"
+         style="stroke-width:0.06139589">$\gamma(t_{i})$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.24223px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 70.988271,291.12339 c 0,0 -15.318296,-33.70161 5.768226,-21.52731 21.086519,12.17432 64.398213,44.74403 45.623173,12.22469 -18.77506,-32.51935 -17.46553,-35.78773 0,-31.10785 17.46551,4.67986 27.24521,-1.8203 27.24521,-1.8203"
+       id="path856"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="71.834503"
+       y="264.82639"
+       id="text834-5"><tspan
+         sodipodi:role="line"
+         id="tspan832-3"
+         x="71.834503"
+         y="264.82639"
+         style="stroke-width:0.06139589">$\gamma$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1.05999995,1.05999995;stroke-dashoffset:0"
+       d="M 70.988271,291.12339 149.62488,248.89262"
+       id="path916"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="125.35887"
+       y="268.36407"
+       id="text834-5-5"><tspan
+         sodipodi:role="line"
+         id="tspan832-3-6"
+         x="125.35887"
+         y="268.36407"
+         style="stroke-width:0.06139589">$\widetilde{\gamma}$</tspan></text>
+    <circle
+       style="fill:#001a1a;fill-opacity:1;stroke:#000000;stroke-width:0.0915515;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.98275865;paint-order:markers fill stroke"
+       id="path815-3-2"
+       cx="106.77962"
+       cy="271.83405"
+       r="0.86463869" />
+    <circle
+       style="fill:#001a1a;fill-opacity:1;stroke:#000000;stroke-width:0.0915515;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.98275865;paint-order:markers fill stroke"
+       id="path815-3-9"
+       cx="126.39221"
+       cy="295.24261"
+       r="0.86463869" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.10098547;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ExperimentalArrow);marker-end:url(#ExperimentalArrow)"
+       d="m 107.6369,272.84418 17.86649,21.29833"
+       id="path966"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="101.88"
+       y="267.6611"
+       id="text834-5-1"><tspan
+         sodipodi:role="line"
+         id="tspan832-3-2"
+         x="101.88"
+         y="267.6611"
+         style="stroke-width:0.06139589">$\widetilde{\gamma}(t)$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.45583582px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.06139589"
+       x="129.18971"
+       y="296.0607"
+       id="text834-5-1-7"><tspan
+         sodipodi:role="line"
+         id="tspan832-3-2-0"
+         x="129.18971"
+         y="296.0607"
+         style="stroke-width:0.06139589">$\gamma(t)$</tspan></text>
+  </g>
+</svg>

@@ -365,7 +365,7 @@
     $\displaystyle \delta = \frac{r}{2}$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} (О трёх путях)
 
     $C([a, b]) \ni \gamma \colon [a, b] \to \Od \subseteq \Rm$, $\Od$ --- область,
     тогда $\exists \delta > 0\colon~ \\ \text{Если } \gamma_1, \gamma_2 \colon [a,
@@ -389,6 +389,37 @@
     удовлетворяющий предыдущей лемме. тогда положим $I(V, \gamma) = I(V, \gamma')$
 \end{definition}
 
+\begin{lemma}(О корректности определения интеграла по непрерывному пути)
+
+\end{lemma}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Если таких путей $\gamma'$ найдется несколько, то интегралы по
+        ним совпадут по лемме об интегралах по похожим путям.
+        \item Такой путь $\gamma'$ всегда найдется. Для доказательства
+        предъявим такой путь. Из соображений равномерной непрерывности,
+\[
+        \delta > 0 \Lra \exists \a > 0\colon~ \forall t, t' \colon |t - t'| < \a~~
+        \norm{\gamma(t) - \gamma(t')} < \frac{\delta}{2}
+\]
+        Тогда разобъём $[a, b]$ на отрезки длины $\a$ и построим кусочно-линейный
+        путь $\widetilde{\gamma}$; проверим условие похожести:
+\begin{align*}
+    \norm{\gamma(t) - \widetilde{\gamma}(t)} &\leqslant
+    \norm{\gamma(t) - \gamma(t_{i - 1})} + \norm{\gamma(t_{i - 1}) - \widetilde{\gamma}(t)} \\
+    &\leqslant \norm{\gamma(t) - \gamma(t_{i - 1})} + \norm{\gamma(t_{i}) -
+    \gamma(t_{i - 1})}
+    \leqslant \delta
+\end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{cpath}
+    \caption{Лемма о корректности определения интеграла по непрерывному пути}
+\end{figure}
 
 \section{Гомотопия}
 
@@ -405,15 +436,73 @@
 \end{definition}
 
 \begin{definition}
-    Гомотопия называется \textit{петельной}, если $\forall u \in [0, 1]~
+    Гомотопия называется \textit{петельной}, если $\forall u \in [0, 1]~~
     \Gamma(a, u) = \Gamma(b, u)$.
 \end{definition}
+
+\begin{lemma}
+    Локально постоянное отображение связного компакта постоянно на нём.
+\end{lemma}
+\begin{proof}
+    \textit{(нестрогое)} \\
+    Выберем конечное покрытие $K$ окрестностями, на которых $f \colon K \to X$
+    постоянно. Вручную установим равенство $f$ на стыках окрестностей (их
+    конченое число), а значит автоматически и на объединении окрестностей из
+    одной компоненты связности. Поскольку $K$ связно, компонента одна, а
+    значит $f$ постоянно.
+\end{proof}
 
 \begin{theorem}(Интегралы по связанно гомотопным путям)
 
     $V$ --- локально потенциальное поле, $\gamma_0$, $\gamma_1$ --- связянно
     гомотопные пути. Тогда $I(V, \gamma_0) = I(V, \gamma_1)$.
 \end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $\Gamma$ --- гомотопия путей $\gamma_0$ и $\gamma_1$.
+        Введем отображение $\f(u) = I(V, \gamma_u)$. Наша цель --- показать,
+        что $\f$ локально постоянно на $[0, 1]$, или, что то же самое:
+\[
+    \forall u_0 \in [0, 1]~ \exists U(u_0)\colon \forall u \in U(u_0) \cap [0, 1]~~
+    \f(u_0) = \f(u)
+\]
+        В таком случае по предыдущей
+        лемме оно окажется постоянным на $[0, 1]$, что и докажет утверждение
+        теоремы.
+        \item Пусть $\delta$ взято из леммы о трёх путях. $\Gamma$ непрерывно на
+        компакте, поэтому равномерно непрерывно на нем:
+\[
+    \exists \sigma > 0\colon~ \forall u, t \colon \begin{cases}
+                                                    |u - u_0| < \sigma \\
+                                                    |t - t_0| < \sigma
+                                                  \end{cases}~~
+    \norm{\Gamma(t, u) - \Gamma(t_0, u_0)} < \frac{\delta}{2}
+\]
+        Поэтому, в частности,
+\[
+    \norm{\gamma_u(t) - \gamma_{u_0}(t)} < \frac{\delta}{2}
+\]
+        то есть пути $\gamma_u$ и $\gamma_{u_0}$ похожи. Но они не кусочно-гладкие,
+        поэтому похожести недостаточно.
+        \item Придется искать похожие пути. Пользуясь технологией из доказательства
+        леммы о корректности определения интеграла по непрерывному пути,
+        построим пути $\widetilde{\gamma}_u$ и $\widetilde{\gamma}_{u_0}$
+        так, чтобы они попадали в $\frac{\delta}{4}$-окрестность путей
+        $\gamma_u$ и $\gamma_{u_0}$ соответственно. Тогда
+\[
+    \norm{\widetilde{\gamma}_u - \widetilde{\gamma}_{u_0}} \leqslant
+    \norm{\widetilde{\gamma}_u - \gamma_u} + \norm{\gamma_u - \gamma_{u_0}}
+    + \norm{\gamma_{u_0} - \widetilde{\gamma}_{u_0}} \leqslant \delta
+\]
+        То есть пути $\widetilde{\gamma}_u$ и $\widetilde{\gamma}_{u_0}$
+        похожи. Но они кусочно-гдадкие, поэтому получается, что:
+\[
+    I(V, \gamma_u) \defeq I(V, \widetilde{\gamma}_u)
+    \overset{\text{похож. к.-г.}}{=} I(V, \widetilde{\gamma}_{u_0}) \defeq I(V, \gamma_{u_0})
+\]
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
     Область называется \textit{односвязной} если любой замкнутый путь в ней
@@ -425,8 +514,36 @@
     Пусть $\Od$ --- односвязная область в $\Rm$, $V$ --- локально потенциальное
     векторное поле в $\Od$, тогда $V$ потенциально в $\Od$.
 \end{theorem}
+\begin{proof}
+    Область односвязная, значит любая петля в ней гомотопна постоянному пути, то есть
+    интеграл по любой петле равен нулю. Это --- критерий потенциальности поля.
+\end{proof}
 
 \begin{corollary}(Теорема Пуанкаре для односвязной области)
 
-    $\pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x) \Lra$ поле потенциально.
+    $\Od$ --- односвязная область, $V \in C^1$, $\pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x)$,
+    тогда $V$ потенциально.
 \end{corollary}
+
+\begin{theorem}(О резиночке)
+    Область $\Od = \R^2 \setminus \elemvec{0}$ не является односвязной.
+\end{theorem}
+\begin{proof}
+    \textit{Рассмотрим петлю}:
+\begin{align*}
+    \gamma \colon [0, 2\pi] &\to \Od \\
+    t &\mapsto (\cos(t), \sin(t))
+\end{align*}
+    И векторное поле $V \colon \Od \to \R^2$:
+\[
+    V(x, y) = \left( \frac{-y}{x^2 + y^2}, \frac{x}{x^2 + y^2} \right)
+\]
+    Непосредственной проверкой убеждаемся \textit{(нет)} что $\pderv{V_k}{\x_j}(\x) =
+    \pderv{V_j}{\x_k}(\x)$. Отсюда делаем вывод, что $V$ --- локально-потенциально
+    (теорема Пуанкаре). Проинтегрируем по петле:
+\[
+    I(V, \gamma) = \int_0^{2\pi}{\left(\frac{-\sin(t)}{1} \cdot (-\sin(t)) +
+    \frac{\cos(t)}{1} \cdot \cos(t) \right) ~dt} = 2\pi \neq 0
+\]
+    Значит, $\gamma$ --- нестягиваемая петля.
+\end{proof}
