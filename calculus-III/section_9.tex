@@ -45,6 +45,9 @@
         \item[2.] $A \cap B = A \setminus (A \setminus B) \in \cA$
         \item[3.] $\overline{A} = X \setminus A \in \cA$
         \item[4.] $A \cup B \in \cA$
+\[
+        X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)
+\]
         \item[5.] $\displaystyle A_1, \ldots A_n \in \cA \Lra \bigcup_{i = 1}^{n}{A_i} \in
         \cA$, $\displaystyle \bigcap_{i = 1}^{n}{A_i} \in \cA$
         \item[6.] Алгебра подмножеств является полукольцом подмножеств
@@ -56,6 +59,30 @@
     подмножеств $\cA$, удовлетворяющая дополнительной аксиоме: \\
     $\displaystyle \{\,A_n\,\} \in \cA \Lra \bigcup_{n = 1}^{+\infty}{A_n} \in \cA$.
 \end{definition}
+
+\begin{lemma}(О нарезке)
+
+    Пусть $A_0, A_1, \ldots, A_n \subseteq X$. Тогда набор множеств
+\[
+    B_1 = A_1,~ B_2 = A_2 \setminus A_1, \ldots, B_k = A_k \setminus 
+        \left (\bigcup_{i = 1}^{k - 1}{A_i} \right), \ldots
+\]
+    дизъюнктен, причем 
+\[
+    \bigsqcup_{i = 1}^{n}{B_i} = \bigcup_{i = 1}^{n}{A_i}
+\]
+\end{lemma}
+
+\begin{lemma}(О минимальной алгебре)
+	
+    Пусть $\PP$ --- полукольцо. Положим $\cA_0$ --- система подмножеств, 
+    состоящая из всевозможных конечных объединений множеств из $\PP$, а так
+    же из их дополнений. Тогда
+    \begin{itemize}
+        \item $\cA_0$ --- алгебра подмножеств.
+        \item Для любой алгебры $\cA \supseteq \PP$ верно, что $\cA \supseteq \cA_0$
+    \end{itemize}
+\end{lemma}
 
 \section{Объём}
 
@@ -90,8 +117,15 @@
 \end{definition}
 
 \begin{lemma}(Монотонность объёма)
+
     Для объёма $\mu,$ $A, B \in \PP$, $A \subseteq B$ выполено $\mu(A) \leqslant \mu(B)$.
 \end{lemma}
+\begin{proof}
+\[
+    B = A + B \setminus A = A + \bigsqcup{D_i} \Lra \mu(B) = \mu(A) + \sum{\mu(D_i)} 
+    \geqslant \mu(A)
+\]
+\end{proof}
 
 \begin{theorem}(Свойства объёма)
     \begin{itemize}
@@ -101,8 +135,63 @@
         \item[2.] $\displaystyle \forall A, A_1 \ldots, A_n \in \PP
         \colon~ A \subseteq \bigcup_{i = 1}^{n}{A_i} \Lra
         \mu(A) \leqslant \sum_{i = 1}^{n}{\mu(A_i)}$ \\ (конечная полуаддитивность)
+        \item[3.] $A, B, A \setminus B \in \PP \Lra \mu(A \setminus B) \geqslant 
+                \mu(A) - \mu(B)$
     \end{itemize}
-\end{theorem}
+\end{theorem}   
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[1.] 
+\begin{align*}
+    &A \setminus \bigsqcup_{i = 1}^{n}{A_i} = \bigsqcup_{i = 1}^{k}{D_i} \Lra A 
+    = \left(\bigsqcup_{i = 1}^{n}{A_i}\right) \sqcup \left(\bigsqcup_{i = 1}^{k}{D_i}\right) \\
+    &\Lra \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)}) + \sum_{i = 1}^{k}{\mu(D_i)} \geqslant 
+    \sum_{i = 1}^{n}{\mu(A_i)}
+\end{align*}                
+        \item[2.] Сейчас будет использован стандартный прием, смысл которого заключается в 
+                переходе от простого объединения к дизъюнктному. Пусть $B_k = A \cap A_k$. 
+                Тогда $A = \bigcup{B_k}$. Теперь \textit{нарежем $B_k$}: 
+\[
+    C_k = B_k \setminus \bigcup_{i = 1}^{k - 1}{B_i}
+\] 
+    При $k > 1$ и $C_1 = B_1$. Набор $C_k$ получился дизъюнктным:
+\[
+    A = \bigsqcup_{i = 1}^{n}{C_i}
+\]	
+	Сами множетсва $C_k$ могут и не быть в $\PP$, но $B_k \in \PP$ как пересечения 
+	множеств из $\PP$. Из определения $C_k$ имеем, что,
+\[
+	C_k = \bigsqcup_{i = 1}^{j_k}{D_{ki}}
+\]
+	Тогда можно вычислить объём $A$:
+\[
+	\mu(A) = \sum_{k, i}{\mu(D_{ki})}
+\]
+	Теперь воспользуемся монотонностью объёма: $C_k \subseteq B_k \subseteq A_k$:
+\[
+	\sum_{j}{D_{kj}} \leqslant \mu(B_k) \leqslant \mu(A_k)
+\]
+	Поэтому
+\[
+	\mu(A) = \sum_{k}{\sum_{j}{D_{kj}}} \leqslant \sum_{k}{\mu(A_k)}
+\]
+		\item[3.] 
+				\enewline
+				\begin{itemize}
+					\item[(a)]
+\[
+	B \subseteq A \Lra \mu(A) = \mu(A \setminus B) + \mu(B) \Lra \mu(A \setminus B) 
+	= \mu(A) - \mu(B)
+\]
+					\item[(b)]
+\[
+	A \setminus B = A \setminus (A \cap B) \Lra \mu(A \setminus B) = \mu(A) - \mu(A \cap B)
+	\geqslant \mu(A) - \mu(B)
+\]							
+				\end{itemize}
+    \end{itemize}
+\end{proof}
 
 \section{Мера}
 
@@ -118,6 +207,20 @@
         \item[2.] $\mu$ счетно-полуаддитивен
     \end{itemize}
 \end{theorem}
+\begin{proof}
+	Импликация $1 \Lra 2$ доказывается практически так же, как второй 
+	пункт предыдущей теоремы (используется нарезка). Докажем $2 \Lra 1$.
+	Для этого воспользуемся усиленной монотонностью объёма ($A_i$ дизъюнктны):
+\[
+	\forall N~ \sum_{i = 1}^{N}{\mu(A_i)} \leqslant \mu(A)
+\]
+	Добавляя к этому посылку:
+\[
+	\forall N~ \sum_{i = 1}^{N}{\mu(A_i)} \leqslant \mu(A) \leqslant 
+	\sum_{i = 1}^{+\infty}{\mu(A_i)}
+\]
+	И переходя к пределу при $N \to +\infty$, получаем требуемое.
+\end{proof}
 
 \begin{theorem}
     Пусть $\cA$ --- алгебра, $\mu \colon \cA \to \Rbar$ --- объём. Тогда
@@ -130,19 +233,83 @@
         +\infty}{\mu(A_i)}$
     \end{itemize}
 \end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item [$1 \Lra 2$] Нарежем множетсва:
+\[
+	B_1 = A_1, \ldots, B_k = A_k \setminus \left(\bigcup_{i = 1}^{k - 1}{A_i}\right)
+\]
+	Как всегда, $B_k$ дизъюнктны, причем $A = \bigsqcup_{i = 1}^{+\infty}{B_k}$. 
+	Тогда, пользуясь счетной аддитивностью, имеем:
+\[
+	\mu(A) = \sum_{i = 1}^{+\infty}{\mu(B_i)} 
+	= \lim_{N \to +\infty}{\sum_{i = 1}^{N}{\mu(B_i)}} 
+	= \lim_{N \to +\infty}{\mu(A_k)}
+\]
+		\item [$2 \Lra 1$] Пусть есть дизъюнктные $A_k$. Сделаем из них $C_k$:
+\[
+	C_k = \bigsqcup_{i = 1}^{k}{A_i}
+\]
+		Тогда $C_1 \subseteq C_2 \subseteq \ldots$. Воспользуемся непрерывностью снизу:
+\[
+	\mu(A) = \mu(C) = \lim_{N \to +\infty}{\mu(C_k)} 
+	= \lim_{k \to +\infty}{\sum_{i = 1}^{k}{\mu(A_k)}}
+	= \sum_{k = 1}^{+\infty}{\mu(A_k)}
+\]
+	\end{itemize}
+\end{proof}
 
 \begin{theorem}
     Пусть $\cA$ --- алгебра, $\mu \colon \cA \to \Rbar$ --- \textbf{конечный} объём.
     Тогда эквивалентны утверждения:
     \begin{itemize}
         \item[1.] $\mu$ счетно-аддитивен
-        \item[2.] $\mu$ непрерывно снизу
-        \item[3.] $\mu$ \textit{непрерывно сверху}, то есть
-        $\displaystyle A,~A_1, A_2 \ldots~ \in \cA\colon A_1 \supset A_2 \supset \ldots$;
-        $\displaystyle A = \bigcap_{i = 1}^{+\infty}{A_i} \Lra \\ \mu(A) = \lim_{n \to
-        +\infty}{\mu(A_i)}$
+		\item[2.] $\mu$ \textit{непрерывно сверху}
+\[
+	A,~A_1, A_2 \ldots~ \in \cA\colon A_1 \supset A_2 \supset \ldots;~
+    \displaystyle A = \bigcap_{i = 1}^{+\infty}{A_i} \Lra \\ \mu(A) = \lim_{n \to
+    +\infty}{\mu(A_i)}
+\]
+        \item[3.] $\mu$ \textit{непрерывно сверху на пустом множестве}, то есть
+			при условии, что $A = \varnothing$.
     \end{itemize}
 \end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item [$1 \Lra 2$] Будем пользоваться непрерывностью снизу, но для этого
+			нужна подготовка:
+\[
+	B_1 = A_1 \setminus A, \ldots, B_k = A_1 \setminus A_k
+\]
+	Тогда $B_1 \subseteq B_2 \subseteq \ldots$; $B = \bigcup{B_k}$:
+\[
+	\mu(A_1) - \mu(A) = \mu(B) = \lim_{k \to +\infty}{\mu(B_k)}
+	= \lim_{k \to +\infty}{\mu(A_1)} - \lim_{k \to +\infty}{\mu(A_k)}
+\]
+	Откуда
+\[
+	\mu(A) = \lim_{k \to +\infty}{\mu(A_k)}
+\]
+		\item[$2 \Lra 3$] Очевидно.
+		\item[$3 \Lra 1$] Пусть $C_k$ дизъюнктны. Положим
+\[
+	A_k = \bigsqcup_{i = k+1}^{+\infty}{C_k}
+\]
+	Тогда $A_1 \supseteq A_2 \supseteq \ldots$; $A = \bigcap{A_k} = \varnothing$.
+	Вообще говоря, $A_k \notin \cA$. Но в нашем случае 
+\[
+	A_k = C \setminus \bigsqcup_{i = 1}^{k}{C_i} \in \cA
+\]
+	Далее надо как-то воспользоваться непрерывностью сверху:
+\[
+	C = A_k \sqcup \left(\bigsqcup_{i = 1}^{k}{C_k}\right)
+	\Lra \mu(C) = \mu(A_k) + \sum_{i = 1}^{k}{\mu(C_k)}
+\]
+	Переходя к пределу при $k \to +\infty$, получаем требуемое.
+	\end{itemize}
+\end{proof}
 
 \section{О стандартном продолжении меры}
 

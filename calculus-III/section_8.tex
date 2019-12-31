@@ -70,8 +70,7 @@
         \item[3.]
 \begin{align*}
     I(V, \gamma) &= \int_a^b{\scp{V(\gamma(t)), \gamma'(t)}} \underset{t = \f(s)}{=}
-    \int_p^q{\scp{V(\gamma(\f(s))), \gamma'(\f(s))} \f'(s) ~ds} \\ &=
-    \int_p^q{\scp{V((\gamma \circ \f)(s)), (\gamma \circ \f)'(s)} ~ds} = I(V, \gamma \circ \f)
+    \int_p^q{\scp{V(\gamma(\f(s))), \gamma'(\f(s))} \f'(s) ~ds} \\ &= \int_p^q{\scp{V((\gamma \circ \f)(s)), (\gamma \circ \f)'(s)} ~ds} = I(V, \gamma \circ \f)
 \end{align*}
         Поскольку любые две параметризации гладкого многообразия отличаются
         на диффеоморфизм, интеграл зависит только от носителя пути.
@@ -284,7 +283,7 @@
 \begin{align*}
     \widetilde{\a}_c &= \inf_{\a \in [a, b]}{\{\,\a \mid \im{\gamma\big|_{[\a, c]}}
             \subseteq B_c\,\}} \\
-    \widetilde{\b}_c &= \inf_{\b \in [a, b]}{\{\,\b \mid \im{\gamma\big|_{[c, \b]}}
+    \widetilde{\b}_c &= \sup_{\b \in [a, b]}{\{\,\b \mid \im{\gamma\big|_{[c, \b]}}
             \subseteq B_c\,\}}
 \end{align*}
     Далее сузим $(\widetilde{\a}_c, \widetilde{\b}_c)$:
@@ -447,7 +446,7 @@
     \textit{(нестрогое)} \\
     Выберем конечное покрытие $K$ окрестностями, на которых $f \colon K \to X$
     постоянно. Вручную установим равенство $f$ на стыках окрестностей (их
-    конченое число), а значит автоматически и на объединении окрестностей из
+    конечное число), а значит автоматически и на объединении окрестностей из
     одной компоненты связности. Поскольку $K$ связно, компонента одна, а
     значит $f$ постоянно.
 \end{proof}
