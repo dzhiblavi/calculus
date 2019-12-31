@@ -108,29 +108,29 @@
 \begin{proof}
     \begin{align*}
         g(f(\x + \h)) &= g(f(\x) + [\der{f}{\x}]\h + r(\h)) \\
-        &= \{\, \v = [\der{f}{\x}]\h + r(\h) \,\} \\
-        &= g(f(\x) + \v) = g(f(\x)) + [\der{g}{f(\x)}]\v + \widetilde{r}(\v) \\
+        &= \{\, \elv = [\der{f}{\x}]\h + r(\h) \,\} \\
+        &= g(f(\x) + \elv) = g(f(\x)) + [\der{g}{f(\x)}]\elv + \widetilde{r}(\elv) \\
         &= g(f(\x)) + [\der{g}{f(\x)}][\der{f}{\x}]\h + [\der{g}{f(\x)}]r(\h) +
-        \widetilde{r}(\v) \\
+        \widetilde{r}(\elv) \\
     \end{align*}
-    Осталось показать, что $[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v) =
+    Осталось показать, что $[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv) =
     o(\norm{\h})$.
 \[
-    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v)} \leqslant
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv)} \leqslant
     \norm{[\der{g}{f(\x)}]\frac{r(\h)}{\norm{r(\h)}}\norm{r(\h)}} +
-    \widetilde{\a}(\norm{\v})\norm{\v}
+    \widetilde{\a}(\norm{\elv})\norm{\elv}
 \]
     Обозначим $\w = \frac{r(\h)}{\norm{r(\h)}}$, причем $\norm{\w} = 1$.
     Из определения нормы оператора получаем
 \[
     \norm{[\der{g}{f(\x)}]\w} \leqslant \norm{\der{g}{f(\x)}}
 \]
-    Кроме того, $\norm{\v} \leqslant \norm{\der{f}{\x}}\h +
+    Кроме того, $\norm{\elv} \leqslant \norm{\der{f}{\x}}\h +
     \a(\norm{\h})\norm{\h}$. Окончательно получаем
 \[
-    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\v)} \leqslant
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv)} \leqslant
     \norm{\der{g}{f(\x)}}\norm{r(\h)} + \widetilde{\a}(\norm{\der{f}{\x}} \cdot
-    \norm{\h} + \a(\norm{\h}) \cdot \norm{\h})\norm{\v} \leqslant
+    \norm{\h} + \a(\norm{\h}) \cdot \norm{\h})\norm{\elv} \leqslant
     \b(\norm{\h})\norm{\h}
 \]
     Для некоторой $\b(t) \xrightarrow[t \to 0]{} 0$.

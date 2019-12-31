@@ -3,13 +3,13 @@
 \section{Системы множеств}
 
 \begin{definition}
-    \textit{Полукольцом подмножеств} множества $X$ называют $\PP \subseteq 2^X$,
+    \textit{Полукольцом подмножеств} множества $X$ называют $\cP \subseteq 2^X$,
     удовлетворяющее условиям
     \begin{itemize}
-        \item[1.] $\varnothing \in \PP$.
-        \item[2.] $A, B \in \PP \Lra A \cap B \in \PP$.
-        \item[3.] $\displaystyle \forall A, B \in \PP~ \exists B_1, \ldots,
-        B_k \in \PP\colon~ A \setminus B = \bigsqcup_{i = 1}^{k}{B_i}$.
+        \item[1.] $\varnothing \in \cP$.
+        \item[2.] $A, B \in \cP \Lra A \cap B \in \cP$.
+        \item[3.] $\displaystyle \forall A, B \in \cP~ \exists B_1, \ldots,
+        B_k \in \cP\colon~ A \setminus B = \bigsqcup_{i = 1}^{k}{B_i}$.
     \end{itemize}
 \end{definition}
 
@@ -22,10 +22,10 @@
 
 \begin{theorem}(Свойства полуколец)
     \begin{itemize}
-        \item[1.] $A \in \PP \nRightarrow \bar{A} \in \PP$
-        \item[2.] $A, A' \in \PP \nRightarrow A~@~A' \in \PP$, $@ \in
+        \item[1.] $A \in \cP \nRightarrow \bar{A} \in \cP$
+        \item[2.] $A, A' \in \cP \nRightarrow A~@~A' \in \cP$, $@ \in
         \{\, \cup, \setminus, \triangle \,\}$
-        \item[3.] $\displaystyle A_1, \ldots, A_n \in \PP \Lra A \setminus
+        \item[3.] $\displaystyle A_1, \ldots, A_n \in \cP \Lra A \setminus
         \left(\bigcup_{i = 1}^{n}{A_i}\right) = \bigsqcup_{fin}{D_j}$
     \end{itemize}
 \end{theorem}
@@ -64,42 +64,42 @@
 
     Пусть $A_0, A_1, \ldots, A_n \subseteq X$. Тогда набор множеств
 \[
-    B_1 = A_1,~ B_2 = A_2 \setminus A_1, \ldots, B_k = A_k \setminus 
+    B_1 = A_1,~ B_2 = A_2 \setminus A_1, \ldots, B_k = A_k \setminus
         \left (\bigcup_{i = 1}^{k - 1}{A_i} \right), \ldots
 \]
-    дизъюнктен, причем 
+    дизъюнктен, причем
 \[
     \bigsqcup_{i = 1}^{n}{B_i} = \bigcup_{i = 1}^{n}{A_i}
 \]
 \end{lemma}
 
 \begin{lemma}(О минимальной алгебре)
-	
-    Пусть $\PP$ --- полукольцо. Положим $\cA_0$ --- система подмножеств, 
-    состоящая из всевозможных конечных объединений множеств из $\PP$, а так
+
+    Пусть $\cP$ --- полукольцо. Положим $\cA_0$ --- система подмножеств,
+    состоящая из всевозможных конечных объединений множеств из $\cP$, а так
     же из их дополнений. Тогда
     \begin{itemize}
         \item $\cA_0$ --- алгебра подмножеств.
-        \item Для любой алгебры $\cA \supseteq \PP$ верно, что $\cA \supseteq \cA_0$
+        \item Для любой алгебры $\cA \supseteq \cP$ верно, что $\cA \supseteq \cA_0$
     \end{itemize}
 \end{lemma}
 
 \section{Объём}
 
 \begin{definition}
-    Пусть $\PP$ --- полукольцо, $\mu \colon \PP \to \Rbar$ называется
+    Пусть $\cP$ --- полукольцо, $\mu \colon \cP \to \Rbar$ называется
     \textit{конечно-аддитивной}, если
     \begin{itemize}
         \item[1.] $\mu$ принимает не более одного значения из $\{\,+\infty, -\infty\,\}$
         \item[2.] $\mu(\varnothing) = 0$
-        \item[3.] $A_1, \ldots, A_n \in \PP$, $A_i \cap A_{j \neq i} = \varnothing$,
-        тогда если оказалось, что $\displaystyle A = \bigsqcup_{i = 1}^{n}{A_i} \in \PP$,
+        \item[3.] $A_1, \ldots, A_n \in \cP$, $A_i \cap A_{j \neq i} = \varnothing$,
+        тогда если оказалось, что $\displaystyle A = \bigsqcup_{i = 1}^{n}{A_i} \in \cP$,
         то \\ $\displaystyle \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)}$
     \end{itemize}
 \end{definition}
 
 \begin{definition}
-    Пусть $\mu \colon \PP \to \Rbar$ называется \textit{объёмом}, если
+    Пусть $\mu \colon \cP \to \Rbar$ называется \textit{объёмом}, если
     \begin{itemize}
         \item[1.] $\mu$ конечно-аддитивна
         \item[2.] $\mu \geqslant 0$
@@ -118,49 +118,49 @@
 
 \begin{lemma}(Монотонность объёма)
 
-    Для объёма $\mu,$ $A, B \in \PP$, $A \subseteq B$ выполено $\mu(A) \leqslant \mu(B)$.
+    Для объёма $\mu,$ $A, B \in \cP$, $A \subseteq B$ выполено $\mu(A) \leqslant \mu(B)$.
 \end{lemma}
 \begin{proof}
 \[
-    B = A + B \setminus A = A + \bigsqcup{D_i} \Lra \mu(B) = \mu(A) + \sum{\mu(D_i)} 
+    B = A + B \setminus A = A + \bigsqcup{D_i} \Lra \mu(B) = \mu(A) + \sum{\mu(D_i)}
     \geqslant \mu(A)
 \]
 \end{proof}
 
 \begin{theorem}(Свойства объёма)
     \begin{itemize}
-        \item[1.] $\displaystyle \forall A, \text{ дизъюнктных } A_1 \ldots, A_n \in \PP
+        \item[1.] $\displaystyle \forall A, \text{ дизъюнктных } A_1 \ldots, A_n \in \cP
         \colon~ \bigsqcup_{i = 1}^{n}{A_i} \subseteq A \Lra
         \sum_{i = 1}^{n}{\mu(A_i)} \leqslant \mu(A)$ \\ (усиленная монотонность)
-        \item[2.] $\displaystyle \forall A, A_1 \ldots, A_n \in \PP
+        \item[2.] $\displaystyle \forall A, A_1 \ldots, A_n \in \cP
         \colon~ A \subseteq \bigcup_{i = 1}^{n}{A_i} \Lra
         \mu(A) \leqslant \sum_{i = 1}^{n}{\mu(A_i)}$ \\ (конечная полуаддитивность)
-        \item[3.] $A, B, A \setminus B \in \PP \Lra \mu(A \setminus B) \geqslant 
+        \item[3.] $A, B, A \setminus B \in \cP \Lra \mu(A \setminus B) \geqslant
                 \mu(A) - \mu(B)$
     \end{itemize}
-\end{theorem}   
+\end{theorem}
 \begin{proof}
     \enewline
     \begin{itemize}
-        \item[1.] 
+        \item[1.]
 \begin{align*}
-    &A \setminus \bigsqcup_{i = 1}^{n}{A_i} = \bigsqcup_{i = 1}^{k}{D_i} \Lra A 
+    &A \setminus \bigsqcup_{i = 1}^{n}{A_i} = \bigsqcup_{i = 1}^{k}{D_i} \Lra A
     = \left(\bigsqcup_{i = 1}^{n}{A_i}\right) \sqcup \left(\bigsqcup_{i = 1}^{k}{D_i}\right) \\
-    &\Lra \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)}) + \sum_{i = 1}^{k}{\mu(D_i)} \geqslant 
+    &\Lra \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)}) + \sum_{i = 1}^{k}{\mu(D_i)} \geqslant
     \sum_{i = 1}^{n}{\mu(A_i)}
-\end{align*}                
-        \item[2.] Сейчас будет использован стандартный прием, смысл которого заключается в 
-                переходе от простого объединения к дизъюнктному. Пусть $B_k = A \cap A_k$. 
-                Тогда $A = \bigcup{B_k}$. Теперь \textit{нарежем $B_k$}: 
+\end{align*}
+        \item[2.] Сейчас будет использован стандартный прием, смысл которого заключается в
+                переходе от простого объединения к дизъюнктному. Пусть $B_k = A \cap A_k$.
+                Тогда $A = \bigcup{B_k}$. Теперь \textit{нарежем $B_k$}:
 \[
     C_k = B_k \setminus \bigcup_{i = 1}^{k - 1}{B_i}
-\] 
+\]
     При $k > 1$ и $C_1 = B_1$. Набор $C_k$ получился дизъюнктным:
 \[
     A = \bigsqcup_{i = 1}^{n}{C_i}
-\]	
-	Сами множетсва $C_k$ могут и не быть в $\PP$, но $B_k \in \PP$ как пересечения 
-	множеств из $\PP$. Из определения $C_k$ имеем, что,
+\]
+	Сами множетсва $C_k$ могут и не быть в $\cP$, но $B_k \in \cP$ как пересечения
+	множеств из $\cP$. Из определения $C_k$ имеем, что,
 \[
 	C_k = \bigsqcup_{i = 1}^{j_k}{D_{ki}}
 \]
@@ -176,19 +176,19 @@
 \[
 	\mu(A) = \sum_{k}{\sum_{j}{D_{kj}}} \leqslant \sum_{k}{\mu(A_k)}
 \]
-		\item[3.] 
+		\item[3.]
 				\enewline
 				\begin{itemize}
 					\item[(a)]
 \[
-	B \subseteq A \Lra \mu(A) = \mu(A \setminus B) + \mu(B) \Lra \mu(A \setminus B) 
+	B \subseteq A \Lra \mu(A) = \mu(A \setminus B) + \mu(B) \Lra \mu(A \setminus B)
 	= \mu(A) - \mu(B)
 \]
 					\item[(b)]
 \[
 	A \setminus B = A \setminus (A \cap B) \Lra \mu(A \setminus B) = \mu(A) - \mu(A \cap B)
 	\geqslant \mu(A) - \mu(B)
-\]							
+\]
 				\end{itemize}
     \end{itemize}
 \end{proof}
@@ -196,19 +196,19 @@
 \section{Мера}
 
 \begin{definition}
-    \textit{Мерой} называется объём $\mu \colon \PP \to \Rbar$, обладающий свойством
+    \textit{Мерой} называется объём $\mu \colon \cP \to \Rbar$, обладающий свойством
     счётной аддитивности.
 \end{definition}
 
 \begin{theorem}
-    Пусть $\mu \colon \PP \to \Rbar$ --- объём. Тогда эквивалентны утверждения:
+    Пусть $\mu \colon \cP \to \Rbar$ --- объём. Тогда эквивалентны утверждения:
     \begin{itemize}
         \item[1.] $\mu$ счетно-аддитивен
         \item[2.] $\mu$ счетно-полуаддитивен
     \end{itemize}
 \end{theorem}
 \begin{proof}
-	Импликация $1 \Lra 2$ доказывается практически так же, как второй 
+	Импликация $1 \Lra 2$ доказывается практически так же, как второй
 	пункт предыдущей теоремы (используется нарезка). Докажем $2 \Lra 1$.
 	Для этого воспользуемся усиленной монотонностью объёма ($A_i$ дизъюнктны):
 \[
@@ -216,7 +216,7 @@
 \]
 	Добавляя к этому посылку:
 \[
-	\forall N~ \sum_{i = 1}^{N}{\mu(A_i)} \leqslant \mu(A) \leqslant 
+	\forall N~ \sum_{i = 1}^{N}{\mu(A_i)} \leqslant \mu(A) \leqslant
 	\sum_{i = 1}^{+\infty}{\mu(A_i)}
 \]
 	И переходя к пределу при $N \to +\infty$, получаем требуемое.
@@ -240,11 +240,11 @@
 \[
 	B_1 = A_1, \ldots, B_k = A_k \setminus \left(\bigcup_{i = 1}^{k - 1}{A_i}\right)
 \]
-	Как всегда, $B_k$ дизъюнктны, причем $A = \bigsqcup_{i = 1}^{+\infty}{B_k}$. 
+	Как всегда, $B_k$ дизъюнктны, причем $A = \bigsqcup_{i = 1}^{+\infty}{B_k}$.
 	Тогда, пользуясь счетной аддитивностью, имеем:
 \[
-	\mu(A) = \sum_{i = 1}^{+\infty}{\mu(B_i)} 
-	= \lim_{N \to +\infty}{\sum_{i = 1}^{N}{\mu(B_i)}} 
+	\mu(A) = \sum_{i = 1}^{+\infty}{\mu(B_i)}
+	= \lim_{N \to +\infty}{\sum_{i = 1}^{N}{\mu(B_i)}}
 	= \lim_{N \to +\infty}{\mu(A_k)}
 \]
 		\item [$2 \Lra 1$] Пусть есть дизъюнктные $A_k$. Сделаем из них $C_k$:
@@ -253,7 +253,7 @@
 \]
 		Тогда $C_1 \subseteq C_2 \subseteq \ldots$. Воспользуемся непрерывностью снизу:
 \[
-	\mu(A) = \mu(C) = \lim_{N \to +\infty}{\mu(C_k)} 
+	\mu(A) = \mu(C) = \lim_{N \to +\infty}{\mu(C_k)}
 	= \lim_{k \to +\infty}{\sum_{i = 1}^{k}{\mu(A_k)}}
 	= \sum_{k = 1}^{+\infty}{\mu(A_k)}
 \]
@@ -298,7 +298,7 @@
 	A_k = \bigsqcup_{i = k+1}^{+\infty}{C_k}
 \]
 	Тогда $A_1 \supseteq A_2 \supseteq \ldots$; $A = \bigcap{A_k} = \varnothing$.
-	Вообще говоря, $A_k \notin \cA$. Но в нашем случае 
+	Вообще говоря, $A_k \notin \cA$. Но в нашем случае
 \[
 	A_k = C \setminus \bigsqcup_{i = 1}^{k}{C_i} \in \cA
 \]
@@ -325,25 +325,25 @@
 \end{definition}
 
 \begin{definition}
-    $\langle X, \PP, \mu \rangle$ называется \textit{$\sigma$-конечным} (соответственно
+    $\langle X, \cP, \mu \rangle$ называется \textit{$\sigma$-конечным} (соответственно
     мера называется \textit{$\sigma$-конечной}), если $\displaystyle
     X = \bigcup_{i = 1}^{+\infty}{B_k}$, где $\mu(B_k) < +\infty$.
 \end{definition}
 
 \begin{theorem}(О стандартном продолжении меры)
 
-    $\langle X, \PP, \mu_0 \rangle$, $\mu_0$ --- $\sigma$-конечный объём. Тогда
+    $\langle X, \cP, \mu_0 \rangle$, $\mu_0$ --- $\sigma$-конечный объём. Тогда
     $\exists~ \sigma$-алгебра $\cA$ и мера $\mu \colon \cA \to \Rbar\colon$
     \begin{itemize}
-        \item[1.] $\PP \subseteq \cA$, $\mu\big|_{\PP} = \mu_0$
+        \item[1.] $\cP \subseteq \cA$, $\mu\big|_{\cP} = \mu_0$
         \item[2.] $\mu$ полная
-        \item[3.] Если $\cA' \supseteq \PP$, $\mu'\big|_{\PP} = \mu_0$,
+        \item[3.] Если $\cA' \supseteq \cP$, $\mu'\big|_{\cP} = \mu_0$,
         $\mu'$ --- полная, тогда $\cA \subseteq \cA'$ и $\mu'\big|_{\cA} = \mu$
-        \item[4.] Если $\PP'$ --- полукольцо, $\mu'$ --- мера на $\PP'$,
-        $\PP \subseteq \PP' \subseteq \cA$, тогда $\mu' = \mu\big|_{\PP'}$
+        \item[4.] Если $\cP'$ --- полукольцо, $\mu'$ --- мера на $\cP'$,
+        $\cP \subseteq \cP' \subseteq \cA$, тогда $\mu' = \mu\big|_{\cP'}$
         \item[5.] $\displaystyle \forall A \in \cA~ \mu(A) =
         \inf{\left(\sum_{k = 1}^{+\infty}{\mu_0(P_k)} ~\bigg|~ A \subseteq \bigcup_{k = 1}
-        ^{+\infty}{P_k}, P_k \in \PP\right)}$
+        ^{+\infty}{P_k}, P_k \in \cP\right)}$
     \end{itemize}
 \end{theorem}
 
@@ -451,3 +451,14 @@
     $T \colon \Rm \to \Rn \in C(\Rm)$, $\forall E \in \mathfrak{M}~ \lambda(E) = 0
     \Lra \lambda(T(E)) = 0$, \\ тогда $\forall A \in \mathfrak{M}~ T(A) \in \mathfrak{M}$.
 \end{lemma}
+
+% preamble change fix
+\let\x\undefined
+\let\y\undefined
+\let\h\undefined
+\let\w\undefined
+\let\z\undefined
+\let\Od\undefined
+\let\N\undefined
+\let\C\undefined
+% /preamble change fix

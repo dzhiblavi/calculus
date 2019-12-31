@@ -20,7 +20,7 @@
 %%   \import{<path to file>}{<filename>.pdf_tex}
 %% Alternatively, one can specify
 %%   \graphicspath{{<path to file>/}}
-%% 
+%%
 %% For more information, please see info/svg-inkscape on CTAN:
 %%   http://tug.ctan.org/tex-archive/info/svg-inkscape
 %%
@@ -72,6 +72,6 @@
     \put(0,0){\includegraphics[width=\unitlength,page=7]{mpath.pdf}}%
     \put(0.28126691,0.1771698){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{mpath.pdf}}%
-    \put(0.81836301,0.16010989){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\v$\end{tabular}}}}%
+    \put(0.81836301,0.16010989){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\elv$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
