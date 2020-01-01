@@ -352,6 +352,36 @@
 \begin{theorem}
     Классический объём в $\Rm$ является $\sigma$-конечной мерой.
 \end{theorem}
+\begin{proof}
+	$\s$-конечность очевидна. Докажем счетную полуаддитивность. Пусть 
+	$[a, b) \subseteq \bigcup_{n = 1}^{+\infty}{[a_n, b_n)}$. Наша цель ---
+	показать, что $\mu[a, b) \leqslant \sum_{n = 1}^{+\infty}{\mu[a_n, b_n)}$.
+	Выберем $b' < b$ таким образом, чтобы 
+\[
+	\mu[a, b) - \e < \mu[a, b') < \mu[a, b)
+\]
+	И $a_n' < a_n$ так, чтобы
+\[
+	\forall n~ \mu[a_n, b_n) < \mu[a_n', b_n) < \mu[a_n, b_n) + \frac{\e}{2^n}
+\]
+	Теперь отрезок $[a, b']$ накрыт счетным объедиением интервалов $(a'_n, b_n)$. 
+	Выберем из этого покрытия конечное:
+\[
+	[a, b'] \subseteq \bigcup_{n = 1}^{N}{(a'_n, b_n)} \subseteq 
+	\bigcup_{n = 1}^{N}{[a'_n, b_n)}
+\]
+	Воспользуемся конечной полуаддитивностью:
+\[
+	\mu[a, b') \leqslant \sum_{n = 1}^{N}{\mu[a'_n, b_n)} \leqslant
+	\sum_{n = 1}^{N}{\left(\mu[a_n, b_n) + \frac{\e}{2^n}\right)} \leqslant
+	\sum_{n = 1}^{N}{\mu[a_n, b_n)} + \e
+\]
+	С другой стороны:
+\[
+	\mu[a, b) - \e < \mu[a, b') \leqslant \sum_{n = 1}^{N}{\mu[a_n, b_n)} + \e
+\]
+	Откуда и следует требуемое.
+\end{proof}
 
 \begin{definition}
     \textit{Мерой Лебега} называется стандартное продолжение классического объёма.
@@ -364,7 +394,7 @@
 \begin{definition}
     \textit{Измеримыми по Лебегу} называются множества $A \in \mathfrak{M}$.
 \end{definition}
-
+	
 \begin{theorem}(Свойства меры Лебега)
     \begin{itemize}
         \item[1.] Объединения и пересечения измеримых множеств измеримы.
@@ -384,16 +414,104 @@
         \end{itemize}
         \item[2.] Пусть $E$ измеримо в $\Rm$, $\lambda(E) = 0$, тогда
         $\forall \e > 0~\exists Q_i$ --- ячейки в $\Rm$ такие, что
-        $\displaystyle E \subseteq \bigcup_{i}{Q_i}$ и $\displaystyle
-        \sum_{i}{\mu(Q_i)} < \e$.
+\[
+		E \subseteq \bigcup_{i}{Q_i} \text{ и } 
+		\sum_{i}{\mu(Q_i)} < \e
+\]
+		причем можно потребовать свойства $(a) - (c)$ и дизъюнктность набора ячеек.
     \end{itemize}
 \end{lemma}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[1.] Всем точкам $\cO$ сопоставим ячейку требуемого типа с рациональными 
+			параметрами. Таких ячеек не более чем счетное множество:
+\[
+	\cO = \bigcup_{i = 1}^{+\infty}{\widetilde{Q}_i}
+\]
+		Теперь надо сделать эти ячейки дизъюнктыми. Для этого воспользуемся тем, 
+		что их счетное число:
+\[
+	Q'_1 = \widetilde{Q}_1, \ldots, Q'_k = \widetilde{Q}_k \setminus \bigcup_{i = 1}^{k - 1}
+	{\widetilde{Q}_i}
+\]
+	$\forall i~ Q'_i$ выражается через дизъюнктное объединение ячеек нужного типа, 
+	так как полукольцо ячеек --- полукольцо. Тогда:
+\[
+	\cO = \bigcup_{i = 1}^{+\infty}{\widetilde{Q}_i}
+	= \bigsqcup_{i = 1}^{+\infty}{Q'_i} 
+	= \bigsqcup_{i = 1}^{+\infty}{\bigsqcup_{j = 1}^{k_i}{D_{ij}}}
+\]
+		\item[2.] Пятый пункт теоремы о продолжении поставляет нам способ получить
+			ячейки, удовлетворяющие всему, кроме дизъюнктности и $(a) - (c)$. Эти 
+			свойства придется добывать самостоятельно. Пусть множества $\widetilde{P}_i$
+			пришли из теоремы для $\e = \frac{\e}{2}$:
+\[
+	\sum{\l(\widetilde{P}_i)} < \frac{\e}{2}
+\]
+	Немного расширим эти множества до открытых $P_i \supset \widetilde{P}_i$. Эти множества 
+	по первому пункту текущей леммы представляются в виде нужного нам объединения:
+\[
+	P_i = \bigsqcup{D_{ij}}
+\]
+	Потребуем (при выборе $P_i$):
+\[
+	\l(\widetilde{P}_i) < \l(P_i) < \l(\widetilde{P}_i) + \frac{\e}{2^i}
+\]
+	Тогда получается то, что нужно:
+\[
+	\sum{\l(D_{ij})} = \sum{\l(P_i)} < \sum{\left(\l(\widetilde{P}_i) + \frac{\e}{2^i}\right)}
+	\leqslant \e
+\]
+	\end{itemize}
+\end{proof}
 
 \begin{theorem}(Свойства меры Лебега)
     \begin{itemize}
-        \item[3.] [Канторово множество TBD]
-        \item[4.] [Пример неизмеримого множества TBD]
-        \item[5.] \begin{itemize}
+        \item[3.] Пример: канторово множество в $\R$. Строится итеративно:
+\begin{align*}
+	\mathfrak{K}_0 &= \left[0, 1\right] \\
+	\mathfrak{K}_1 &= \left[1, \frac{1}{3}\right] \cup \left[\frac{2}{3}, 1\right]\\
+	\mathfrak{K}_2 &= \left[1, \frac{1}{9}\right] \cup \left[\frac{2}{9}, \frac{3}{9}\right]
+		\cup \left[\frac{6}{9}, \frac{7}{9}\right] \cup \left[\frac{8}{9}, 1\right]
+			   \\	&\cdots \\
+	\mathfrak{K} &= \bigcap_{i = 0}^{+\infty}{\mathfrak{K}_i}
+\end{align*}
+		Получившееся множество измеримо, потому что является пересечением измеримых 
+		множеств. Его мера равна нулю, потому что к нулю стремится мера 
+		$\mathfrak{K}_i$. С другой стороны, можно задать это же множество в другом виде:
+\[
+	\mathfrak{K} = \{\, 0.\e_1\e_2\ldots_3  \mid \e_i \in \{\,0,2\,\}  \,\}
+\]
+		По построению понятно, что из отрезка просто выкинули все точки, троичная запись 
+		которых содержит хотя бы одну единицу. Тогда $\mathfrak{K}$ континуально 
+		как множество бинарных последовательностей.
+        \item[4.] Пример: неизмеримое множество. Совершенно очевидно, что одними 
+			только пересечениями и объединениями не получится построить неизмеримое множество.
+			Привлечем к борьбе с измеримостью фактормножества. Пусть $\sim$ --- отношение, 
+			заданное на отрезке $[0, 1]$ такое, что:
+\[
+	a \sim b \Llra a - b \in \bQ
+\]
+		Рассмотрим тогда фактормножество $A = [0, 1] ~/ \sim$. Предположим, что оно 
+		измеримо. В одной из следующих теорем будет доказано, что мера Лебега инвариантна 
+		относительно сдвига, то есть $\l(A) = \l(A + q)$. Пусть тогда
+\[
+	B = \bigsqcup_{q \in [-1, 1] \cap \bQ}{\left(A + q\right)}
+\]
+		Дизъюнктность объединяемых множеств очевидна. Тогда $B$ тоже измеримо, причем
+\[
+	B \subseteq [-1, 2], B \supseteq [0, 1] \Lra 0 < \l(B) < +\infty
+\]
+		Но с другой стороны можно вычислить $\l(B)$ через $\l(A)$:
+\[
+	\l(B) = \sum_{q \in [-1, 1] \cap \bQ}{\l(A + q)} = \begin{cases}
+		0,~ \l(A) = 0 \\
+		+\infty,~ \l(A) > 0
+	\end{cases}
+\]
+		Возникло противоречие, поэтому $A$ неизмеримо.
+	    \item[5.] \begin{itemize}
                     \item $A$ ограничено, тогда $\lambda(A) < +\infty$
                     \item $A$ открыто, тогда $\lambda(A) > 0$
                     \item $\lambda(A) = 0 \Lra$ У $A$ нет внутренних точек
@@ -407,6 +525,63 @@
                 \end{itemize}
     \end{itemize}
 \end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item[5.] Очевидно.
+		\item[6.] \begin{itemize}
+			\item
+			\begin{itemize}
+				\item[(i)] Пусть $\l(A) < +\infty$. Из последнего пункта теоремы о 
+					продолжении получаем набор $P_i$ такой, что
+\[
+	\l(A) < \sum{\l(P_i)} < \l(A) + \e
+\]
+			Далее немного расширим $P_i$ до открытого $\widetilde{P}_i$, которое 
+			наполовину замкнем до ячейки $\widetilde{\widetilde{P}}_i$:
+\[
+	P_i \subset \widetilde{P}_i \subset \widetilde{\widetilde{P}}_i \in \cP
+\]
+			Расширим мы несильно, а именно:
+\[
+	\l\left(\widetilde{\widetilde{P}}_i\right) - \l(P_i) < \frac{\e}{2^i}
+\]
+			В таком случае положим 
+\[
+	G_{2\e} = \bigcup{\widetilde{P}_i} 
+\]
+     		и проверим, что оно подходит:
+\[
+	\l(A) < \l(G_{2\e}) \leqslant \sum{\l\left(\widetilde{\widetilde{P}}_i\right)}
+	\leqslant \l(A) + 2\e
+\]
+	$A \subset G_{2\e}$, поэтому:
+\[
+	\l(G_{2\e} \setminus A) = \l(G_{2\e}) - \l(A) < 2\e
+\]
+				\item[(ii)] $\l(A) = +\infty$. Воспользуемся $\s$-конечностью $\Rm$:
+\[
+	\Rm = \bigsqcup{Q_i} \Lra A = \bigsqcup{A \cap Q_i} 
+\]
+			Пользуясь (i), расширим $A \cap Q_i$ до открытого множества $(G_{\e})_i$ 
+			так, чтобы 
+\[
+	\l((G_\e)_i \setminus (A \cap Q_i)) < \frac{\e}{2^i}
+\]
+			Пусть тогда $G_\e = \bigcup{(G_\e)_i}$. Проверим, что оно подходит:
+\[
+	\l(A) <	\l(G_\e) \leqslant \sum{\l((G_\e)_i)} < \sum{\l(A \cap Q_i)} + \e = \l(A) + \e
+\]
+			\end{itemize}
+			\item Переход к дополнению: $A^c$ открыто, поэтому 
+\[
+		\exists G_\e\colon~	\l(G_\e \setminus A^c) < \e \Lra \l(A \setminus G_\e^c) 
+		= \l(G_\e \setminus A^c) < \e
+\]
+		То есть $F_\e = G_\e^c$ подходит.
+		\end{itemize} 
+	\end{itemize}
+\end{proof}
 
 \begin{definition}
     Пусть $\cA \subseteq 2^X$, тогда \textit{борелевской оболочкой} множества $\cA$
