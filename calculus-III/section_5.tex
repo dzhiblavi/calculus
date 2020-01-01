@@ -10,44 +10,44 @@
 \begin{theorem}(Необходимое условие относительного экстремума)
 
     Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
-    E \to \R^n$, $\ela \in E$, $\phi(\ela) = \elemvec{0}$, $\rank{\phi'(\ela)} = n$,
-    $\ela$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
+    E \to \R^n$, $\ea \in E$, $\phi(\ea) = \elemvec{0}$, $\rank{\phi'(\ea)} = n$,
+    $\ea$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
     \colon$
 \[
     \begin{cases}
-        f'(\ela) - \lambda \cdot \phi'(\ela) = 0 \\
-        \phi(\ela) = \elemvec{0}
+        f'(\ea) - \lambda \cdot \phi'(\ea) = 0 \\
+        \phi(\ea) = \elemvec{0}
     \end{cases}
 \]
 \end{theorem}
 \begin{proof}
     Будем обозначать $(\x \in \Rm, \y \in \Rn) \in \R^{m + n}$
-    Пусть ранг производного оператора $\phi'(\ela)$ реализуется на
+    Пусть ранг производного оператора $\phi'(\ea)$ реализуется на
     последних $n$ столбцах. Тогда
 \[
-    \det{\left( \pderv{\phi_i}{\x_{m + j}}(\ela) \right)}_{\substack{i = 1..n
+    \det{\left( \pderv{\phi_i}{\x_{m + j}}(\ea) \right)}_{\substack{i = 1..n
     \\ j = 1..n}} \neq 0
 \]
     Тогда можно применить теорему о неявном отображении:
 \[
-    \exists U(\ela_x), U(\ela_y)~ \exists C^r \ni \f \colon U(\ela_x) \to U(\ela_y)
+    \exists U(\ea_x), U(\ea_y)~ \exists C^r \ni \f \colon U(\ea_x) \to U(\ea_y)
     \colon \phi(\x, \f(\x)) = \elemvec{0}
 \]
-    Рассмотрим функцию $g(\x) = f(\x, \f(\x))$. Тогда $\ela_x = (\ela_1, \ldots, \ela_m)$
+    Рассмотрим функцию $g(\x) = f(\x, \f(\x))$. Тогда $\ea_x = (\ea_1, \ldots, \ea_m)$
     является точкой обычного локального экстремума для функции $g$. Далее будут
     использованы не совсем обычные, но понятные обозначения для частных производных.
     Выпишем необходимое условие экстремума:
 \[
-    f'_{\x}(\ela_x, \f(\ela_x)) + f'_{\y}(\ela_x, \f(\ela_x)) \cdot \f'(\ela_x) =
-    \underbrace{f'_{\x}(\ela)}_{1 \times m} + \underbrace{f'_{\y}(\ela)}_{1 \times n}
-    \cdot \underbrace{\f'(\ela_x)}_{n \times m} = 0
+    f'_{\x}(\ea_x, \f(\ea_x)) + f'_{\y}(\ea_x, \f(\ea_x)) \cdot \f'(\ea_x) =
+    \underbrace{f'_{\x}(\ea)}_{1 \times m} + \underbrace{f'_{\y}(\ea)}_{1 \times n}
+    \cdot \underbrace{\f'(\ea_x)}_{n \times m} = 0
 \]
     Кроме того, нам известно, что $\phi(\x, \f(\x)) = \elemvec{0}$, тогда:
 \[
-    \underbrace{\phi'_{\x}(\ela)}_{n \times m} + \underbrace{\phi'_{\y}(\ela)}_{n \times n}
-    \cdot \underbrace{\f'_{\x}(\ela_x)}_{n \times m} = \elemvec{0} \Lra
-    \forall \l \in \Rn~~ \l \cdot \phi'_{\x}(\ela) + \l \cdot \phi'_{\y}(\ela) \cdot
-    \f'_{\x}(\ela_x) = 0
+    \underbrace{\phi'_{\x}(\ea)}_{n \times m} + \underbrace{\phi'_{\y}(\ea)}_{n \times n}
+    \cdot \underbrace{\f'_{\x}(\ea_x)}_{n \times m} = \elemvec{0} \Lra
+    \forall \l \in \Rn~~ \l \cdot \phi'_{\x}(\ea) + \l \cdot \phi'_{\y}(\ea) \cdot
+    \f'_{\x}(\ea_x) = 0
 \]
     Вычтем из первого равенства второе:
 \[
@@ -55,7 +55,7 @@
 \]
     и положим
 \[
-    \l = f'_{\y}(\ela) \cdot (\phi'_{\y}(\ela))^{-1}
+    \l = f'_{\y}(\ea) \cdot (\phi'_{\y}(\ea))^{-1}
 \]
     Убедимся в том, что $\l$ подходит:
 \begin{align*}
@@ -78,29 +78,29 @@
 \begin{theorem}(Достаточное условие относительного экстремума)
 
     Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
-    E \to \R^n$, $\ela \in E$, $\phi(\ela) = 0$, $\rank{\phi'(\ela)} = n$,
+    E \to \R^n$, $\ea \in E$, $\phi(\ea) = 0$, $\rank{\phi'(\ea)} = n$,
     выполнено необходимое условие относительного экстремума, то есть $\exists
     \lambda \in \Rn \colon$
  \[
      \begin{cases}
-         f'(\ela) - \lambda \cdot \phi'(\ela) = 0 \\
-         \phi(\ela) = 0
+         f'(\ea) - \lambda \cdot \phi'(\ea) = 0 \\
+         \phi(\ea) = 0
      \end{cases}
  \]
     кроме того, пусть $\h = (\h_x \in \Rm, \h_y \in \Rn)$. Тогда, так как
-    $\rank{\phi'(\ela)} = n$, то по $\h_x$ можно однозначно восстановить $\h_y$ такой,
-    что $\phi'(\ela)\h = 0$. Тогда рассмотрим квадратичную форму
+    $\rank{\phi'(\ea)} = n$, то по $\h_x$ можно однозначно восстановить $\h_y$ такой,
+    что $\phi'(\ea)\h = 0$. Тогда рассмотрим квадратичную форму
 \[
-    Q(\h_x) = \d^2_{\ela}{G(\h_x, \h_y)}
+    Q(\h_x) = \d^2_{\ea}{G(\h_x, \h_y)}
 \]
     Где $G = f - \lambda \cdot \phi$ --- функция Лагранжа. В зависимости от
-    определенности $Q$ можно сделать вывод о наличии экстремума в точке $\ela$:
+    определенности $Q$ можно сделать вывод о наличии экстремума в точке $\ea$:
     \begin{itemize}
-        \item $Q$ положительно определена $\Lra \ela$ --- точка относительного
+        \item $Q$ положительно определена $\Lra \ea$ --- точка относительного
         локального минимума.
-        \item $Q$ отрицательно определена $\Lra \ela$ --- точка относительного
+        \item $Q$ отрицательно определена $\Lra \ea$ --- точка относительного
         локального максимума.
-        \item $Q$ неопределена $\Lra \ela$ --- не точка экстремума.
+        \item $Q$ неопределена $\Lra \ea$ --- не точка экстремума.
         \item В остальных случаях требуется более детальное исследование.
     \end{itemize}
 \end{theorem}

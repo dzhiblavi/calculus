@@ -41,10 +41,10 @@
     \setlength{\unitlength}{595.27559055bp}%
     \ifx\svgscale\undefined%
       \relax%
-    \else%
+    \ese%
       \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
     \fi%
-  \else%
+  \ese%
     \setlength{\unitlength}{\svgwidth}%
   \fi%
   \global\let\svgwidth\undefined%
@@ -68,10 +68,10 @@
     \put(0.84970347,0.32531702){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma([-1, 1])$\end{tabular}}}}%
     \put(0.27962654,0.23743751){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$t_0$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{mpath.pdf}}%
-    \put(0.71999032,0.33210209){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\elp$\end{tabular}}}}%
+    \put(0.71999032,0.33210209){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ep$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{mpath.pdf}}%
     \put(0.28126691,0.1771698){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{mpath.pdf}}%
-    \put(0.81836301,0.16010989){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\elv$\end{tabular}}}}%
+    \put(0.81836301,0.16010989){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ev$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

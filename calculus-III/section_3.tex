@@ -118,19 +118,19 @@
 
 \begin{lemma}(О дифференцировании сдвига)
 
-    $f \colon \O \subseteq \Rm \to \R$, $\O$ --- область, $f \in C^r(\O)$, $\ela
-    \in \O$, $\h \in \Rm$, $\forall t \in [-1, 1]~~ \ela + t\h \in \O$, тогда
-    для отображения $\f(t) = f(\ela + t\h)$ и для $k \leqslant r$ выполнено
+    $f \colon \O \subseteq \Rm \to \R$, $\O$ --- область, $f \in C^r(\O)$, $\ea
+    \in \O$, $\h \in \Rm$, $\forall t \in [-1, 1]~~ \ea + t\h \in \O$, тогда
+    для отображения $\f(t) = f(\ea + t\h)$ и для $k \leqslant r$ выполнено
 \[
     \f^{(k)}(0) = \sum_{|j| = k}{\frac{k!}{j!}\h^j \frac{\partial^j f}{\partial
-    x^j}(\ela)}
+    x^j}(\ea)}
 \]
 \end{lemma}
 \begin{proof}
     Для доказательства этого факта достаточно показать, что
 \[
     \f^{(k)}(t) = \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
-    \frac{\partial}{\partial x_m}\h_m\right)^k \cdot f(\ela + t\h)
+    \frac{\partial}{\partial x_m}\h_m\right)^k \cdot f(\ea + t\h)
 \]
     Докажем по индукции:
     \begin{itemize}
@@ -139,15 +139,15 @@
 \begin{align*}
         \f^{(k)}(t) &= (\f^{(k - 1)}(t))' =
         \left(\left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
-        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ela +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ea +
         t\h)\right)' \\
         &= \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
         \frac{\partial}{\partial x_m}\h_m\right) \cdot
         \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
-        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ela +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k - 1} f(\ea +
         t\h) \\
         &= \left(\frac{\partial}{\partial x_1}\h_1 + \ldots +
-        \frac{\partial}{\partial x_m}\h_m\right)^{k} f(\ela +
+        \frac{\partial}{\partial x_m}\h_m\right)^{k} f(\ea +
         t\h)
 \end{align*}
     \end{itemize}
@@ -156,17 +156,17 @@
 \begin{theorem}(Формула Тейлора в форме Лагранжа)
 
     $f \colon \O \subseteq \Rm \to \R$, $f \in C^{r+1}(\O)$, $\O$ --- область,
-    $\ela \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
+    $\ea \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
 \[
     \exists \theta \in (0, 1)\colon~
     f(\x) = \sum_{|k| \leqslant r}{\frac{1}{k!}
-    \frac{\partial^k f}{\partial x^k}(\ela) (\x - \ela)^k}
-    + \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela))(\x - \ela)^k}
+    \frac{\partial^k f}{\partial x^k}(\ea) (\x - \ea)^k}
+    + \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea))(\x - \ea)^k}
 \]
 \end{theorem}
 \begin{proof}
-    Пусть $\f(t) = f(\ela + t\h)$ для $\x = \ela + \h$, $\h = \x - \ela$.
+    Пусть $\f(t) = f(\ea + t\h)$ для $\x = \ea + \h$, $\h = \x - \ea$.
     Выпишем формулу Тейлора в форме Лагранжа для $\f$:
 \[
     \f(1) = \sum_{k = 0}^{r}{\frac{\f^{(k)}(0)}{k!}} +
@@ -178,45 +178,45 @@
 \begin{theorem}(Формула Тейлора в форме Пеано)
 
     $f \colon \O \subseteq \Rm \to \R$, $f \in C^{r+1}(\O)$, $\O$ --- область,
-    $\ela \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
+    $\ea \in \O$, $\x \in B(\x, r) \subseteq \O$, тогда
 \[
     \exists \theta \in (0, 1)\colon~
     f(\x) = \sum_{|k| \leqslant r}{\frac{1}{k!}
-    \frac{\partial^k f}{\partial x^k}(\ela) (\x - \ela)^k}
-    + o(\norm{\x - \ela}^r)
+    \frac{\partial^k f}{\partial x^k}(\ea) (\x - \ea)^k}
+    + o(\norm{\x - \ea}^r)
 \]
 \end{theorem}
 \begin{proof}
     Достаточно показать, что
 \[
-    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela))(\x - \ela)^k} = o(\norm{\x - \ela}^r)
+    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea))(\x - \ea)^k} = o(\norm{\x - \ea}^r)
 \]
     Проверим это:
 \begin{align*}
-    &\sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela)) \frac{(\x - \ela)^k}{\norm{\x - \ela}^r}}
-    = \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1} \ldots (\x_m -
-    \ela_m)^{k_m}}{\norm{\x - \ela}^r}} \\
-    &= \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1}}{\norm{\x - \ela}^{k_1}} \ldots
-    \frac{(\x_m - \ela_m)^{k_m}}{\norm{\x - \ela}^{k_m}}} \norm{\x - \ela}
+    &\sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea)) \frac{(\x - \ea)^k}{\norm{\x - \ea}^r}}
+    = \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea)) \frac{(\x_1 - \ea_1)^{k_1} \ldots (\x_m -
+    \ea_m)^{k_m}}{\norm{\x - \ea}^r}} \\
+    &= \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea)) \frac{(\x_1 - \ea_1)^{k_1}}{\norm{\x - \ea}^{k_1}} \ldots
+    \frac{(\x_m - \ea_m)^{k_m}}{\norm{\x - \ea}^{k_m}}} \norm{\x - \ea}
 \end{align*}
     Все дроби вида
 \[
-    \frac{(\x_i - \ela_i)^{k_i}}{\norm{\x - \ela}^{k_i}}
+    \frac{(\x_i - \ea_i)^{k_i}}{\norm{\x - \ea}^{k_i}}
 \]
     меньше единицы, выражения вида
 \[
-    \frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela + \theta(\x - \ela))
+    \frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea + \theta(\x - \ea))
 \]
     постоянны. Поэтому
 \[
-    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ela +
-    \theta(\x - \ela)) \frac{(\x_1 - \ela_1)^{k_1}}{\norm{\x - \ela}^{k_1}}
-    \ldots \frac{(\x_m - \ela_m)^{k_m}}{\norm{\x - \ela}^{k_m}}} \norm{\x -
-    \ela} \to 0
+    \sum_{|k| = r+1}{\frac{1}{k!} \frac{\partial^k f}{\partial x^k}(\ea +
+    \theta(\x - \ea)) \frac{(\x_1 - \ea_1)^{k_1}}{\norm{\x - \ea}^{k_1}}
+    \ldots \frac{(\x_m - \ea_m)^{k_m}}{\norm{\x - \ea}^{k_m}}} \norm{\x -
+    \ea} \to 0
 \]
-    При $\norm{\x - \ela} \to 0$.
+    При $\norm{\x - \ea} \to 0$.
 \end{proof}

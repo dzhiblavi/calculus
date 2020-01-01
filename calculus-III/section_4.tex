@@ -260,11 +260,11 @@ $
 
     Пусть $\Od$ открыто, $f \colon \Od \subseteq \R^{m + n} \to \Rn$, $(\x \in
     \Rm, \y \in \Rn) \underset{f}{\mapsto} f(\x, \y)$, $f \in
-    C^r$, \\ $(\ela, \elb) \in \Od \colon~ f(\ela, \elb) = \elemvec{0}$,
-    $\det{f'_{\y}(\ela, \elb)} \neq 0$, тогда
+    C^r$, \\ $(\ea, \eb) \in \Od \colon~ f(\ea, \eb) = \elemvec{0}$,
+    $\det{f'_{\y}(\ea, \eb)} \neq 0$, тогда
     \begin{itemize}
-        \item $\exists U(\ela)$, $\exists U(\elb)$, $\exists! \f \colon U(\ela)
-        \to U(\elb) \in C^r$ такое, что $\forall \x \in U(\ela)~ f(\x, \f(\x)) =
+        \item $\exists U(\ea)$, $\exists U(\eb)$, $\exists! \f \colon U(\ea)
+        \to U(\eb) \in C^r$ такое, что $\forall \x \in U(\ea)~ f(\x, \f(\x)) =
         \elemvec{0}$ \item $\f'(\x) = -(f'_{\y}(\x, \f(\x)))^{-1} \cdot
         f'_{\x}(\x, \f(\x))$
     \end{itemize}
@@ -287,10 +287,10 @@ $
              \end{pmatrix}
 \]
         Он обратим, так как $\det{T'} = 1 \cdot \det{f'_y} \neq 0$. Тогда по теореме о локальной
-        обратимости $\exists U(\ela, \elb)\colon T\big|_U$
+        обратимости $\exists U(\ea, \eb)\colon T\big|_U$
         --- диффеоморфизм. Без ограничения общности будем считать, что
         $U = \tilde{P} \times Q$, где $\tilde{P} \subset \Rm$, $Q \subset \Rn$
-        открыты и $\ela \in \tilde{P}$, $\elb \in Q$. Будем обозначать
+        открыты и $\ea \in \tilde{P}$, $\eb \in Q$. Будем обозначать
         $S = T^{-1}$ и $V = T(U)$ --- открыто в $\R^{m + n}$ так как $T$ --- диффеоморфизм.
         Заметим, что $T$ не меняет первую координату, то есть $S$ тоже её не меняет,
         а значит, имеет вид $S(\x, \y) = (\x, H(\x, \y))$, где $H(\x, \y) \in C^r$,
@@ -367,21 +367,21 @@ $
 \begin{theorem}(О задании гладкого многообразия системой уравнений)
 
     Пусть $M \subseteq \Rm$, $1 \leqslant k < m$, $r \in \N \cup
-    \{\,+\infty\,\}$, тогда $\forall \elp \in M$ эквивалентны утверждения:
+    \{\,+\infty\,\}$, тогда $\forall \ep \in M$ эквивалентны утверждения:
     \begin{itemize}
-        \item $\exists U(\elp) \subseteq \Rm$ --- открытое такое, что
+        \item $\exists U(\ep) \subseteq \Rm$ --- открытое такое, что
         $M \cap U$ --- простое $k$-мерное $C^r$-гладкое многообразие.
-        \item $\exists \tilde{U}(\elp) \subseteq \Rm$ --- открытое такое,
+        \item $\exists \tilde{U}(\ep) \subseteq \Rm$ --- открытое такое,
         что $M \cap \tilde{U}$ можно задать системой $C^r$-гладких уравнений,
         иначе говоря: $\exists f_1, \ldots, f_{m - k} \colon \tilde{U} \to \R
         \in C^r$ такие, что \\ $\x \in M \cap \tilde{U} \Llra \forall i~
-        f_i(\x) = 0$, причем $\{\,\grad{f_i}{\elp}\,\}$ линейно независим.
+        f_i(\x) = 0$, причем $\{\,\grad{f_i}{\ep}\,\}$ линейно независим.
     \end{itemize}
 \end{theorem}
 \begin{proof}
     \enewline
     \item[$\Lra$] Пусть имеется параметризация $\f \colon \Od \subseteq \Rk \to \Rm
-    \in C^r$, которая задает $M \cap U(\elp)$. Зафиксируем точку $t_0 = \f(\elp)$.
+    \in C^r$, которая задает $M \cap U(\ep)$. Зафиксируем точку $t_0 = \f(\ep)$.
     Параметризация $C^r$ гладкая, поэтому $\rank{\f'} = k$. Будем считать,
     что ранг реализуется на первых $k$ строках. Рассмотрим проекцию
     $L \colon \x \mapsto (\x_1, \ldots, \x_k)$. Из того, что первые $k$ столбцов
@@ -409,10 +409,10 @@ $
     f(\x) = \elemvec{0} \Llra H(L(\x)) - \x = \elemvec{0} \Llra
     H(L(\x)) = \x \Llra \x \in M \cap \tilde{U}
 \]
-    Осталось показать, что $\{\,\grad{f_i}{\elp}\,\}$ линейно независим.
+    Осталось показать, что $\{\,\grad{f_i}{\ep}\,\}$ линейно независим.
     Для этого просто выпишем этот набор:
 \begin{align*}
-    \grad{f_i}{\elp} =
+    \grad{f_i}{\ep} =
     \begin{pmatrix}
         \pderv{H_i}{\x_1} &  \cdots & \pderv{H_i}{\x_k} & 0 & \cdots & -1_{k + i} & \cdots & 0
     \end{pmatrix} \\
@@ -422,7 +422,7 @@ $
     $f_i$ отображение $f \colon \Rm \to \R^{m - k}$. Поскольку набор градиентов
     линейно независим (будем считать, что ранг реализуется на последних $m - k$
     столбцах), можно применить теорему о неявном отображении:
-    $\exists P(\elp_1, \ldots, \elp_k), Q(\elp_{k + 1}, \ldots, \elp_{m})$ и
+    $\exists P(\ep_1, \ldots, \ep_k), Q(\ep_{k + 1}, \ldots, \ep_{m})$ и
     $\exists H \colon P \to Q$ такое, что
 \[
     \forall (\x_1, \ldots, \x_k) \in P
@@ -432,7 +432,7 @@ $
     Построим теперь искомую параметризацию:
 \begin{align*}
     &\f \colon P \to \Rm \\
-    &\elu \mapsto (\elu, H(\elu))
+    &\eu \mapsto (\eu, H(\eu))
 \end{align*}
     Понятно, что $\f$ подходит в качестве параметризации $M \cap (P \times Q)$.
 \end{proof}
@@ -445,10 +445,10 @@ $
 
 \begin{corollary}(О двух параметризациях)
 
-    Пусть $M$ --- $k$-мерное простое $C^r$-гладкое многообразие, $\elp \in M$,
+    Пусть $M$ --- $k$-мерное простое $C^r$-гладкое многообразие, $\ep \in M$,
     причем $C^r \ni \f_1 \colon \Od_1 \subseteq \Rk \to U \cap M$,
     $C^r \ni \f_2 \colon \Od_2 \subseteq \Rk \to U \cap M$ --- параметризации
-    $U(\elp) \cap M$. Тогда $\f_1$ и $\f_2$ отличаются на диффеоморфизм, а
+    $U(\ep) \cap M$. Тогда $\f_1$ и $\f_2$ отличаются на диффеоморфизм, а
     именно, $\exists \psi \colon \Od_1 \to \Od_2$ --- диффеоморфизм, причем
     $\f_1 = \f_2 \circ \psi$.
 \end{corollary}
@@ -478,10 +478,10 @@ $
 
 \begin{definition}
 
-    Пусть $M$ --- $C^r$-гладкое $k$-мерное многообразие в $\Rm$, $\elp \in M$,
+    Пусть $M$ --- $C^r$-гладкое $k$-мерное многообразие в $\Rm$, $\ep \in M$,
     \\ $\f \colon \Od \subseteq \Rk \to \Rm$ --- параметризация окрестности
-    $U(\elp)$, причем $\f(\ela) = \elp$. Тогда \textit{касательным
-    пространством} к $M$ в точке $\elp$ называется $T_\elp(M) = \im{\f'(\ela)}$.
+    $U(\ep)$, причем $\f(\ea) = \ep$. Тогда \textit{касательным
+    пространством} к $M$ в точке $\ep$ называется $T_\ep(M) = \im{\f'(\ea)}$.
 \end{definition}
 
 \begin{theorem}(О корректности определения касательного пространства)
@@ -489,21 +489,21 @@ $
     Касательное пространство не зависит от выбора параметризации.
 \end{theorem}
 \begin{proof}
-    Пусть $\f_1$ и $\f_2$ --- две параметризации $U(\elp)$. В таком случае по
+    Пусть $\f_1$ и $\f_2$ --- две параметризации $U(\ep)$. В таком случае по
     теореме о двух параметризациях $\exists C^r \ni \psi \colon \Od_1 \to \Od_2$
     такое, что $\f_1 = \f_2 \circ \psi$. В таком случае, поскольку
     $\psi$ --- диффеоморфизм, то есть имеет невырожденный производный оператор
-    в $\ela$, имеем $\im{\psi'(\ela)} = \R^k$. Тогда:
+    в $\ea$, имеем $\im{\psi'(\ea)} = \R^k$. Тогда:
 \[
-    \im{\f'_1(\ela)} = \im{\f'_2(\ela) \circ \psi'(\ela)} = \f'_2(\ela)(\R^k) = \im{\f'_2(\ela)}
+    \im{\f'_1(\ea)} = \im{\f'_2(\ea) \circ \psi'(\ea)} = \f'_2(\ea)(\R^k) = \im{\f'_2(\ea)}
 \]
 \end{proof}
 
 \begin{theorem}(О касательном пространстве к гладкому пути)
 
-    Пусть $M$ --- гладкое многообразие. Тогда $\elv \in T_\elp(M) \Llra \exists
+    Пусть $M$ --- гладкое многообразие. Тогда $\ev \in T_\ep(M) \Llra \exists
     \text{ гладкий путь } \gamma \colon [-1, 1] \to \Rm \colon~ \gamma([-1, 1])
-    \subseteq M$ такой, что $\gamma(0) = \elp$ и $\gamma'(0) = \elv$.
+    \subseteq M$ такой, что $\gamma(0) = \ep$ и $\gamma'(0) = \ev$.
 \end{theorem}
 \begin{proof}
     \enewline
@@ -514,23 +514,23 @@ $
         $L \colon \Rm \to \R^k$ --- проекцию первых $k$ координат. Копируя
         рассуждения предыдущих теорем, приходим к выводу, что $L \circ \f$ и
         $\psi = (L \circ \f)^{-1}$ лежат в классе $C^r$.
-        \item[$\Lra$] Пусть имеется вектор $\elv \in T_\elp(M)$, построим путь,
-        проходящий через точку $\elp$ со скоростью $\elv$. Пусть $\elp = \f(t_0)$,
-        положим $u = (\f'(t_0))^{-1}(\elv)$. По смыслу это та скорость, с которой
+        \item[$\Lra$] Пусть имеется вектор $\ev \in T_\ep(M)$, построим путь,
+        проходящий через точку $\ep$ со скоростью $\ev$. Пусть $\ep = \f(t_0)$,
+        положим $u = (\f'(t_0))^{-1}(\ev)$. По смыслу это та скорость, с которой
         нужно двигаться в $\Od$, чтобы получить скорость
-        $\elv$ в $\f(\Od)$ (то есть \textit{"прообраз скорости"}). Построим сам путь:
+        $\ev$ в $\f(\Od)$ (то есть \textit{"прообраз скорости"}). Построим сам путь:
 \[
     \gamma(s) = \f(t_0 + su)
 \]
         Проверим его свойства:
 \begin{align*}
-    \gamma(0) &= \f(t_0) = \elp \\
+    \gamma(0) &= \f(t_0) = \ep \\
     \gamma'(s)\big|_{s = 0} &= (\f'(t_0 + su) \cdot u)\big|_{s = 0}\\
-    &= \f'(t_0) \cdot u = (\f'(t_0) \cdot (\f'(t_0)^{-1})(\elv)) = \elv
+    &= \f'(t_0) \cdot u = (\f'(t_0) \cdot (\f'(t_0)^{-1})(\ev)) = \ev
 \end{align*}
         \item[$\Lla$] Пусть теперь имеется гладкий путь $\gamma \colon [-1, 1] \to
-        M$ такой, что $\gamma(0) = \elp$ и $\gamma'(0) = \elv$. Поймем, почему
-        вектор $\elv$ лежит в $T_\elp(M)$. Для этого воспользуемся подготовленным
+        M$ такой, что $\gamma(0) = \ep$ и $\gamma'(0) = \ev$. Поймем, почему
+        вектор $\ev$ лежит в $T_\ep(M)$. Для этого воспользуемся подготовленным
         арсеналом и пустим путь \textit{"по кругу"}:
 \[
     \gamma(s) = \f(\psi(L(\gamma(s))))
@@ -541,7 +541,7 @@ $
         $L \circ \f$). Теперь:
 \[
     \gamma'(0) = \f'(\psi(L(\gamma(0))) \cdot (\ldots) =
-    \f'(\psi(L(\elp))) \cdot (\ldots) = \f'(t_0) \cdot (\ldots) \in T_\elp(M)
+    \f'(\psi(L(\ep))) \cdot (\ldots) = \f'(t_0) \cdot (\ldots) \in T_\ep(M)
 \]
     \end{itemize}
 \end{proof}
@@ -555,7 +555,7 @@ $
 \begin{theorem}(О касательном пространстве к графику функции)
 
     Афинное касательное пространство к графику $C^r \ni f \colon \Od \subseteq \Rm \to
-    \R$ в точке $\elp = (\x_0, f(\x_0))$ задается уравнением
+    \R$ в точке $\ep = (\x_0, f(\x_0))$ задается уравнением
 \[
     y - f(\x_0) = f'_{\x_1}(\x_0)(\x^1 - \x_0^1) + \ldots + f'_{\x_m}(\x_0)(\x^m - \x_0^m)
 \]
@@ -579,7 +579,7 @@ $
     Ранг этой матрицы максимален и равен $m$. Рассмотрим образы стандартных
     базисных векторов:
 \[
-    \f'(\x_0)\elu_k = \begin{pmatrix}
+    \f'(\x_0)\eu_k = \begin{pmatrix}
                         0 \\
                         0 \\
                         \vdots \\

@@ -108,29 +108,29 @@
 \begin{proof}
     \begin{align*}
         g(f(\x + \h)) &= g(f(\x) + [\der{f}{\x}]\h + r(\h)) \\
-        &= \{\, \elv = [\der{f}{\x}]\h + r(\h) \,\} \\
-        &= g(f(\x) + \elv) = g(f(\x)) + [\der{g}{f(\x)}]\elv + \widetilde{r}(\elv) \\
+        &= \{\, \ev = [\der{f}{\x}]\h + r(\h) \,\} \\
+        &= g(f(\x) + \ev) = g(f(\x)) + [\der{g}{f(\x)}]\ev + \widetilde{r}(\ev) \\
         &= g(f(\x)) + [\der{g}{f(\x)}][\der{f}{\x}]\h + [\der{g}{f(\x)}]r(\h) +
-        \widetilde{r}(\elv) \\
+        \widetilde{r}(\ev) \\
     \end{align*}
-    Осталось показать, что $[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv) =
+    Осталось показать, что $[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\ev) =
     o(\norm{\h})$.
 \[
-    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv)} \leqslant
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\ev)} \leqslant
     \norm{[\der{g}{f(\x)}]\frac{r(\h)}{\norm{r(\h)}}\norm{r(\h)}} +
-    \widetilde{\a}(\norm{\elv})\norm{\elv}
+    \widetilde{\a}(\norm{\ev})\norm{\ev}
 \]
     Обозначим $\w = \frac{r(\h)}{\norm{r(\h)}}$, причем $\norm{\w} = 1$.
     Из определения нормы оператора получаем
 \[
     \norm{[\der{g}{f(\x)}]\w} \leqslant \norm{\der{g}{f(\x)}}
 \]
-    Кроме того, $\norm{\elv} \leqslant \norm{\der{f}{\x}}\h +
+    Кроме того, $\norm{\ev} \leqslant \norm{\der{f}{\x}}\h +
     \a(\norm{\h})\norm{\h}$. Окончательно получаем
 \[
-    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\elv)} \leqslant
+    \norm{[\der{g}{f(\x)}]r(\h) + \widetilde{r}(\ev)} \leqslant
     \norm{\der{g}{f(\x)}}\norm{r(\h)} + \widetilde{\a}(\norm{\der{f}{\x}} \cdot
-    \norm{\h} + \a(\norm{\h}) \cdot \norm{\h})\norm{\elv} \leqslant
+    \norm{\h} + \a(\norm{\h}) \cdot \norm{\h})\norm{\ev} \leqslant
     \b(\norm{\h})\norm{\h}
 \]
     Для некоторой $\b(t) \xrightarrow[t \to 0]{} 0$.
@@ -285,43 +285,43 @@
 
 \begin{theorem}(Достаточное условие дифференцируемости)
 
-    Пусть $f \colon \O \subseteq \Rm \to \R$, $\ela \in \O$, $B(\ela) \subseteq
-    \O$, В $B(\ela)$ существуют все частные производные, причем они непрерывны в
-    точке $\ela$. Тогда $f$ дифференцируемо в точке $\ela$.
+    Пусть $f \colon \O \subseteq \Rm \to \R$, $\ea \in \O$, $B(\ea) \subseteq
+    \O$, В $B(\ea)$ существуют все частные производные, причем они непрерывны в
+    точке $\ea$. Тогда $f$ дифференцируемо в точке $\ea$.
 \end{theorem}
 \begin{proof}
     Докажем теорему для случая $m = 2$. Схема, примененная в доказательстве
     тривиально обобщается на произвольные $m$.
 
 \begin{align*}
-    f(\x_1, \x_2) - f(\ela_1, \ela_2) &= (f(\x_1, \x_2) - f(\ela_1, \x_2))
-    + (f(\ela_1, \x_2) - f(\ela_1, \ela_2)) \\
-    &\overset{\text{Лагранж}}{=} f'_{\x_1}(\tilde{\x}_1, \x_2)(\x_1 - \ela_1) +
-    f'_{\x_2}(\x_1, \tilde{\x}_2)(\x_2 - \ela_2) \\
-    &= f'_{\x_1}(\ela_1, \ela_2)(\x_1 - \ela_1) + f'_{\x_2}(\ela_1, \ela_2)(\x_2
-    - \ela_2) \\
-    &+ \left[\underbrace{(f'_{\x_1}(\tilde{\x}_1, \x_2) - f'_{\x_1}(\ela_1,
-    \ela_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_1 - \ela_1}{\norm{\x -
-    \ela}} + \underbrace{(f'_{\x_2}(\x_1, \tilde{\x}_2) - f'_{\x_2}(\ela_1,
-    \ela_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_2 - \ela_2}{\norm{\x -
-    \ela}}\right]\norm{\x - \ela} \\
-    &= f'_{\x_1}(\ela_1, \ela_2)(\x_1 - \ela_1) + f'_{\x_2}(\ela_1, \ela_2)(\x_2
-    - \ela_2) + \a(\x - \ela)\norm{\x - \ela}
+    f(\x_1, \x_2) - f(\ea_1, \ea_2) &= (f(\x_1, \x_2) - f(\ea_1, \x_2))
+    + (f(\ea_1, \x_2) - f(\ea_1, \ea_2)) \\
+    &\overset{\text{Лагранж}}{=} f'_{\x_1}(\tilde{\x}_1, \x_2)(\x_1 - \ea_1) +
+    f'_{\x_2}(\x_1, \tilde{\x}_2)(\x_2 - \ea_2) \\
+    &= f'_{\x_1}(\ea_1, \ea_2)(\x_1 - \ea_1) + f'_{\x_2}(\ea_1, \ea_2)(\x_2
+    - \ea_2) \\
+    &+ \left[\underbrace{(f'_{\x_1}(\tilde{\x}_1, \x_2) - f'_{\x_1}(\ea_1,
+    \ea_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_1 - \ea_1}{\norm{\x -
+    \ea}} + \underbrace{(f'_{\x_2}(\x_1, \tilde{\x}_2) - f'_{\x_2}(\ea_1,
+    \ea_2))}_{\to 0 \text{ по непрерывности}}\frac{\x_2 - \ea_2}{\norm{\x -
+    \ea}}\right]\norm{\x - \ea} \\
+    &= f'_{\x_1}(\ea_1, \ea_2)(\x_1 - \ea_1) + f'_{\x_2}(\ea_1, \ea_2)(\x_2
+    - \ea_2) + \a(\x - \ea)\norm{\x - \ea}
 \end{align*}
 \end{proof}
 
 \begin{theorem}
 
     Пусть $f$,$g \colon \O \subseteq \Rm \to \Rn$, $\lambda \colon \O \to
-    \R$, $\ela \in \O$, $f$,$g$,$\lambda$ дифференцируемы в $\ela$. Тогда
-    $\lambda f$, $\langle f, g \rangle$ дифференцируемы в $\ela$, причем
+    \R$, $\ea \in \O$, $f$,$g$,$\lambda$ дифференцируемы в $\ea$. Тогда
+    $\lambda f$, $\langle f, g \rangle$ дифференцируемы в $\ea$, причем
     \begin{itemize}
-        \item $[\der{(\lambda f)}{\ela}]\h =
-        [\der{\lambda}{\ela}]\h \cdot f(\ela) + \lambda(\ela) \cdot
-        [\der{f}{\ela}]\h$
-        \item $[\der{\langle f, g \rangle}{\ela}]\h =
-        \langle [\der{f}{\ela}]\h, g(\ela) \rangle
-        + \langle f(\ela), [\der{g}{\ela}]\h \rangle$
+        \item $[\der{(\lambda f)}{\ea}]\h =
+        [\der{\lambda}{\ea}]\h \cdot f(\ea) + \lambda(\ea) \cdot
+        [\der{f}{\ea}]\h$
+        \item $[\der{\langle f, g \rangle}{\ea}]\h =
+        \langle [\der{f}{\ea}]\h, g(\ea) \rangle
+        + \langle f(\ea), [\der{g}{\ea}]\h \rangle$
 
     \end{itemize}
 \end{theorem}
@@ -330,24 +330,24 @@
     \begin{itemize}
         \item Докажем покоординатно:
 \begin{align*}
-    & (\lambda f_i)(\ela + \h) - (\lambda f_i)(\ela) \\
-    &= \lambda(\ela + \h) \cdot f_i(\ela + \h) - (\lambda f_i)(\ela) \\
-    &= (\lambda(\ela) + \der{\lambda}{\ela}\h + \a(\h)\norm{\h}) \cdot
-    (f_i(\ela) + \der{f_i}{\ela}\h + \b(\h)\norm{\h}) - (\lambda f_i)(\ela) \\
-    &= [\der{\lambda}{\ela}] \cdot f_i(\ela) + \lambda(\ela) \cdot
-    [\der{f_i}{\ela}]\h + o(\h)
+    & (\lambda f_i)(\ea + \h) - (\lambda f_i)(\ea) \\
+    &= \lambda(\ea + \h) \cdot f_i(\ea + \h) - (\lambda f_i)(\ea) \\
+    &= (\lambda(\ea) + \der{\lambda}{\ea}\h + \a(\h)\norm{\h}) \cdot
+    (f_i(\ea) + \der{f_i}{\ea}\h + \b(\h)\norm{\h}) - (\lambda f_i)(\ea) \\
+    &= [\der{\lambda}{\ea}] \cdot f_i(\ea) + \lambda(\ea) \cdot
+    [\der{f_i}{\ea}]\h + o(\h)
 \end{align*}
         \item
 \begin{align*}
-    & [\der{\langle f, g \rangle}{\ela}]\h = \der{\left[\sum_{i =
-    1}^n{f_i \cdot g_i}\right]}{\ela}\h = \sum_{i =
-    1}^n{\der{\left[{f_i \cdot g_i}\right]}{\ela}}\h =
-    \sum_{i = 1}^{n}{\left([\der{f_i}{\ela}]\h \cdot g_i(\ela) + f_i(\ela) \cdot
-    [\der{g_i}{\ela}]\h\right)} \\
-    &= \sum_{i = 1}^{n}{\left([\der{f_i}{\ela}]\h \cdot g_i(\ela)\right)} +
-    \sum_{i = 1}^{n}{\left(f_i(\ela) \cdot [\der{g_i}{\ela}]\h\right)} =
-    \langle [\der{f}{\ela}]\h, g(\ela) \rangle + \langle f(\ela),
-    [\der{g_i}{\ela}]\h \rangle
+    & [\der{\langle f, g \rangle}{\ea}]\h = \der{\left[\sum_{i =
+    1}^n{f_i \cdot g_i}\right]}{\ea}\h = \sum_{i =
+    1}^n{\der{\left[{f_i \cdot g_i}\right]}{\ea}}\h =
+    \sum_{i = 1}^{n}{\left([\der{f_i}{\ea}]\h \cdot g_i(\ea) + f_i(\ea) \cdot
+    [\der{g_i}{\ea}]\h\right)} \\
+    &= \sum_{i = 1}^{n}{\left([\der{f_i}{\ea}]\h \cdot g_i(\ea)\right)} +
+    \sum_{i = 1}^{n}{\left(f_i(\ea) \cdot [\der{g_i}{\ea}]\h\right)} =
+    \langle [\der{f}{\ea}]\h, g(\ea) \rangle + \langle f(\ea),
+    [\der{g_i}{\ea}]\h \rangle
 \end{align*}
     \end{itemize}
 \end{proof}
@@ -416,21 +416,21 @@
 \begin{theorem}(Лагранжа для отображений)
 
     Пусть $f \colon \O \subseteq \Rm \to \Rn$, дифференцируемо на $\O$,
-    $[\ela, \elb] \subseteq \O$, тогда
+    $[\ea, \eb] \subseteq \O$, тогда
 \[
-    \norm{f(\elb) - f(\ela)} \leqslant \sup_{\x \in [\ela,
-    \elb]}{\norm{\der{f}{\x}}} \cdot \norm{\elb - \ela}
+    \norm{f(\eb) - f(\ea)} \leqslant \sup_{\x \in [\ea,
+    \eb]}{\norm{\der{f}{\x}}} \cdot \norm{\eb - \ea}
 \]
 \end{theorem}
 \begin{proof}
 
-    $g = f(\ela + t(\elb - \ela))$ для $t \in [0, 1]$ --- дифференцируемо как
+    $g = f(\ea + t(\eb - \ea))$ для $t \in [0, 1]$ --- дифференцируемо как
     композиция дифференцируемых функций. По предыдущей теореме
 \begin{align*}
     \exists t_0 \in (0, 1)\colon~ \norm{g(1) - g(0)} &\leqslant \norm{g'(t_0)}
-    = \norm{f'(\ela + t_0(\elb - \ela)) \cdot (\elb - \ela)} \\
-    &\leqslant \norm{f'(\ela + t(\elb - \ela))}
-    \norm{\elb - \ela} \leqslant \sup_{\x \in [\ela,
-    \elb]}{\norm{\der{f}{\x}}} \cdot \norm{\elb - \ela}
+    = \norm{f'(\ea + t_0(\eb - \ea)) \cdot (\eb - \ea)} \\
+    &\leqslant \norm{f'(\ea + t(\eb - \ea))}
+    \norm{\eb - \ea} \leqslant \sup_{\x \in [\ea,
+    \eb]}{\norm{\der{f}{\x}}} \cdot \norm{\eb - \ea}
 \end{align*}
 \end{proof}

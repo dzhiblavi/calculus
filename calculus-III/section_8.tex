@@ -185,15 +185,15 @@
         A \rightsquigarrow \x$ (см. лемму). Проверим, что $f(\x) = I(V, \gamma_{\x})$
         --- потанциал $V$. Для этого докажем, что $f'_{\x_1}(\x) = V_1(\x)$ (число
         $1$ здесь не играет никакой роли). Рассмотрим путь $\gamma_0 \colon
-        t \mapsto \x + t h \elu_1$ для $t \in [0, 1]$, где $\elu_1$ --- стандартный
+        t \mapsto \x + t h \eu_1$ для $t \in [0, 1]$, где $\eu_1$ --- стандартный
         базисный вектор. Тогда путь $\gamma_\x \gamma_0 \colon A \rightsquigarrow
-        \x + h \elu_1$ --- тоже кусочно-гладкий. Из аддитивности интеграла по пути
+        \x + h \eu_1$ --- тоже кусочно-гладкий. Из аддитивности интеграла по пути
         имеем:
 \[
-    f(\x + h \elu_1) - f(\x) = I(V, \gamma_\x \gamma_0) - I(V, \gamma_\x) = I(V, \gamma_0)
+    f(\x + h \eu_1) - f(\x) = I(V, \gamma_\x \gamma_0) - I(V, \gamma_\x) = I(V, \gamma_0)
 \]
         Здесь мы воспользовались (2) в первом переходе, позволив себе считать \\
-        $f(\x + h \elu_1)$ не через $\gamma_{\x + h \elu_1}$, а через $\gamma_\x \gamma_0$.
+        $f(\x + h \eu_1)$ не через $\gamma_{\x + h \eu_1}$, а через $\gamma_\x \gamma_0$.
         Далее
 \begin{align*}
     I(V, \gamma_0) &= \int_0^1{\sum_{i = 1}^{m}{V_i ~d\x_i}}
@@ -203,7 +203,7 @@
 \end{align*}
         Тогда
 \[
-    \frac{f(\x + h\elu_1) - f(\x)}{h} = V_1(\x_1 + \theta h, \x_2, \ldots, \x_m)
+    \frac{f(\x + h\eu_1) - f(\x)}{h} = V_1(\x_1 + \theta h, \x_2, \ldots, \x_m)
     \xrightarrow[h \to 0]{\text{непрер.}} V_1(\x_1, \ldots, \x_m)
 \]
     \end{itemize}
