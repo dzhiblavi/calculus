@@ -20,7 +20,7 @@
 %%   \import{<path to file>}{<filename>.pdf_tex}
 %% Alternatively, one can specify
 %%   \graphicspath{{<path to file>/}}
-%%
+%% 
 %% For more information, please see info/svg-inkscape on CTAN:
 %%   http://tug.ctan.org/tex-archive/info/svg-inkscape
 %%
@@ -41,10 +41,10 @@
     \setlength{\unitlength}{600.94488189bp}%
     \ifx\svgscale\undefined%
       \relax%
-    \ese%
+    \else%
       \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
     \fi%
-  \ese%
+  \else%
     \setlength{\unitlength}{\svgwidth}%
   \fi%
   \global\let\svgwidth\undefined%

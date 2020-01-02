@@ -20,7 +20,7 @@
 %%   \import{<path to file>}{<filename>.pdf_tex}
 %% Alternatively, one can specify
 %%   \graphicspath{{<path to file>/}}
-%%
+%% 
 %% For more information, please see info/svg-inkscape on CTAN:
 %%   http://tug.ctan.org/tex-archive/info/svg-inkscape
 %%
@@ -41,10 +41,10 @@
     \setlength{\unitlength}{595.27559055bp}%
     \ifx\svgscale\undefined%
       \relax%
-    \ese%
+    \else%
       \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
     \fi%
-  \ese%
+  \else%
     \setlength{\unitlength}{\svgwidth}%
   \fi%
   \global\let\svgwidth\undefined%
@@ -56,12 +56,12 @@
     \put(0,0){\includegraphics[width=\unitlength,page=1]{cpotential.pdf}}%
     \put(0.34028182,0.00736375){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{cpotential.pdf}}%
-    \put(0.47212532,0.23368995){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\x$\end{tabular}}}}%
+    \put(0.47212532,0.23368995){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ex$\end{tabular}}}}%
     \put(0.40664326,0.45915473){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14081345\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{cpotential.pdf}}%
     \put(0.55359904,0.23369003){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\x+h\eu_1$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{cpotential.pdf}}%
-    \put(0.34888916,0.21631462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_\x$\end{tabular}}}}%
+    \put(0.34888916,0.21631462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_\ex$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{cpotential.pdf}}%
     \put(0.61279253,0.06437087){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_{\x+h\eu_1}$\end{tabular}}}}%
     \put(0.4737624,0.27699309){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_0$\end{tabular}}}}%

@@ -222,9 +222,9 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="2880"
-     inkscape:window-height="1800"
+     inkscape:window-height="1672"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="54"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -234,7 +234,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -301,7 +301,7 @@
            height="89.449005"
            x="291.328"
            y="152.72273" /></flowRegion><flowPara
-         id="flowPara1443"></flowPara></flowRoot>    <circle
+         id="flowPara1443" /></flowRoot>    <circle
        style="fill:#1a1a1a;fill-opacity:0;stroke:#000000;stroke-width:0.165;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.495,0.165;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="path1483"
        cx="56.968498"
@@ -323,7 +323,7 @@
          id="tspan1415-2"
          x="42.620853"
          y="235.26494"
-         style="stroke-width:0.07114755">$\Od$</tspan></text>
+         style="stroke-width:0.07114755">$\cO$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1515)"
        d="m 88.112743,240.00239 c 0,0 17.323137,-12.74877 40.480727,0"
@@ -435,7 +435,7 @@
          id="tspan1415-2-6-1"
          x="151.19797"
          y="227.25856"
-         style="stroke-width:0.07114755">$\elp$</tspan></text>
+         style="stroke-width:0.07114755">$\ep$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4304);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 150.00094,228.29071 c 0,0 -4.64527,9.38518 3.65178,19.01981"

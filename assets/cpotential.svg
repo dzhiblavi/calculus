@@ -32,9 +32,9 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="2880"
-     inkscape:window-height="1800"
+     inkscape:window-height="1672"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="54"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -86,7 +86,7 @@
          id="tspan817-7"
          x="99.146317"
          y="247.92511"
-         style="stroke-width:0.10298254">$\x$</tspan></text>
+         style="stroke-width:0.10298254">$\ex$</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot842"
@@ -98,7 +98,7 @@
            height="108.93113"
            x="271.53076"
            y="716.552" /></flowRegion><flowPara
-         id="flowPara848"></flowPara></flowRoot>    <circle
+         id="flowPara848" /></flowRoot>    <circle
        style="fill:#1a1a1a;fill-opacity:1;stroke:#000000;stroke-width:0.07327562;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="path815-3-5"
        cx="114.20268"
@@ -114,7 +114,7 @@
          id="tspan817-7-5"
          x="116.2558"
          y="247.92509"
-         style="stroke-width:0.10298254">$\x+h\elu_1$</tspan></text>
+         style="stroke-width:0.10298254">$\x+h\eu_1$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.19387504px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 97.066834,241.60663 H 114.2711"
@@ -135,7 +135,7 @@
          id="tspan817-7-2"
          x="73.266724"
          y="251.57393"
-         style="stroke-width:0.10298254">$\gamma_\x$</tspan></text>
+         style="stroke-width:0.10298254">$\gamma_\ex$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.19387504px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 69.422154,289.12767 c 0,0 33.889376,9.79157 35.588196,-0.96758 1.69881,-10.75913 20.9768,8.38929 20.9768,-5.62071 0,-14.00999 -22.44826,-13.33217 -22.44826,-22.44827 0,-9.11611 10.73221,-18.48448 10.73221,-18.48448"
@@ -151,7 +151,7 @@
          id="tspan817-7-2-1"
          x="128.68643"
          y="283.48212"
-         style="stroke-width:0.10298254">$\gamma_{\x+h\elu_1}$</tspan></text>
+         style="stroke-width:0.10298254">$\gamma_{\x+h\eu_1}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.11930132px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.10298254"
