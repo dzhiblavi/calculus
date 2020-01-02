@@ -150,6 +150,7 @@
 \end{proof}
 
 \begin{theorem}(Измеримость пределов и супремумов)
+
 	Пусть $f_n$ измеримы на $E$, тогда
 	\begin{itemize}
 		\item $\displaystyle \sup_{n}{f_n(x)}$, $\displaystyle \inf_{n}{f_n(x)}$
@@ -168,14 +169,50 @@
 \[
 	E(g > a) = \bigcup_{n}{E(f_n > a)}
 \]
-	Докажем это равенство подробно:
+	Из этого равенства очевидным образом следует первое утверждение.
+	Докажем его подробно:
 		\begin{itemize}
 			\item[$\subseteq$]
-				Пусть $y \in E(g > a)$. Тогда $\exists x \in E\colon g(x) > y$.
+				Пусть $y \in E(g > a)$. Тогда $g(y) > a$:
 \[
-	y < g(x) = \sup_{n}{f_n(x)} \Lra \exists 
+	a < g(y) = \sup_{n}{f_n(y)} \Lra \exists n\colon f_n(y) > a \Lra
+	y \in E(f_n > a)	
 \]
+				Действительно, если бы $\forall n~ f_n(y) \leqslant a$, то 
+				тогда $\displaystyle g(y) = \sup_{n}{f_n(y)} \leqslant a$.
 			\item[$\supseteq$]
-		\end{itemize}
+				Пусть теперь наоборот, $y \in E(f_n > a)$ для некоторого $n$.
+				Тогда $f(y) > a$, поэтому:
+\[
+	g(y) = \sup_{n}{f_n(y)} \geqslant f_n(y) > a \Lra y \in E(g > a)
+\]
+		\end{itemize}	
+		\item Верхний и нижний пределы определялись в терминах огибающих. 
+			Воспользуемся этим (а еще вспомним, чему равен предел 
+			монотонной последовательности):
+\[
+	\varlimsup_{n \to +\infty}{f_n(x)} = \lim_{n \to +\infty}{\sup_{k \geqslant n}
+	{f_k(x)}} = \inf_{n}{\sup_{k}{f_{n + k}(x)}}
+\]
+			Инфимум и супремум, как видно из первого пункта, измеримы.
+		\item Если предел существует, то он совпадает и с верхним, и с нижним
+			пределами, а значит, измерим.
+	\end{itemize}
+\end{proof}
+
+\begin{corollary}
+	Если измеримы $f$, $g$, то измеримы:
+	\begin{itemize}
+		\item $\max(f, g)$, $\min(f, g)$.
+		\item $f_{+}$, $f_{-}$.
+		\item $|f|$.
+	\end{itemize}
+\end{corollary}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item $\max(f, g) = \sup(f, g, g, \ldots)$, $\min(f, g) = \inf(f, g, g, \ldots)$.
+		\item $f_{+} = \max(0, f)$, $f_{-} = \max(0, -f)$.
+		\item $|f| = \max(f, -f)$.
 	\end{itemize}
 \end{proof}
