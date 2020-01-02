@@ -247,6 +247,19 @@
 \end{align*}
 \end{proof}
 
+\begin{definition}
+    Пусть $f \colon \O \subseteq \Rm \to \R$, $\x \in \O$. Тогда
+    \textit{градиентом} $\f$ в точке $\x$ наывается вектор
+\[
+    \grad{f}{\x} \defeq \begin{pmatrix}
+        \pderv{f}{x_1}(\x) \\
+        \vdots \\
+        \pderv{f}{x_m}(\x)
+    \end{pmatrix}
+\]
+\end{definition}
+
+
 \begin{proposition}
     Пусть $f \colon \Rm \to \R$, $\elemvec{u} \in \Rm$. Тогда
 \[
@@ -353,18 +366,6 @@
 \end{align*}
     \end{itemize}
 \end{proof}
-
-\begin{definition}
-    Пусть $f \colon \O \subseteq \Rm \to \R$, $\x \in \O$. Тогда
-    \textit{градиентом} $\f$ в точке $\x$ наывается вектор
-\[
-    \grad{f}{\x} \defeq \begin{pmatrix}
-        \pderv{f}{x_1}(\x) \\
-        \vdots \\
-        \pderv{f}{x_m}(\x)
-    \end{pmatrix}
-\]
-\end{definition}
 
 \begin{theorem}(Экстремальное свойство градиента)
 
