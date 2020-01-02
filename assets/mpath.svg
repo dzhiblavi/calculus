@@ -217,7 +217,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
      inkscape:cx="442.04636"
-     inkscape:cy="93.981377"
+     inkscape:cy="93.451047"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -234,7 +234,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -492,6 +492,22 @@
          id="tspan1415-2-1-9-0"
          x="171.85623"
          y="263.37692"
-         style="stroke-width:0.07114755">$\v$</tspan></text>
+         style="stroke-width:0.07114755">$\ev$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="200.83969"
+       y="236.57036"
+       id="text4247"><tspan
+         sodipodi:role="line"
+         id="tspan4245"
+         x="200.83969"
+         y="245.93413"
+         style="stroke-width:0.26458332"></tspan><tspan
+         sodipodi:role="line"
+         x="200.83969"
+         y="259.1633"
+         style="stroke-width:0.26458332"
+         id="tspan4249" /></text>
   </g>
 </svg>
