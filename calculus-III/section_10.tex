@@ -1,0 +1,181 @@
+\chapter{Интеграл}
+
+\section{Измеримые функции}
+
+\begin{definition}
+	\textit{Разбиением} множества $E$ называется дизъюнктный набор множеств
+	$e_i$ такой, что $E = \bigsqcup{e_i}$.
+\end{definition}
+
+\begin{definition}
+	Функция $f\colon X \to \R$ называется \textit{ступенчатой}, 
+	если существует конечное разбиение $X = \bigsqcup{e_i}$ (в контексте 
+	мер множества $e_i$ должны быть измеримыми, то есть $e_i \in \cA$) такое,
+	что на элементах разбиения $f$ постоянно:
+\[
+	f\big|_{e_i} = c_i
+\]
+	Разбиение $e_i$ в таком случае называется \textit{допустимым}.
+\end{definition}
+
+\begin{definition}
+	\textit{Характеристической функцией} множества $E$ называется 
+	фукнция
+\begin{align*}
+	\chi_E \colon X &\to \R \\
+	x &\mapsto \begin{cases}
+		1,~ x \in E \\
+		0,~ x \notin E
+	\end{cases}
+\end{align*}
+\end{definition}
+
+\begin{remark}
+	Если множество $E$ измеримо, то его характеристическая функция 
+	является ступенчатой. Подойдет разбиение $X = E \bigsqcup \overline{E}$.
+\end{remark}
+
+\begin{remark}
+	Ступенчатую функцию можно представить в виде:
+\[
+	f(x) = \sum_{i}{\chi_{e_i}(x) \cdot c_i}
+\]
+\end{remark}
+
+\begin{lemma}(Свойства ступенчатых функций)
+	\begin{itemize}
+		\item Пусть $f$, $g$ ступенчатые. Тогда существует 
+			общее допустимое разбиение.
+		\item $f$, $g$ ступенчатые, тогда $\forall \a \in \R$ функции 
+			$f + g$, $f \cdot g$, $\a f$, $\max(f, g)$, $|f|$, $\displaystyle
+			\frac{f}{g}$ (при $g \neq 0$) ступенчатые.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item Пусть $a_i$ и $b_i$ допустимые разбиения $f$ и $g$ соответственно. 
+			Тогда в качестве их общего допустимого разбиения, очевидно,
+			подойдет разбиение $a_i \cap b_j$.
+		\item Очевидно. Если фукнция составлена из двух, можно рассмотреть 
+			общее допустимое разбиение.
+	\end{itemize}
+\end{proof}
+
+\textit{Контекст: $\langle X, \cA, \mu \rangle$ --- пространство с мерой.}
+
+\begin{definition}
+	Пусть $f \colon E \subseteq X \to \Rbar$. Тогда \textit
+	{лебеговскими множествами} называются множества вида
+\[
+	E(f < a) \defeq \{\, x \in E \mid f(x) < a \,\}
+\]
+	Где $a \in \R$.
+\end{definition}
+
+\begin{remark}
+	\enewline
+	\begin{itemize}
+		\item $E(f < a) = \overline{E(f \geqslant a)}$.
+		\item $\displaystyle E(f \leqslant a) = \bigcap_{b > a}{E(f < b)} = 
+			\bigcap_{n \in \bN}{E\left(f < a + \frac{1}{n}\right)}$
+	\end{itemize}
+\end{remark}
+
+\begin{definition}
+	$f \colon X \to \Rbar$, называется \textit{измеримой на множестве} $E \in \cA$,
+	если
+\[
+	\forall a \in \R~~ E(f < a) \in \cA
+\]
+\end{definition}
+
+\begin{definition}
+	$f$ называется \textit{измеримой}, если она измерима на множестве $X$.
+\end{definition}
+
+\begin{definition}
+	$f$ называется \textit{измеримой по Лебегу}, если она измерима в 
+	контексте $\langle \Rm, \mathfrak{M}^m, \l_m \rangle$.
+\end{definition}
+
+\begin{remark}
+	В определении измеримости на множестве можно брать 
+	лебеговские множества любого вида (см. замечания выше:
+	все эти множества измеримы или нет одновременно).
+\end{remark}
+
+\begin{lemma}(Измеримость непрерывных функций)
+	Пусть $f \colon \Rm \to \R$ непрерывна. Тогда $f$ измерима по Лебегу.
+\end{lemma}
+\begin{proof}
+	Имеем
+\[
+	E(f < a) = f^{-1}((-\infty, a))
+\]
+	Последнее множество открыто по определению непрерывности, а значит,
+	измеримо.
+\end{proof}
+
+\begin{theorem}(Свойства измеримых функций)
+
+	Пусть $f$ измерима на $E$. Тогда 
+	\begin{itemize}
+		\item $\forall a \in \R~ E(f = a)$ измеримо.
+		\item $\forall \a > 0~ \a \cdot f$, $-f$ измеримы.
+		\item $f$ измерима на $E_1, \ldots$ тогда $f$ измерима на $E' = \bigcup{E_i}$.
+		\item $E' \subseteq E$, $E'$ измеримо, тогда $f$ измерима на $E'$.
+		\item $f \neq 0$, тогда $\displaystyle \frac{1}{f}$ измерима на $E$.
+		\item $f \geqslant 0,~\a > 0$, тогда $f^\a$ измерима на $E$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	Для доказательства всех пунктов просто преобразуем лебеговские 
+	множества так, чтобы все стало очевидно из определения:
+	\begin{itemize}
+		\item $E(f = a) = E(f \leqslant a) \cap E(f \geqslant a)$.
+		\item $E(\a \cdot f < a) = E\left(f < \frac{a}{\a}\right)$.
+		\item $E'(f < a) = \bigcup{E_i(f < a)}$.
+		\item $E'(f < a) = E' \cap E(f < a)$.
+		\item
+\begin{align*}
+	E\left(\frac{1}{f} < a\right) = \left(E\left(\frac{1}{f} < a\right) 
+	\cap E(f > 0)\right) 									
+	\cup \left(E\left(\frac{1}{f} < a\right) \cap E(f < 0)\right) \\
+	= \left(E\left(f > \frac{1}{a}\right) \cap E(f > 0)\right) 
+	\cap \left(E\left(f < \frac{1}{a}\right) \cap E(f < 0)\right)
+\end{align*}
+		\item Аналогично.
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}(Измеримость пределов и супремумов)
+	Пусть $f_n$ измеримы на $E$, тогда
+	\begin{itemize}
+		\item $\displaystyle \sup_{n}{f_n(x)}$, $\displaystyle \inf_{n}{f_n(x)}$
+			измеримы на $E$.
+		\item $\displaystyle \varlimsup_{n \to +\infty}{f_n(x)}$, 
+			$\displaystyle \varliminf_{n \to +\infty}{f_n(x)}$ измеримы на $E$.
+		\item Если $\displaystyle \forall x~ \exists f(x) =
+			\lim_{n \to +\infty}{f_n(x)}$, то $f$ измерима на $E$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item Пусть $\displaystyle g(x) = \sup_{n}{f_n(x)}$. Рассмотрим лебеговы 
+			множества $g$:
+\[
+	E(g > a) = \bigcup_{n}{E(f_n > a)}
+\]
+	Докажем это равенство подробно:
+		\begin{itemize}
+			\item[$\subseteq$]
+				Пусть $y \in E(g > a)$. Тогда $\exists x \in E\colon g(x) > y$.
+\[
+	y < g(x) = \sup_{n}{f_n(x)} \Lra \exists 
+\]
+			\item[$\supseteq$]
+		\end{itemize}
+	\end{itemize}
+\end{proof}

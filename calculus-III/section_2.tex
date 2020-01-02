@@ -94,7 +94,8 @@
 \begin{align*}
     &(\a f + \b g)(\x + \h) - (\a f + \b g)(\x) \\
     &= [(\a f)(\x + \h) - (\a f)(\x)] + [(\b g)(\x + \h) - (\b g)(\x)] \\
-    &= [\der{f}{\x} + o] + [\der{g}{\x} + o] = \der{f}{\x} + \der{g}{\x} + o
+    &= [\a\der{f}{\x} + o] + [\b\der{g}{\x} + o] 
+	= \a\der{f}{\x} + \b\der{g}{\x} + o
 \end{align*}
 \end{proof}
 
@@ -203,15 +204,16 @@
     \exists \dder{f}{\x}{\elemvec{u}} = [\der{f}{\x}]\elemvec{u}
 \]
 \end{proposition}
-\begin{proof} Для любых $t \in \R$, $\x + t\elemvec{u} \in \O$ имеем
+\begin{proof} Для любых $t \in \R\colon~ \x + t\elemvec{u} \in \O$ имеем
 \begin{align*}
     &\frac{f(\x + t\elemvec{u}) - f(\x)}{t} =
     \frac{[\der{f}{\x}](t\elemvec{u}) + r(t\elemvec{u})}{t} \\
     &= [\der{f}{\x}]\elemvec{u} +
-    \frac{r(t\elemvec{u})}{t} \leqslant [\der{f}{\x}]\elemvec{u} +
-    \frac{\a(\elemvec{u})\norm{t\elemvec{u}}}{t} =
-    [\der{f}{\x}]\elemvec{u} + \a(\elemvec{u})\norm{\elemvec{u}}
+	\frac{r(t\elemvec{u})}{t} = [\der{f}{\x}]\elemvec{u} +
+	\frac{\a(\norm{\eu})\norm{t\elemvec{u}}}{t} =
+	[\der{f}{\x}]\elemvec{u} + \a(\norm{\eu})\norm{\elemvec{u}}
 \end{align*}
+	причем $\a(s) \xrightarrow[s \to 0]{} 0$.
 \end{proof}
 
 \begin{theorem}(Вид матрицы Якоби)
