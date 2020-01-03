@@ -405,3 +405,124 @@
 \]
 	Поэтому $\bigwedge{w_n(x)}$ верно почти везде.
 \end{proof}
+
+\section{Сходимость по мере}
+
+\begin{definition}
+	Пусть $f_n$, $f$ измеримы и почти везде конечны. Тогда 
+	$f_n$ \textit{сходится к $f$ по мере}, если
+\[
+	\forall \e > 0~ \mu(X(|f - f_n| \geqslant \e)) \xrightarrow[n \to +\infty]{} 0
+\]
+	Обозначают $f_n \underset{\mu}{\Lra} f$.
+\end{definition}
+
+\begin{remark}
+	Определение сходимости по мере устойчиво к изменениям фукнций на множетсве меры 0.
+\end{remark}
+
+\begin{theorem}(Лебега о сходимости почти всюду и по мере)
+
+	Пусть $\mu(X) < +\infty$, $f_n, f \colon X \to \Rbar$ измеримы и почти всюду конечны,
+	причем  $f_n \to f$ почти везде. Тогда $f_n \underset{\mu}{\Lra} f$.
+\end{theorem}
+\begin{proof}
+	\enewline
+	\begin{itemize}
+		\item Для начала поправим $f_n$ и $f$ на том множестве, 
+			где сходимость не наблюдается: заменим $f_n$ и $f$ на 0.
+			Теперь имеем сходимость везде, при этом на сходимость по мере 
+			это никак не повлияло.
+		\item Разберем частный случай. Пусть $f_n \to 0 = f$, $\forall x~ f_n$
+			монотонна по $n$. В таком случае, $|f_n|$ монотонно убывает.
+			Тогда рассмотрим множества вида:
+\[
+	X(|f_n| \geqslant \e) \supseteq X(|f_{n + 1}| \geqslant \e) \supseteq \ldots
+\]
+			И множество из опредeления $f_n \underset{\mu}{\Lra} f$:
+\[
+	0 = \mu(\varnothing) = \l\left(\bigcap{X(|f_n| \geqslant \e)}\right) 
+	= \lim_{n \to +\infty}{\l(X(|f_n| \geqslant \e))}
+\]
+			Последнее равенство --- непрерывность сверху.
+		\item Докажем общий случай, сведя его к частному. Рассмотрим последовательность
+			функций
+\[
+	\f_n(x) = \sup_{k \geqslant n}{|f_k(x) - f(x)|} \xrightarrow[n \to +\infty]{} 0
+\]
+			Очевидно, что $\f_n(x)$ убывает по $n$. Тогда к $\f$ применим частный случай:
+\[
+	\l(X(|\f_n| \geqslant \e)) \to 0
+\]
+			Но тогда, поскольку $X(|f_n - f| \geqslant \e) 
+			\subseteq X(|\f_n| \geqslant \e)$:
+\[
+	\l(X(|f_n - f| \geqslant \e)) \leqslant \l(X(|\f_n| \geqslant \e)) \to 0
+\]
+			Что и требовалось.
+	\end{itemize}		
+\end{proof}
+
+\begin{theorem}(Рисса о сходимости по мере и почти всюду)
+			
+	Пусть $f_n, f \colon X \to \Rbar$ --- измеримые и почти везде конечные функции, причем
+	$f_n \underset{\mu}{\Lra} f$. Тогда
+\[
+	\exists n_k\colon~ f_{n_k} \xrightarrow[n \to +\infty]{} f
+\]
+	Почти всюду.
+\end{theorem}
+\begin{proof}
+	Воспользуемся определением сходимости почти всюду:
+\[
+	\forall k~\exists n'_k\colon~ \forall n \geqslant n'_k~
+	\mu\left(X\left(|f_n - f| \geqslant \frac{1}{k}\right)\right) < \frac{1}{2^k}
+\]
+	Заменим $n'_k$ на $n_k$ так, чтобы $n_k$ возрастало (от этого ничего не изменится).
+	Положим 
+\[
+	E_k = \bigcup_{j = k}^{+\infty}{X\left(|f_{n_j} - f| \geqslant \frac{1}{j}\right)}	
+\]
+	Получаем:
+	\begin{itemize}
+		\item $E_1 \supseteq E_2 \supseteq \ldots$
+		\item
+\[
+	\mu(E_k) \leqslant \sum_{j = k}^{+\infty}{\frac{1}{2^j}} = \frac{2}{2^k}
+\]
+	Пусть тогда $E = \bigcap{E_k}$, тогда по непрерывности сверху имеем:
+\[
+	\mu(E) = \lim_{k \to +\infty}{\mu(E_k)} = 0
+\]
+	Проверим, что везде, кроме $E$ $f_n \to f$, что и закончит доказательство.
+	Проверим: $\forall x \notin E~ f_n(x) \xrightarrow[n\to +\infty]{} 0$. Раз 
+	$x \notin E$, то $\exists N\colon~ \forall n > N~ x\notin E_n$, что по определению
+	$E_k$ означает:
+	\begin{align*}
+		|f_{n_N}(x) - f(x)| &< \frac{1}{N} \\
+		|f_{n_{N + 1}}(x) - f(x)| &< \frac{1}{N + 1} \\
+		&\ldots
+	\end{align*}
+	То есть $f_n(x) \to f(x)$.
+	\end{itemize}
+\end{proof}
+
+\begin{corollary}(Аналог предельного перехода в неравенствах для сходимости по мере)
+		
+	Пусть $f_n \underset{\mu}{\Lra} f$, $|f_n(x)| \leqslant g(x)$ почти везде, 
+	тогда $|f(x)| \leqslant g(x)$ почти везде.
+\end{corollary}
+\begin{proof}
+	Выделим подпоследовательность $n_k$, вдоль которой $f_{n_k} \to f$ почти везде.
+	Выполним в неравенстве $|f_{n_k}(x)| < g(x)$ предельный переход. Получим, 
+	что $|f(x)| \leqslant g(x)$ почти везде, что и требовалось.
+\end{proof}
+
+\begin{theorem}(Егорова о сходимости почти везде и почти равномерной сходимости)
+
+	Пусть $\mu(X) < +\infty$, $f_n, f \colon X \to \Rbar$ измеримы и почти везде конечны,
+	$f_n \to f$ почти везде, тогда
+\[
+	\forall \e > 0~ \exists e\colon~ \mu(e) < \e,~ f_n \rcon f \text{ на } X \setminus e
+\]
+\end{theorem}
