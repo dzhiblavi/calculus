@@ -216,3 +216,192 @@
 		\item $|f| = \max(f, -f)$.
 	\end{itemize}
 \end{proof}
+
+\begin{theorem}
+	Пусть $\langle X, \cA, \mu \rangle$ --- пространство с мерой, 
+	$f \colon X \to \Rbar$, $f \geqslant 0$, измерима. Тогда
+	$\exists f_n$ --- ступенчатые такие, что
+\begin{itemize}
+	\item $0 \leqslant f_1 \leqslant \ldots \leqslant f_n \leqslant f_{n + 1}
+		\leqslant \ldots$
+	\item $\displaystyle f(x) = \lim_{n \to +\infty}{f_n(x)}$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+	Заиксируем $n$.	Нарежем отрезок $[0, n]$ на $n^2$ равных частей. 
+	Рассмотрим множества вида
+\[
+	e^{(n)}_k = X\left(\frac{k}{n} \leqslant f < \frac{k + 1}{n}\right)
+\]
+	Для $0 \leqslant k < n^2$. Для $n^2$:
+\[
+	e^{(n)}_{n^2} = X(f \geqslant n)
+\]
+	Заведем пока примерную последовательность ступенчатых функций:
+\[
+	g_n(x) = \sum_{k = 1}^{n}{\chi_{e^{(n)}_k}(x) \cdot \frac{k}{n}}
+\]
+	По построению имеем
+\[
+	0 \leqslant g \leqslant f
+\]
+	Поймем, почему $g_n \to f$.
+	\begin{itemize}
+		\item Пусть $f = +\infty$. Тогда
+\[
+	\forall x~ x \in e^{(n)}_{n^2} \Lra g_n(x) = n \to +\infty
+\]
+		\item Пусть $f < +\infty$. Тогда
+\[
+	\forall n > f(x)~ \exists k_n\colon~ x \in e^{(n)}_{k_n} \Lra
+	|f(x) - g_n(x)| \leqslant \frac{1}{n} \xrightarrow[n \to +\infty]{} 0
+\]
+	\end{itemize}
+	Не хватает упорядоченности. Исправим это:
+\[
+	f \geqslant f_n = \max(g_1, g_2, \ldots, g_n) \geqslant g_n
+\]
+	По теореме о сжатой последовательности сходится туда, куда надо,
+	причем
+\[
+	0 \leqslant f_1 \leqslant \ldots \leqslant f_n \leqslant f_{n + 1} \leqslant 
+	\ldots
+\]
+\end{proof}
+
+\begin{corollary}
+	Пусть $f$ измерима. Тогда $\exists g_n$ такие, что
+\begin{itemize}
+	\item $\forall n~ |g_n| \leqslant f$.
+	\item $\displaystyle \forall x~ \lim_{n \to +\infty}{g_n(x)} = f(x)$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+	Разложим $f = f_{+} - f_{-}$. Срезки в свою очередь представим в 
+	виде ступенчатых функций по теореме:
+\begin{align*}
+	0 \leqslant \ldots \leqslant g^{+}_n \leqslant \ldots \\
+	0 \leqslant \ldots \leqslant g^{-}_n \leqslant \ldots 
+\end{align*}
+	Тогда положим
+\[
+	g_n = g^{+}_n - g^{-}_n
+\]
+	Причем в любой точке одна из $g^{+}$, $g^{-}$ равна нулю (по определению срезок).
+	А значит, $g_n$ подходит.
+\end{proof}
+
+\begin{corollary}
+	Пусть $f, g\colon X \to \Rbar$ измеримы. Тогда измерима $f \cdot g$.
+\end{corollary}
+\begin{proof}
+	Сопоставим $f$ последовательность ступенчатых $f_n$, $g$ --- $g_n$. Тогда
+	везде, вроме точек, в которых возникает неопределенность $0 \cdot \infty$, 
+	имеем:
+\[
+	\forall x~ f_n(x) \cdot g_n(x) \xrightarrow[n \to +\infty]{} (f \cdot g)(x)
+\]
+	Если дополнительно считать, что $0 \cdot \infty = 0$, то сходимость будет и в 
+	таких точках (по всей видимости, это следует из построения последовательностей
+	$f_n$ и $g_n$: там в случае $0 \cdot \infty$ получатся ступени $0$ у той функции,
+	которая принимает значение $0$ и $n$ у той функции, которая принимает значение 
+	$+\infty$. Поэтому получается $\forall n~ f_n(x) \cdot g_n(x) = 0 \to 0 
+	= (f \cdot g)(x)$).
+	Из чего получаем, что $f \cdot g$ --- предельная фукнция последовательности
+	измеримых функций, то есть измерима.
+\end{proof}
+
+\begin{corollary}
+	Пусть $f, g\colon X \to \Rbar$ измеримы, причем в выражении 
+	$f + g$ не возникает неопределенности $\infty - \infty$.
+	Тогда $f + g$ измерима.
+\end{corollary}
+\begin{proof}
+	Абсолютно аналонично предыдущему следствию.
+\end{proof}
+
+\begin{remark}
+	Если положить $\infty - \infty = 0$, измеримость сохранится и для таких 
+	случаев.
+\end{remark}
+
+\begin{definition}
+	Предикат $w(x),~ x \in E$ \textit{выполняется почти везде на множестве} $E \in \cA$, 
+	если $\exists e \in \cA\colon~$
+\begin{itemize}
+	\item $\mu(e) = 0$.
+	\item $\forall x \in E \setminus e~ w(x)$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+	Пусть $\mu$ --- полная мера. Тогда измеримая на $E \in \cA$ почти везде функция $f$
+	измерима.
+\end{theorem}
+\begin{proof}
+	Пусть $e \in \cA$ --- такое множество меры $0$, что $f$ измерима на $E \setminus e$.
+	Тогда множества Лебега для $E$ выглядят так:
+\[
+	E(f < a) = (E \setminus e)(f < a) \cup e(f < a)
+\]
+	Измеримы, потому что $e(f < a) \subseteq e$ --- измеримо по полноте $\mu$.
+\end{proof}
+
+\begin{corollary}(Теорема об измеримости функции, непрерывной на множестве полной меры)
+
+	\textit{Множество полной меры --- множество, дополнение которого в данном 
+	контексте имеет нулевую меру} \\
+
+	Пусть $f \colon E \to \R$, 
+	$e \subseteq E$, $\l(e) = 0$, $E' = E \setminus e$,
+	$f\big|_{E'} \in C(E')$. Тогда $f$ измерима по Лебегу.
+\end{corollary}
+\begin{proof}
+	На $E'$ $f$ непрерывна, а поэтому измерима. Значит, $f$ почти всюду измерима на $E$,
+	что по теореме дает измеримость.
+\end{proof}
+
+\begin{corollary}
+	Пусть $\mu$ --- полная мера, $f_n \to f$ почти везде, $f_n$ измеримы. 
+	Тогда $f$ измерима.
+\end{corollary}
+\begin{proof}
+	Из сходимости почти везде получаем, что $f$ почти везде измерима (как предельная 
+	функция). Значит, $f$ измерима везде.
+\end{proof}
+
+\begin{corollary}
+	Пусть $\mu$ --- полная мера, $g$ измерима, $f$ не совпадает с 
+	$g$ только на множестве нулевой меры. Тогда $f$ измерима.
+\end{corollary}
+\begin{proof}
+	Аналогично предыдущим двум следствиям.
+\end{proof}
+
+\begin{remark}
+	Что делать, если $\mu$ --- не полная? Проблема возникнет в тот момент, 
+	когда мы будем рассматривать множество $e(f < a)$, которое в случае
+	полной меры обязательно измеримо, если $\mu(e) = 0$. Но мы знаем,
+	что $e$ измеримо. Если мы сделаем так, чтобы $e(f < a) = e$, либо $e(f < a) = 
+	\varnothing$, все будет работать. Все, что надо для этого сделать --- 
+	переопределить $f$ на $e$ так, чтобы $f$ на $e$ оказалась константой.
+	Понятно, что в таком случае либо $e(f < a) = e$, либо $e(f < a) = \varnothing$.
+\end{remark}
+
+\begin{definition}
+	Функции, совпадающие почти всюду, называются \textit{эквивалентными}.
+\end{definition}
+
+\begin{theorem}
+	Пусть $\forall n~ w_n(x)$ верно почти везде. Тогда 
+	$\bigwedge{w_n(x)}$ врено почти везде.
+\end{theorem}
+\begin{proof}
+	Возьмем множества $e_n$ для всех $w_n$ из определения верности почти везде.
+	Тогда $\bigwedge{w_n(x)}$ верно на $\displaystyle X \setminus 
+	\left(\bigcup{e_n}\right)$. По счетной полуаддитивности меры имеем
+\[
+	\l\left(\bigcup{e_n}\right) \leqslant \sum{\l(e_n)} = 0
+\]
+	Поэтому $\bigwedge{w_n(x)}$ верно почти везде.
+\end{proof}
