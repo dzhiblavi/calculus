@@ -11,7 +11,7 @@
 
     Пусть $C^1 \ni f \colon E \subseteq \R^{m + n} \to \R$, $C^1 \ni \phi \colon
     E \to \R^n$, $\ea \in E$, $\phi(\ea) = \elemvec{0}$, $\rank{\phi'(\ea)} = n$,
-    $\ea$ --- точка локального экстремума, тогда $\exists \lambda \in \Rn
+    $\ea$ --- точка локального относительного экстремума, тогда $\exists \lambda \in \Rn
     \colon$
 \[
     \begin{cases}
@@ -38,9 +38,9 @@
     использованы не совсем обычные, но понятные обозначения для частных производных.
     Выпишем необходимое условие экстремума:
 \[
-    f'_{\x}(\ea_x, \f(\ea_x)) + f'_{\y}(\ea_x, \f(\ea_x)) \cdot \f'(\ea_x) =
+    0 = g'(\ea_\x) = f'_{\x}(\ea_x, \f(\ea_x)) + f'_{\y}(\ea_x, \f(\ea_x)) \cdot \f'(\ea_x) =
     \underbrace{f'_{\x}(\ea)}_{1 \times m} + \underbrace{f'_{\y}(\ea)}_{1 \times n}
-    \cdot \underbrace{\f'(\ea_x)}_{n \times m} = 0
+    \cdot \underbrace{\f'(\ea_x)}_{n \times m}
 \]
     Кроме того, нам известно, что $\phi(\x, \f(\x)) = \elemvec{0}$, тогда:
 \[
