@@ -368,7 +368,7 @@
 
 \begin{lemma}(Об остатке функционального ряда)
 
-    $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon 0 \Llra R_N(x) \rcon 0$
+    $\displaystyle \sum_{n = 1}^{+\infty}{u_n(x)} \rcon \bot \Llra R_N(x) \rcon 0$
 \end{lemma}
 \begin{proof}
 $\displaystyle
@@ -493,7 +493,7 @@ $
 \end{theorem}
 \begin{proof}
 
-    Обозначим $\displaystyle S^a_N = \sum_{n = 1}^{+\infty}{a_n}$. Проверим
+    Обозначим $\displaystyle S^a_N = \sum_{n = 1}^{N}{a_n}$. Проверим
     критерий Больцано-Коши \\ для $\displaystyle \sum_{n = 1}^{+\infty}{a_n}$:
 \[
     |S^a_{n + p} - S^a_n| \leqslant |S^a_{n + p} - S_{n + p}(x)|
@@ -512,7 +512,7 @@ $
     Мы доказали сходимость ряда $a_n$. Проверим второе утверждение теоремы.
     Положим
 \[
-    \tilde{u}(x) = \begin{cases}
+    \tilde{u}_n(x) = \begin{cases}
                     u_n(x),~ x \neq x_0 \\
                     a_n,~~~~~~ x = x_0
                     \end{cases}
