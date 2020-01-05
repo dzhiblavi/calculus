@@ -183,7 +183,7 @@
         \item $\overline{\exp}(z) = \exp(z)$
         \item $\exp'(z) = \exp(z)$
         \item $\displaystyle \lim_{z \to 0}{\frac{\exp(z) - 1}{z}} = 1$
-        \item $\exp(z + w) = \exp(z) + \exp(w)$
+        \item $\exp(z + w) = \exp(z) \cdot \exp(w)$
     \end{itemize}
 \end{theorem}
 \begin{proof}
@@ -191,8 +191,8 @@
     \begin{itemize}
         \item
 $ \displaystyle
-    \lim_{z \to z_0}{\frac{e^z - 1}{z - z_0}}
-    = \lim_{z \to z_0}{\frac{e^z - e^0}{z - z_0}}
+    \lim_{z \to 0}{\frac{e^z - 1}{z - 0}}
+    = \lim_{z \to 0}{\frac{e^z - e^0}{z - 0}}
     = (e^z)'\bigg|_0 = 1
 $
         \item
@@ -204,7 +204,7 @@ $
     \cdot \frac{w^{n - k}}{(n - k)!}}
     = \left(\sum_{n = 0}^{+\infty}{\frac{z^n}{n!}}\right)
     \cdot \left(\sum_{n = 0}^{+\infty}{\frac{w^n}{n!}}\right)
-    = \exp(z)\exp(w)
+    = \exp(z) \cdot \exp(w)
 \end{align*}
     \end{itemize}
 \end{proof}
@@ -319,9 +319,9 @@ $
     Теперь положим $\displaystyle f(x) = \frac{S(x)}{(1 + x)^\sigma}$.
     Достаточно показать, что $f(x) = 1$ при $|x| < 1$. Изучим производную $f$:
 \[
-    f'(x) = \frac{S'(x)(1 + x)^\sigma + S(x)\sigma(1 + x)^{\sigma - 1}}
+    f'(x) = \frac{S'(x)(1 + x)^\sigma - S(x)\sigma(1 + x)^{\sigma - 1}}
     {(1 + x)^{2\sigma}} = \frac{S'(x)}{(1 + x)^\sigma}
-    + \frac{\sigma S(x)}{(1 + x)^{\sigma - 1}} = 0
+    - \frac{\sigma S(x)}{(1 + x)^{\sigma + 1}} = 0
 \]
     Осталось проверить $f(x) = 1$ в каком-нибудь $x$:
 \[
@@ -363,7 +363,7 @@ $
     \exists C_1\colon~ \left|\frac{f^{(n)}(x_0)}{n!}(x_1 - x_0)^n\right| \leqslant
     C_1 \Lra |f^{(n)}(x_0)| \leqslant C_1 n! \frac{1}{|x_1 - x_0|^n}
 \]
-        Положим $\displaystyle B_n = \frac{1}{|x_1 - x_0|^n}$. Проанализируем
+        Положим $\displaystyle B = \frac{1}{|x_1 - x_0|}$. Проанализируем
         $m$-ю производную $f$:
 \begin{align*}
     |f^{(m)}(x)| &\leqslant \sum_{n = m}^{+\infty}
