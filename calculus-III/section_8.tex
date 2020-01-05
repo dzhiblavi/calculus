@@ -180,10 +180,10 @@
     0 = I(V, \gamma_0) = I(V, \gamma_1 \gamma_2^{-1}) = I(V, \gamma_1) + I(V, \gamma_2^{-1})
     = I(V, \gamma_1) - I(V, \gamma_2)
 \]
-        \item[2 $\Lra$ 1] Построим потанциал. Зафиксируем точку $A \in \Od$. Для
+        \item[2 $\Lra$ 1] Построим потенциал. Зафиксируем точку $A \in \Od$. Для
         каждой точки $\x \in \Od$ зафиксируем кусочно-гладкий путь $\gamma_{\x} \colon
         A \rightsquigarrow \x$ (см. лемму). Проверим, что $f(\x) = I(V, \gamma_{\x})$
-        --- потанциал $V$. Для этого докажем, что $f'_{\x_1}(\x) = V_1(\x)$ (число
+        --- потенциал $V$. Для этого докажем, что $f'_{\x_1}(\x) = V_1(\x)$ (число
         $1$ здесь не играет никакой роли). Рассмотрим путь $\gamma_0 \colon
         t \mapsto \x + t h \eu_1$ для $t \in [0, 1]$, где $\eu_1$ --- стандартный
         базисный вектор. Тогда путь $\gamma_\x \gamma_0 \colon A \rightsquigarrow
@@ -224,13 +224,13 @@
     $\forall \x \in \Od~ \forall k, j~~
     \pderv{V_k}{\x_j}(\x) = \pderv{V_j}{\x_k}(\x)$
 \end{lemma}
-\begin{definition}
+\begin{proof}
     Пользуемся теоремой о независимотсти частных производных от порядка дифференцирования:
 \[
     \pderv{V_k}{\x_j} = \pderv{f}{\x_k \x_j} = \pderv{f}{\x_j \x_k} =
     \pderv{V_j}{\k_k}
 \]
-\end{definition}
+\end{proof}
 
 \begin{theorem}(Лемма Пуанкаре)
 
@@ -243,7 +243,7 @@
     \gamma_\x \colon [0, 1] \to \Rm \\
     t \mapsto A + t(\x - A) \in \Od
 \end{align*}
-    Проверим, что $f(\x) = I(V, \gamma_\x)$ --- потанциал $V$. Поскольку
+    Проверим, что $f(\x) = I(V, \gamma_\x)$ --- потенциал $V$. Поскольку
     $V \in C^1$, можно использовать правило Лейбница:
 \begin{align*}
     f(\x) &= \int_0^1{\sum_{i = 1}^{m}{V_i(A + t(\x - A)) \cdot (\x_i - A_i) ~dt}} \\
