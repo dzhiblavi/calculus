@@ -408,11 +408,11 @@ $
     &\x \mapsto H_i(L(\x)) - x_{k + i}
 \end{align*}
     для $i = 1\ldots m - k$. Тогда
-\[
-    \forall i = 1\ldots m - k~~ f_i(\x) = 0 \Llra
-    f(\x) = \elemvec{0} \Llra H(L(\x)) - \x = \elemvec{0} \Llra
-    H(L(\x)) = \x \Llra \x \in M \cap \tilde{U}
-\]
+\begin{align*}
+	\forall i = 1\ldots m - k~~ f_i(\x) = 0 &\Llra
+	f(\x) = \elemvec{0} \Llra (L(\x), H(L(\x))) - \x = \elemvec{0} \Llra \\
+	(L(\x), H(L(\x))) = \x &\Llra \x \in M \cap \tilde{U}
+\end{align*}
     Осталось показать, что $\{\,\grad{f_i}{\ep}\,\}$ линейно независим.
     Для этого просто выпишем этот набор:
 \begin{align*}
