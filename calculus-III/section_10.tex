@@ -228,7 +228,7 @@
 \end{itemize}
 \end{theorem}
 \begin{proof}
-	Заиксируем $n$.	Нарежем отрезок $[0, n]$ на $n^2$ равных частей. 
+	Зафиксируем $n$. Нарежем отрезок $[0, n]$ на $n^2$ равных частей. 
 	Рассмотрим множества вида
 \[
 	e^{(n)}_k = X\left(\frac{k}{n} \leqslant f < \frac{k + 1}{n}\right)
@@ -239,7 +239,7 @@
 \]
 	Заведем пока примерную последовательность ступенчатых функций:
 \[
-	g_n(x) = \sum_{k = 1}^{n}{\chi_{e^{(n)}_k}(x) \cdot \frac{k}{n}}
+	g_n(x) = \sum_{k = 1}^{n^2}{\chi_{e^{(n)}_k}(x) \cdot \frac{k}{n}}
 \]
 	По построению имеем
 \[
@@ -495,7 +495,7 @@
 	\mu(E) = \lim_{k \to +\infty}{\mu(E_k)} = 0
 \]
 	Проверим, что везде, кроме $E$ $f_n \to f$, что и закончит доказательство.
-	Проверим: $\forall x \notin E~ f_n(x) \xrightarrow[n\to +\infty]{} 0$. Раз 
+	Проверим: $\forall x \notin E~ f_n(x) \xrightarrow[n\to +\infty]{} f(x)$. Раз 
 	$x \notin E$, то $\exists N\colon~ \forall n > N~ x\notin E_n$, что по определению
 	$E_k$ означает:
 	\begin{align*}

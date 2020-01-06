@@ -31,7 +31,7 @@
 \end{theorem}
 
 \begin{definition}
-    \textit{Алгеброй подмножеств} множества $X$ называется множество $\cA \in
+    \textit{Алгеброй подмножеств} множества $X$ называется множество $\cA \subseteq
     2^X$ такое, что выполнены аксиомы:
     \begin{itemize}
         \item[1.] $X \in \cA$
@@ -146,7 +146,7 @@
 \begin{align*}
     &A \setminus \bigsqcup_{i = 1}^{n}{A_i} = \bigsqcup_{i = 1}^{k}{D_i} \Lra A
     = \left(\bigsqcup_{i = 1}^{n}{A_i}\right) \sqcup \left(\bigsqcup_{i = 1}^{k}{D_i}\right) \\
-    &\Lra \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)}) + \sum_{i = 1}^{k}{\mu(D_i)} \geqslant
+    &\Lra \mu(A) = \sum_{i = 1}^{n}{\mu(A_i)} + \sum_{i = 1}^{k}{\mu(D_i)} \geqslant
     \sum_{i = 1}^{n}{\mu(A_i)}
 \end{align*}
         \item[2.] Сейчас будет использован стандартный прием, смысл которого заключается в
@@ -174,7 +174,7 @@
 \]
 	Поэтому
 \[
-	\mu(A) = \sum_{k}{\sum_{j}{D_{kj}}} \leqslant \sum_{k}{\mu(A_k)}
+	\mu(A) = \sum_{k}{\sum_{j}{\mu(D_{kj})}} \leqslant \sum_{k}{\mu(A_k)}
 \]
 		\item[3.]
 				\enewline
@@ -269,7 +269,7 @@
 \[
 	A,~A_1, A_2 \ldots~ \in \cA\colon A_1 \supset A_2 \supset \ldots;~
     \displaystyle A = \bigcap_{i = 1}^{+\infty}{A_i} \Lra \\ \mu(A) = \lim_{n \to
-    +\infty}{\mu(A_i)}
+    +\infty}{\mu(A_n)}
 \]
         \item[3.] $\mu$ \textit{непрерывно сверху на пустом множестве}, то есть
 			при условии, что $A = \varnothing$.
@@ -281,7 +281,7 @@
 		\item [$1 \Lra 2$] Будем пользоваться непрерывностью снизу, но для этого
 			нужна подготовка:
 \[
-	B_1 = A_1 \setminus A, \ldots, B_k = A_1 \setminus A_k
+	B_1 = A_1, \ldots, B_k = A_1 \setminus A_k
 \]
 	Тогда $B_1 \subseteq B_2 \subseteq \ldots$; $B = \bigcup{B_k}$:
 \[
