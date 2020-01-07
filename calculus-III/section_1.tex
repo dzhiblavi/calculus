@@ -162,11 +162,11 @@
 \end{theorem}
 \begin{proof}
     \begin{align*}
-        \norm{\cB \cA} &= \sup_{\x \in S^n}{\cB(\cA \x)} \\
-        &= \sup_{\x \in S^n}{\left(\norm{\cA \x} \cdot \cB\left(\frac{\cA
+        \norm{\cB \cA} &= \sup_{\x \in S^m}{\cB(\cA \x)} \\
+        &= \sup_{\x \in S^m}{\left(\norm{\cA \x} \cdot \cB\left(\frac{\cA
         \x}{\norm{\cA \x}}\right)\right)} \\
-        &\leqslant \sup_{\x \in S^n}{\norm{\cA \x}} \cdot
-        \sup_{\x \in S^n}{\cB\left(\frac{\cA \x}{\norm{\cA \x}}\right)} \\
+        &\leqslant \sup_{\x \in S^m}{\norm{\cA \x}} \cdot
+        \sup_{\x \in S^m}{\cB\left(\frac{\cA \x}{\norm{\cA \x}}\right)} \\
         &\leqslant \norm{A} \norm{B}
     \end{align*}
 \end{proof}

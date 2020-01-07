@@ -575,7 +575,55 @@ $
     1}^{+\infty}{u_k(x)}} = \lim_{x \to x_0}{f(x)} = \lim_{x \to x_0}{\lim_{n
     \to +\infty}{f_n(x)}}
 \]
+\end{proof}
 
+\begin{theorem}(Дифференцируемость Гамма-функции)
+	
+	Отображение $\Gamma \colon \R_{>0} \to \R$, задаваемое соотношением
+\[
+	\frac{1}{\Gamma(x)} = x e^{\gamma x} \prod_{k \geqslant 1}
+	{\left(1 + \frac{x}{k}\right) \cdot e^{-\frac{x}{k}}}
+\]
+	дифференцируемо.
+\end{theorem}
+\begin{proof}
+	Прологарифмируем определение:
+\[
+	-\ln(\Gamma(x)) = \ln(x) + \gamma \cdot x + \sum_{k \geqslant 1}
+	{\left(\ln\left(1 + \frac{x}{k}\right) - \frac{x}{k}\right)}
+\]
+	Возьмем производную от обеих частей:
+\begin{align*}
+	-\frac{1}{\Gamma(x)} \cdot \Gamma'(x) &= \frac{1}{x} + \gamma +
+	\sum_{k \geqslant 1}{\left(\frac{1}{1 + \frac{x}{k}} \cdot \frac{1}{k}
+	- \frac{1}{k}\right)} \\
+	&= \frac{1}{x} + \gamma - \sum_{k \geqslant 1}{\frac{x}{k (k + x)}}
+\end{align*}
+	Единственный ряд в формуле сходится равномерно на любом интервале вида
+	$(0, M)$ по признаку Вейерштрасса. Исходный ряд, конечно же, сходится. Поэтому
+	(теорема о дифференцировании ряда) на любом интервале вида $(0, M)$ ряд
+	(а значит, и $\Gamma$) дифференцируем. Поэтому $\Gamma$ дифференцируема на
+	$\R_{>0}$ (для проверки дифференцируемости в какой-либо точке надо просто 
+	подобрать достаточно большое $M$).
+\end{proof}
+
+\begin{lemma}(Преобразование Абеля)
+
+	Или \textit{суммирование по частям}:
+\[
+	\sum_{k = N}^{M}{a_k b_k} = A_M b_M - A_{N - 1} b_N + \sum_{k = N}^{M - 1}
+	{(b_k - b_{k + 1}) \cdot A_k}
+\]
+\end{lemma}
+\begin{proof}
+\begin{align*}
+	\sum_{k = N}^{M}{a_k b_k} &= \sum_{k = N}^{M}{b_k \cdot (A_k - A_{k - 1})}
+	= \sum_{k = N}^{M}{b_k \cdot A_k} - \sum_{k = N}^{M}{b_k \cdot A_{k - 1}} 
+	= \sum_{k = N}^{M}{b_k \cdot A_k} - \sum_{k = N - 1}^{M - 1}{b_{k + 1} \cdot A_k} \\
+	&= \left(A_M b_M + \sum_{k = N}^{M - 1}{b_k \cdot A_k}\right)
+	- \left(-A_{N - 1} b_N + \sum_{k = N}^{M - 1}{b_{k + 1} \cdot A_k}\right) \\
+	&= A_M b_M - A_{N - 1} b_N + \sum_{k = N}^{M - 1}{(b_k - b_{k + 1}) \cdot A_k}
+\end{align*}
 \end{proof}
 
 \begin{theorem}(Признак Дирихле)
@@ -591,13 +639,8 @@ $
 \end{theorem}
 \begin{proof}
     Воспользуемся преобразованием Абеля:
-\[
-    \sum_{N \leqslant k \leqslant M}{a_k b_k} = A_N b_M - A_{N - 1}b_N +
-    \sum_{k = N}^{M - 1}{(b_k - b_{k + 1}) A_k}
-\]
-    тогда
 \begin{align*}
-    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant |A_N b_M|
+    \left|\sum_{k = N}^{M}{a_k(x) b_k(x)}\right| &\leqslant |A_M b_M|
     + |A_{N - 1}b_N| + \left| \sum_{k = N}^{M - 1}{(b_k - b_{k + 1})A_k}
     \right|\\
     &\leqslant C_a \cdot |b_M| + C_a \cdot |b_N| + C_a \cdot
