@@ -68,5 +68,7 @@
     \put(0.87397207,0.20705312){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sqrt{m} \cdot L \cdot r_i$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{cione.pdf}}%
     \put(0.71888057,0.09482277){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_i$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{cione.pdf}}%
+    \put(0.4835358,0.05508743){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\f(D_i)$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

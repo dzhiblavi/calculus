@@ -19,6 +19,18 @@
   <defs
      id="defs2">
     <marker
+       inkscape:stockid="ExperimentalArrow"
+       orient="auto-start-reverse"
+       refY="3.0"
+       refX="5.0"
+       id="marker1123"
+       inkscape:isstock="true">
+      <path
+         id="path1113"
+         d="m 10,3 -10,3 0,-6 z"
+         style="fill:context-stroke;stroke:#000000;stroke-opacity:1" />
+    </marker>
+    <marker
        inkscape:isstock="true"
        id="marker4912"
        refX="5.0"
@@ -91,9 +103,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="511.49702"
-     inkscape:cy="103.77731"
+     inkscape:zoom="3.959798"
+     inkscape:cx="480.2399"
+     inkscape:cy="94.592259"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -111,7 +123,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -139,7 +151,7 @@
          y="275.43033"
          style="stroke-width:0.04586399">$D(\ex_i, r_i)$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#ExperimentalArrow)"
+       style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#ExperimentalArrow);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 77.721352,257.50149 c 0,0 25.173638,-11.54384 45.168148,0"
        id="path4562"
        inkscape:connector-curvature="0" />
@@ -255,5 +267,27 @@
          x="150.96492"
          y="277.08722"
          style="stroke-width:0.05653662">$B_i$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.79499996,0.26499999;stroke-dashoffset:0"
+       d="m 143.34747,255.7061 c 0,0 7.39552,-12.10344 16.66281,-9.62028 6.24358,1.67296 2.58234,5.61021 2.79685,8.87714 0.10389,1.58215 1.11679,3.00708 4.60397,3.94146 10.68776,2.86377 9.29277,12.01522 7.2139,15.41701 -2.07887,3.40178 -25.98587,12.00074 -25.98587,0.0945 0,-11.90625 -8.3096,-8.52821 -6.89806,-13.79613 z"
+       id="path856"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cssscscc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#marker1123)"
+       d="m 145.9933,267.51786 c 0,0 -12.97457,16.81164 -29.11861,16.81164"
+       id="path858"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.26146483px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.05653662"
+       x="106.01928"
+       y="285.43164"
+       id="text4522-2-6-3"><tspan
+         sodipodi:role="line"
+         id="tspan4520-9-0-6"
+         x="106.01928"
+         y="285.43164"
+         style="stroke-width:0.05653662">$\f(D_i)$</tspan></text>
   </g>
 </svg>
