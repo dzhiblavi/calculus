@@ -123,7 +123,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -281,12 +281,12 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.26146483px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.05653662"
-       x="106.01928"
+       x="101.54252"
        y="285.43164"
        id="text4522-2-6-3"><tspan
          sodipodi:role="line"
          id="tspan4520-9-0-6"
-         x="106.01928"
+         x="101.54252"
          y="285.43164"
          style="stroke-width:0.05653662">$\f(D_i)$</tspan></text>
   </g>
