@@ -1,1 +1,96 @@
+\chapter{Интеграл}
 
+\section{Собственно, интеграл}
+
+\textit{Общий контекст: $\langle X, \cA, \mu \rangle$ --- пространство с мерой}
+
+\begin{definition}
+	Введем обозначение
+\[
+	\cL^0(X) = \{\, f \colon X \to \Rbar \mid f \text{ измерима и п.в. конечна} \,\}
+\]
+\end{definition}
+
+\begin{definition}
+	Пусть $0 \leqslant f \colon X \to \Rbar$ --- ступенчатая функция, то есть
+\[
+	f = \sum_{fin} {\l_k \chi_{E_k}}
+\]
+	Причем все $E_k$ измеримы. Интеграл такой функции определим следующим образом:
+\[
+	\int_X{f \d\mu} \defeq \sum_{k}{\l_k \mu{E_k}}
+\]
+\end{definition}
+
+\begin{definition}
+	Аналогично определим интеграл по измеримому множеству:
+\[
+	\int_E{f} \defeq \sum_k{\l_k \mu{E \cap E_k}}
+\]
+\end{definition}
+
+\begin{theorem}(Свойства интеграла ступенчатой функции)
+	\enewline
+
+	\begin{itemize}
+		\item Интеграл не зависит от допустимого разбиения.
+		\item $f \leqslant g \Lra \int{f} \leqslant \int{g}$.
+	\end{itemize}
+\end{theorem}
+
+\begin{definition}
+	Пусть $0 \leqslant f \colon X \to \Rbar$ измерима. Интеграл такой функции определим так:
+\[
+	\int_X{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
+									{\int_X{g \d\mu}}
+\]
+\end{definition}
+
+\begin{definition}
+	Аналогично определим интеграл по измеримому множеству:
+\[
+	\int_E{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
+									{\int_E{g \d\mu}}
+\]
+\end{definition}
+
+\begin{theorem}(Свойства интеграла измеримой функции)
+	\enewline
+
+	\begin{itemize}
+		\item Если функция ступенчатая, то интеграл совпадает с интегралом, определенным
+			для ступенчатых функций.
+		\item $0 \leqslant \int{f} \leqslant +\infty$.
+		\item $0 \leqslant g \leqslant f$, $g$ ступенчатая, $f$ измеримая, тогда
+			$\int{g} \leqslant \int{f}$.
+		\item $0 \leqslant g \leqslant f$, $f$, $g$ измеримы, тогда $\int{g} \leqslant \int{f}$.
+	\end{itemize}
+\end{theorem}
+
+\begin{definition}
+	Пусть $f$ --- измеримая функция $X$, причем хотя бы один из интегралов срезок конечен.
+	Для такой функции определим интеграл:
+\[
+	\int_X{f \d\mu} \defeq \int_X{f_+ \d\mu} - \int_X{f_- \d\mu}
+\]
+\end{definition}
+
+\begin{definition}
+	Определим интеграл по измеримому множеству:
+\[
+	\int_E{f \d\mu} \defeq \int_X{f \cdot \chi_{E} \d\mu}
+\]
+\end{definition}
+
+\begin{definition}
+	Назовем функцию \textit{суммируемой}, если интегралы её срезок конечны.
+\end{definition}
+
+\begin{theorem}(Свойства интеграла)
+	\enewline
+
+	\begin{itemize}
+		\item Измеримая $f \geqslant 0 \Lra$ интеграл совпадает с предыдущим определением.
+		\item $f$ суммируема $\Llra \int{|f|} < +\infty$. 
+	\end{itemize}
+\end{theorem}
