@@ -1,1 +1,28 @@
 \section{Предельный переход под знаком интеграла}
+
+\begin{theorem}(Леви)
+
+    Пусть $f_n \colon X \to \Rbar$, измеримы, $\forall n~ 0 \leqslant f_n \leqslant f_{n + 1}$
+    при почти всех $x \in X$. Пусть $\displaystyle f(x) = \lim_{n \to +\infty}{f_n(x)}$ 
+    при почти всех $x$. Тогда
+\[
+    \int_X{f \d\mu} = \lim_{n \to +\infty}{\int_X{f_n \d\mu}}
+.\] 
+\end{theorem}
+
+\begin{theorem}
+
+    Пусть $f, g \geqslant 0$, измеримы на $E$. Тогда
+\[
+    \int_E{(f + g) \d\mu} = \int_E{f \d\mu} + \int_E{g \d\mu}
+.\] 
+\end{theorem}
+
+\begin{corollary}
+    
+    Пусть $f, g$ суммируемы на $E$. Тогда $f + g$ суммируема, причем
+\[
+    \int_E{(f + g) \d\mu} = \int_E{f \d\mu} + \int_E{g \d\mu}
+.\]
+\end{corollary}
+
