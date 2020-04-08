@@ -26,3 +26,40 @@
 .\]
 \end{corollary}
 
+\begin{definition}
+    $\cL(X) = \left\{\, f \mid f \colon X \to \Rbar, \int{|f|} < +\infty \,\right\}$
+\end{definition}
+
+\begin{lemma}
+    $\cL(X)$ -- линейное пространство. 
+\end{lemma}
+
+\begin{theorem}
+    Пусть $u_n \colon X \to \R$, $u_n \geqslant 0$ почти везде, $u_n$ измеримы на $E$.
+    Тогда
+\[
+    \int_E{\left(\sum_{n = 1}^{+\infty}{u_n}\right) \d\mu} = \sum_{n = 1}^{+\infty}{\int_E{u_n \d\mu}}
+.\]
+\end{theorem}
+
+\begin{corollary}
+    Пусть $u_n$ измеримы, причем $\displaystyle \sum_{n = 1}^{+\infty}{\int_E{|u_n| \d\mu}} < +\infty$,
+    тогда ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n}$ сходится абсолютно почти везде на $E$.
+\end{corollary}
+
+\begin{theorem}(Абсолютная непрерывность интеграла)
+
+    Пусть $f$ -- суммируемая функция. Тогда
+\[
+    \forall \e > 0~ \exists \delta > 0~ \forall E \in \cA\colon~ \mu(E) < \delta
+    ~~ \left|\int_E{f \d\mu}\right| < \e
+.\] 
+\end{theorem}
+
+\begin{corollary}
+    Пусть $e_n \in \cA$, $\mu(e_n) \xrightarrow[n \to +\infty]{} 0$, $f$ -- суммируемая функция,
+    тогда
+\[
+    \int_{e_n}{|f| \d\mu} \xrightarrow[n \to +\infty]{} 0
+.\] 
+\end{corollary}

@@ -1,0 +1,59 @@
+\section{Произведение мер}
+
+\textit{В этом разделе мы начинаем с того, что по двум пространствам
+$\langle X, \cA, \mu \rangle$, $\langle Y, \cB, \nu \rangle$ строим пространство
+$\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
+
+\begin{lemma}
+    $\cA$, $\cB$ -- полукольца, тогда $\cA \times \cB$ -- полукольцо.
+\end{lemma}
+
+\begin{definition}
+    $\cA$, $\cB$ -- полукольца, назовем тогда $\cA \times \cB$ \textit{полукольцом
+    измеримых прямоугольников}. Заведем отображение:
+\begin{align*}
+    m_0 \colon &\cA \times \cB \to \Rbar \\
+               &A \times B \mapsto \mu(A) \cdot \nu(B)
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+    \enewline
+    \begin{itemize}
+        \item $m_0$ -- мера на полукольце $\cA \times \cB$.
+        \item Если $\mu$, $\nu$ $\sigma$-конечны, тогда $m_0$ тоже $\sigma$-конечна.
+    \end{itemize} 
+\end{theorem}
+
+\begin{definition}
+
+    Мы получили $\langle X \times Y, \cA \times \cB, m_0 \rangle$ -- пространство с
+    мерой на полукольце. Продолжим её, пользуясь теоремой о продолжении,
+    до $\sigma$-алгебры, которую будем обозначать $ $. Результирующее пространство
+    назовем \textit{произведением пространств с мерой}, а полученную меру -- \textit{произведением мер}.
+\end{definition}
+
+\begin{theorem}
+    Произведение мер ассоциативно.
+\end{theorem}
+
+\begin{theorem}
+    $\lambda_{m + n} = \lambda_{m} \times \lambda_{n}$.
+\end{theorem}
+
+\begin{definition}
+    Пусть $C \subseteq X \times Y$. Тогда \textit{сечением} для произвольного $x \in X$
+    назовем множество
+\[
+    C_x \defeq \{\,y \in Y \mid (x, y) \in C\,\}
+.\] 
+\end{definition}
+
+\begin{remark}
+    Для сечений верны формулы, связанные с операциями над множествами,
+    подобные этой:
+\[
+    \left(\bigcup_{\a}{C_{\a}}\right)_x = \bigcup_{\a}{(C_{\a})_x}
+.\] 
+\end{remark}
+
