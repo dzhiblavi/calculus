@@ -1,6 +1,6 @@
 \chapter{Интеграл}
 
-\section{Собственно, интеграл}
+\section{Определение интеграла}
 
 \textit{Общий контекст: $\langle X, \cA, \mu \rangle$ --- пространство с мерой}
 
@@ -8,25 +8,25 @@
 	Введем обозначение
 \[
 	\cL^0(X) = \{\, f \colon X \to \Rbar \mid f \text{ измерима и п.в. конечна} \,\}
-\]
+.\]
 \end{definition}
 
 \begin{definition}
 	Пусть $0 \leqslant f \colon X \to \Rbar$ --- ступенчатая функция, то есть
 \[
 	f = \sum_{fin} {\l_k \chi_{E_k}}
-\]
+.\]
 	Причем все $E_k$ измеримы. Интеграл такой функции определим следующим образом:
 \[
 	\int_X{f \d\mu} \defeq \sum_{k}{\l_k \mu{E_k}}
-\]
+.\]
 \end{definition}
 
 \begin{definition}
 	Аналогично определим интеграл по измеримому множеству:
 \[
 	\int_E{f} \defeq \sum_k{\l_k \mu{E \cap E_k}}
-\]
+.\]
 \end{definition}
 
 \begin{theorem}(Свойства интеграла ступенчатой функции)
@@ -43,7 +43,7 @@
 \[
 	\int_X{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
 									{\int_X{g \d\mu}}
-\]
+.\]
 \end{definition}
 
 \begin{definition}
@@ -51,7 +51,7 @@
 \[
 	\int_E{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
 									{\int_E{g \d\mu}}
-\]
+.\]
 \end{definition}
 
 \begin{theorem}(Свойства интеграла измеримой функции)
@@ -72,14 +72,14 @@
 	Для такой функции определим интеграл:
 \[
 	\int_X{f \d\mu} \defeq \int_X{f_+ \d\mu} - \int_X{f_- \d\mu}
-\]
+.\]
 \end{definition}
 
 \begin{definition}
 	Определим интеграл по измеримому множеству:
 \[
 	\int_E{f \d\mu} \defeq \int_X{f \cdot \chi_{E} \d\mu}
-\]
+.\]
 \end{definition}
 
 \begin{definition}
@@ -92,5 +92,56 @@
 	\begin{itemize}
 		\item Измеримая $f \geqslant 0 \Lra$ интеграл совпадает с предыдущим определением.
 		\item $f$ суммируема $\Llra \int{|f|} < +\infty$. 
+        \item Интеграл монотонен по функции, то есть для измеримых $f$, $g$ верно:
+\[
+    f \leqslant g \Lra \int_{E}{f \d\mu} \leqslant \int_{E}{g \d\mu}
+.\] 
+        \item $\displaystyle \int_E{1 ~\d\mu} = \mu(E)$, $\displaystyle \int_E{0 \d\mu} = 0$.
+        \item Пусть $\mu(E) = 0$, $f$ измерима. Тогда
+\[
+    \int_E{f} = 0
+.\] 
+        \item $\displaystyle \int{-f} = -\int{f}$, $\displaystyle 
+               \forall c > 0~ \int{c \cdot f} = c \cdot \int{f}$.
+        \item Пусть $\displaystyle \exists \int_E{f}$, Тогда
+\[
+    \left|{\int_E{f}}\right| \leqslant {\int_E{|f|}}
+.\] 
+        \item Пусть $f$ измерима на $E$, $\mu(E) < +\infty$, 
+            $\forall x \in E~ A \leqslant f(x) \leqslant B$,
+            тогда
+\[
+    A \cdot \mu(E) \leqslant \int_E{f \d\mu} \leqslant B \cdot \mu(E)
+.\] 
 	\end{itemize}
 \end{theorem}
+
+\begin{lemma}
+    Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $g \colon X \to \Rbar$, $g \geqslant 0$, 
+    ступенчата. Тогда
+\[
+    \int_A{g \d\mu} = \sum_i{\int_{A_i}{g \d\mu}}
+.\] 
+\end{lemma}
+
+\begin{theorem}
+    Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $f \colon X \to \Rbar$, $f \geqslant 0$,
+    измерима на $A$. Тогда
+\[
+    \int_A{f \d\mu} = \sum_i{\int_{A_i}{f \d\mu}}
+.\] 
+\end{theorem}
+
+\begin{corollary}
+    Пусть $f \colon X \to \Rbar$, $f \geqslant 0$, измерима. Зададим отображение:
+    \begin{align*}
+        \nu \colon &\cA \to \Rbar_{\geqslant 0} \\ 
+                   &E \mapsto \int_E{f \d\mu}
+    \end{align*}
+    Тогда $\nu$ -- мера.
+\end{corollary}
+
+\begin{lemma}
+    Пусть $f$ суммируема, $g$ измерима, причем $f = g$ при почти всех $x$. Тогда
+    $\displaystyle \int{f} = \int{g}$.
+\end{lemma}
