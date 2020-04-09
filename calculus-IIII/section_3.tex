@@ -64,28 +64,28 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \begin{itemize}
         \item При почти всех $x$ $C_x \in \cB$.
         \item Отображение $x \mapsto \nu(C_x)$ измеримо на $X$.
-        \item $\displaystyle m(C) = \int_{X}{\nu(C_x) ~\d\mu}$.
+        \item $\displaystyle m(C) = \int_{X}{\nu(C_x) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
 
 \begin{corollary}
     Пусть $C \in \cA \otimes \cB$, $p_1(C) \in \cA$, тогда
 \[
-    m(C) = \intl_{p_1(C)}{\nu(C_x) ~\d\mu}
+    m(C) = \intl_{p_1(C)}{\nu(C_x) \dd\mu}
 .\] 
 \end{corollary}
 
 \begin{corollary}
     Пусть $f \colon [a, b] \to \R$, $f \in C$, тогда
 \[
-    \intl_a^b{f(x) ~\d x} = \intl_{[a, b]}{f ~\d\lambda_1}
+    \intl_a^b{f(x) \dd x} = \intl_{[a, b]}{f \dd\lambda_1}
 .\] 
 \end{corollary}
 
 \begin{remark}
     Пусть $f \geqslant 0$, измерима, тогда
 \[
-    \lambda_2 \text{ПГ}(f, [a, b]) = \intl_{[a, b]}{f ~\d\lambda_1}
+    \lambda_2 \text{ПГ}(f, [a, b]) = \intl_{[a, b]}{f \dd\lambda_1}
 .\] 
 \end{remark}
 
@@ -106,10 +106,10 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     Тогда
     \begin{itemize}
         \item При почти всех $x$ $f_x$ \textbf{измерима} на $Y$.
-        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) ~\d\nu} 
-        = \int_{Y}{f_x ~\d\nu}$ \textbf{измеримо} на $X$.
-        \item $\displaystyle \intl_{X \times Y}{f(x, y) ~\d m} 
-            = \intl_{X}{\left(\intl_{Y}{f(x, y) ~\d\nu}\right) ~\d\mu}$.
+        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) \dd\nu} 
+        = \int_{Y}{f_x \dd\nu}$ \textbf{измеримо} на $X$.
+        \item $\displaystyle \intl_{X \times Y}{f(x, y) \dd m} 
+            = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
 
@@ -120,10 +120,10 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     Тогда
     \begin{itemize}
         \item При почти всех $x$ $f_x$ \textbf{суммируема} на $Y$.
-        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) ~\d\nu} 
-            = \int_{Y}{f_x ~\d\nu}$ \textbf{суммируемо} на $X$.
-        \item $\displaystyle \intl_{X \times Y}{f(x, y) ~\d m} 
-            = \intl_{X}{\left(\intl_{Y}{f(x, y) ~\d\nu}\right) ~\d\mu}$.
+        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) \dd\nu} 
+            = \int_{Y}{f_x \dd\nu}$ \textbf{суммируемо} на $X$.
+        \item $\displaystyle \intl_{X \times Y}{f(x, y) \dd m} 
+            = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
 
 \end{theorem}
@@ -131,9 +131,9 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{corollary}
     Если $p_1(C)$ измеримо, то
 \[
-    \intl_{C}{f ~\d m} = \intl_{X \times Y}{f \chi_C ~\d m} 
-    = \intl_{X}{\left(\intl_{Y}{f \chi_C ~\d\nu}\right) ~\d\mu}
-    = \intl_{p_1(C)}{\left(\intl_{C_x}{f ~\d\nu}\right) ~\d\mu}
+    \intl_{C}{f \dd m} = \intl_{X \times Y}{f \chi_C \dd m} 
+    = \intl_{X}{\left(\intl_{Y}{f \chi_C \dd\nu}\right) \dd\mu}
+    = \intl_{p_1(C)}{\left(\intl_{C_x}{f \dd\nu}\right) \dd\mu}
 .\]
 \end{corollary}
 
@@ -141,7 +141,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     Посмотрим на два вида сходимости: по мере и в смысле интеграла:
     \begin{itemize}
         \item[1.] $f_n \underset{\mu}{\Lra} f \Llra \mu X(|f_n - f| < \e) \to 0$.
-        \item[2.] $\intl_{X}{|f_n - f| ~\d\mu} \to 0$.
+        \item[2.] $\intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
     Оказывается, верно $2 \Lra 1$, но без дополнительных требований неверно $1 \Lra 2$.
 \end{remark}
@@ -156,8 +156,8 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \end{itemize} 
     В такой ситуации $g$ называется \textit{Мажорантой}. Тогда
     \begin{itemize}
-        \item $f_n$, $f$ суммируемы
-        \item $\displaystyle \intl_{X}{|f_n - f| ~\d\mu} \to 0$.
+        \item $f_n$, $f$ суммируемы.
+        \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
 \end{theorem}
 
@@ -165,6 +165,53 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     
     В условиях предыдущей теоремы верно
 \[
-    \intl_{X}{f_n ~\d\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f ~\d\mu}
+    \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
+.\] 
+\end{corollary}
+
+\begin{theorem}
+    Пусть $f_n$, $f$ измеримы и почти везде конечны, $f_n \to f$ почти везде,
+    $\exists g\colon~$
+    \begin{itemize}
+        \item $\forall n~ |f_n| \leqslant g$.
+        \item $g$ суммируема на $X$.
+    \end{itemize}
+    Тогда
+    \begin{itemize}
+        \item $f_n$, $f$ суммируемы.
+        \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
+    \end{itemize} 
+\end{theorem}
+
+\begin{corollary}
+    
+    В условиях предыдущей теоремы верно
+\[
+    \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
+.\] 
+\end{corollary}
+
+\begin{theorem}(Фату)
+
+    Пусть $f_n \geqslant 0$, $f_n$ измеримы, $f_n \to f$ почти везде. Если
+\[
+    \exists c > 0\colon~ \forall n~ \intl_{X}{f_n \dd\mu} \leqslant c
+.\] 
+    то
+\[
+    \intl_{X}{f \dd\mu} \leqslant c
+.\] 
+\end{theorem}
+
+\begin{corollary}
+    
+    Теорема Фату верна и в случае $f_n \underset{\mu}{\Lra} f$.
+\end{corollary}
+
+\begin{corollary}
+    
+    Пусть $f_n \geqslant 0$, $f_n$ измеримы, тогда
+\[
+    \intl_{X}{\varliminf{f_n} \dd\mu} \leqslant \varliminf{\intl_{X}{f_n \dd\mu}}
 .\] 
 \end{corollary}

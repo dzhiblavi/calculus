@@ -1,0 +1,75 @@
+\section{Замена переменных в интеграле}
+
+\begin{definition}
+    
+    Отображение $\Phi \colon X \to Y$ называется \textit{измеримым}, если
+\[
+    \forall B \in \cB~ \Phi^{-1}(B) \in \cA
+.\] 
+    Иначе говоря, прообраз измеримого множества измерим.
+\end{definition}
+
+\begin{lemma}
+    $\Phi^{-1}(\cB)$ -- $\sigma$-алгебра.
+\end{lemma}
+
+\begin{definition}
+    При фиксированном измеримом $\Phi \colon X \to Y$ отображение
+    \begin{align*}
+        \nu \colon &\cB \to \Rbar \\ 
+                   &B \mapsto \mu(\Phi^{-1}(B))
+    \end{align*}
+    назовем \textit{образом меры $\mu$ при отображении} $\Phi$.
+\end{definition}
+
+\begin{lemma}
+    Образ меры при отображении является мерой.
+\end{lemma}
+
+\begin{remark}
+    $\displaystyle \nu(B) = \intl_{\Phi^{-1}(B)}{1 \dd\mu}$
+\end{remark}
+
+\begin{remark}
+    Если функция $f \colon Y \to \Rbar$ измерима относительно $\cB$, 
+    то $f \circ \Phi \colon X \to \Rbar$ измерима относительно $\cA$.
+\end{remark}
+
+\begin{definition}
+    Пусть $\omega \colon X \to \Rbar$, $\omega \geqslant 0$, измерима.
+    В этом контексте $\omega$ называется \textit{весовой функцией}. Тогда
+    \textit{взвешенным образом меры $\mu$ с весом $\omega$} называется мера
+    \begin{align*}
+        \nu(B) = \intl_{\Phi^{-1}(B)}{\omega \dd\mu}    
+    \end{align*}
+\end{definition}
+
+\begin{theorem}(Об интегрировании по взвешенному образу меры)
+    
+    Пусть $\Phi \colon X \to Y$ -- измеримое отображение, $0 \leqslant 
+    \omega \colon X \to \Rbar$ -- весовая функция, измерима на $X$, 
+    $\nu$ -- взвешенный образ меры $\mu$ с весом $\omega$.
+    Тогда для любой измеримой $f \colon Y \to \Rbar$ верно:
+    \begin{itemize}
+        \item $f \circ \Phi$ измерима на $X$.
+        \item $\displaystyle \intl_{Y}{f \dd\nu} = \intl_{X}{(f \circ \Phi)~ \omega \dd\mu}$
+    \end{itemize} 
+\end{theorem}
+
+\begin{corollary}
+    Пусть $f$ суммируема на $Y$, $B \in \cB$, тогда в условиях теоремы:
+\[
+    \intl_{B}{f \dd\nu} = \intl_{\Phi^{-1}(B)}{(f \circ \Phi)~ \omega \dd\mu}
+.\] 
+\end{corollary}
+
+\begin{definition}
+    В ситуации $X = Y$, $\cA = \cB$, $\Phi = \id$, если $\omega \geqslant 0$ измерима,
+    причем $\displaystyle \nu(B) = \intl_{B}{\omega \dd\mu}$, $\omega$ называется
+    \textit{плотностью меры $\nu$ относительно меры $\mu$}.
+    В таком случае
+\[
+    \intl_{X}{f \dd\nu} = \intl_{X}{f \omega \dd\mu}
+.\] 
+\end{definition}
+
