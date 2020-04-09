@@ -6,7 +6,7 @@
     при почти всех $x \in X$. Пусть $\displaystyle f(x) = \lim_{n \to +\infty}{f_n(x)}$ 
     при почти всех $x$. Тогда
 \[
-    \int_X{f \d\mu} = \lim_{n \to +\infty}{\int_X{f_n \d\mu}}
+    \int_X{f ~\d\mu} = \lim_{n \to +\infty}{\int_X{f_n ~\d\mu}}
 .\] 
 \end{theorem}
 
@@ -14,7 +14,7 @@
 
     Пусть $f, g \geqslant 0$, измеримы на $E$. Тогда
 \[
-    \int_E{(f + g) \d\mu} = \int_E{f \d\mu} + \int_E{g \d\mu}
+    \int_E{(f + g) ~\d\mu} = \int_E{f ~\d\mu} + \int_E{g ~\d\mu}
 .\] 
 \end{theorem}
 
@@ -22,12 +22,12 @@
     
     Пусть $f, g$ суммируемы на $E$. Тогда $f + g$ суммируема, причем
 \[
-    \int_E{(f + g) \d\mu} = \int_E{f \d\mu} + \int_E{g \d\mu}
+    \int_E{(f + g) ~\d\mu} = \int_E{f ~\d\mu} + \int_E{g ~\d\mu}
 .\]
 \end{corollary}
 
 \begin{definition}
-    $\cL(X) = \left\{\, f \mid f \colon X \to \Rbar, \int{|f|} < +\infty \,\right\}$
+    $\cL(X) = \left\{\, f \mid f \colon X \to \Rbar, \int{|f| ~\d\mu} < +\infty \,\right\}$
 \end{definition}
 
 \begin{lemma}
@@ -38,13 +38,13 @@
     Пусть $u_n \colon X \to \R$, $u_n \geqslant 0$ почти везде, $u_n$ измеримы на $E$.
     Тогда
 \[
-    \int_E{\left(\sum_{n = 1}^{+\infty}{u_n}\right) \d\mu} = \sum_{n = 1}^{+\infty}{\int_E{u_n \d\mu}}
+    \int_E{\left(\sum_{n = 1}^{+\infty}{u_n}\right) ~\d\mu} = \sum_{n = 1}^{+\infty}{\int_E{u_n ~\d\mu}}
 .\]
 \end{theorem}
 
 \begin{corollary}
-    Пусть $u_n$ измеримы, причем $\displaystyle \sum_{n = 1}^{+\infty}{\int_E{|u_n| \d\mu}} < +\infty$,
-    тогда ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n}$ сходится абсолютно почти везде на $E$.
+    Пусть $u_n$ измеримы, причем $\displaystyle \sum_{n = 1}^{+\infty}{\int_E{|u_n| ~\d\mu}} < +\infty$,
+    тогда ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n ~\d\mu}$ сходится абсолютно почти везде на $E$.
 \end{corollary}
 
 \begin{theorem}(Абсолютная непрерывность интеграла)
@@ -52,7 +52,7 @@
     Пусть $f$ -- суммируемая функция. Тогда
 \[
     \forall \e > 0~ \exists \delta > 0~ \forall E \in \cA\colon~ \mu(E) < \delta
-    ~~ \left|\int_E{f \d\mu}\right| < \e
+    ~~ \left|\int_E{f ~\d\mu}\right| < \e
 .\] 
 \end{theorem}
 
@@ -60,6 +60,6 @@
     Пусть $e_n \in \cA$, $\mu(e_n) \xrightarrow[n \to +\infty]{} 0$, $f$ -- суммируемая функция,
     тогда
 \[
-    \int_{e_n}{|f| \d\mu} \xrightarrow[n \to +\infty]{} 0
+    \int_{e_n}{|f| ~\d\mu} \xrightarrow[n \to +\infty]{} 0
 .\] 
 \end{corollary}

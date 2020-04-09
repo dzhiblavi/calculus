@@ -18,14 +18,14 @@
 .\]
 	Причем все $E_k$ измеримы. Интеграл такой функции определим следующим образом:
 \[
-	\int_X{f \d\mu} \defeq \sum_{k}{\l_k \mu{E_k}}
+	\int_X{f ~\d\mu} \defeq \sum_{k}{\l_k \mu{E_k}}
 .\]
 \end{definition}
 
 \begin{definition}
 	Аналогично определим интеграл по измеримому множеству:
 \[
-	\int_E{f} \defeq \sum_k{\l_k \mu{E \cap E_k}}
+	\int_E{f ~\d\mu} \defeq \sum_k{\l_k \mu{E \cap E_k}}
 .\]
 \end{definition}
 
@@ -34,23 +34,23 @@
 
 	\begin{itemize}
 		\item Интеграл не зависит от допустимого разбиения.
-		\item $f \leqslant g \Lra \int{f} \leqslant \int{g}$.
+		\item $f \leqslant g \Lra \int{f ~\d\mu} \leqslant \int{g ~\d\mu}$.
 	\end{itemize}
 \end{theorem}
 
 \begin{definition}
 	Пусть $0 \leqslant f \colon X \to \Rbar$ измерима. Интеграл такой функции определим так:
 \[
-	\int_X{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
-									{\int_X{g \d\mu}}
+	\int_X{f ~\d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
+									{\int_X{g ~\d\mu}}
 .\]
 \end{definition}
 
 \begin{definition}
 	Аналогично определим интеграл по измеримому множеству:
 \[
-	\int_E{f \d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
-									{\int_E{g \d\mu}}
+	\int_E{f ~\d\mu} \defeq \sup_{\substack{0 \leqslant g \leqslant f \\ g \text{ ступенч.}}}
+									{\int_E{g ~\d\mu}}
 .\]
 \end{definition}
 
@@ -60,10 +60,11 @@
 	\begin{itemize}
 		\item Если функция ступенчатая, то интеграл совпадает с интегралом, определенным
 			для ступенчатых функций.
-		\item $0 \leqslant \int{f} \leqslant +\infty$.
+		\item $0 \leqslant \int{f ~\d\mu} \leqslant +\infty$.
 		\item $0 \leqslant g \leqslant f$, $g$ ступенчатая, $f$ измеримая, тогда
-			$\int{g} \leqslant \int{f}$.
-		\item $0 \leqslant g \leqslant f$, $f$, $g$ измеримы, тогда $\int{g} \leqslant \int{f}$.
+			$\int{g ~\d\mu} \leqslant \int{f ~\d\mu}$.
+		\item $0 \leqslant g \leqslant f$, $f$, $g$ измеримы, тогда $\int{g ~\d\mu} \leqslant 
+            \int{f ~\d\mu}$.
 	\end{itemize}
 \end{theorem}
 
@@ -71,14 +72,14 @@
 	Пусть $f$ --- измеримая функция $X$, причем хотя бы один из интегралов срезок конечен.
 	Для такой функции определим интеграл:
 \[
-	\int_X{f \d\mu} \defeq \int_X{f_+ \d\mu} - \int_X{f_- \d\mu}
+	\int_X{f ~\d\mu} \defeq \int_X{f_+ ~\d\mu} - \int_X{f_- ~\d\mu}
 .\]
 \end{definition}
 
 \begin{definition}
 	Определим интеграл по измеримому множеству:
 \[
-	\int_E{f \d\mu} \defeq \int_X{f \cdot \chi_{E} \d\mu}
+	\int_E{f ~\d\mu} \defeq \int_X{f \cdot \chi_{E} ~\d\mu}
 .\]
 \end{definition}
 
@@ -91,27 +92,27 @@
 
 	\begin{itemize}
 		\item Измеримая $f \geqslant 0 \Lra$ интеграл совпадает с предыдущим определением.
-		\item $f$ суммируема $\Llra \int{|f|} < +\infty$. 
+		\item $f$ суммируема $\Llra \int{|f| ~\d\mu} < +\infty$. 
         \item Интеграл монотонен по функции, то есть для измеримых $f$, $g$ верно:
 \[
-    f \leqslant g \Lra \int_{E}{f \d\mu} \leqslant \int_{E}{g \d\mu}
+    f \leqslant g \Lra \int_{E}{f ~\d\mu} \leqslant \int_{E}{g ~\d\mu}
 .\] 
-        \item $\displaystyle \int_E{1 ~\d\mu} = \mu(E)$, $\displaystyle \int_E{0 \d\mu} = 0$.
+        \item $\displaystyle \int_E{1 ~\d\mu} = \mu(E)$, $\displaystyle \int_E{0 ~\d\mu} = 0$.
         \item Пусть $\mu(E) = 0$, $f$ измерима. Тогда
 \[
-    \int_E{f} = 0
+    \int_E{f ~\d\mu} = 0
 .\] 
-        \item $\displaystyle \int{-f} = -\int{f}$, $\displaystyle 
-               \forall c > 0~ \int{c \cdot f} = c \cdot \int{f}$.
-        \item Пусть $\displaystyle \exists \int_E{f}$, Тогда
+        \item $\displaystyle \int{-f ~\d\mu} = -\int{f ~\d\mu}$, $\displaystyle 
+               \forall c > 0~ \int{c \cdot f ~\d\mu} = c \cdot \int{f ~\d\mu}$.
+        \item Пусть $\displaystyle \exists \int_E{f ~\d\mu}$, Тогда
 \[
-    \left|{\int_E{f}}\right| \leqslant {\int_E{|f|}}
+    \left|{\int_E{f ~\d\mu}}\right| \leqslant {\int_E{|f| ~\d\mu}}
 .\] 
         \item Пусть $f$ измерима на $E$, $\mu(E) < +\infty$, 
             $\forall x \in E~ A \leqslant f(x) \leqslant B$,
             тогда
 \[
-    A \cdot \mu(E) \leqslant \int_E{f \d\mu} \leqslant B \cdot \mu(E)
+    A \cdot \mu(E) \leqslant \int_E{f ~\d\mu} \leqslant B \cdot \mu(E)
 .\] 
 	\end{itemize}
 \end{theorem}
@@ -120,7 +121,7 @@
     Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $g \colon X \to \Rbar$, $g \geqslant 0$, 
     ступенчата. Тогда
 \[
-    \int_A{g \d\mu} = \sum_i{\int_{A_i}{g \d\mu}}
+    \int_A{g ~\d\mu} = \sum_i{\int_{A_i}{g ~\d\mu}}
 .\] 
 \end{lemma}
 
@@ -128,7 +129,7 @@
     Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $f \colon X \to \Rbar$, $f \geqslant 0$,
     измерима на $A$. Тогда
 \[
-    \int_A{f \d\mu} = \sum_i{\int_{A_i}{f \d\mu}}
+    \int_A{f ~\d\mu} = \sum_i{\int_{A_i}{f ~\d\mu}}
 .\] 
 \end{theorem}
 
@@ -136,12 +137,12 @@
     Пусть $f \colon X \to \Rbar$, $f \geqslant 0$, измерима. Зададим отображение:
     \begin{align*}
         \nu \colon &\cA \to \Rbar_{\geqslant 0} \\ 
-                   &E \mapsto \int_E{f \d\mu}
+                   &E \mapsto \int_E{f ~\d\mu}
     \end{align*}
     Тогда $\nu$ -- мера.
 \end{corollary}
 
 \begin{lemma}
     Пусть $f$ суммируема, $g$ измерима, причем $f = g$ при почти всех $x$. Тогда
-    $\displaystyle \int{f} = \int{g}$.
+    $\displaystyle \int{f ~\d\mu} = \int{g ~\d\mu}$.
 \end{lemma}
