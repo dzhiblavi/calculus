@@ -73,3 +73,63 @@
 .\] 
 \end{definition}
 
+\begin{theorem}(Критерий плотности)
+
+    Пусть $\nu$ -- мера на $\cA$, $\omega \geqslant 0$ измерима, тогда
+    верно, что $\omega$ -- плотность $\nu$ относительно $\mu$ тогда
+    и только тогда, когда
+\[
+    \forall A \in \cA~ \inf_{A}{\omega} \cdot \mu(A) \leqslant \nu(A)
+    \leqslant \sup_{A}{\omega} \cdot \mu(A)
+.\] 
+\end{theorem}
+
+\begin{lemma}
+    Пусть $f$, $g$ -- суммируемые на $X$ функции, причем
+\[
+    \forall A \in \cA~ \intl_{A}{f \dd\mu} = \intl_{A}{f \dd\mu}
+.\] 
+    Тогда $f = g$ почти везде.
+\end{lemma}
+
+\begin{lemma}(Об образе малых кубических ячеек)
+    
+    Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$, $\ea \in \cO$, $\Phi$
+    дифференцируемо в $\ea$, $\det{\Phi'(\ea)} \neq 0$, $c > |\det{\Phi'(\ea)}| > 0$.
+    Тогда
+\[
+    \exists \delta > 0~ \forall Q \text{ -- куб}, Q \subset B(\ea, \delta)~
+    \lambda \Phi(Q) < c \cdot \lambda(Q)
+.\] 
+\end{lemma}
+
+\begin{lemma}
+    Пусть $\cO$ открыто, $f \colon \cO \subseteq \Rm \to \R$, $f \in C(\cO)$, 
+    $A \in \mathfrak{M}^m$, $A \subseteq Q$, $Q$ -- куб, причем $\Cl(Q) \subseteq \cO$. 
+    Тогда
+\[
+    \inf_{\substack{A \subset G \\ G \text{ открыто}}}
+    {\left(\lambda(G) \cdot \sup_{G}{f}\right)}
+    = \lambda(A) \cdot \sup_{A}{f}
+.\] 
+\end{lemma}
+
+\begin{theorem}
+    Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$ -- диффеоморфизм,
+    $A \in \mathfrak{M}^m$, $A \subseteq \cO$, тогда
+\[
+    \lambda \Phi(A) = \intl_{A}{|\det{\Phi'}| \dd\lambda_m}
+.\] 
+\end{theorem}
+
+\begin{theorem}
+    Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$ -- диффеоморфизм,
+    $\cO^1 = \Phi(\cO)$, $f$ -- измеримая неотрицательная функция, тогда
+\[
+    \intl_{\cO^1}{f(y) \dd y} = \intl_{\cO}{f(\Phi(x))~ |\det{\Phi'(x)}| \dd x}
+.\] 
+\end{theorem}
+
+\begin{remark}
+    То же верно и в случае, когда $f$ суммируема.
+\end{remark}
