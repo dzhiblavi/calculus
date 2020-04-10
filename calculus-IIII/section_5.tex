@@ -1,0 +1,38 @@
+\section{Функции распределения}
+
+\begin{definition}
+    Пусть $h \colon X \to \Rbar$ -- измеримая и почти везде конечная функция,
+    причем $\forall t \in \R~ \mu X(h < t) < +\infty$. Тогда
+    функция $H(t) = \mu X(h < t)$ называется \textit{функцией распределения
+    $h$ по мере $\mu$}.
+\end{definition}
+
+\begin{remark}
+    $H(t)$ не убывает.
+\end{remark}
+
+\begin{remark}
+    Пусть $h$ измерима, тогда для любого борелевского $B \in \cB(\R)$ $h^{-1}(B)$ измерим.
+\end{remark}
+
+\begin{definition}
+    Стандартное продолжение $\mu_H([a, b)) = H(b - 0) - H(a - 0)$
+    называется \textit{мерой Бореля-Стилтьеса}.
+\end{definition}
+
+
+\begin{lemma}
+    Пусть $h \colon X \to \Rbar$ -- измеримая и почти везде конечная функция, $H$
+    -- её функция распределения. Тогда на $\cB(\R)$ $\mu_H = H(\mu)$.
+\end{lemma}
+
+\begin{theorem}
+    Пусть $0 \leqslant f \colon \R \to \R$ -- функция, измеримая по Борелю,
+    $h \colon X \to \Rbar$ -- измеримая и почти везде конечная функция,
+    $H$ -- её функция распределения, $\mu_H$ -- мера Бореля-Стилтьеса для $H$.
+    Тогда
+\[
+    \intl_{X}{f \circ h \dd\mu} = \intl_{\R}{f \dd\mu_H}
+.\] 
+\end{theorem}
+

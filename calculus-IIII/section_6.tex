@@ -1,0 +1,56 @@
+\chapter{Ряды Фурье}
+\section{Пространство $L^p$}
+
+\begin{definition}
+    Комплексное отображение $f \colon X \to \bC$ назовем \textit{измеримым}, если
+    $f(x) = g(x) + i h(x)$, $g, h \colon \to \R$, причем $g$, $h$ измеримы.
+\end{definition}
+
+\begin{definition}
+    Аналогично определим \textit{суммируемые} комплексные отображения.
+\end{definition}
+ 
+\begin{definition}
+   Пусть $f \colon X \to \bC$, $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$. Тогда
+   определим интеграл:
+\[
+    \intl_{E}{f \dd\mu} \defeq \intl_{E}{g \dd\mu} + i \intl_{E}{h \dd\mu}
+.\] 
+\end{definition}
+
+\begin{remark}
+\[
+    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu}
+.\] 
+\end{remark}
+
+\begin{theorem}(Интегральное неравенство Гёльдера)
+    
+    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$, $f, g \colon X \to \bC$
+    -- измеримые почти везде заданные функции.
+    Тогда
+\[
+    \intl_{X}{|f g| \dd\mu} \leqslant \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}
+    \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
+.\] 
+\end{theorem}
+
+\begin{theorem}(Интегральное неравенство Минковского)
+    
+    Пусть $f, g \colon X \to \bC$, $p \geqslant 1$, тогда
+\[
+    \left(\intl_{X}{|f + g|^p \dd\mu}\right)^{\frac{1}{p}} \leqslant
+    \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}} 
+    + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
+.\]  
+\end{theorem}
+
+\begin{definition}
+    Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
+    $1 \leqslant p < +\infty$ положим
+\[
+    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
+.\] 
+\end{definition}
+
