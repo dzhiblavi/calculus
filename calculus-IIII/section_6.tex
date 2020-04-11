@@ -1,56 +1,75 @@
-\chapter{Ряды Фурье}
-\section{Пространство $L^p$}
+\section{Поверхностные интегралы}
 
 \begin{definition}
-    Комплексное отображение $f \colon X \to \bC$ назовем \textit{измеримым}, если
-    $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$, причем $g$, $h$ измеримы.
+    Пусть $M$ -- простое гладкое двумерное многообразие в $\R^3$,
+    $\f \colon \cO \subseteq \R^2 \to \R^3$ -- параметризация $M$,
+    тогда $E \subseteq M$ называется \textit{измеримым}, если
+    $\f^{-1}{E} \in \mathfrak{M}^2$.
 \end{definition}
 
 \begin{definition}
-    Аналогично определим \textit{суммируемые} комплексные отображения.
-\end{definition}
- 
-\begin{definition}
-   Пусть $f \colon X \to \bC$, $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$. Тогда
-   определим интеграл:
+    Введем обозначение:
 \[
-    \intl_{E}{f \dd\mu} \defeq \intl_{E}{g \dd\mu} + i \intl_{E}{h \dd\mu}
+    \cA_M \defeq \{ E \subseteq M \mid E \text{ измеримо} \}
 .\] 
 \end{definition}
 
 \begin{remark}
-\[
-    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu}
-.\] 
+    $\cA_M$ -- $\sigma$-алгебра.
 \end{remark}
 
-\begin{theorem}(Интегральное неравенство Гёльдера)
-    
-    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$, $f, g \colon X \to \bC$
-    -- измеримые почти везде заданные функции.
-    Тогда
-\[
-    \intl_{X}{|f g| \dd\mu} \leqslant \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}
-    \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
-.\] 
-\end{theorem}
+\begin{definition}
+    На $\cA_M$ заведем меру:
+    \begin{align*}
+        S \colon &\cA_M \to \Rbar \\
+                 &E \mapsto \iintl_{\f^{-1}(E)}{\norm{\f'_u \times \f'_v} \dd u \d v}
+                 .
+    \end{align*}
+\end{definition}
 
-\begin{theorem}(Интегральное неравенство Минковского)
-    
-    Пусть $f, g \colon X \to \bC$, $p \geqslant 1$, тогда
-\[
-    \left(\intl_{X}{|f + g|^p \dd\mu}\right)^{\frac{1}{p}} \leqslant
-    \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}} 
-    + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
-.\]  
-\end{theorem}
+\begin{remark}
+    Замкнутые, открытые, компактные $E \subset M$ измеримы.
+\end{remark}
+
+\begin{lemma}
+    $S$ не зависит от выбора параметризации.
+\end{lemma}
 
 \begin{definition}
-    Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
-    $1 \leqslant p < +\infty$ положим
+    $f \colon M \to \Rbar$ измерима по мере $S$, если $f \circ \f$ измерима на $\cO$ по мере
+    $\lambda$.
+\end{definition}
+
+\begin{definition}
+    Пусть $M$ -- простое гладкое двумерное многообразие, $\f$ -- его параметризация,
+    $0 \leqslant f \colon M \to \Rbar$ измерима по $S$, тогда
+    \textit{поверхностным интегралом I рода} назовем интеграл
 \[
-    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
-    f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
+    \iintl_{M}{f \dd S}
+.\] 
+    Или развернуто, пользуясь теоремой об интегрировании по взвешенному образу меры:
+\[
+    \iintl_{M}{f \dd S} = \iintl_{\f^{-1}(M)}{f(x(u, v), y(u, v), z(u, v)) \cdot
+    \norm{\f'_u \times \f'_v} \dd u \d v}
 .\] 
 \end{definition}
+
+\begin{definition}
+    $M \subseteq \R^3$ назовем \textit{кусочно-гладким многообразием в $\R^3$},
+    если $M$ представляется в виде конечного дизъюнктного объединения объектов вида
+    \begin{itemize}
+        \item простое гладкое двумерное многообразие.
+        \item простое гладкое одномерное многообразие (носитель гладкого пути).
+        \item точка.
+    \end{itemize} 
+\end{definition}
+
+\begin{definition}
+    Мера $S$ на кусочно-гладком многобразии $E = \bigsqcup_{i}{M_i}$ вычисляется следующим образом:
+\[
+    S(E) = \sum_{i}{S(E \cap M_i)}
+.\] 
+\end{definition}
+
+
 
