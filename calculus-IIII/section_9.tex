@@ -1,0 +1,187 @@
+\chapter{Ряды Фурье}
+\section{Пространство $L^p$}
+
+\begin{definition}
+    Комплексное отображение $f \colon X \to \bC$ назовем \textit{измеримым}, если
+    $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$, причем $g$, $h$ измеримы.
+\end{definition}
+
+\begin{definition}
+    Аналогично определим \textit{суммируемые} комплексные отображения.
+\end{definition}
+ 
+\begin{definition}
+   Пусть $f \colon X \to \bC$, $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$. Тогда
+   определим интеграл:
+\[
+    \intl_{E}{f \dd\mu} \defeq \intl_{E}{g \dd\mu} + i \intl_{E}{h \dd\mu}
+.\] 
+\end{definition}
+
+\begin{remark}
+\[
+    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu}
+.\] 
+\end{remark}
+
+\begin{theorem}(Интегральное неравенство Гёльдера)
+    
+    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$, $f, g \colon X \to \bC$
+    -- измеримые почти везде заданные функции.
+    Тогда
+\[
+    \intl_{X}{|f g| \dd\mu} \leqslant \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}
+    \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
+.\] 
+\end{theorem}
+%:: NOTE all proof
+
+\begin{theorem}(Интегральное неравенство Минковского)
+    
+    Пусть $f, g \colon X \to \bC$, $p \geqslant 1$, тогда
+\[
+    \left(\intl_{X}{|f + g|^p \dd\mu}\right)^{\frac{1}{p}} \leqslant
+    \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}} 
+    + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
+.\]  
+\end{theorem}
+%:: NOTE all proof
+
+\begin{definition}
+    Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
+    $1 \leqslant p < +\infty$ положим
+\[
+    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
+.\] 
+\end{definition}
+
+\begin{remark}
+    $\cL^p(X, \mu)$ -- линейное пространство.
+\end{remark}
+
+\begin{definition}
+    Зададим на $\cL^p$ отношение эквивалентности: $f \sim g$ тогда и
+    только тогда, когда $f = g$ почти везде. Положим
+\[
+    L^p(X, \mu) \defeq \cL^p(X, \mu) / \sim
+.\] 
+\end{definition}
+
+\begin{definition}
+    В $L^p$ заведем норму: $\displaystyle \norm{[f]} \defeq 
+    \left(\int_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $f \colon X \to \Rbar$ задана почти везде. Тогда \textit{существенным супремумом
+    $f$} называется
+\[
+    \esssup_{X}{f} \defeq \inf{\{A \in \Rbar \mid f(x) \leqslant A \text{ п.в.}\}}
+.\] 
+\end{definition}
+
+\begin{theorem}(Свойства существенного супремума)
+    \begin{itemize}
+        \item $\esssup_{X}{f} \leqslant \sup_{X}{f}$.
+        \item $f(x) \leqslant \esssup_{X}{f}$ при почти всех $x$.
+        \item $\displaystyle \left|\int_{X}{fg \dd\mu}\right| 
+               \leqslant \esssup_{X}{|f|} \cdot \int_{X}{|g|}$.
+    \end{itemize} 
+\end{theorem}
+%:: NOTE all proof
+
+\begin{definition}
+    Для $p = \infty$:
+\[
+    \cL^{\infty}(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    f \text{ измерима}, \esssup_{X}{f} < +\infty\right\}
+.\] 
+\end{definition}
+
+\begin{remark}
+    $\cL^{\infty}(X, \mu)$ -- линейное пространство.
+\end{remark}
+
+\begin{definition}
+    Пространство $L^{\infty}$ зададим аналогично конечному случаю.
+    Нормой на этом пространстве положим $\esssup$.
+\end{definition}
+
+\begin{theorem}(О вложении пространств $L^p$)
+    
+    Пусть $\mu(X) < +\infty$, $1 \leqslant r < s \leqslant +\infty$.
+    Тогда
+    \begin{itemize}
+        \item $L^r(X, \mu) \subset L^s(X, \mu)$.
+        \item $\norm{f}^s \leqslant \mu(X)^{\frac{1}{s} - \frac{1}{r}}
+               \cdot \norm{f}_r$.
+    \end{itemize} 
+\end{theorem}
+%:: NOTE all proof
+
+\begin{corollary}
+    Пусть $\mu(E) < +\infty$, $1 \leqslant s < r \leqslant +\infty$, $f_n, f \in L^s$,
+    $f_n \xrightarrow[L^r]{} f$, тогда $f_n \xrightarrow[L^s]{} f$.
+\end{corollary}
+%:: NOTE all proof
+
+\begin{theorem}(О сходимости в $L^p$ и по мере)
+    
+    Пусть $1 \leqslant r < +\infty$, $f_n, f \in L^p$, тогда
+    \begin{itemize}
+        \item $f_n \xrightarrow[L^p]{} f \Lra f_n \underset{\mu}{\Lra} f$.
+        \item $f_n \underset{\mu}{\Lra} f$, либо $f_n \to f$ почти везде, тогда
+            если $\exists g \in L^p\colon~ |f_n| \leqslant g$, то
+            $f_n \xrightarrow[L^p]{} f$.
+    \end{itemize} 
+\end{theorem}
+%:: NOTE all proof
+
+\begin{remark}
+    $L^{\infty}$ -- полное метрическое пространство.
+\end{remark}
+
+\begin{theorem}(Полнота пространств $L^p$)
+    
+    $\forall 1 \leqslant p \leqslant \infty$ $L^p$ полно.
+\end{theorem}
+%:: NOTE all proof
+
+\begin{definition}
+    Пусть $X$ -- топологическое пространство, тогда множество
+    $A \subset X$ называется всюду плотным, если $\Cl(A) = X$.
+    Иначе говоря, $\Int(X \setminus A) = \varnothing$, 
+    или \\ $\forall x \in X~ \forall U(x)~ U(x) \cap A \neq \varnothing$.
+\end{definition}
+
+\begin{definition}
+    Множество всех ступенчатых функций $g \colon X \to \Rbar$
+    обозначим $St(X)$.
+\end{definition}
+
+\begin{lemma}
+    Пусть $1 \leqslant p \leqslant +\infty$, тогда множество
+    $St(X) \cap L^p$ полно в $L^p$.
+\end{lemma}
+%:: NOTE all proof
+
+\begin{definition}(Четвертая аксиома отделимости)
+    
+    Топологическое пространство называется \textit{нормальным},
+    если в нем любые два замкнутые непересекающиеся множества
+    отделимы, причем любое одноточечное множество замкнуто.
+\end{definition}
+
+\begin{lemma}(Урысон)
+    
+    Пусть $X$ -- нормальное топологическое пространство, 
+    $F_0, F_1$ -- замкнутые непересекающиеся множества. Тогда
+    существует непрерывная функция $f \colon X \to \R$, такая, что
+    \begin{itemize}
+        \item $0 \leqslant f \leqslant 1$.
+        \item $f\big|_{F_0} = 0$.
+        \item $f\big|_{F_1} = 1$.
+    \end{itemize} 
+\end{lemma}
+%:: NOTE all proof

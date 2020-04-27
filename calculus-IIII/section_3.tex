@@ -7,6 +7,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{lemma}
     $\cA$, $\cB$ -- полукольца, тогда $\cA \times \cB$ -- полукольцо.
 \end{lemma}
+%:: NOTE all proof
 
 \begin{definition}
     $\cA$, $\cB$ -- полукольца, назовем тогда $\cA \times \cB$ \textit{полукольцом
@@ -24,6 +25,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item Если $\mu$, $\nu$ $\sigma$-конечны, тогда $m_0$ тоже $\sigma$-конечна.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{definition}
 
@@ -36,10 +38,12 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{theorem}
     Произведение мер ассоциативно.
 \end{theorem}
+%:: NOTE all proof
 
 \begin{theorem}
     $\lambda_{m + n} = \lambda_{m} \times \lambda_{n}$.
 \end{theorem}
+%:: NOTE all proof
 
 \begin{definition}
     Пусть $C \subseteq X \times Y$. Тогда \textit{сечением} для произвольного $x \in X$
@@ -67,6 +71,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item $\displaystyle m(C) = \int_{X}{\nu(C_x) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{corollary}
     Пусть $C \in \cA \otimes \cB$, $p_1(C) \in \cA$, тогда
@@ -74,6 +79,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     m(C) = \intl_{p_1(C)}{\nu(C_x) \dd\mu}
 .\] 
 \end{corollary}
+%:: NOTE all proof
 
 \begin{corollary}
     Пусть $f \colon [a, b] \to \R$, $f \in C$, тогда
@@ -81,6 +87,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \intl_a^b{f(x) \dd x} = \intl_{[a, b]}{f \dd\lambda_1}
 .\] 
 \end{corollary}
+%:: NOTE all proof
 
 \begin{remark}
     Пусть $f \geqslant 0$, измерима, тогда
@@ -112,6 +119,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
             = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{theorem}(Фубини)
     
@@ -125,8 +133,8 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item $\displaystyle \intl_{X \times Y}{f(x, y) \dd m} 
             = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
-
 \end{theorem}
+%:: NOTE all proof
 
 \begin{corollary}
     Если $p_1(C)$ измеримо, то
@@ -136,6 +144,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     = \intl_{p_1(C)}{\left(\intl_{C_x}{f \dd\nu}\right) \dd\mu}
 .\]
 \end{corollary}
+%:: NOTE all proof
 
 \begin{remark}
     Посмотрим на два вида сходимости: по мере и в смысле интеграла:
@@ -160,6 +169,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{corollary}
     
@@ -168,6 +178,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
 .\] 
 \end{corollary}
+%:: NOTE all proof
 
 \begin{theorem}
     Пусть $f_n$, $f$ измеримы и почти везде конечны, $f_n \to f$ почти везде,
@@ -182,6 +193,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{corollary}
     
@@ -190,6 +202,7 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
 .\] 
 \end{corollary}
+%:: NOTE all proof
 
 \begin{theorem}(Фату)
 
@@ -202,11 +215,13 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \intl_{X}{f \dd\mu} \leqslant c
 .\] 
 \end{theorem}
+%:: NOTE all proof
 
 \begin{corollary}
     
     Теорема Фату верна и в случае $f_n \underset{\mu}{\Lra} f$.
 \end{corollary}
+%:: NOTE all proof
 
 \begin{corollary}
     
@@ -215,3 +230,4 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \intl_{X}{\varliminf{f_n} \dd\mu} \leqslant \varliminf{\intl_{X}{f_n \dd\mu}}
 .\] 
 \end{corollary}
+%:: NOTE all proof
