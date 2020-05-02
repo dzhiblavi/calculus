@@ -162,7 +162,7 @@
 
 \begin{lemma}
     Пусть $1 \leqslant p \leqslant +\infty$, тогда множество
-    $St(X) \cap L^p$ полно в $L^p$.
+    $St(X) \cap L^p$ плотно в $L^p$.
 \end{lemma}
 %:: NOTE all proof
 
@@ -185,3 +185,39 @@
     \end{itemize} 
 \end{lemma}
 %:: NOTE all proof
+
+\begin{definition}
+    \textit{Финитной функцией в $\Rm$} называется функция $f$ такая, что
+\[
+    \exists B(a, r)\colon~ f\big|_B = 0
+.\] 
+    По умолчанию, $f$ непрерывна.
+\end{definition}
+
+\begin{theorem}
+    Множество финитных функций плотно в $L^p$ при $1 \leqslant p < +\infty$.
+\end{theorem}
+%:: NOTE all proof
+
+\begin{remark}
+    Условие $p \neq +\infty$ существенно.
+%:: NOTE all example
+\end{remark}
+
+\begin{definition}
+    Множество непрерывных $T$-периодических функций будем обозначать $\widetilde{C}([0, T])$.
+\end{definition}
+
+\begin{theorem}(О непрерывности сдвига)
+    
+    Пусть $f_h(x) = f(x + h)$. Тогда
+    \begin{itemize}
+        \item $f$ равномерно непрерывна в $\Rm \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p \Lra \norm{f_h - f}_p \xrightarrow[h \to 0]{} 0$.
+        \item $f \in \widetilde{C}([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
+    \end{itemize} 
+\end{theorem}
+%:: NOTE all proof
+
+
