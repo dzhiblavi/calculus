@@ -25,19 +25,35 @@
 \begin{definition}
 	Аналогично определим интеграл по измеримому множеству:
 \[
-	\int_E{f \dd\mu} \defeq \sum_k{\l_k \mu{E \cap E_k}}
+	\int_E{f \dd\mu} \defeq \sum_k{\l_k \mu(E \cap E_k)}
 .\]
 \end{definition}
 
 \begin{theorem}(Свойства интеграла ступенчатой функции)
 	\enewline
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item Интеграл не зависит от допустимого разбиения.
 		\item $f \leqslant g \Lra \int{f \dd\mu} \leqslant \int{g \dd\mu}$.
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+	\enewline
+	\begin{enumerate}
+		\item Пусть $f = \sum_k{\l_k \chi_{E_k}} = \sum_j{\a_j \chi_{F_j}}$. Тогда
+			$f = \sum_{k, j}{\l_k \chi_{E_k \cap F_j}} = \sum_{k, j}{\a_k \chi_{E_k \cap F_j}}$. 
+			Пользуясь этим, перепишем интеграл:
+\[	
+	\int_1{f} = \sum_k{\l_k \mu{E_k}} = \sum_k{\l_k \sum_j{\mu(E_k \cap F_j)}}
+    = \sum_j{\a_j \sum_k{\mu(E_k \cap F_j)}} = \sum_j{\a_j \mu{F_j}} = \int_2{f}
+.\]
+		\item Воспользуемся общим допустимым разбиением:
+\[
+	\int{f} = \sum_k{\l_k \mu{E_k}} = \sum_{k, j}{\l_k \mu(E_k \cap F_j)} \leqslant
+	\sum_{k, j}{\a_j \mu(E_k \cap F_j)} = \sum_j{\a_j \mu{F_j}} = \int{g}
+.\]
+	\end{enumerate}
+\end{proof}
 
 \begin{definition}
 	Пусть $0 \leqslant f \colon X \to \Rbar$ измерима. Интеграл такой функции определим так:
@@ -68,7 +84,18 @@
             \int{f \dd\mu}$.
 	\end{itemize}
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+	\enewline
+	\begin{enumerate}
+		\item Очевидно, так как супремум реализуется на самой интегрируемой функции.
+		\item[3.] Поскольку $g$ -- ступенчатая и $0 \leqslant g \leqslant f$, $g$ входит
+			в супремум из определения интеграла $f$, поэтому автоматически
+			$\int{g} \leqslant \int{f}$.
+		\item Все ступенчатые функции, супремум по которым берется в определении интеграла 
+			функции $g$, входят так же и в супремум для интеграла $f$, так как
+			$0 \leqslant h \leqslant g \leqslant f$.
+	\end{enumerate}
+\end{proof}
 
 \begin{definition}
 	Пусть $f$ --- измеримая функция $X$, причем хотя бы один из интегралов срезок конечен.
@@ -91,8 +118,7 @@
 
 \begin{theorem}(Свойства интеграла)
 	\enewline
-
-	\begin{itemize}
+	\begin{enumerate}
 		\item Измеримая $f \geqslant 0 \Lra$ интеграл совпадает с предыдущим определением.
 		\item $f$ суммируема $\Llra \int{|f| \dd\mu} < +\infty$. 
         \item Интеграл монотонен по функции, то есть для измеримых $f$, $g$ верно:
@@ -116,27 +142,93 @@
 \[
     A \cdot \mu(E) \leqslant \int_E{f \dd\mu} \leqslant B \cdot \mu(E)
 .\] 
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+	\begin{enumerate}
+        \item[2.] Следует из аддитивности интеграла по функции, что будет доказано позже.
+        \item Для неотрицательных $f, g$ это уже было доказано. Для произвольных воспользуемся
+            определением и тем соображением, что $f^+ \leqslant g^+$ и $f^- \geqslant g^-$:
+\[
+    \int_E{f} = \int_E{f^+} - \int_E{f^-} \leqslant \int_E{g^+} - \int_E{g^-} = \int_E{g}
+.\]
+        \item[5.] Если $f$ ступенчата, то утверждение очевидно. Если $f \geqslant 0$ и измерима,
+            то супремум из определения равен нулю. Если $f$ -- произвольная измеримая функция,
+            то  $\int{f} = \int{f^+} - \int{f^-} = 0$.
+        \item Очевидным образом следует из определений и того, что $\sup{c A} = c \sup{A}$.
+        \item $-|f| \leqslant f \leqslant |f| \Lra -\int{|f|} \leqslant \int{f} \leqslant \int{|f|}$.
+	\end{enumerate}
+\end{proof}
+
 
 \begin{lemma}
     Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $g \colon X \to \Rbar$, $g \geqslant 0$, 
     ступенчата. Тогда
 \[
-    \int_A{g \dd\mu} = \sum_i{\int_{A_i}{g \dd\mu}}
+    \intl_A{g \dd\mu} = \sum_i{\intl_{A_i}{g \dd\mu}}
 .\] 
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    Пусть $g = \sum_k{\l_k \chi_{E_k}}$, тогда
+\[
+    \intl_A{g \dd\mu} = \sum_k{\l_k \mu(E_k \cap A)}
+.\]
+    Воспользуемся счетной аддитивностью меры:
+\[
+    \sum_k{\l_k \mu(E_k \cap A)} = \sum_k{\l_k \sum_i{\mu(E_k \cap A_i)}}
+.\]
+    Последний ряд сходится абсолютно, поэтому можно переставить порядок суммирования:
+\[
+    \sum_k{\l_k \sum_i{\mu(E_k \cap A_i)}} = \sum_i{\sum_k{\l_k \mu(E_k \cap A_i)}}
+    = \sum_i{\intl_{A_i}{g \dd\mu}}
+.\]
+\end{proof}
 
 \begin{theorem}
     Пусть $A = \bigsqcup_i{A_i}$, $A, A_i \in \cA$, $f \colon X \to \Rbar$, $f \geqslant 0$,
     измерима на $A$. Тогда
 \[
-    \int_A{f \dd\mu} = \sum_i{\int_{A_i}{f \dd\mu}}
+    \intl_A{f \dd\mu} = \sum_i{\intl_{A_i}{f \dd\mu}}
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[($\leqslant$)] Левая часть равенства аппроксимируется ступенчатыми функциями \\
+            $0 \leqslant g \leqslant f$. Для них имеем:
+\[
+    \intl_A{g \dd\mu} = \sum_i{\intl_{A_i}{g \dd\mu}} \leqslant \sum_i{\intl_{A_i}}{f \dd\mu}
+.\]
+            Теперь имеем:
+\[
+    \intl_{A}{f \dd\mu} = \sup{\intl_{A}{g \dd\mu}} \leqslant \sum_i{\intl_{A_i}}{f \dd\mu}
+.\]
+        \item[($\geqslant$)] Для начала рассмотрим случай, когда $A = A_1 \sqcup A_2$. Рассмотрим
+            ступенчатую функцию $0 \leqslant g \leqslant f$ и функции $g_1, g_2$ такие, 
+            что $g_i\big|_{A_i} = g$, $g_i\big|_{\overline{A_i}} = 0$.
+            Очевидно, что $g_1 + g_2 = g$ на $A$. Тогда по построению:
+\[
+    \intl_{A_1}{g_1 \dd\mu} + \intl_{A_2}{g_2 \dd\mu} = \intl_{A}{(g_1 + g_2)\dd\mu}
+    = \intl_{A}{g \dd\mu} \leqslant \intl_{A}{f \dd\mu}
+.\]
+            Возьмём супремум от обеих частей сначала по $g_1$, потом по $g_2$:
+\[
+    \intl_{A_1}{f \dd\mu} + \intl_{A_2}{f \dd\mu} \leqslant \intl_{A}{f \dd\mu}
+.\]
+            Теперь разберемся с бесконечным случаем. Пусть $A = A_1 \sqcup A_2 \sqcup \ldots \sqcup A_n \sqcup B_n$,
+            где $B_n = \bigsqcup_{i > n}{A_i}$. Тогда, пользуясь уже доказанным фактом для конечных разбиений,
+            имеем:
+\[
+    \intl_{A}{f \dd\mu} \geqslant \sum_{i = 1}^{n}{\intl_{A_i}{f \dd\mu}} + \intl_{B_n}{f \dd\mu} \geqslant 
+    \sum_{i = 1}^{n}{\intl_{A_i}{f \dd\mu}}
+.\]
+            Совершая предельный переход при $n \to +\infty$, имеем:
+\[
+    \intl_{A}{f \dd\mu} \geqslant \sum_{i = 1}^{+\infty}{\intl_{A_i}{f \dd\mu}}
+.\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Пусть $f \colon X \to \Rbar$, $f \geqslant 0$, измерима. Зададим отображение:
@@ -146,10 +238,21 @@
     \end{align*}
     Тогда $\nu$ -- мера.
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    Единственное, что нужно проверить, это счетную аддитивность. Она как раз и проверена в теореме.
+\end{proof}
 
 \begin{lemma}
     Пусть $f$ суммируема, $g$ измерима, причем $f = g$ при почти всех $x$. Тогда
-    $\displaystyle \int{f \dd\mu} = \int{g \dd\mu}$.
+    $\displaystyle \intl_E{f \dd\mu} = \intl_E{g \dd\mu}$.
 \end{lemma}
-%:: NOTE all proof
+%:: NOTE all proof might be incorrect
+\begin{proof}
+    Пусть $e \in \cA\colon~ \mu{e} = 0$, $f = g$ на $E \setminus e$. Тогда
+\[
+    \intl_{E}{f \dd\mu} = \intl_{E \setminus e}{f \dd\mu} + \intl_{e}{f \dd\mu}
+    = \intl_{E \setminus e}{f \dd\mu} = \intl_{E \setminus e}{g \dd\mu}
+    = \intl_{E \setminus e}{g \dd\mu} + \intl_e{g \dd\mu} = \intl_{E}{g \dd\mu}
+.\]
+\end{proof}
+

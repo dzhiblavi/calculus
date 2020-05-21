@@ -6,28 +6,83 @@
     при почти всех $x \in X$. Пусть $\displaystyle f(x) = \lim_{n \to +\infty}{f_n(x)}$ 
     при почти всех $x$. Тогда
 \[
-    \int_X{f \dd\mu} = \lim_{n \to +\infty}{\int_X{f_n \dd\mu}}
+    \intl_X{f \dd\mu} = \lim_{n \to +\infty}{\intl_X{f_n \dd\mu}}
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Для начала отметим, что $f$ измерима, как предел измеримых функций, поэтому её интеграл
+    имеет смысл.
+    \begin{itemize}
+        \item[($\geqslant$)] Очевидно, поскольку $f(x) \geqslant f_n(x)$. 
+        \item[($\leqslant$)] Докажем, что $\forall g\colon~ 0 \leqslant g \leqslant f$, 
+            $g$ -- ступенчатая, $\forall c \in (0, 1)~ \lim{\intl_{X}{f_n}} 
+            \geqslant c \intl_X{g}$. Пусть $E_n = X(f_n \geqslant c g)$. Очевидно, что
+            $E_1 \subseteq E_2 \ldots$. Кроме того, $\bigcup{E_n} = X$, потому что
+            либо $\forall x~ f(x) > g(x)$ или $f(x) = g(x)$, но $c < 1$, поэтому всегда
+            $f(x) > c g(x)$.
+\[
+    \intl_X{f_n \dd\mu} \geqslant \intl_{E_n}{f_n \dd\mu} \geqslant c \intl_{E_n}{g \dd\mu}
+.\]
+            Совершим переход при $n \to +\infty$ в неравенстве:
+\[
+    \lim_{n \to +\infty}{\intl_{X}{f_n \dd\mu}} \geqslant c \lim_{n \to +\infty}{\intl_{E_n}{g \dd\mu}}
+.\]
+            Воспользуемся тем, что $E \mapsto \intl_{E}{g \dd\mu}$ -- мера, то есть обладает свойством
+            непрерывности снизу:
+\[
+    \lim_{n \to +\infty}{\intl_{X}{f_n \dd\mu}} \geqslant c \intl_{X}{g \dd\mu}
+.\]
+            Из этого неравенства очевидно следует:
+\[
+    \lim_{n \to +\infty}{\intl_{X}{f_n \dd\mu}} \geqslant \intl_{X}{g \dd\mu}
+.\]
+            Возьмем теперь супремум по $g$ от обеих частей и получим требуемое.
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}
 
     Пусть $f, g \geqslant 0$, измеримы на $E$. Тогда
 \[
-    \int_E{(f + g) \dd\mu} = \int_E{f \dd\mu} + \int_E{g \dd\mu}
+    \intl_E{(f + g) \dd\mu} = \intl_E{f \dd\mu} + \intl_E{g \dd\mu}
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Аппроксимируем $f$, $g$ ступенчатыми фукнциями $f_n$, $g_n$.
+    Теорема об аппроксимации поставляет такие $f_n$, $g_n$, что $0 \leqslant f_n \leqslant f$ и 
+    $0 \leqslant g_n \leqslant g$. $f_n$, $g_n$ ступенчатые, поэтому
+\[
+    \intl_{E}{(f_n + g_n) \dd\mu} = \intl_{E}{f_n \dd\mu} + \intl_{E}{g_n \dd\mu}
+.\]
+    По теореме Леви переходим к пределу при $n \to +\infty$:
+\[
+    \intl_{E}{(f + g) \dd\mu} = \intl_{E}{f \dd\mu} + \intl_{E}{g \dd\mu}
+.\]
+\end{proof}
 
 \begin{corollary}
     
     Пусть $f, g$ суммируемы на $E$. Тогда $f + g$ суммируема, причем
 \[
-    \int_E{(f + g) \dd\mu} = \int_E{f \dd\mu} + \int_E{g \dd\mu}
+    \intl_E{(f + g) \dd\mu} = \intl_E{f \dd\mu} + \intl_E{g \dd\mu}
 .\]
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item $(f+g)_{\pm} \leqslant |f + g| \leqslant |f| + |g|$, поэтому интегралы
+\[
+    \intl_{E}{(f + g)_{\pm} \dd\mu}
+\] 
+        конечны, то есть $f + g$ суммируема.
+        \item Пусть $h = f + g$:
+        \begin{align*}
+            &h_+ - h_- = f_+ - f_- + g_+ - g_- \Lra h_+ + f_- + g_- = h_- + f_+ + g_+ \Lra \\
+            &\int{h_+} + \int{f_-} + \int{g_-} = \int{h_-} + \int{f_+} + \int{g_+} \Lra \\
+            &\intl_{E}{(f + g) \dd\mu} = \intl_{E}{f \dd\mu} + \intl_{E}{g \dd\mu}
+        \end{align*}
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
     $\cL(X) = \left\{\, f \mid f \colon X \to \Rbar, \int{|f| \dd\mu} < +\infty \,\right\}$
@@ -36,38 +91,69 @@
 \begin{lemma}
     $\cL(X)$ -- линейное пространство. 
 \end{lemma}
-%:: NOTE all proof
 
 \begin{theorem}
     Пусть $u_n \colon X \to \R$, $u_n \geqslant 0$ почти везде, $u_n$ измеримы на $E$.
     Тогда
 \[
-    \int_E{\left(\sum_{n = 1}^{+\infty}{u_n}\right) \dd\mu} = \sum_{n = 1}^{+\infty}{\int_E{u_n \dd\mu}}
+    \intl_E{\left(\sum_{n = 1}^{+\infty}{u_n}\right) \dd\mu} = \sum_{n = 1}^{+\infty}{\intl_E{u_n \dd\mu}}
 .\]
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Пусть $\displaystyle S_n(x) = \sum_{i = 1}^n{u_n(x)}$, $0 \leqslant S_n(x) \leqslant S_{n + 1}(x)$ почти везде,
+    $\displaystyle S(x) = \sum_{i = 1}^{+\infty}{u_n(x)} = \lim_{n \to +\infty}{S_n(x)}$.
+    Тогда по теореме Леви:
+\[
+    \intl_{E}{S \dd\mu} = \lim_{n \to +\infty}{\intl_{E}{S_n(x) \dd\mu}} =
+    \lim_{n \to +\infty}{\sum_{i = 1}^n{\intl_{E}{u_n(x) \dd\mu}}} =
+    \sum_{i = 1}^{+\infty}{\intl_{E}{u_n(x) \dd\mu}}
+.\]
+\end{proof}
 
 \begin{corollary}
-    Пусть $u_n$ измеримы, причем $\displaystyle \sum_{n = 1}^{+\infty}{\int_E{|u_n| \dd\mu}} < +\infty$,
-    тогда ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n \dd\mu}$ сходится абсолютно почти везде на $E$.
+    Пусть $u_n$ измеримы, причем $\displaystyle \sum_{n = 1}^{+\infty}{\intl_E{|u_n| \dd\mu}} < +\infty$,
+    тогда ряд $\displaystyle \sum_{n = 1}^{+\infty}{u_n}$ сходится абсолютно почти везде на $E$.
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+\[
+    \intl_{E}{\sum_{i = 1}^{+\infty}{|u_n|} \dd\mu} = \sum_{i = 1}^{+\infty}{\intl_{E}{|u_n| \dd\mu}} < +\infty
+.\]
+    Поэтому ряд под первым интегралом сходится.
+\end{proof}
 
 \begin{theorem}(Абсолютная непрерывность интеграла)
 
     Пусть $f$ -- суммируемая функция. Тогда
 \[
     \forall \e > 0~ \exists \delta > 0~ \forall E \in \cA\colon~ \mu(E) < \delta
-    ~~ \left|\int_E{f \dd\mu}\right| < \e
+    ~~ \left|\intl_E{f \dd\mu}\right| < \e
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Пусть $X_n = X(f \geqslant n)$. Тогда $X_n \supseteq X_{n + 1} \supseteq \ldots$. Кроме того,
+    посколько $f$ суммируема, она не может быть бесконечной на множестве меры, отличной от нуля, 
+    то есть $\mu(\bigcap{X_n}) = 0$.
+    \begin{itemize}
+        \item $\displaystyle \forall \e > 0~ \exists n_\e\colon~ \intl_{X_{n_\e}}{|f|} < \frac{\e}{2}$.
+            Это выполнено потому, что отображение $A \mapsto \intl_{A}{|f|}$ -- мера, то есть
+            непрерывно сверху:
+\[
+    \intl_{X_n}{|f| \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{\bigcap{X_n}}{|f| \dd\mu} = 0
+.\]
+        \item По $\e$ положим $\delta = \frac{\e}{2 n_\e}$. Пусть теперь $\mu{E} < \delta$,
+            вычислим интеграл:
+\[
+    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu} =
+    \intl_{E \cap X_{n_\e}}{|f| \dd\mu} + \intl_{E \setminus X_{n_\e}}{|f| \dd\mu} \leqslant
+    \intl_{X_{n_\e}}{|f| \dd\mu} + n_\e \cdot \frac{\e}{2 n_\e} < \e
+.\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Пусть $e_n \in \cA$, $\mu(e_n) \xrightarrow[n \to +\infty]{} 0$, $f$ -- суммируемая функция,
     тогда
 \[
-    \int_{e_n}{|f| \dd\mu} \xrightarrow[n \to +\infty]{} 0
+    \intl_{e_n}{|f| \dd\mu} \xrightarrow[n \to +\infty]{} 0
 .\] 
 \end{corollary}
-%:: NOTE all proof
