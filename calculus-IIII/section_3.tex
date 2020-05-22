@@ -7,7 +7,6 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{lemma}
     $\cA$, $\cB$ -- полукольца, тогда $\cA \times \cB$ -- полукольцо.
 \end{lemma}
-%:: NOTE all proof
 
 \begin{definition}
     $\cA$, $\cB$ -- полукольца, назовем тогда $\cA \times \cB$ \textit{полукольцом
@@ -25,7 +24,31 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item Если $\mu$, $\nu$ $\sigma$-конечны, тогда $m_0$ тоже $\sigma$-конечна.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Достаточно доказать счетную аддитивность. Пусть $P = \bigsqcup{P_i}$, $P, P_i \in \cA \times \cB$
+            $P = A \times B$, $P_i = A_i \times B_i$. Зметим, что верны утверждения:
+\[
+    \chi_P(x, y) = \sum_{i}{\chi_{P_i}(x, y)},~~
+    \chi_A(x) \cdot \chi_B(y) = \sum_{i}{\chi_{A_i}(x) \cdot \chi_{B_i}(y)}
+.\]            
+            Проинтегрируем последнее равенство по мере $\nu$ в $Y$:
+        \begin{align*}
+            &\chi_A(x) \cdot \intl_B{\chi_B(y) \dd\nu} = \sum_{i}{\chi_A(x) \cdot \intl_B{\chi_B(y) \dd\nu}} \\
+            &\chi_A(x) \cdot \nu{B} = \sum_{i}{\chi_A(x) \cdot \nu{B}}
+        \end{align*}
+            Интегрируя второй раз по переменной $x$ по мере $\mu$, получаем:
+\[
+    \mu{A} \nu{B} = \sum_{i}{\mu{A_i} \nu{B_i}}
+.\]
+        \item Пусть $X = \bigcup{X_i}$, $Y = \bigcup{Y_i}$, $\mu{X_k} < +\infty$, $\nu{Y_k} < +\infty$, 
+            тогда 
+        \begin{align*}
+            X = \bigcup_{k, j}{X_k \times Y_j},~~ m_0(X_k \times Y_j) = \mu{X_k} \nu{Y_j} < +\infty
+        \end{align*}
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
 
@@ -38,12 +61,10 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{theorem}
     Произведение мер ассоциативно.
 \end{theorem}
-%:: NOTE all proof
 
 \begin{theorem}
     $\lambda_{m + n} = \lambda_{m} \times \lambda_{n}$.
 \end{theorem}
-%:: NOTE all proof
 
 \begin{definition}
     Пусть $C \subseteq X \times Y$. Тогда \textit{сечением} для произвольного $x \in X$
@@ -65,13 +86,107 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     
     Пусть $\mu$, $\nu$ -- $\sigma$-конечные полные меры, $m = \mu \times \nu$, $C \in \cA \otimes \cB$,
     тогда
-    \begin{itemize}
+    \begin{enumerate}
         \item При почти всех $x$ $C_x \in \cB$.
-        \item Отображение $x \mapsto \nu(C_x)$ измеримо на $X$.
-        \item $\displaystyle m(C) = \int_{X}{\nu(C_x) \dd\mu}$.
-    \end{itemize} 
+        \item Отображение $x \mapsto \nu{C_x}$ измеримо на $X$.
+        \item $\displaystyle m(C) = \intl_{X}{\nu{C_x} \dd\mu}$.
+    \end{enumerate} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Пусть множество $D \subseteq \cA \times \cB$ -- элементы $X \times Y$, для которых 
+    принцип Кавальери верен.
+    \begin{itemize}
+        \item Запасем какие-нибудь простые множества в $D$. А именно, $\forall A \in \cA, B \in \cB$
+            верно, что $C = A \times B \in D$. Проверим это:
+            \begin{enumerate}
+                \item $C_x = B \in \cB$ или $\varnothing$, в обоих случаях измеримо.
+                \item $x \mapsto \nu{C_x} = \nu{B} \chi_A(x)$ -- очевидно измерима.
+                \item Вычислим интеграл:
+\[
+    \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{B} \chi_A(x) \dd\mu} = 
+    \intl_A{\nu{B} \dd\mu} = \mu{A} \nu{B} = m{C}
+.\]
+            \end{enumerate}
+        \item Пусть теперь $E = \bigsqcup{E_i}$, $E_i \in D$. Тогда $E \in D$.
+            \begin{enumerate}
+                \item $E_x = \bigsqcup_i{(E_i)_x}$ -- измеримо почти везде, потому что
+                    $(E_i)_x$ измеримы почти везде.
+%:: NOTE all 
+% Проверить, что это доказано ранее
+% (измеримость произвольной суммы измеримых множеств
+% или доказать здесь
+                \item $x \mapsto \nu{E_x} = \sum_i{\nu{(E_i)_x}}$ -- измерима как сумма
+                    измеримых функций.
+                \item Считаем:
+\[
+    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\sum_i{\nu{(E_i)_x}} \dd\mu} =
+    \sum_i{\intl_X{\nu{(E_i)_x} \dd\mu}} = \sum_i{m(E_i)} = m{E}
+.\]
+            \end{enumerate}
+        \item Пусть $E_i \in D$, $E_1 \supseteq \ldots $, $\bigcap{E_i} = E$, $m{E_i} < +\infty$.
+            Тогда $E \in D$. Для начала заметим, что
+\[
+    \intl_X{\nu{(E_i)_x} \dd\mu} = m{E_i} < +\infty
+.\]
+            Поэтому почти везде $\nu{(E_i)_x} < +\infty$.
+            \begin{enumerate}
+                \item При почти всех $x$ одновременно измеримы все $(E_i)_x$, поэтому измеримо
+                    множество $\bigcap{(E_i)_x} = E_x$.
+                \item Пользуясь непрерывностью меры сверху получаем, что функция
+                    $x \mapsto \nu{E_x} = \lim{\nu{(E_i)_x}}$ измерима как предел измеримых функций.
+                \item Считаем:
+\[
+    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu}
+.\]
+                По теореме Лебега, которую мы пока не знаем, можно вынести предел из под знака интеграла
+                в случае, когда подынтегральное выражение можно мажорировать суммируемой функцией, 
+                не зависящей от $i$:
+\[
+    \nu{(E_i)_x} \leqslant \nu{(E_1)_x}
+.\]
+                Последняя функция суммируема, поэтому
+\[
+    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu} = \lim{\intl_X{\nu{(E_i)_x} \dd\mu}} =
+    \lim{m(E_i)} = m{E}
+.\]
+                Последнее равенство верно в силу непрерывности меры $m$ сверху.
+            \end{enumerate}
+        \item Если $A_{i,j} \in \cA \times \cB$, то $\bigcap_j{\bigcup_i{A_{i,j}}} \in D$.
+                Сделаем множества $A_{i, j}$ дизъюнктными (пользуясь стандартной техникой, мы останемся в полукольце),
+                а затем сделаем множества $\bigsqcup_i{\hat{A}_{i, j}}$ убывающими, взяв
+                в $\widetilde{A}_0 = \hat{A}_{i, j}, \ldots, \widetilde{A}_n = \bigsqcup_{i = 1}^n{\hat{A}_{i, j}}$.
+        \item Покажем, что если $m{E} = 0$, то $E \in D$. Аппроксимируем $E$ сериями прямоугольников
+                $P_{i, j}$ (из теоремы о стандартном продолжении меры): пусть $H = \bigcap_i{\bigcup_j{P_{i, j}}}$, 
+                очевидно, что $E \subset H \in D$, $m{H} = 0$. Обладая этими знаниями, проверим, что $E \in D$:
+            \begin{enumerate}
+                \item Поскольку $H \in D$:
+\[
+    0 = m{H} = \intl_{X}{\nu{H_x} \dd\mu} \Lra \nu{H_x} = 0 \text{ при п.в. }x
+.\]
+                Пользуясь полнотой меры $\nu$ и тем фактом, что $E_x \subset H_x$, получаем, что $\nu{E_x} = 0$ при
+                почти всех $x$.
+                \item Отображение $x \mapsto \nu{E_x}$ измеримо как отображение, почти всюду равное нулю.
+                \item Поскольку $\nu{E_x} = 0$ почти везде, очевидно, что $\intl_X{\nu{E_x} \dd\mu} = 0 = m{E}$.
+            \end{enumerate}
+        \item Покажем, что если $C \in \cA \otimes \cB$, $m{C} < +\infty$, то $C \in D$.
+                $\exists e \colon~ m{e} = 0$, $H = \bigcap_j{\bigcup_i{P_{i, j}}}$, $H = C \setminus e$,
+                $m{C} = m{H}$ (как в предыдущем пункте, из теоремы о стандартном продолжении меры).
+            \begin{enumerate}
+                \item $C_x = H_x \ e_x$ -- измеримо как разность измеримых множеств.
+                \item $\nu{C_x} = \nu{H_x} - \nu{e_x}$ -- измерима как разность измеримых функций. 
+                \item Считаем:
+\[
+    \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{H_x} \dd\mu} = \intl_X{\nu{e_x} \dd\mu} =
+    \intl_X{\nu{H_x} \dd\mu} = m{H} = m{C}
+.\]
+            \end{enumerate}
+        \item Пусть, наконец, $C \in \cA \otimes \cB$. Пусть $X = \bigsqcup{X_i}, Y = \bigsqcup{Y_i}$  
+            (пользуемся $\sigma$-конечностью мер), тогда:
+\[
+    C = \bigsqcup_{i, j}{C \cap (X_i \times Y_j)} \in D
+.\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Пусть $C \in \cA \otimes \cB$, $p_1(C) \in \cA$, тогда
