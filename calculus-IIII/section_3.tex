@@ -1,7 +1,7 @@
 \section{Произведение мер}
 
 \textit{В этом разделе мы начинаем с того, что по двум пространствам
-$\langle X, \cA, \mu \rangle$, $\langle Y, \cB, \nu \rangle$ строим пространство
+    $\langle X, \cA, \mu \rangle$, $\langle Y, \cB, \nu \rangle$ строим пространство
 $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 
 \begin{lemma}
@@ -11,10 +11,10 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{definition}
     $\cA$, $\cB$ -- полукольца, назовем тогда $\cA \times \cB$ \textit{полукольцом
     измеримых прямоугольников}. Заведем отображение:
-\begin{align*}
-    m_0 \colon &\cA \times \cB \to \Rbar \\
-               &A \times B \mapsto \mu(A) \cdot \nu(B)
-\end{align*}
+    \begin{align*}
+        m_0 \colon &\cA \times \cB \to \Rbar \\
+                   &A \times B \mapsto \mu(A) \cdot \nu(B)
+    \end{align*}
 \end{definition}
 
 \begin{theorem}
@@ -29,24 +29,24 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     \begin{itemize}
         \item Достаточно доказать счетную аддитивность. Пусть $P = \bigsqcup{P_i}$, $P, P_i \in \cA \times \cB$
             $P = A \times B$, $P_i = A_i \times B_i$. Зметим, что верны утверждения:
-\[
-    \chi_P(x, y) = \sum_{i}{\chi_{P_i}(x, y)},~~
-    \chi_A(x) \cdot \chi_B(y) = \sum_{i}{\chi_{A_i}(x) \cdot \chi_{B_i}(y)}
-.\]            
+            \[
+                \chi_P(x, y) = \sum_{i}{\chi_{P_i}(x, y)},~~
+                \chi_A(x) \cdot \chi_B(y) = \sum_{i}{\chi_{A_i}(x) \cdot \chi_{B_i}(y)}
+            .\]            
             Проинтегрируем последнее равенство по мере $\nu$ в $Y$:
-        \begin{align*}
+            \begin{align*}
             &\chi_A(x) \cdot \intl_B{\chi_B(y) \dd\nu} = \sum_{i}{\chi_A(x) \cdot \intl_B{\chi_B(y) \dd\nu}} \\
             &\chi_A(x) \cdot \nu{B} = \sum_{i}{\chi_A(x) \cdot \nu{B}}
-        \end{align*}
+            \end{align*}
             Интегрируя второй раз по переменной $x$ по мере $\mu$, получаем:
-\[
-    \mu{A} \nu{B} = \sum_{i}{\mu{A_i} \nu{B_i}}
-.\]
+            \[
+                \mu{A} \nu{B} = \sum_{i}{\mu{A_i} \nu{B_i}}
+            .\]
         \item Пусть $X = \bigcup{X_i}$, $Y = \bigcup{Y_i}$, $\mu{X_k} < +\infty$, $\nu{Y_k} < +\infty$, 
             тогда 
-        \begin{align*}
-            X = \bigcup_{k, j}{X_k \times Y_j},~~ m_0(X_k \times Y_j) = \mu{X_k} \nu{Y_j} < +\infty
-        \end{align*}
+            \begin{align*}
+                X = \bigcup_{k, j}{X_k \times Y_j},~~ m_0(X_k \times Y_j) = \mu{X_k} \nu{Y_j} < +\infty
+            \end{align*}
     \end{itemize}
 \end{proof}
 
@@ -69,21 +69,21 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
 \begin{definition}
     Пусть $C \subseteq X \times Y$. Тогда \textit{сечением} для произвольного $x \in X$
     назовем множество
-\[
-    C_x \defeq \{\,y \in Y \mid (x, y) \in C\,\}
-.\] 
+    \[
+        C_x \defeq \{\,y \in Y \mid (x, y) \in C\,\}
+    .\] 
 \end{definition}
 
 \begin{remark}
     Для сечений верны формулы, связанные с операциями над множествами,
     подобные этой:
-\[
-    \left(\bigcup_{\a}{C_{\a}}\right)_x = \bigcup_{\a}{(C_{\a})_x}
-.\] 
+    \[
+        \left(\bigcup_{\a}{C_{\a}}\right)_x = \bigcup_{\a}{(C_{\a})_x}
+    .\] 
 \end{remark}
 
 \begin{theorem}(Принцип Кавальери)
-    
+
     Пусть $\mu$, $\nu$ -- $\sigma$-конечные полные меры, $m = \mu \times \nu$, $C \in \cA \otimes \cB$,
     тогда
     \begin{enumerate}
@@ -102,32 +102,32 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
                 \item $C_x = B \in \cB$ или $\varnothing$, в обоих случаях измеримо.
                 \item $x \mapsto \nu{C_x} = \nu{B} \chi_A(x)$ -- очевидно измерима.
                 \item Вычислим интеграл:
-\[
-    \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{B} \chi_A(x) \dd\mu} = 
-    \intl_A{\nu{B} \dd\mu} = \mu{A} \nu{B} = m{C}
-.\]
+                    \[
+                        \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{B} \chi_A(x) \dd\mu} = 
+                        \intl_A{\nu{B} \dd\mu} = \mu{A} \nu{B} = m{C}
+                    .\]
             \end{enumerate}
         \item Пусть теперь $E = \bigsqcup{E_i}$, $E_i \in D$. Тогда $E \in D$.
             \begin{enumerate}
                 \item $E_x = \bigsqcup_i{(E_i)_x}$ -- измеримо почти везде, потому что
                     $(E_i)_x$ измеримы почти везде.
-%:: NOTE all 
-% Проверить, что это доказано ранее
-% (измеримость произвольной суммы измеримых множеств
-% или доказать здесь
+                    %:: NOTE all 
+                    % Проверить, что это доказано ранее
+                    % (измеримость произвольной суммы измеримых множеств
+                    % или доказать здесь
                 \item $x \mapsto \nu{E_x} = \sum_i{\nu{(E_i)_x}}$ -- измерима как сумма
                     измеримых функций.
                 \item Считаем:
-\[
-    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\sum_i{\nu{(E_i)_x}} \dd\mu} =
-    \sum_i{\intl_X{\nu{(E_i)_x} \dd\mu}} = \sum_i{m(E_i)} = m{E}
-.\]
+                    \[
+                        \intl_X{\nu{E_x} \dd\mu} = \intl_X{\sum_i{\nu{(E_i)_x}} \dd\mu} =
+                        \sum_i{\intl_X{\nu{(E_i)_x} \dd\mu}} = \sum_i{m(E_i)} = m{E}
+                    .\]
             \end{enumerate}
         \item Пусть $E_i \in D$, $E_1 \supseteq \ldots $, $\bigcap{E_i} = E$, $m{E_i} < +\infty$.
             Тогда $E \in D$. Для начала заметим, что
-\[
-    \intl_X{\nu{(E_i)_x} \dd\mu} = m{E_i} < +\infty
-.\]
+            \[
+                \intl_X{\nu{(E_i)_x} \dd\mu} = m{E_i} < +\infty
+            .\]
             Поэтому почти везде $\nu{(E_i)_x} < +\infty$.
             \begin{enumerate}
                 \item При почти всех $x$ одновременно измеримы все $(E_i)_x$, поэтому измеримо
@@ -135,131 +135,179 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
                 \item Пользуясь непрерывностью меры сверху получаем, что функция
                     $x \mapsto \nu{E_x} = \lim{\nu{(E_i)_x}}$ измерима как предел измеримых функций.
                 \item Считаем:
-\[
-    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu}
-.\]
-                По теореме Лебега, которую мы пока не знаем, можно вынести предел из под знака интеграла
-                в случае, когда подынтегральное выражение можно мажорировать суммируемой функцией, 
-                не зависящей от $i$:
-\[
-    \nu{(E_i)_x} \leqslant \nu{(E_1)_x}
-.\]
-                Последняя функция суммируема, поэтому
-\[
-    \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu} = \lim{\intl_X{\nu{(E_i)_x} \dd\mu}} =
-    \lim{m(E_i)} = m{E}
-.\]
-                Последнее равенство верно в силу непрерывности меры $m$ сверху.
+                    \[
+                        \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu}
+                    .\]
+                    По теореме Лебега, которую мы пока не знаем, можно вынести предел из под знака интеграла
+                    в случае, когда подынтегральное выражение можно мажорировать суммируемой функцией, 
+                    не зависящей от $i$:
+                    \[
+                        \nu{(E_i)_x} \leqslant \nu{(E_1)_x}
+                    .\]
+                    Последняя функция суммируема, поэтому
+                    \[
+                        \intl_X{\nu{E_x} \dd\mu} = \intl_X{\lim{\nu{(E_i)_x}} \dd\mu} = \lim{\intl_X{\nu{(E_i)_x} \dd\mu}} =
+                        \lim{m(E_i)} = m{E}
+                    .\]
+                    Последнее равенство верно в силу непрерывности меры $m$ сверху.
             \end{enumerate}
         \item Если $A_{i,j} \in \cA \times \cB$, то $\bigcap_j{\bigcup_i{A_{i,j}}} \in D$.
-                Сделаем множества $A_{i, j}$ дизъюнктными (пользуясь стандартной техникой, мы останемся в полукольце),
-                а затем сделаем множества $\bigsqcup_i{\hat{A}_{i, j}}$ убывающими, взяв
-                в $\widetilde{A}_0 = \hat{A}_{i, j}, \ldots, \widetilde{A}_n = \bigsqcup_{i = 1}^n{\hat{A}_{i, j}}$.
+            Сделаем множества $A_{i, j}$ дизъюнктными (пользуясь стандартной техникой, мы останемся в полукольце),
+            а затем сделаем множества $\bigsqcup_i{\hat{A}_{i, j}}$ убывающими, взяв
+            в $\widetilde{A}_0 = \hat{A}_{i, j}, \ldots, \widetilde{A}_n = \bigsqcup_{i = 1}^n{\hat{A}_{i, j}}$.
         \item Покажем, что если $m{E} = 0$, то $E \in D$. Аппроксимируем $E$ сериями прямоугольников
-                $P_{i, j}$ (из теоремы о стандартном продолжении меры): пусть $H = \bigcap_i{\bigcup_j{P_{i, j}}}$, 
-                очевидно, что $E \subset H \in D$, $m{H} = 0$. Обладая этими знаниями, проверим, что $E \in D$:
+            $P_{i, j}$ (из теоремы о стандартном продолжении меры): пусть $H = \bigcap_i{\bigcup_j{P_{i, j}}}$, 
+            очевидно, что $E \subset H \in D$, $m{H} = 0$. Обладая этими знаниями, проверим, что $E \in D$:
             \begin{enumerate}
                 \item Поскольку $H \in D$:
-\[
-    0 = m{H} = \intl_{X}{\nu{H_x} \dd\mu} \Lra \nu{H_x} = 0 \text{ при п.в. }x
-.\]
-                Пользуясь полнотой меры $\nu$ и тем фактом, что $E_x \subset H_x$, получаем, что $\nu{E_x} = 0$ при
-                почти всех $x$.
+                    \[
+                        0 = m{H} = \intl_{X}{\nu{H_x} \dd\mu} \Lra \nu{H_x} = 0 \text{ при п.в. }x
+                    .\]
+                    Пользуясь полнотой меры $\nu$ и тем фактом, что $E_x \subset H_x$, получаем, что $\nu{E_x} = 0$ при
+                    почти всех $x$.
                 \item Отображение $x \mapsto \nu{E_x}$ измеримо как отображение, почти всюду равное нулю.
                 \item Поскольку $\nu{E_x} = 0$ почти везде, очевидно, что $\intl_X{\nu{E_x} \dd\mu} = 0 = m{E}$.
             \end{enumerate}
         \item Покажем, что если $C \in \cA \otimes \cB$, $m{C} < +\infty$, то $C \in D$.
-                $\exists e \colon~ m{e} = 0$, $H = \bigcap_j{\bigcup_i{P_{i, j}}}$, $H = C \setminus e$,
-                $m{C} = m{H}$ (как в предыдущем пункте, из теоремы о стандартном продолжении меры).
+            $\exists e \colon~ m{e} = 0$, $H = \bigcap_j{\bigcup_i{P_{i, j}}}$, $H = C \setminus e$,
+            $m{C} = m{H}$ (как в предыдущем пункте, из теоремы о стандартном продолжении меры).
             \begin{enumerate}
                 \item $C_x = H_x \ e_x$ -- измеримо как разность измеримых множеств.
                 \item $\nu{C_x} = \nu{H_x} - \nu{e_x}$ -- измерима как разность измеримых функций. 
                 \item Считаем:
-\[
-    \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{H_x} \dd\mu} = \intl_X{\nu{e_x} \dd\mu} =
-    \intl_X{\nu{H_x} \dd\mu} = m{H} = m{C}
-.\]
+                    \[
+                        \intl_X{\nu{C_x} \dd\mu} = \intl_X{\nu{H_x} \dd\mu} = \intl_X{\nu{e_x} \dd\mu} =
+                        \intl_X{\nu{H_x} \dd\mu} = m{H} = m{C}
+                    .\]
             \end{enumerate}
         \item Пусть, наконец, $C \in \cA \otimes \cB$. Пусть $X = \bigsqcup{X_i}, Y = \bigsqcup{Y_i}$  
             (пользуемся $\sigma$-конечностью мер), тогда:
-\[
-    C = \bigsqcup_{i, j}{C \cap (X_i \times Y_j)} \in D
-.\]
+            \[
+                C = \bigsqcup_{i, j}{C \cap (X_i \times Y_j)} \in D
+            .\]
     \end{itemize}
 \end{proof}
 
 \begin{corollary}
     Пусть $C \in \cA \otimes \cB$, $p_1(C) \in \cA$, тогда
-\[
-    m(C) = \intl_{p_1(C)}{\nu(C_x) \dd\mu}
-.\] 
+    \[
+        m(C) = \intl_{p_1(C)}{\nu(C_x) \dd\mu}
+    .\] 
 \end{corollary}
-%:: NOTE all proof
 
 \begin{corollary}
     Пусть $f \colon [a, b] \to \R$, $f \in C$, тогда
-\[
-    \intl_a^b{f(x) \dd x} = \intl_{[a, b]}{f \dd\lambda_1}
-.\] 
+    \[
+        \intl_a^b{f(x) \dd x} = \intl_{[a, b]}{f \dd\lambda_1}
+    .\] 
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    Достаточно доказать утверждение для $f \geqslant 0$. Поскольку $f$ непрерывна,
+    множество $C = \text{ПГ}{(f, [a, b])}$ измеримо в $\R^2$. Тогда $C_x = [0, f(x)]$ -- измеримо,
+    $\lambda_1{C_x} = f(x)$. Тогда:
+    \[
+        \intl_a^b{f(x) \dd x} = \lambda_2{\text{ПГ}(f, [a, b])} = \intl_{[a, b]}{f(x) \dd\lambda_1}
+    .\]
+\end{proof}
 
 \begin{remark}
     Пусть $f \geqslant 0$, измерима, тогда
-\[
-    \lambda_2 \text{ПГ}(f, [a, b]) = \intl_{[a, b]}{f \dd\lambda_1}
-.\] 
+    \[
+        \lambda_2 \text{ПГ}(f, [a, b]) = \intl_{[a, b]}{f \dd\lambda_1}
+    .\] 
 \end{remark}
 
 \begin{definition}
     Пусть $f \colon X \times Y \to \Rbar$, $C \in X \times Y$. Зафиксируем $x \in X$
     и определим отображение:
-\begin{align*}
-    f_x \colon &C_x \to \Rbar \\
-               &y \mapsto f(x, y)
-\end{align*}
+    \begin{align*}
+        f_x \colon &C_x \to \Rbar \\
+                   &y \mapsto f(x, y)
+    \end{align*}
     Аналогично определим $f_y \colon C_y \to \Rbar$ для всех $y \in Y$.
 \end{definition}
 
 \begin{theorem}(Тонелли)
-    
+
     Пусть $\mu$, $\nu$ -- $\sigma$-конечные полные меры, $m = \mu \times \nu$,
     $f \colon X \times Y \to \Rbar$, $f \geqslant 0$, \textbf{измерима} по мере $m$.
     Тогда
     \begin{itemize}
         \item При почти всех $x$ $f_x$ \textbf{измерима} на $Y$.
-        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) \dd\nu} 
-        = \int_{Y}{f_x \dd\nu}$ \textbf{измеримо} на $X$.
+        \item Отображение $x \mapsto \f(x) = \intl_{Y}{f(x, y) \dd\nu} 
+            = \intl_{Y}{f_x \dd\nu}$ \textbf{измеримо} на $X$.
         \item $\displaystyle \intl_{X \times Y}{f(x, y) \dd m} 
             = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \begin{itemize}
+        \item Пусть $f = \chi{C}$, $C \subseteq X \times Y$. Тогда
+            \begin{enumerate}
+                \item $f_x = \chi{C_x}$ -- измерима при почти всех $x$ потому, что
+                    $C_x$ измеримо при почти всех $x$ (принцип Кавальери).
+                \item $\f(x) = \intl_Y{\chi_{C_x}(y) \dd\nu} = \nu{C_x}$ -- измеримо по 
+                    принципу Кавальери.
+                \item
+                    \[
+                        \intl_X{\f(x) \dd\mu} = \intl_X{\nu{C_x} \dd\mu} = m{C} 
+                        = \intl_{X \times Y}{\chi_C \dd m}
+                    .\]
+            \end{enumerate}
+        \item Пусть $f = \sum_k{a_k \chi_{C_k}} \geqslant 0$, $C_k$ измеримы, $k < +\infty$. Тогда:
+            \begin{enumerate}
+                \item $f_x = \sum_k{a_k \chi_{C_k}}$ -- измеримо почти как линейная комбинация
+                    измеримых почти везде функций.
+                \item $\f(x) = \intl_Y{f_x(y) \dd\nu} = \sum_k{a_k \nu{(C_k)_x}}$ -- измеримо почти везде 
+                    по аналогичной причине.
+                \item 
+                    \[
+                        \intl_X{\f(x) \dd\mu} = \sum_k{a_k \intl_X{\nu{(C_k)_x} \dd\mu}}
+                            = \sum_k{a_k m{C_k}} = \intl_{X \times Y}{f \dd m}
+                    .\]
+            \end{enumerate}
+        \item Пусть $f \geqslant 0$, $g_n$ -- ступенчатые функции, аппроксимирующие $f$, 
+            $0 \leqslant g_n \leqslant g_{n+1} \leqslant \ldots$, $\lim{g_n} = f$. Тогда
+            \begin{enumerate}
+                \item $f_x = \lim{(g_n)_x}$ -- измерима как предел измеримых функций.
+                \item $\f(x) = \intl_Y{f_x \dd\nu} = \lim{\intl_Y{(g_n)_x \dd\nu}} 
+                    = \lim{\intl_Y{\f_n(y) \dd\nu}}$ -- измерима как предел измеримых функций. 
+                    Второе равенство справедливо как следствие теоремы Леви.
+                \item 
+                    \[
+                        \intl_X{\f(x) \dd\mu} = \lim{\intl_X{\f_n(x) \dd\mu}} = 
+                        \lim{\intl_{X \times Y}{g_n \dd m}} = \intl_{X \times Y}{f \dd m}
+                    .\]
+                    Здесь дважды применена теорема Леви.
+            \end{enumerate}
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}(Фубини)
-    
+
     Пусть $\mu$, $\nu$ -- $\sigma$-конечные полные меры, $m = \mu \times \nu$,
     $f \colon X \times Y \to \Rbar$, $f \geqslant 0$, \textbf{суммируема}.
     Тогда
     \begin{itemize}
         \item При почти всех $x$ $f_x$ \textbf{суммируема} на $Y$.
-        \item Отображение $x \mapsto \f(x) = \int_{Y}{f(x, y) \dd\nu} 
-            = \int_{Y}{f_x \dd\nu}$ \textbf{суммируемо} на $X$.
+        \item Отображение $x \mapsto \f(x) = \intl_{Y}{f(x, y) \dd\nu} 
+            = \intl_{Y}{f_x \dd\nu}$ \textbf{суммируемо} на $X$.
         \item $\displaystyle \intl_{X \times Y}{f(x, y) \dd m} 
             = \intl_{X}{\left(\intl_{Y}{f(x, y) \dd\nu}\right) \dd\mu}$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Доказательство аналогично доказательству теоремы Тонелли.
+\end{proof}
 
 \begin{corollary}
     Если $p_1(C)$ измеримо, то
-\[
-    \intl_{C}{f \dd m} = \intl_{X \times Y}{f \chi_C \dd m} 
-    = \intl_{X}{\left(\intl_{Y}{f \chi_C \dd\nu}\right) \dd\mu}
-    = \intl_{p_1(C)}{\left(\intl_{C_x}{f \dd\nu}\right) \dd\mu}
-.\]
+    \[
+        \intl_{C}{f \dd m} = \intl_{X \times Y}{f \chi_C \dd m} 
+        = \intl_{X}{\left(\intl_{Y}{f \chi_C \dd\nu}\right) \dd\mu}
+        = \intl_{p_1(C)}{\left(\intl_{C_x}{f \dd\nu}\right) \dd\mu}
+    .\]
 \end{corollary}
-%:: NOTE all proof
 
 \begin{remark}
     Посмотрим на два вида сходимости: по мере и в смысле интеграла:
@@ -270,30 +318,77 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
     Оказывается, верно $2 \Lra 1$, но без дополнительных требований неверно $1 \Lra 2$.
 \end{remark}
 
+\begin{lemma}
+    Пусть $g$ суммируема. Тогда $\exists A \in \cA \colon~ \mu{A} < +\infty, 
+    \intl_{X \setminus A}{g \dd\mu} < \e$.
+\end{lemma}
+\begin{proof}
+    \[
+        \intl_X{g \dd\mu} = \sup{\left\{\intl_X{h \dd\mu}, h \text{-- суммируема}\right\}}
+    .\]
+    Выберем ступенчатую $h_0$ такую, что $\intl_X{g} - \intl_X{h_0} < \e$. Тогда пусть
+    \[
+        A = \supp{h_0} = \\ \{\,x \mid h(x) \neq 0\,\}
+    .\]
+    \[
+        \intl_{X \setminus A}{g} + \intl_{A}{g - h_0} = \intl_X{g} - \intl_X{h_0} < \e
+    .\]
+    $\mu{A} < +\infty$, так как $g$ суммируема.
+\end{proof}
+
 \begin{theorem}(Лебега о мажорированной сходимости)
-    
+
     Пусть $f_n$, $f$ измеримы и почти везде конечны, $f_n \underset{\mu}{\Lra} f$, 
     $\exists g\colon~$
     \begin{itemize}
         \item $\forall n~ |f_n| \leqslant g$ при почти всех $x$.
         \item $g$ суммируема на $X$.
     \end{itemize} 
-    В такой ситуации $g$ называется \textit{Мажорантой}. Тогда
+    В такой ситуации $g$ называется \textit{мажорантой}. Тогда
     \begin{itemize}
         \item $f_n$, $f$ суммируемы.
         \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item $f_n$ суммируема по первому пункту условия
+        \item По следствию из теоремы Рисса, $f \leqslant g$. Поэтому $f$ тоже суммируема.
+        \item Пусть теперь $\mu{X} < +\infty$. Тогда $\forall \e > 0$ положим $X_n = X(|f_n - f| > \e)$.
+            \\ $f_n \underset{\mu}{\Lra} f \Lra \mu{X_n} \to 0$.
+            \[
+                \intl_X{|f - f_n| \dd \mu} = \intl_{X_n}{|f - f_n| \dd\mu} 
+                + \intl_{X \setminus X_n}{|f - f_n| \dd\mu} <
+                \intl_{X_n}{2g \dd\mu} + \intl_{X \setminus X_n}{\e \dd\mu}
+            .\]
+            Первый интеграл стремится к нулю по теореме об абсолютной сходимости интеграла.
+            Второй интеграл оценивается сверху:
+            \[
+                \intl_{X \setminus X_n}{\e \dd\mu} \leqslant \intl_{X}{\e\dd\mu} = \e\mu{X} \to 0
+            .\] 
+        \item Пусть $\mu{X} = +\infty$. По предыдущей лемме $\exists A \colon \mu{A} < +\infty, 
+            \intl_X{g} < \e$, тогда
+            \[
+                \intl_X{|f_n - f| \dd\mu} = \intl_A + \intl_{X \setminus A} \leqslant
+                \intl_A{|f_n - f| \dd\mu} + 2\e \to 0
+            .\]
+            Первый интеграл стремится к нулю по предыдущему пункту ($\mu{A} < +\infty$).
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
-    
+
     В условиях предыдущей теоремы верно
-\[
-    \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
-.\] 
+    \[
+        \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
+    .\] 
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    \[
+        \left|\intl_X{f_n \dd\mu} - \intl_X{f \dd\mu}\right| \leqslant \intl_X{|f-f_n| \dd\mu} \to 0
+    .\]
+\end{proof}
 
 \begin{theorem}
     Пусть $f_n$, $f$ измеримы и почти везде конечны, $f_n \to f$ почти везде,
@@ -308,41 +403,83 @@ $\langle X \times Y, \cA \times \cB, \mu \times \nu \rangle$.}
         \item $\displaystyle \intl_{X}{|f_n - f| \dd\mu} \to 0$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Первый пункт доказывается аналогично предыдущей теореме.
+        \item Положим
+            \[
+                h_n = \sup_{j \geqslant n}{|f_j - f|}
+            .\]
+            Очевидно, что $h_n$ убывает с ростом $n$, и $0 \leqslant h_n \leqslant 2g$ почти везде.
+            Кроме того, по определению, $\lim{h_n} = \varlimsup{|f_n - f|} \to 0$ почти везде, 
+            потому что $f_n \to f$ почти везде. Функция $2g - h_n$ неотрицательна и возрастает с ростом 
+            $n$, поэтому подходит под теорему Леви:
+            \[
+                \intl_X{2g - h_n} \to \intl_X{2g} \Lra \intl_X{h_n} \to 0
+            .\]
+            \[
+                \intl_X{|f_n - f| \dd\mu} \leqslant \intl_X{h_n \dd\mu} \to 0
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
-    
+
     В условиях предыдущей теоремы верно
-\[
-    \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
-.\] 
+    \[
+        \intl_{X}{f_n \dd\mu} \xrightarrow[n \to +\infty]{} \intl_{X}{f \dd\mu}
+    .\] 
 \end{corollary}
-%:: NOTE all proof
 
 \begin{theorem}(Фату)
 
     Пусть $f_n \geqslant 0$, $f_n$ измеримы, $f_n \to f$ почти везде. Если
-\[
-    \exists c > 0\colon~ \forall n~ \intl_{X}{f_n \dd\mu} \leqslant c
-.\] 
+    \[
+        \exists c > 0\colon~ \forall n~ \intl_{X}{f_n \dd\mu} \leqslant c
+    .\] 
     то
-\[
-    \intl_{X}{f \dd\mu} \leqslant c
-.\] 
+    \[
+        \intl_{X}{f \dd\mu} \leqslant c
+    .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Пусть $g_n = \inf_{j \geqslant n}{f_n}$. Очевидно, что $g_n$ возрастает с ростом $n$ и
+    $g_n \geqslant 0$. Кроме того,
+    \[ 
+        \lim{g_n} = \varliminf{f_n} = f
+    .\]
+    Тогда $g_n$ подходит под теорему Леви:
+    \[
+        \intl_X{f \dd\mu} \leftarrow \intl_X{g_n \dd\mu} \leqslant \intl_X{f_n \dd\mu} \leqslant c
+    .\]
+\end{proof}
 
 \begin{corollary}
-    
+
     Теорема Фату верна и в случае $f_n \underset{\mu}{\Lra} f$.
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    Сразу следует из теоремы Рисса.
+\end{proof}
 
 \begin{corollary}
-    
+
     Пусть $f_n \geqslant 0$, $f_n$ измеримы, тогда
-\[
-    \intl_{X}{\varliminf{f_n} \dd\mu} \leqslant \varliminf{\intl_{X}{f_n \dd\mu}}
-.\] 
+    \[
+        \intl_{X}{\varliminf{f_n} \dd\mu} \leqslant \varliminf{\intl_{X}{f_n \dd\mu}}
+    .\] 
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    Выберем последовательность $n_k$ такую, что
+    \[
+        \lim{\intl_X{f_{n_k} \dd\mu}} = \varliminf{\intl_X{f_n \dd\mu}}
+    .\]
+    Положим $g_n = \inf_{j \geqslant n}{f_j}$. Аналогично тому, как мы делали в
+    доказательстве теоремы Фату:
+    \[
+        \intl_X{\varliminf{f_n} \dd\mu} \leftarrow \intl_X{g_{n_k}\dd\mu} \leqslant
+        \intl_X{f_{n_k}\dd\mu} \rightarrow \varliminf{\intl_X{f_n \dd\mu}}
+    .\]
+\end{proof}
+
