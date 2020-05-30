@@ -12,7 +12,6 @@
 \begin{lemma}
     $\Phi^{-1}(\cB)$ -- $\sigma$-алгебра.
 \end{lemma}
-%:: NOTE all proof
 
 \begin{definition}
     При фиксированном измеримом $\Phi \colon X \to Y$ отображение
@@ -26,16 +25,20 @@
 \begin{lemma}
     Образ меры при отображении является мерой.
 \end{lemma}
-%:: NOTE all proof
 
 \begin{remark}
     $\displaystyle \nu(B) = \intl_{\Phi^{-1}(B)}{1 \dd\mu}$
 \end{remark}
 
-\begin{remark}
+\begin{lemma}
     Если функция $f \colon Y \to \Rbar$ измерима относительно $\cB$, 
     то $f \circ \Phi \colon X \to \Rbar$ измерима относительно $\cA$.
-\end{remark}
+\end{lemma}
+\begin{proof}
+    \[
+        X(f(\Phi(x)) < a) = \Phi^{-1}(Y(f < a)) \in \cA
+    .\]
+\end{proof}
 
 \begin{definition}
     Пусть $\omega \colon X \to \Rbar$, $\omega \geqslant 0$, измерима.
@@ -57,7 +60,42 @@
         \item $\displaystyle \intl_{Y}{f \dd\nu} = \intl_{X}{(f \circ \Phi)~ \omega \dd\mu}$
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item $(f \circ \Phi)$ измерима по предыдущей лемме. 
+        \item Пусть $f = \chi_B$, $B \in \cB$. Тогда
+            \[
+                (f \circ \Phi)(x) = \begin{cases}
+                    1, \Phi(x) \in B \\
+                    0, \Phi(x) \notin B
+                \end{cases} = \chi_{\Phi^{-1}(B)}
+            .\]
+            \[
+                \intl_X{(f \circ \Phi)~\omega \dd\mu} = \intl_X{\chi_{\Phi^{-1}(B)}~\omega \dd\mu} =
+                \intl_{\Phi^{-1}(B)}{\omega \dd\mu} = \nu{B} = \intl_Y{f \dd\nu}
+            .\]
+        \item Пусть теперь $f$ -- ступенчатая функция. Тогда:
+            \[
+                \intl_Y{f \dd\nu} = \sum_{k = 1}^n{\intl_Y{f_k \dd\nu}} = 
+                \sum_{k = 1}^n{\intl_X{(f_k \circ \Phi)~\omega \dd\mu}} = \intl_X{(f \circ \Phi)~\omega \dd\mu}
+            .\]
+        \item Докажем утверждение для измеримой неотрицательной $f$. Аппроксимируем $f$ ступенчатыми
+        $f_n$ так, чтобы $0 \leqslant f_n \leqslant f_{n+1}$. Тогда справедлива теорема Леви:
+            \[
+                \intl_X{(f \circ \Phi)~\omega \dd\mu} = \lim{\intl_X{(f_n \circ \Phi)~\omega \dd\mu}} =
+                \lim{\intl_Y{f_n \dd\nu}} = \intl_Y{f \dd\nu}
+            .\]
+        \item Проверим утверждение для произвольной суммируемой функции $f$. Интеграл её модуля конечен,
+            кроме того, срезки мажирируются модулем, поэтому их интегралы тоже конечны. Таким образом,
+            мы имеем право писать все формулы, использующие срезки.
+            \[
+                \intl_X{(f \circ \Phi)~\omega \dd\mu} = \intl_X{(f_+ \circ \Phi)~\omega \dd\mu} -
+                \intl_X{(f_- \circ \Phi)~\omega \dd\mu} = \intl_Y{f_+ \dd\nu} - \intl_Y{f_- \dd\nu} 
+                = \intl_Y{f \dd\nu}
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Пусть $f$ суммируема на $Y$, $B \in \cB$, тогда в условиях теоремы:
@@ -65,7 +103,6 @@
     \intl_{B}{f \dd\nu} = \intl_{\Phi^{-1}(B)}{(f \circ \Phi)~ \omega \dd\mu}
 .\] 
 \end{corollary}
-%:: NOTE all proof
 
 \begin{definition}
     В ситуации $X = Y$, $\cA = \cB$, $\Phi = \id$, если $\omega \geqslant 0$ измерима,
@@ -87,59 +124,214 @@
     \leqslant \sup_{A}{\omega} \cdot \mu(A)
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$(\Lra)$] $\forall A \in \cA$:
+            \[
+                \inf_A{\omega} \cdot \mu{A} \leqslant \intl_A{\omega \dd\mu} = \nu{A}
+                \leqslant \sup_A{\omega} \cdot \mu{A}
+            .\]
+        \item[$(\Lla)$]
+            \begin{itemize}
+                \item Пусть $\omega > 0$, $q \in (0, 1)$, $A_j = A(q^j \leqslant \omega < q^{j - 1})$.
+                    Тогда по посылке теоремы имеем:
+                    \[
+                        q^j \cdot \mu{A_j} \leqslant_1 \nu{A_j} \leqslant_2 q^{j - 1} \cdot \mu{A_j}
+                    .\]
+                    Кроме того, из простейших свойств интеграла слудует:
+                    \[
+                        q^j \cdot \mu{A_j} \leqslant_3 \intl_{A_j}{\omega \dd\mu} 
+                        \leqslant_4 q^{j - 1} \cdot \mu{A_j}
+                    .\]
+                    Воспользуемся этим:
+                    \[
+                        q \intl_A{\omega \dd\mu} = q \sum_j{\intl_{A_j}{\omega \dd\mu}} \leqslant_4
+                        \sum_j{q^j \cdot \mu{A_j}} \leqslant_1 \nu{A} \leqslant_2 \frac{1}{q}
+                        \sum_j{q^j \cdot \mu{A_j}} \leqslant_3 \frac{1}{q} \intl_A{\omega \dd\mu}
+                    .\]
+                    Устремляя $q$ к единице, получаем требуемое.
+                \item Пусть теперь $\omega \geqslant 0$, $e = X(\omega = 0)$. Тогда $\nu{e} = 0$ по условию.
+                    Получается, что
+                    \[
+                        \nu{e} = 0 = \intl_e{w \dd\mu}
+                    .\]
+                    Проверим теперь утверждение для произвольного измеримого $A$:
+                    \[
+                        \nu{A} = \intl_{X \setminus e}{\omega \dd\mu} + 0 = \intl_{X \setminus e}{\omega \dd\mu}
+                        + \intl_{e}{\omega \dd\mu} = \intl_X{\omega \dd\mu}
+                    .\]
+            \end{itemize}
+    \end{itemize}
+\end{proof}
 
 \begin{lemma}
     Пусть $f$, $g$ -- суммируемые на $X$ функции, причем
-\[
-    \forall A \in \cA~ \intl_{A}{f \dd\mu} = \intl_{A}{f \dd\mu}
-.\] 
+    \[
+        \forall A \in \cA~ \intl_{A}{f \dd\mu} = \intl_{A}{g \dd\mu}
+    .\] 
     Тогда $f = g$ почти везде.
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    Проверим, что $h = f - g = 0$ при почти всех $x$. По условию, $\forall A \in \cA~ 
+    \intl_A{h \dd\mu} = \intl_A{(f - g) \dd\mu} = 0$. Положим $A_+ = X(h \geqslant 0)$, 
+    $A_- = X(h < 0)$. Тогда $X = A_+ \sqcup A_-$ и 
+    \[
+        \intl_{A_+}{|h| \dd\mu} = \intl_{A_+}{h \dd\mu} = 0
+    .\]
+    \[
+        \intl_{A_-}{|h| \dd\mu} = -\intl_{A_-}{h \dd\mu} = 0
+    .\]
+    Получается,
+    \[
+        \intl_{X}{|h| \dd\mu} = 0 + 0 = 0
+    .\]
+    Поэтому $h = 0$ за исключением, может быть, множества меры ноль.
+\end{proof}
+
+\begin{remark}
+    Из последней леммы очевидно следует, что плотность одной меры относительно другой 
+    определена однозначно с точностью до равенства почти везде. 
+\end{remark}
 
 \begin{lemma}(Об образе малых кубических ячеек)
-    
+
     Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$, $\ea \in \cO$, $\Phi$
-    дифференцируемо в $\ea$, $\det{\Phi'(\ea)} \neq 0$, $c > |\det{\Phi'(\ea)}| > 0$.
+    дифференцируемо в $U(\ea)$, $\det{\Phi'(\ea)} \neq 0$, $c > |\det{\Phi'(\ea)}| > 0$.
     Тогда
-\[
-    \exists \delta > 0~ \forall Q \text{ -- куб}, Q \subset B(\ea, \delta)~
-    \lambda \Phi(Q) < c \cdot \lambda(Q)
-.\] 
+    \[
+        \exists \delta > 0~ \forall Q \text{ -- куб}, Q \subset B(\ea, \delta)~
+        \lambda \Phi(Q) < c \cdot \lambda(Q)
+    .\] 
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    Обозначим $L = \Phi'(\ea)$ -- обратимый линейный оператор. Выпишем определение дифференцируемости:
+    \[
+        \Phi(\ex) - \Phi(\ea) = L(\ex - \ea) + o(\ex - \ea)
+    .\]
+    Умножим обе части на $L^{-1}$ и перенесем через знак равенства:
+    \[
+        \underbrace{\ea + L^{-1}(\Phi(\ex) - \Phi(\ea))}_{\Psi(\ex)} = \ex + o(\ex - \ea)
+    .\]
+    Получается, что $\Psi$ близок к тожественному отображению. Из последней
+    формулы очевидно следует, что $\forall \e > 0~ \exists B_\e(\ea)\colon$
+    \[
+        |\Psi(\ex) - \ex| < \frac{\e}{\sqrt{m}} |\ex - \ea|
+    .\]
+    Пусть теперь $Q \subset B_\e(\ea)$ -- куб со стороной $h$. Тогда $\forall \ex \in Q$
+    \[
+        |\Psi(\ex) - \ex| < \e h,~ |\ex_i - \ea_i| < h
+    .\]
+    Попытаемся понять, что делает с $Q$ отображение $\Psi$. Пусть $x, y \in Q$. Тогда
+    \begin{align*}
+        |\Psi(\ex)_i - \Psi(\ey)_i| &\leqslant |\Psi(\ex)_i - \ex_i| + |\ex_i - \ey_i| + |\Psi(\ey)_i - \ey_i| \\ 
+                                    &\leqslant |\Psi(\ex) - \ex| + h + |\Psi(\ey) - \ey| \\
+                                    &\leqslant (1 + 2\e) h
+    \end{align*}
+    Получается, что $\Psi(Q)$ содержится в кубе со стороной $(1 + 2\e) h$. Тогда:
+    \[
+        \lambda{\Psi(Q)} \leqslant (1 + 2\e)^m \lambda{Q}
+    .\]
+    Отображение $\Psi$ отличается от отображения $\Phi$ только однократным применением оператора $L$
+    и парой сдвигов. Поэтому:
+    \[
+        \lambda{\Phi(Q)} = |\det{L}| \cdot \lambda{\Psi(Q)} \leqslant |\det{L}| \cdot (1 + 2\e)^m \lambda{Q}
+    .\]
+    Подберем такое $\e$ чтобы выполнялось неравенство
+    \[
+        |\det{L}| \cdot (1 + 2\e)^m < c
+    .\]
+    И выберем в качестве $\delta$ радиус шара $B_\e(\ea)$.
+\end{proof}
 
 \begin{lemma}
     Пусть $\cO$ открыто, $f \colon \cO \subseteq \Rm \to \R$, $f \in C(\cO)$, 
     $A \in \mathfrak{M}^m$, $A \subseteq Q$, $Q$ -- куб, причем $\Cl(Q) \subseteq \cO$. 
     Тогда
-\[
-    \inf_{\substack{A \subset G \\ G \text{ открыто}}}
-    {\left(\lambda(G) \cdot \sup_{G}{f}\right)}
-    = \lambda(A) \cdot \sup_{A}{f}
-.\] 
+    \[
+        \inf_{\substack{A \subset G \\ G \text{ открыто}}}
+        {\left(\lambda(G) \cdot \sup_{G}{f}\right)} = \lambda(A) \cdot \sup_{A}{f}
+    .\] 
 \end{lemma}
-%:: NOTE all proof
-
+%:: NOTE all самому доказывать
+{
 \begin{theorem}
     Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$ -- диффеоморфизм,
     $A \in \mathfrak{M}^m$, $A \subseteq \cO$, тогда
-\[
-    \lambda \Phi(A) = \intl_{A}{|\det{\Phi'}| \dd\lambda_m}
-.\] 
+    \[
+        \lambda \Phi(A) = \intl_{A}{|\det{\Phi'}| \dd\lambda_m}
+    .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $\nu{A} = \lambda{\Phi(A)}$. Это мера, потому что $\Phi$ -- диффеоморфизм. Надо проверить,
+            что $J_\Phi = |\det{\Phi'}|$ -- плотность меры $\nu$ относительно меры $\lambda$. Для этого
+            будем проверять критерий плотности: $\forall A \in \cA$
+            \[
+                \inf_A{J_\Phi} \cdot \lambda{A} \leqslant \nu{A} \leqslant \sup_A{J_\Phi} \cdot \lambda{A}
+            .\]
+        \item Проверим второе неравенство. Пусть $Q$ -- кучибеская ячейка, причем $\overline{Q} \subseteq \cO$.
+            Предположим противное:
+            \[
+                \lambda{Q} \cdot \sup_Q{J_\Phi} < \nu{Q}
+            .\]
+            Возьмем $c > \sup_Q{J_\Phi}$ такое, чтобы
+            \[
+                \lambda{Q} \cdot c < \nu{Q}
+            .\]
+            Запустим процесс половинного деления. На каждом шаге найдется часть $Q_i$, для которой
+            верно
+            \[
+                \lambda{Q_i} \cdot c < \nu{Q_i}
+            .\]
+            Это верно потому, что иначе по аддитивности меры не было бы выполнено аналогичное неравенство
+            на предыдущем шаге. По теореме Кантора
+            \[
+                \exists! \ea \in \bigcap_{i = 1}^{+\infty}{\overline{Q_n}}
+            .\]
+            То есть, мы имеем кубы с центром в точке $\ea$ со сколь угодно малой стороной. Это
+            противоречит лемме об образе малых кубических ячеек, которая для достаточно малых кубов
+            устанавливает неравенство
+            \[
+                \nu{Q} = \lambda{\Phi(Q)} > c \cdot \lambda{Q}
+            .\]
+        \item Пусть теперь $A$ -- открытое множетсво. Представим его в виде дизъюнктного объединения
+            кубических ячеек $Q_i \colon~ \overline{Q_i} \subseteq \cO$. Тогда
+            \[
+                \nu{A} = \sum_i{\nu{Q_i}} \leqslant \sum_i{\sup_{Q_i}{J_\Phi} \cdot \lambda{Q_i}} \leqslant
+                \sum_i{\sup_A{J_\Phi} \cdot \lambda{Q_i}} = \sup_A{J_\Phi} \cdot \sum_i{\lambda{Q_i}} =
+                \sup_A{J_\Phi} \cdot \lambda{A}
+            .\]
+        \item Пусть наконец $A$ -- измеримое множество. Пользуясь предыдущей леммой имеем
+            \[
+                \lambda{A} \cdot \sup_A{J_\Phi} = \inf_{G \supset A}{\left(\lambda{G} \cdot \sup_G{J_\Phi}\right)}
+                \geqslant \inf_{G \supset A}{\nu{G}} \geqslant \inf_{G \supset A}{\nu{A}} = \nu{A}
+            .\]
+        \item Таким образом, мы доказали второе неравенство из критерия плотности. Докажем левую часть,
+            перейдя к $\hat{A} = \Phi(A)$, $\hat{\Phi} = \Phi^{-1}$:
+            \[
+                \lambda{\hat{\Phi}(\hat{A})} = \nu{\hat{A}} \leqslant 
+                \sup_{\hat{A}}{J_{\hat{\Phi}}} \cdot \lambda{\hat{A}} \Lra
+                \lambda{A} \leqslant \frac{1}{\inf_{A}{J_\Phi}} \cdot \lambda{\Phi(A)} \Lra
+                \nu{A} = \lambda{\Phi(A)} \geqslant \inf_{A}{J_\Phi} \cdot \lambda{A}
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}
     Пусть $\cO$ открыто, $\Phi \colon \cO \subseteq \Rm \to \Rm$ -- диффеоморфизм,
     $\cO^1 = \Phi(\cO)$, $f$ -- измеримая неотрицательная функция, тогда
-\[
-    \intl_{\cO^1}{f(y) \dd y} = \intl_{\cO}{f(\Phi(x))~ |\det{\Phi'(x)}| \dd x}
-.\] 
+    \[
+        \intl_{\cO^1}{f(\ey) \dd \ey} = \intl_{\cO}{f(\Phi(\ex))~ |\det{\Phi'(\ex)}| \dd \ex}
+    .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    По предыдущей теореме, $J_\Phi = |\det{\Phi'(\ex)}|$ -- плотность меры $\nu = \lambda \circ \Phi$.
+    Тогда теорема напрямую следует из теоремы об интегрировании по взвешенному образу меры.
+\end{proof}
 
 \begin{remark}
     То же верно и в случае, когда $f$ суммируема.
 \end{remark}
+
