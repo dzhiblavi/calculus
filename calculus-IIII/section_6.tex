@@ -5,7 +5,7 @@
     Пусть $M$ -- простое гладкое двумерное многообразие в $\R^3$,
     $\f \colon \cO \subseteq \R^2 \to \R^3$ -- параметризация $M$,
     тогда $E \subseteq M$ называется \textit{измеримым}, если
-    $\f^{-1}{E} \in \mathfrak{M}^2$.
+    $\f^{-1}(E) \in \mathfrak{M}^2$.
 \end{definition}
 
 \begin{definition}
@@ -35,7 +35,26 @@
 \begin{lemma}
     $S$ не зависит от выбора параметризации.
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    Пусть $\f \colon \cO_1 \to M$, $\psi \colon \cO_2 \to M$ -- параметризации $M$. Тогда
+    они отличаются на диффеоморфизм $(u, v)$:
+    \[
+        \f(s, t) = \psi(u(s, t), v(s, t))
+    .\]
+    Вычислим для начала $\norm{\psi'_s \times \psi'_t}$:
+    \begin{align*}
+        \norm{\psi'_s \times \psi'_t} &= \norm{(\f'_u u'_s + \f'_v v'_s) \times (\f'_u u'_t + \f'_v v'_t)} =
+        \norm{(\f'_u \times \f'_v) \cdot (u'_s v'_t - u'_t v'_s)} \\
+                                      &= \norm{\f'_u \times \f'_v} \cdot |u'_s v'_t - u'_t v'_s| =
+                                      \norm{\f'_u \times \f'_v} \cdot |\det{J}|
+    \end{align*}
+    Проверим совпадение интегралов:
+    \[
+        \iintl_{\psi^{-1}(E)}{\norm{\psi'_s \times \psi'_t} \dd s \d t} =
+        \iintl_{\psi^{-1}(E)}{\norm{\f'_u \times \f'_v} |\det{J}| \dd s \d t} =
+        \iintl_{\f^{-1}(E)}{\norm{\f'_u \times \f'_v} \dd u \d v}
+    .\]
+\end{proof}
 
 \begin{definition}
     $f \colon M \to \Rbar$ измерима по мере $S$, если $f \circ \f$ измерима на $\cO$ по мере
