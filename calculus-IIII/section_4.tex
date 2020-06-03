@@ -335,3 +335,133 @@
     То же верно и в случае, когда $f$ суммируема.
 \end{remark}
 
+\begin{example}
+    \enewline
+    \begin{itemize}
+        \item Полярные координаты в $\R^2$.
+            \[
+                \begin{cases}
+                    x = r \cos{\f} \\ 
+                    y = r \sin{\f}
+                \end{cases} \Lra \det{J} = r
+            .\]
+        \item Циллиндрические координаты в $\R^3$.
+            \[
+                \begin{cases}
+                    x = r \cos{\f} \\
+                    y = r \sin{\f} \\
+                    z = z
+                \end{cases} \Lra \det{J} = r
+            .\]
+        \item Сферические координаты в $\R^3$.
+            \[
+                \begin{cases}
+                    x = r \cos{\f} \cos{\psi} \\
+                    y = r \sin{\f} \cos{\psi} \\
+                    z = r \sin{\psi}
+                \end{cases} \Lra \det{J} = r^2 \cos{\f}
+            .\]
+        \item Сферические координаты в $\R^m$.
+            \[
+                \begin{cases}
+                    x_1 = r \cos{\f_1} \\
+                    x_2 = r \sin{\f_1} \cos{\f_2} \\
+                    x_3 = r \sin{\f_1} \sin{\f_2} \cos{\f_3} \\
+                    \ldots \\
+                    x_{n - 1} = r \sin{\f_1} \sin{\f_2} \ldots \sin{\f_{n - 2}} \cos{\f_{n - 1}} \\
+                    x_n = r \sin{\f_1} \sin{\f_2} \ldots \sin{\f_{n - 2}} \sin{\f_{n - 1}} 
+                \end{cases}
+            \]
+            Вычислим $\det{J}$ для этого типа замены координат. Для начала сделаем замену
+            по последним двум координатам:
+            \[
+                \begin{cases}
+                    x_i = x_i,~ i = 1..{n-2} \\
+                    x_{n - 1} = \r_{n - 1} \cos{\f_{n - 1}} \\
+                    x_n = \r_{n - 1} \sin{\f_{n - 1}}
+                \end{cases}
+            .\]
+            Теперь заменим $\r_{n - 1}$ и $x_{n - 2}$:
+            \[
+                \begin{cases}
+                    x_i = x_i,~ i = 1..{n-3} \\
+                    \r_{n - 1} = \r_{n - 2} \sin{\f_{n - 2}} \\
+                    x_{n - 2} = \r_{n - 2} \cos{\f_{n - 2}}
+                \end{cases}
+            .\]
+            Продолжим этот процесс по индукции, в конце получим (вместо $\r_1$ пишем $r$):
+            \[
+                \begin{cases}
+                    \ldots \\
+                    \r_2 = r \sin{\f_1} \\
+                    x_1 = r \cos{\f_1}
+                \end{cases}
+            .\]
+            Видно, что получилавь серия замен, которая совпадает со сферической заменой.
+            Вычислим интеграл единицы по какому-нибудь простому множеству $\cO$, находящемуся в
+            положительном октанте ($\forall i~ x_i > 0$):
+            \begin{align*}
+                \intl{\dd x_1 \d x_2 \ldots \d x_n} 
+                &= \intl{\r_{n - 1} \dd x_1 \ldots \d x_{n - 2} \d\r_{n - 1} \d\f_{n - 1}} \\
+                &= \intl{\r^2_{n - 2} \sin{\f_{n - 2}} \dd x_1 \ldots \d x_{n - 3} \d\r_{n - 2} 
+                    \d\f_{n - 2} \d\f_{n - 1}} \\
+                &= \intl{(\r_{n - 3} \sin{\f_{n - 3}})^2 \sin{\f_{n - 2}} \r_{n - 3} 
+                    \dd x_1 \ldots \d x_{n - 4} \d\r_{n - 3} \d\f_{n - 3} \d\f_{n - 2} \d\f_{n - 1}} \\
+                &= \ldots \\
+                &= \intl{r^{n - 1} \sin^{n - 2}{\f_1} \sin^{n - 1}{\f_2} \ldots \sin^1{\f_{n - 2}}
+                    \dd\f_1 \d\f_2 \ldots \d\f_{n - 1} \d r} 
+            \end{align*}
+            Выражение, получившееся под знаком интеграла и есть якобиан преобразования (по теореме о
+            единственности плотности).
+    \end{itemize}
+\end{example}
+
+\begin{definition}
+    При $s, t > 0$ функция, задаваемая формулой
+    \[
+        B(s, t) = \intl_0^1{x^{s - 1} (1 - x)^{t - 1} \dd x}
+    .\]
+    называется \textit{бета-функцией}.
+\end{definition}
+
+\begin{theorem}
+    $\displaystyle \forall s, t > 0~ B(s, t) = \frac{\Gamma(s) \Gamma(t)}{\Gamma(s + t)}$.
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        \Gamma(s) \Gamma(t) 
+        &= \parenth{\intl_{0}^{+\infty}{x^{s - 1} e^{-x} \dd x}} 
+        \parenth{\intl_{0}^{+\infty}{y^{t - 1} e^{-y} \dd y}}
+        = \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_0^{+\infty}{y^{t - 1} e^{-y} \dd y}} \dd x} \\
+        &\underset{y = u - x}{=} 
+        \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_0^{+\infty}{
+        (u - x)^{t - 1} e^{x - u} \dd y}} \dd u} \\
+        &= \intl_0^{+\infty}{\dd u}{\intl_0^{+\infty}{x^{s - 1} (u - x)^{t - 1} e^{-u} \dd x}} \\
+        &\underset{x = uv}{=} \intl_0^{+\infty}{\intl_0^1{u^{s - 1}v^{s - 1} 
+        u^{t - 1} (1 - v)^{t - 1} e^{-u} u \dd v}} \\
+        &= \parenth{\intl_0^{+\infty}{u^{s + t - 1} e^{-u} \dd u}} 
+        \parenth{\intl_0^1{v^{s - 1} (1 - v)^{t - 1} \dd v}} = \Gamma(s + t) B(s, t)
+    \end{align*}
+\end{proof}
+
+\begin{theorem}(Объём шара в $\Rm$)
+    $\displaystyle \lambda_m{B(0, R)} = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}$.  
+\end{theorem}
+\begin{proof}
+    Вычислим для начала вспомогательный интеграл:
+    \begin{align*}
+        \int_0^{\pi}{\sin^{n - k - 1}{\f_k} \dd\f_k} 
+        &= 2 \int_0^{\frac{\pi}{2}}{\sin^{n - k - 1}{\f_k} \dd\f_k}
+        \underset{\sin^2{\f_k} = t}{=} 2 \cdot \frac{1}{2} \intl_0^1
+        {\frac{\d t}{\sqrt{t} \sqrt{1 - t}} t^{\frac{n - k - 1}{2}}} \\
+        &= B\parenth{\frac{n - k}{2}, \frac{1}{2}} = \frac{\Gamma\parenth{\frac{n - k}{2}} \Gamma\parenth{\frac{1}{2}}}
+        {\Gamma\parenth{\frac{n - k}{2} + \frac{1}{2}}}
+    \end{align*}
+    \begin{align*}
+        \lambda_m{B(0, R)} &= \intl_{x_1^2 + \ldots + x_m^2 \leqslant R^2}{1 \dd \lambda_m}
+                           = \intl_0^R{\dd r \intl_0^{\pi}{\dd \f_1 \ldots \intl_0^{2 \pi}
+                           {r^{n - 1} \sin^{n - 2}{\f_1} \ldots \sin{\f_{n - 2}} \dd \f_{n - 1}}}}
+                           = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}
+    \end{align*}
+\end{proof}
+
