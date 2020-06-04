@@ -57,12 +57,17 @@
     нормали были направлены в противоположные стороны, то есть линейно зависимы, чего не может
     быть в случае гладкой параметризации (мы требуем, чтобы ранг якобиана был всегда максимальным).
 \end{remark}
-%:: NOTE all рисунок
 
 \begin{figure}[ht]
     \centering
     \incfig{reper}
     \caption{Задание нормали через касательные векторы.}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{gamma}
+    \caption{Задание нормали через петли.}
 \end{figure}
 
 \begin{definition}
@@ -119,19 +124,18 @@
                            + Q \begin{vmatrix} z'_u z'_v \\ x'_u x'_v \end{vmatrix}
                            + R \begin{vmatrix} x'_u x'_v \\ y'_u y'_v \end{vmatrix}\right) \dd u \d v}
     \end{align*}                           
-    \end{itemize} 
+    \end{itemize}
 \end{remark}
 
 \begin{remark}
     Посчитаем интеграл поля $\langle 0, 0, R \rangle$ по поверхности
     $\O$, заданной графиком (то есть, имеющей параметризацию вида $x, y, z(x, y)$).
-%:: NOTE all рисунок
     \begin{align*}    
         \iintl_{\O^+}{R \dd x \d y} = 
         \iintl_{\widetilde{\O}}{\left(P \begin{vmatrix} y'_u y'_v \\ z'_u z'_v \end{vmatrix} 
                        + Q \begin{vmatrix} z'_u z'_v \\ x'_u x'_v \end{vmatrix}
                        + R \begin{vmatrix} x'_u x'_v \\ y'_u y'_v \end{vmatrix}\right) \dd u \d v} =
-        \iintl_{\widetilde{\O}}{R(x, y, z(x, y)) \dd u \d v} 
+        \iintl_{\widetilde{\O}}{R(x, y, z(u, v)) \dd u \d v}
     \end{align*}
 \end{remark}
 
@@ -155,7 +159,6 @@
 \end{remark}
 \begin{proof}
     \enewline
-
     \textit{Первое доказательство:} по формуле из первого замечания мы собираемся интегрировать
     какую-то функцию по носителю пути по двумерной мере. Носитель гладкого пути по такой мере
     всегда имеет меру 0. \\
