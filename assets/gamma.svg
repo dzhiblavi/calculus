@@ -11,9 +11,9 @@
    sodipodi:docname="gamma.svg"
    id="svg8"
    version="1.1"
-   viewBox="0 0 94.476401 55.642108"
-   height="55.642109mm"
-   width="94.476402mm">
+   viewBox="0 0 147.24072 62.53208"
+   height="62.532082mm"
+   width="147.24072mm">
   <defs
      id="defs2">
     <marker
@@ -170,6 +170,7 @@
     </marker>
   </defs>
   <sodipodi:namedview
+     height="103.53208mm"
      inkscape:window-maximized="0"
      inkscape:window-y="26"
      inkscape:window-x="0"
@@ -178,8 +179,8 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="220.1074"
-     inkscape:cx="219.58196"
+     inkscape:cy="195.65118"
+     inkscape:cx="278.25018"
      inkscape:zoom="1.4142136"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -195,12 +196,11 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-56.558489,-7.6526144)"
+     transform="translate(-30.36204,-4.2860512)"
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
@@ -237,14 +237,14 @@
        d="m 105.44118,19.816974 c 0,0 -1.4258,-0.619274 -3.95578,-0.951347"
        style="fill:none;stroke:#000000;stroke-width:0.155365px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mend)" />
     <text
-       transform="scale(1.0929147,0.91498448)"
+       transform="scale(1.0929147,0.91498449)"
        id="text1375"
-       y="20.867392"
+       y="19.710722"
        x="96.211761"
        style="font-style:normal;font-weight:normal;font-size:2.07153px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.155365"
        xml:space="preserve"><tspan
          style="font-size:2.07153px;stroke-width:0.155365"
-         y="20.867392"
+         y="19.710722"
          x="96.211761"
          id="tspan1373"
          sodipodi:role="line">$\gamma$</tspan></text>
