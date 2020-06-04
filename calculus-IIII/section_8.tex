@@ -16,7 +16,31 @@
     = \intl_{\partial D}{P \dd x + Q \dd y}
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Докажем, что 
+    \[
+        \iintl_D{-\pderv{P}{y} \dd x \d y} = \intl_{\partial D}{P \dd x}
+    .\]
+    Из этого очевидно следует утверждение теоремы.
+    Будем рассматривать простой случай. Пусть $D$ -- криволинейный четырёхугольник относительно
+    осей $x$ и $y$ (как на рисунке). Тогда
+    \[
+        \iintl_D{\pderv{P}{y} \dd x \d y} = -\intl_a^b{\dd x \intl_{f_1(x)}^{f_2(x)}
+        {\pderv{P}{y} \dd y}} = \intl_a^b{P(x, f_1(x)) \dd x} - \intl_a^b{P(x, f_2(x))}
+    .\]
+    С другой стороны,
+    \[
+        \intl_{\partial D}{P \dd x} = \intl_{\gamma_1} + \intl_{\gamma_2} + \intl_{\gamma_3}
+        + \intl_{\gamma_4} = \intl_{\gamma_1} + \intl_{\gamma_3}
+    .\]
+    Параметризуем путь $\gamma_1$: Пусть $\gamma_1(t) = (t, f_1(t))$, $\gamma_2(t) = (b - t, f_2(b - t))$.
+    Тогда имеем:
+    \[
+        \intl_{\partial D}{P \dd x} = \intl_{\gamma_1} + \intl_{\gamma_3} =
+        \intl_a^b{P(t, f_1(t)) \dd t} - \intl_a^b{P(t, f_2(t)) \dd t} =
+        \iintl_{D}{\pderv{P}{y} \dd x \d y}
+    .\]
+\end{proof}
 
 \begin{remark}
     Формула "аддитивна" по фигуре.
@@ -37,9 +61,54 @@
     \begin{align*}
         \intl_{\partial \O}{P \dd x + Q \dd y + R \dd z} =
         \iintl_{\O}{(R'_y - Q'_z) \dd y \d z + (P'_z - R'_x) \dd z \d x + (Q'_x - P'_y) \dd x \d y}
-    \end{align*}
+    ..\end{align*}
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Будем считать, что $\Omega$ -- $C^2$- гладкое. Достаточно проверить, что
+    \[
+        \intl_{\partial \Omega}{P \dd x} = \iintl_{\Omega}{P'_z \dd z \d x - P'_y \dd x \d y}
+    .\]
+    Пуст $\f(u, v) = (x(u, v), y(u, v), z(u, v))$ -- параметризация $\Omega$, причем она продолжается до
+    границы $\partial \cO = L$ таким образом, что $\f(L) = \partial \Omega$. Тогда
+    \begin{align*}
+        \intl_{\partial \Omega}{P \dd x} 
+        &= \intl_L{P(x(u, v), y(u, v), z(u, v)) \cdot
+        \parenth{\pderv{x}{u} \dd u + \pderv{x}{v} \dd v}} = 
+        \intl_L{P x'_u \dd u + P x'_v \dd v} \\
+        &\underset{\text{Грин}}{=} \iintl_\cO{\parenth{\pderv{}{u}(P x'_v) - \pderv{}{v}(P x'_u)} \dd u \d v} \\
+        &= \iintl_\cO{\parenth{(P'_x x'_u + P'_y y'_u + P'_z z'_u)x'_v + P x''_{uv} 
+        - (P'_x x'_v + P'_y y'_v + P'_z z'_v)x'_u - P x''_{uv}} \dd u \d v} \\
+        &= \iintl_\cO{\parenth{P'_x (x'_u x'_v - x'_v x'_u) + P'_y(y'_u x'_v - y'_v x'_u) 
+        + P'_z(z'_u x'_v - z'_v x'_u)} \dd u \d v} \\
+        &= \iintl_\cO{\parenth{P'_y(y'_u x'_v - y'_v x'_u) + P'_z(z'_u x'_v - z'_v x'_u)} \dd u \d v}
+    ..\end{align*}
+    Первое равенство легко получается, если попробовать посчитать левую и правую часть
+    через параметризацию $L$. С другой стороны:
+    \[
+        \iintl_\Omega{P'_z \dd z \d x - P'_y \dd x \d y} = \iintl_\Omega{\left\langle
+        \begin{pmatrix} 0 \\ P'_z \\ -P'_y \end{pmatrix}, n_0\right\rangle \dd S}
+    .\]
+    %При отображении $\f = (x, y, z)$ согласованная относительно ориетнации пара векторов переходит
+    %в согласованную при порядке координат $u, v$ (такой порядок мы выбрали в самом начале
+    %как порядок, определяющий ориентацию в $\R^2$. Поэтому нормаль следует выбирать именно так:
+    Подберем такую параметризацию $\f$, которая отвечает согласованию стороны при попытке рассматривать
+    $n = \tau_u \times \tau_v$ (направление $L$ должно соответствовать правильной ориентации):
+    \[
+        n = \begin{pmatrix}
+            x'_u \\ y'_u \\ z'_u
+        \end{pmatrix} \times \begin{pmatrix}
+            x'_v \\ y'_v \\ z'_v
+        \end{pmatrix} = \tau_u \times \tau_v
+    .\]
+    Тогда
+    \[
+        \iintl_\Omega{P'_z \dd z \d x - P'_y \dd x \d y} = \iintl_\Omega{\scp{
+        \begin{pmatrix}
+            0 \\ P'_z \\ -P'_y
+        \end{pmatrix}, \tau_u \times \tau_v} \dd u \d v} =
+        \intl_{\partial \Omega}{P \dd x}
+    .\]
+\end{proof}
 
 \begin{remark}
     Формула "аддитивна" по фигуре.
@@ -64,7 +133,16 @@
     \iiintl_{V}{\pderv{R}{z} \dd x \d y \d z} = \iintl_{\partial V^+}{R \dd x \d y}
 .\] 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \begin{align*}
+        &\iiintl_{V}{\pderv{R}{z} \dd x \d y \d z} = \iintl_{\Omega}{\dd x \d y~
+        {\intl_{f(x, y)}^{F(x, y)}{\pderv{R}{z} \dd z}}} \\
+        &= \iintl_{\Omega}{R(x, y, F(x, y)) \dd x \d y} - \iintl_{\Omega}{R(x, y, f(x, y)) \dd x \d y} \\
+        &= \iintl_{\Gamma_F}{R \dd x \d y} + \iintl_{\Gamma_f}{R \dd x \d y} + \iintl_{C}{R \dd x \d y} \\
+        &= \iintl_{\partial V^+}{R \dd x \d y}
+    ..\end{align*}
+\end{proof}
+%:: NOTE рисунок
 
 \begin{corollary}
     В условиях формулы Гаусса-Остроградского, верно
@@ -81,7 +159,14 @@
     \iintl_{\partial V^+}{f \cdot \langle l, n_0 \rangle \dd S}
 .\] 
 \end{corollary}
-%:: NOTE all proof
+\begin{proof}
+    \begin{align*}
+        &\iiintl_V{\pderv{f}{l} \dd x \d y \d z} =
+        \iiintl_V{\parenth{l_1 \pderv{f}{x} + l_2 \pderv{f}{y} + l_3 \pderv{f}{z}} \dd x \d y \d z} \\
+        &= \iintl_{\partial V^+}{f l_1 \dd y \d z + f l_2 \dd z \d x + f l_3 \dd x \d y}
+        = \iintl_{\partial V^+}{f \cdot \scp{l}{n_0} \dd S}
+    .\end{align*}
+\end{proof}
 
 \section{Примеры дифференциальных операторов}
 
