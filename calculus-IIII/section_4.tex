@@ -433,10 +433,10 @@
         &= \parenth{\intl_{0}^{+\infty}{x^{s - 1} e^{-x} \dd x}} 
         \parenth{\intl_{0}^{+\infty}{y^{t - 1} e^{-y} \dd y}}
         = \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_0^{+\infty}{y^{t - 1} e^{-y} \dd y}} \dd x} \\
-        &\underset{y = u - x}{=} 
-        \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_0^{+\infty}{
+        &\underset{y = u - x}{=}
+        \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_x^{+\infty}{
         (u - x)^{t - 1} e^{x - u} \dd y}} \dd u} \\
-        &= \intl_0^{+\infty}{\dd u}{\intl_0^{+\infty}{x^{s - 1} (u - x)^{t - 1} e^{-u} \dd x}} \\
+        &= \intl_0^{+\infty}{\dd u}{\intl_0^{u}{x^{s - 1} (u - x)^{t - 1} e^{-u} \dd x}} \\
         &\underset{x = uv}{=} \intl_0^{+\infty}{\intl_0^1{u^{s - 1}v^{s - 1} 
         u^{t - 1} (1 - v)^{t - 1} e^{-u} u \dd v}} \\
         &= \parenth{\intl_0^{+\infty}{u^{s + t - 1} e^{-u} \dd u}} 
@@ -461,7 +461,7 @@
         \lambda_m{B(0, R)} &= \intl_{x_1^2 + \ldots + x_m^2 \leqslant R^2}{1 \dd \lambda_m}
                            = \intl_0^R{\dd r \intl_0^{\pi}{\dd \f_1 \ldots \intl_0^{2 \pi}
                            {r^{n - 1} \sin^{n - 2}{\f_1} \ldots \sin{\f_{n - 2}} \dd \f_{n - 1}}}}
-                           = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}
+                           = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}R^m
     \end{align*}
 \end{proof}
 
