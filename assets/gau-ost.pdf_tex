@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% Creator: Inkscape 1.1-dev (c4f43706, 2020-05-27), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'gau-ost.pdf' (pdf, eps, ps)
 %%
@@ -55,9 +55,9 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{gau-ost.pdf}}%
     \put(0.65837381,0.24282503){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C$\end{tabular}}}}%
-    \put(0.64157635,0.16929336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_f$\end{tabular}}}}%
-    \put(0.64289856,0.31243003){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_F$\end{tabular}}}}%
+    \put(0.659215,0.16929336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_f$\end{tabular}}}}%
+    \put(0.64793817,0.31243003){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma_F$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{gau-ost.pdf}}%
-    \put(0.63326518,0.03583418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\O$\end{tabular}}}}%
+    \put(0.63578498,0.0333143){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\O$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

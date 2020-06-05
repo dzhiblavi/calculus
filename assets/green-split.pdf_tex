@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% Creator: Inkscape 1.1-dev (c4f43706, 2020-05-27), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'green-split.pdf' (pdf, eps, ps)
 %%
@@ -55,7 +55,11 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{green-split.pdf}}%
     \put(0.18040693,0.16575913){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
-    \put(0.63638189,0.16443002){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D_1$\end{tabular}}}}%
-    \put(0.78306187,0.16538464){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D_2$\end{tabular}}}}%
+    \put(0.63638189,0.16946978){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D_1$\end{tabular}}}}%
+    \put(0.78306187,0.1704244){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D_2$\end{tabular}}}}%
+    \put(0.19121067,0.0145223){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_1$\end{tabular}}}}%
+    \put(0.28874379,0.01477661){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_2$\end{tabular}}}}%
+    \put(0.69128324,0.09067368){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_3$\end{tabular}}}}%
+    \put(0.74731467,0.08939819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_3^-$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

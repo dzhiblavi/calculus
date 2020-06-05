@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% Creator: Inkscape 1.1-dev (c4f43706, 2020-05-27), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'same-path-stocks.pdf' (pdf, eps, ps)
 %%
@@ -55,8 +55,8 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{same-path-stocks.pdf}}%
     \put(0.69044625,0.07755054){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\O$\end{tabular}}}}%
-    \put(0.50737203,0.07813052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_1$\end{tabular}}}}%
-    \put(0.74036044,0.21760268){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_2$\end{tabular}}}}%
+    \put(0.50737203,0.08317028){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_1$\end{tabular}}}}%
+    \put(0.74036044,0.22516211){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_2$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{same-path-stocks.pdf}}%
   \end{picture}%
 \endgroup%

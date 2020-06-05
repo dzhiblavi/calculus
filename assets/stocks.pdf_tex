@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% Creator: Inkscape 1.1-dev (c4f43706, 2020-05-27), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'stocks.pdf' (pdf, eps, ps)
 %%
@@ -61,18 +61,18 @@
     \put(0.64196835,0.53157552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{stocks.pdf}}%
     \put(0.19403786,0.21669413){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cO$\end{tabular}}}}%
-    \put(0.27764753,0.10776251){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L$\end{tabular}}}}%
+    \put(0.28268721,0.10776251){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{stocks.pdf}}%
     \put(0.86594689,0.37867868){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\partial \O$\end{tabular}}}}%
-    \put(0.81078041,0.4655232){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\O$\end{tabular}}}}%
+    \put(0.81582002,0.46300339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\O$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{stocks.pdf}}%
-    \put(0.24161544,0.13963129){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
-    \put(0.19636283,0.18282849){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v$\end{tabular}}}}%
+    \put(0.24161544,0.13207165){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.1888033,0.18282849){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{stocks.pdf}}%
-    \put(0.77270849,0.36607942){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tau_u$\end{tabular}}}}%
-    \put(0.78750603,0.4005738){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tau_v$\end{tabular}}}}%
+    \put(0.77018869,0.36355961){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tau_u$\end{tabular}}}}%
+    \put(0.78750603,0.40309361){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tau_v$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{stocks.pdf}}%
-    \put(0.74916941,0.42734709){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$n$\end{tabular}}}}%
+    \put(0.7441298,0.41726786){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$n$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{stocks.pdf}}%
     \put(0.43510328,0.31590765){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\f$\end{tabular}}}}%
   \end{picture}%

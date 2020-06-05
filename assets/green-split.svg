@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -14,7 +12,7 @@
    viewBox="0 0 210 42"
    version="1.1"
    id="svg7499"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="1.1-dev (c4f43706, 2020-05-27)"
    sodipodi:docname="green-split.svg">
   <defs
      id="defs7493">
@@ -102,17 +100,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="388.90469"
-     inkscape:cy="79.696908"
+     inkscape:zoom="1.9754481"
+     inkscape:cx="312.898"
+     inkscape:cy="147.84781"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2880"
-     inkscape:window-height="1672"
-     inkscape:window-x="0"
-     inkscape:window-y="54"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1066"
+     inkscape:window-height="1005"
+     inkscape:window-x="614"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7496">
     <rdf:RDF>
@@ -121,7 +119,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -192,7 +189,7 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="37.885456"
        y="262.19058"
        id="text8658"><tspan
@@ -200,28 +197,72 @@
          id="tspan8656"
          x="37.885456"
          y="262.19058"
-         style="stroke-width:0.26458332">$D$</tspan></text>
+         style="stroke-width:0.264583">$D$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="133.6402"
-       y="262.4697"
+       y="261.41135"
        id="text8658-9"><tspan
          sodipodi:role="line"
          id="tspan8656-3"
          x="133.6402"
-         y="262.4697"
-         style="stroke-width:0.26458332">$D_1$</tspan></text>
+         y="261.41135"
+         style="stroke-width:0.264583">$D_1$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="164.44299"
-       y="262.26923"
+       y="261.21088"
        id="text8658-1"><tspan
          sodipodi:role="line"
          id="tspan8656-9"
          x="164.44299"
-         y="262.26923"
-         style="stroke-width:0.26458332">$D_2$</tspan></text>
+         y="261.21088"
+         style="stroke-width:0.264583">$D_2$</tspan></text>
+    <text
+       id="text8658-4"
+       y="293.95032"
+       x="40.15424"
+       style="font-style:normal;font-weight:normal;font-size:3.52777px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="293.95032"
+         x="40.15424"
+         id="tspan8656-0"
+         sodipodi:role="line">$\gamma_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="60.636196"
+       y="293.89691"
+       id="text8658-4-3"><tspan
+         sodipodi:role="line"
+         id="tspan8656-0-2"
+         x="60.636196"
+         y="293.89691"
+         style="stroke-width:0.264583">$\gamma_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="145.16948"
+       y="277.95853"
+       id="text8658-4-3-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan8656-0-2-1-1"
+         x="145.16948"
+         y="277.95853"
+         style="stroke-width:0.264583">$\gamma_3$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="156.93608"
+       y="278.22638"
+       id="text8658-4-3-8-6"><tspan
+         sodipodi:role="line"
+         id="tspan8656-0-2-1-4"
+         x="156.93608"
+         y="278.22638"
+         style="stroke-width:0.264583">$\gamma_3^-$</tspan></text>
   </g>
 </svg>
