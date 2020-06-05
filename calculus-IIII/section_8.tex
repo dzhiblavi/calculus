@@ -147,9 +147,9 @@
 \begin{corollary}
     В условиях формулы Гаусса-Остроградского, верно
 \[
-    \iiintl_{V}{\left(\pderv{P}{x} + \pderv{Q}{y} + \pderv{R}{z}\right) \dd x \d y \d z} = 
+    \iiintl_{V}{\left(\pderv{P}{x} + \pderv{Q}{y} + \pderv{R}{z}\right) \dd x \d y \d z} =
     \iintl_{\partial V^+}{P \dd y \d z + Q \dd z \d x + R \dd x \d y}
-.\] 
+.\]
 \end{corollary}
 
 \begin{corollary}
@@ -178,7 +178,8 @@
 .\] 
 \end{definition}
 
-\begin{remark}
+\begin{remark}(Бескоординатное определение дивергенции)
+
     Дивергенцию поля в точке можно вычислять так:
 \[
     \diver A(a) = \lim_{r \to 0}{\frac{1}{\l_3 B} \iiintl_{B(a, r)}{\diver A~ \dd x \d y \d z}} =
@@ -190,7 +191,7 @@
 \end{remark}
 
 \begin{definition}
-    Пусть $C^1 \ni A = \langle P, Q, R \rangle$ -- векторное поле в $\R^3$. Тогда 
+    Пусть $C^1 \ni A = \langle P, Q, R \rangle$ -- векторное поле в $\R^3$. Тогда
     \textit{ротором} $A$ называется
 \[
     \rotor A \defeq \langle R'_y - Q'_z, P'_z - R'_x, Q'_x - P'_y \rangle
@@ -219,8 +220,16 @@
 \begin{remark}
     Если $\cO$ не односвязна, но $\rotor V = 0$, то все равно интеграл по пути
     не зависит от самого пути.
-%:: NOTE all рисунок, proof
 \end{remark}
+\begin{proof}
+    Зафиксируем две петли $\gamma_1$, $\gamma_2$ (как на рисунке). Обозначим фигуру, границами которой являются
+    $\gamma_1$, $\gamma_2$. Тогда по формуле Стокса:
+    \[
+        0 = \iintl_\Omega{\rotor{V}} = \intl_{\gamma_1}{V} - \intl_{\gamma_2}{V}
+    .\]
+    Минус появился потому, что $\gamma_2$ не согласован по ориентации с $\gamma_1$.
+\end{proof}
+%:: NOTE all рисунок 
 
 \textit{Если в поле нет источников, то откуда может взяться поток через поверхность?}
 \begin{remark}
@@ -228,8 +237,22 @@
 \[
     \iintl_{\partial \O}{\langle V, n_0 \rangle \dd S} = 0
 .\] 
-%:: NOTE all рисунок, proof
 \end{remark}
+
+\begin{remark}
+    Пусть $U_1$, $U_2$ -- поверхности с одной границей $\partial U$. Тогда
+    \[
+        \iintl_{U_1^+}{\scp{V}{n_0} \dd S} = \iintl_{U_2^+}{\scp{V}{n_0} \dd S}
+    .\]
+\end{remark}
+\begin{proof}
+    Пусть $V$ -- фигура, ограниченная поверхностями $U_1$, $U_2$. Тогда
+    \[
+        0 = \iintl_{\partial V}{\scp{V}{n_0} \dd S} = \iintl_{U_1^+}{\scp{V}{n_0} \dd S}
+        + \iintl_{U_2^-}{\scp{V}{n_0} \dd S}
+    .\]
+\end{proof}
+%:: NOTE all рисунок
 
 \begin{definition}
     Поле $V$ называется \textit{соленоидальным} в $\O \subseteq \R^3$, 
@@ -241,4 +264,49 @@
     
     $A$ соленоидально в $\O \Llra$ $\diver A = 0$ на $\O$
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lra$] $\diver{A} = \diver{\rotor{B}} = 0$, последнее равенство проверяется непосредственно.
+        \item[$\Lla$] Пусть $A = (A_1, A_2, A_3)$. Будем искать $B$ в виде $(P, Q, 0)$. Зафиксируем точку
+            $(x_0, y_0, z_0) \in \O$ и параллелепипед, содержащий эту точку и лежащий целиком в $\O$.
+            Тогда справедлива система уравнений:
+            \[
+                \begin{cases}
+                    R'_y - Q'_z = A_1 \\
+                    P'_z - R'_x = A_2 \\
+                    Q'_x - P'_y = A_3 
+                \end{cases} \Llra
+                \begin{cases}
+                    -Q'_z = A_1 \\
+                    P'_z = A_2 \\
+                    Q'_x - P'_y = A_3
+                \end{cases}
+            .\]
+            Восстановим из второго уравнения $P$:
+            \[
+                P(x, y, z) = \intl_{z_0}^z{A_2(x, y, t) \dd t} + \psi(x, y)
+            .\]
+            Здесь мы пользуемся наличием параллелепипеда (по $z$) вокруг нашей точки. Выберем $\psi(x, y) = 0$. 
+            Аналогично восстановим из первого уравнения $Q$:
+            \[
+                Q(x, y, z) = -\intl_{z_0}^z{A_1(x, y, t) \dd t} + \f(x, y)
+            .\]
+            Подставим результаты в третье уравнение. Будем считать, что $A \in C^1$, 
+            что позволит нам воспользоваться правилом Лейбница дифференцирования по параметру:
+            \[
+                -\intl_{z_0}^z{\pderv{A_1}{x} \dd z} + \f'_x - \intl_{z_0}^z{\pderv{A_2}{y} \dd z} = A_3
+            .\]
+            Пользуемся условием:
+            \[
+                \f'_x + \intl_{z_0}^z{\pderv{A}{z} \dd z} = A_3
+            .\]
+            Отсюда получаем:
+            \begin{align*}
+                \f'_x(x, y) + A_3(x, y, z) - A_3(x, y, z_0) &= A_3(x, y, z) \Lra
+                \f'_x(x, y) = A_3(x, y, z_0) \\
+                &\Lra \f(x, y) = \intl_{x_0}^x{A_3(t, y, z_0) \dd t}
+            .\end{align*}
+    \end{itemize}
+\end{proof}
+
