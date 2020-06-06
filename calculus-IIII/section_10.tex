@@ -1,163 +1,223 @@
-\section{Гильбертовы пространства}
+\chapter{Ряды Фурье}
+\section{Пространство $L^p$}
 
 \begin{definition}
-    \textit{Гильбертовым пространством} называется линейное пространство $\cH$ со скалярным произведением,
-    полное как метрическое пространство с метрикой и нормой, порожденными скалярным произведением:
-    \begin{itemize}
-        \item $\langle \phantom{x}, \phantom{x} \rangle \colon \cH \times \cH \to \R(\bC)$.
-        \item $\norm{\phantom{x}} \colon \cH \to \R, \norm{\ex} = \sqrt{\langle \ex, \ex \rangle}$.
-        \item $\langle \ex, \ex \rangle \geqslant 0$, $\langle \ex, \ex \rangle = 0 \Llra \ex = \elemvec{0}$.
-        \item $\langle \ex, \ey \rangle = \overline{\langle \ey, \ex \rangle}$.
-        \item $\langle \a \ex + \b \ey, \ez \rangle = \a \langle \ex, \ez \rangle + \b \langle \ey, \ez \rangle$.
-    \end{itemize} 
-\end{definition}
-
-%:: NOTE all examples
-
-\textit{Далее $\cH$ -- Гильбертово пространство.}
-
-\begin{definition}
-    Ряд $\sum_{i = 1}^{+\infty}{a_n}$, $a_n \in \cH$, называется \textit{сходящимся}, если
-    $S_N \defeq \sum_{i = 1}^{N}{a_i}$ таково, что $\exists S \in \cH \colon~
-    \norm{S_N - S} \to 0$. Иными словами, последовательность частичных сумм ряда сходится 
-    к элементу $\cH$.
+    Комплексное отображение $f \colon X \to \bC$ назовем \textit{измеримым}, если
+    $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$, причем $g$, $h$ измеримы.
 \end{definition}
 
 \begin{definition}
-    $\ex \bot \ey \Llra \scp{\ex}{\ey} = 0$.
+    Аналогично определим \textit{суммируемые} комплексные отображения.
 \end{definition}
-
+ 
 \begin{definition}
-    Пусть $A \subseteq \cH$. Тогда по определению $\ex \bot A \Llra \forall \ey \in A~ \ey \bot \ex$.
-\end{definition}
-
-\begin{definition}
-    Ряд называется \textit{ортогональным}, если все его элементы попарно ортогональны.
-\end{definition}
-
-\begin{theorem}(Свойства сходимости в Гильбертовых пространствах)
-
-    Пусть $\ex_i, \ey_i \in \cH$. Тогда
-    \begin{itemize}
-        \item $\ex_n \to \ex_0, \ey_n \to \ey_0 \Lra \scp{\ex_n}{\ey_n} \to \scp{\ex_0}{\ey_0}$.
-        \item Пусть ряд $\sum{\ex_k}$ сходится. Тогда $\forall \ey \in \cH~ \scp{\sum{\ex_k}}{\ey} 
-            = \sum{\scp{\ex_k}{\ey}}$.
-        \item Пусть ряд $\sum{\ex_k}$ ортогонален. Тогда $\sum{\ex_k}$ сходится тогда и только тогда,
-            когда $\sum{\norm{\ex_k}^2}$ сходится. Более того, в этом случае
-            $\norm{\sum{\ex_k}}^2 = \sum{\norm{\ex_k}^2}$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
-
-\begin{definition}
-    \textit{Ортогональным семейством векторов} называется $\{\,\ee_k\,\} \subseteq \cH$
-    такое, что $\ee_k \bot \ee_{j \neq k}$. Если более того $\norm{\ee_k} = 1$, то
-    семейство называется \textit{ортонормированным}.
-\end{definition}
-
-\begin{definition}
-    $L_2 \defeq L^2([0, 2\pi], \l_1)$.
-\end{definition}
-
-\begin{theorem}
-    Пусть $\{\,\ee_k\,\}$ -- ОС, $\ex \in \cH$, $\ex = \sum_{k = 1}^{+\infty}{c_k \ee_k}$.
-    Тогда
-    \begin{itemize}
-        \item ОС линейно независима.
-        \item $\displaystyle c_k = \frac{\scp{\ex, \ee_k}}{\norm{\ee_k}^2}$.
-        \item $\displaystyle c_k \ee_k = \cP^{\bot}_{\{t \ee_k\}}$, 
-            то есть $\ex = c_k \ee_k + \ez$, $\ez \bot \ee_k$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
-
-\section{Ряды фурье}
-
-\begin{definition}
-    Пусть $\{\,\ee_k\,\}$ -- ОС, $\ex \in \cH$, тогда числа
-    $c_k(\ex) = \frac{\scp{\ex}{\ee_k}}{\norm{\ee_k}^2}$ называются 
-    \textit{коэффициентами фурье вектора $\ex$ по системе $\ee_k$}.
-\end{definition}
-
-\begin{definition}
-    Ряд $\sum_k{c_k(\ex) \ee_k}$ называется \textit{рядом Фурье $\ex$ по $\ee_k$}. 
+   Пусть $f \colon X \to \bC$, $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$. Тогда
+   определим интеграл:
+\[
+    \intl_{E}{f \dd\mu} \defeq \intl_{E}{g \dd\mu} + i \intl_{E}{h \dd\mu}
+.\] 
 \end{definition}
 
 \begin{remark}
-    При перенормировке ОС ряд Фурье не меняется.
+\[
+    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu}
+.\] 
 \end{remark}
 
-\begin{theorem}(О свойстах частичных сумм ряда Фурье)
+\begin{theorem}(Интегральное неравенство Гёльдера)
+    
+    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$, $f, g \colon X \to \bC$
+    -- измеримые почти везде заданные функции.
+    Тогда
+\[
+    \intl_{X}{|f g| \dd\mu} \leqslant \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}
+    \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
+.\] 
+\end{theorem}
+%:: NOTE all proof
 
-    Пусть $\cL = Lin(\ee_1, \ldots, \ee_n)$. Тогда
+\begin{theorem}(Интегральное неравенство Минковского)
+    
+    Пусть $f, g \colon X \to \bC$, $p \geqslant 1$, тогда
+\[
+    \left(\intl_{X}{|f + g|^p \dd\mu}\right)^{\frac{1}{p}} \leqslant
+    \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}} 
+    + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
+.\]  
+\end{theorem}
+%:: NOTE all proof
+
+\begin{definition}
+    Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
+    $1 \leqslant p < +\infty$ положим
+\[
+    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
+.\] 
+\end{definition}
+
+\begin{remark}
+    $\cL^p(X, \mu)$ -- линейное пространство.
+\end{remark}
+
+\begin{definition}
+    Зададим на $\cL^p$ отношение эквивалентности: $f \sim g$ тогда и
+    только тогда, когда $f = g$ почти везде. Положим
+\[
+    L^p(X, \mu) \defeq \cL^p(X, \mu) / \sim
+.\] 
+\end{definition}
+
+\begin{definition}
+    В $L^p$ заведем норму: $\displaystyle \norm{[f]} \defeq 
+    \left(\int_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $f \colon X \to \Rbar$ задана почти везде. Тогда \textit{существенным супремумом
+    $f$} называется
+\[
+    \esssup_{X}{f} \defeq \inf{\{A \in \Rbar \mid f(x) \leqslant A \text{ п.в.}\}}
+.\] 
+\end{definition}
+
+\begin{theorem}(Свойства существенного супремума)
     \begin{itemize}
-        \item $S_n = \cP^\bot_\cL(\ex)$, то есть $\ex = S_n + \ez$, $\ez \bot \cL$.
-        \item $S_n$ -- элемент наилучшего приближения $\ex$ в $\cL$, то есть
-            $\forall \ey \in \cL~ \norm{S_n - \ex} \leqslant \norm{\ey - \ex}$.
-        \item $\norm{S_n} \leqslant \norm{\ex}$.
+        \item $\esssup_{X}{f} \leqslant \sup_{X}{f}$.
+        \item $f(x) \leqslant \esssup_{X}{f}$ при почти всех $x$.
+        \item $\displaystyle \left|\int_{X}{fg \dd\mu}\right| 
+               \leqslant \esssup_{X}{|f|} \cdot \int_{X}{|g|}$.
     \end{itemize} 
 \end{theorem}
 %:: NOTE all proof
 
-\begin{corollary}(Неравенство Бесселя)
+\begin{definition}
+    Для $p = \infty$:
 \[
-    \sum_{k = 1}^{+\infty}{|c_k(\ex)|^2 \norm{\ee_l}^2} \leqslant \norm{x}^2
+    \cL^{\infty}(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    f \text{ измерима}, \esssup_{X}{f} < +\infty\right\}
 .\] 
+\end{definition}
+
+\begin{remark}
+    $\cL^{\infty}(X, \mu)$ -- линейное пространство.
+\end{remark}
+
+\begin{definition}
+    Пространство $L^{\infty}$ зададим аналогично конечному случаю.
+    Нормой на этом пространстве положим $\esssup$.
+\end{definition}
+
+\begin{theorem}(О вложении пространств $L^p$)
+    
+    Пусть $\mu(X) < +\infty$, $1 \leqslant r < s \leqslant +\infty$.
+    Тогда
+    \begin{itemize}
+        \item $L^r(X, \mu) \subset L^s(X, \mu)$.
+        \item $\norm{f}^s \leqslant \mu(X)^{\frac{1}{s} - \frac{1}{r}}
+               \cdot \norm{f}_r$.
+    \end{itemize} 
+\end{theorem}
+%:: NOTE all proof
+
+\begin{corollary}
+    Пусть $\mu(E) < +\infty$, $1 \leqslant s < r \leqslant +\infty$, $f_n, f \in L^s$,
+    $f_n \xrightarrow[L^r]{} f$, тогда $f_n \xrightarrow[L^s]{} f$.
 \end{corollary}
 %:: NOTE all proof
 
-\begin{theorem}(Рисс, Фишер)
-
-    Пусть $\{\,\ee_k\,\}$ -- ОС, $\ex \in \cH$. Тогда
+\begin{theorem}(О сходимости в $L^p$ и по мере)
+    
+    Пусть $1 \leqslant r < +\infty$, $f_n, f \in L^p$, тогда
     \begin{itemize}
-        \item Ряд Фурье $\ex$ сходится в $\cH$.
-        \item $\displaystyle \ex = \sum_{k = 1}^{+\infty}{c_k(\ex) \ee_k} + \ez$, $\forall k~ \ez \bot \ee_k$.
-        \item $\displaystyle \ex = \sum_{k = 1}^{+\infty}{c_k(\ex) \ee_k} \Llra \norm{\ex}^2 = 
-            \sum_{k = 1}^{+\infty}{|c_k(\ex)|^2 \norm{\ee_k}^2}$.
+        \item $f_n \xrightarrow[L^p]{} f \Lra f_n \underset{\mu}{\Lra} f$.
+        \item $f_n \underset{\mu}{\Lra} f$, либо $f_n \to f$ почти везде, тогда
+            если $\exists g \in L^p\colon~ |f_n| \leqslant g$, то
+            $f_n \xrightarrow[L^p]{} f$.
     \end{itemize} 
 \end{theorem}
 %:: NOTE all proof
 
-\begin{definition}
-    \textit{Равенство Парсиваля}, или \textit{уравнение замкнутости}:
-\[
-    \norm{x}^2 = \sum_{k = 1}^{+\infty}{|c_k(\ex)|^2 \norm{\ee_k}^2}
-.\] 
-\end{definition}
+\begin{remark}
+    $L^{\infty}$ -- полное метрическое пространство.
+\end{remark}
 
-\section{Базис в Гильбертовом пространстве}
-
-\begin{definition}
-    \textit{Базисом} в Гильбертовом пространстве называется ОС $\{\,\ee_k\,\}$, если
-    выполняется условие:
-\[
-    \forall \ex \in \cH~ \ex = \sum_{k = 1}^{+\infty}{c_k(\ex) \ee_k}
-.\] 
-\end{definition}
-
-\begin{definition}
-    ОС $\{\,\ee_k\,\}$ называется \textit{полной}, если
-\[
-    \forall \ex \in \cH\colon~ \{\,\ee_k\,\} \cup \ex \text{ -- не ОС}
-.\] 
-\end{definition}
-
-\begin{definition}
-    ОС $\{\,\ee_k\,\}$ называется \textit{замкнутой}, если для любого её
-    элемента выполняется уравнение замкнутости.
-\end{definition}
-
-\begin{theorem}(Характеризация базиса)
+\begin{theorem}(Полнота пространств $L^p$)
     
-    Пусть $E = \{\,\ee_k\,\}$ -- ОС. Тогда эквивалентны утверждения:
+    $\forall 1 \leqslant p \leqslant \infty$ $L^p$ полно.
+\end{theorem}
+%:: NOTE all proof
+
+\begin{definition}
+    Пусть $X$ -- топологическое пространство, тогда множество
+    $A \subset X$ называется всюду плотным, если $\Cl(A) = X$.
+    Иначе говоря, $\Int(X \setminus A) = \varnothing$, 
+    или \\ $\forall x \in X~ \forall U(x)~ U(x) \cap A \neq \varnothing$.
+\end{definition}
+
+\begin{definition}
+    Множество всех ступенчатых функций $g \colon X \to \Rbar$
+    обозначим $St(X)$.
+\end{definition}
+
+\begin{lemma}
+    Пусть $1 \leqslant p \leqslant +\infty$, тогда множество
+    $St(X) \cap L^p$ плотно в $L^p$.
+\end{lemma}
+%:: NOTE all proof
+
+\begin{definition}(Четвертая аксиома отделимости)
+    
+    Топологическое пространство называется \textit{нормальным},
+    если в нем любые два замкнутые непересекающиеся множества
+    отделимы, причем любое одноточечное множество замкнуто.
+\end{definition}
+
+\begin{lemma}(Урысон)
+    
+    Пусть $X$ -- нормальное топологическое пространство, 
+    $F_0, F_1$ -- замкнутые непересекающиеся множества. Тогда
+    существует непрерывная функция $f \colon X \to \R$, такая, что
     \begin{itemize}
-        \item $E$ -- базис.
-        \item $\forall \ex, \ey \in \cH~ \scp{\ex}{\ey} = \sum_{k = 1}^{+\infty}{c_k(\ex) 
-            \cdot \overline{c_k(\ey)} \cdot \norm{\ee_k}^2}$
-        \item $E$ замкнута.
-        \item $E$ полна.
-        \item $Lin(\ee_1, \ee_2, \ldots)$ плотно в $\cH$.
+        \item $0 \leqslant f \leqslant 1$.
+        \item $f\big|_{F_0} = 0$.
+        \item $f\big|_{F_1} = 1$.
+    \end{itemize} 
+\end{lemma}
+%:: NOTE all proof
+
+\begin{definition}
+    \textit{Финитной функцией в $\Rm$} называется функция $f$ такая, что
+\[
+    \exists B(a, r)\colon~ f\big|_B = 0
+.\] 
+    По умолчанию, $f$ непрерывна.
+\end{definition}
+
+\begin{theorem}
+    Множество финитных функций плотно в $L^p$ при $1 \leqslant p < +\infty$.
+\end{theorem}
+%:: NOTE all proof
+
+\begin{remark}
+    Условие $p \neq +\infty$ существенно.
+%:: NOTE all example
+\end{remark}
+
+\begin{definition}
+    Множество непрерывных $T$-периодических функций будем обозначать $\widetilde{C}([0, T])$.
+\end{definition}
+
+\begin{theorem}(О непрерывности сдвига)
+    
+    Пусть $f_h(x) = f(x + h)$. Тогда
+    \begin{itemize}
+        \item $f$ равномерно непрерывна в $\Rm \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p \Lra \norm{f_h - f}_p \xrightarrow[h \to 0]{} 0$.
+        \item $f \in \widetilde{C}([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
     \end{itemize} 
 \end{theorem}
+%:: NOTE all proof
 
 

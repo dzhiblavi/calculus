@@ -92,14 +92,14 @@
     \begin{align*}
         \intl_{\partial \Omega}{P \dd x} 
         &= \intl_L{P(x(u, v), y(u, v), z(u, v)) \cdot
-        \parenth{\pderv{x}{u} \dd u + \pderv{x}{v} \dd v}} = 
+        \parens{\pderv{x}{u} \dd u + \pderv{x}{v} \dd v}} = 
         \intl_L{P x'_u \dd u + P x'_v \dd v} \\
-        &\underset{\text{Грин}}{=} \iintl_\cO{\parenth{\pderv{}{u}(P x'_v) - \pderv{}{v}(P x'_u)} \dd u \d v} \\
-        &= \iintl_\cO{\parenth{(P'_x x'_u + P'_y y'_u + P'_z z'_u)x'_v + P x''_{uv} 
+        &\underset{\text{Грин}}{=} \iintl_\cO{\parens{\pderv{}{u}(P x'_v) - \pderv{}{v}(P x'_u)} \dd u \d v} \\
+        &= \iintl_\cO{\parens{(P'_x x'_u + P'_y y'_u + P'_z z'_u)x'_v + P x''_{uv} 
         - (P'_x x'_v + P'_y y'_v + P'_z z'_v)x'_u - P x''_{uv}} \dd u \d v} \\
-        &= \iintl_\cO{\parenth{P'_x (x'_u x'_v - x'_v x'_u) + P'_y(y'_u x'_v - y'_v x'_u) 
+        &= \iintl_\cO{\parens{P'_x (x'_u x'_v - x'_v x'_u) + P'_y(y'_u x'_v - y'_v x'_u) 
         + P'_z(z'_u x'_v - z'_v x'_u)} \dd u \d v} \\
-        &= \iintl_\cO{\parenth{P'_y(y'_u x'_v - y'_v x'_u) + P'_z(z'_u x'_v - z'_v x'_u)} \dd u \d v}
+        &= \iintl_\cO{\parens{P'_y(y'_u x'_v - y'_v x'_u) + P'_z(z'_u x'_v - z'_v x'_u)} \dd u \d v}
     ..\end{align*}
     Первое равенство легко получается, если попробовать посчитать левую и правую часть
     через параметризацию $L$. С другой стороны:
@@ -202,7 +202,7 @@
 \begin{proof}
     \begin{align*}
         &\iiintl_V{\pderv{f}{l} \dd x \d y \d z} =
-        \iiintl_V{\parenth{l_1 \pderv{f}{x} + l_2 \pderv{f}{y} + l_3 \pderv{f}{z}} \dd x \d y \d z} \\
+        \iiintl_V{\parens{l_1 \pderv{f}{x} + l_2 \pderv{f}{y} + l_3 \pderv{f}{z}} \dd x \d y \d z} \\
         &= \iintl_{\partial V^+}{f l_1 \dd y \d z + f l_2 \dd z \d x + f l_3 \dd x \d y}
         = \iintl_{\partial V^+}{f \cdot \scp{l}{n_0} \dd S}
     .\end{align*}

@@ -102,9 +102,7 @@
 \newcommand{\defeq}{\overset{def}{\underset{}{=}}}
 \newcommand{\rcon}{\rightrightarrows}
 \newcommand{\grad}[3][]{\operatorname{grad}#2#1(#3#1)}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\scp}[2]{\langle #1, #2 \rangle}
-\newcommand{\parenth}[1]{\left( #1 \right)}
 
 \renewcommand{\d}{\mathrm{d}}
 \newcommand{\dd}{\,\mathrm{d}}
@@ -155,8 +153,9 @@
 \DeclareMathOperator{\rotor}{rot}
 \DeclareMathOperator{\supp}{supp}
 
-
-\DeclarePairedDelimiter\abs{\left\lvert}{\right\rvert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\parens}{(}{)}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
 \setlength\parindent{0pt}
 \allowdisplaybreaks

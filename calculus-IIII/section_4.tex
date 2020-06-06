@@ -430,22 +430,22 @@
 \begin{proof}
     \begin{align*}
         \Gamma(s) \Gamma(t) 
-        &= \parenth{\intl_{0}^{+\infty}{x^{s - 1} e^{-x} \dd x}} 
-        \parenth{\intl_{0}^{+\infty}{y^{t - 1} e^{-y} \dd y}}
-        = \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_0^{+\infty}{y^{t - 1} e^{-y} \dd y}} \dd x} \\
+        &= \parens{\intl_{0}^{+\infty}{x^{s - 1} e^{-x} \dd x}} 
+        \parens{\intl_{0}^{+\infty}{y^{t - 1} e^{-y} \dd y}}
+        = \intl_0^{+\infty}{x^{s - 1} e^{-x} \parens{\intl_0^{+\infty}{y^{t - 1} e^{-y} \dd y}} \dd x} \\
         &\underset{y = u - x}{=}
-        \intl_0^{+\infty}{x^{s - 1} e^{-x} \parenth{\intl_x^{+\infty}{
+        \intl_0^{+\infty}{x^{s - 1} e^{-x} \parens{\intl_x^{+\infty}{
         (u - x)^{t - 1} e^{x - u} \dd y}} \dd u} \\
         &= \intl_0^{+\infty}{\dd u}{\intl_0^{u}{x^{s - 1} (u - x)^{t - 1} e^{-u} \dd x}} \\
         &\underset{x = uv}{=} \intl_0^{+\infty}{\intl_0^1{u^{s - 1}v^{s - 1} 
         u^{t - 1} (1 - v)^{t - 1} e^{-u} u \dd v}} \\
-        &= \parenth{\intl_0^{+\infty}{u^{s + t - 1} e^{-u} \dd u}} 
-        \parenth{\intl_0^1{v^{s - 1} (1 - v)^{t - 1} \dd v}} = \Gamma(s + t) B(s, t)
+        &= \parens{\intl_0^{+\infty}{u^{s + t - 1} e^{-u} \dd u}} 
+        \parens{\intl_0^1{v^{s - 1} (1 - v)^{t - 1} \dd v}} = \Gamma(s + t) B(s, t)
     .\end{align*}
 \end{proof}
 
 \begin{theorem}(Объём шара в $\Rm$)
-    $\displaystyle \lambda_m{B(0, R)} = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}$.  
+    $\displaystyle \lambda_m{B(0, R)} = \frac{\pi^{\frac{m}{2}}}{\Gamma\parens{\frac{m}{2} + 1}}$.  
 \end{theorem}
 \begin{proof}
     Вычислим для начала вспомогательный интеграл:
@@ -454,14 +454,14 @@
         &= 2 \int_0^{\frac{\pi}{2}}{\sin^{n - k - 1}{\f_k} \dd\f_k}
         \underset{\sin^2{\f_k} = t}{=} 2 \cdot \frac{1}{2} \intl_0^1
         {\frac{\d t}{\sqrt{t} \sqrt{1 - t}} t^{\frac{n - k - 1}{2}}} \\
-        &= B\parenth{\frac{n - k}{2}, \frac{1}{2}} = \frac{\Gamma\parenth{\frac{n - k}{2}} \Gamma\parenth{\frac{1}{2}}}
-        {\Gamma\parenth{\frac{n - k}{2} + \frac{1}{2}}}
+        &= B\parens{\frac{n - k}{2}, \frac{1}{2}} = \frac{\Gamma\parens{\frac{n - k}{2}} \Gamma\parens{\frac{1}{2}}}
+        {\Gamma\parens{\frac{n - k}{2} + \frac{1}{2}}}
     .\end{align*}
     \begin{align*}
         \lambda_m{B(0, R)} &= \intl_{x_1^2 + \ldots + x_m^2 \leqslant R^2}{1 \dd \lambda_m}
                            = \intl_0^R{\dd r \intl_0^{\pi}{\dd \f_1 \ldots \intl_0^{2 \pi}
                            {r^{n - 1} \sin^{n - 2}{\f_1} \ldots \sin{\f_{n - 2}} \dd \f_{n - 1}}}}
-                           = \frac{\pi^{\frac{m}{2}}}{\Gamma\parenth{\frac{m}{2} + 1}}R^m
+                           = \frac{\pi^{\frac{m}{2}}}{\Gamma\parens{\frac{m}{2} + 1}}R^m
     .\end{align*}
 \end{proof}
 

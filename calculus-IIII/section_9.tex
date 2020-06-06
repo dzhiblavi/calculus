@@ -1,223 +1,413 @@
-\chapter{Ряды Фурье}
-\section{Пространство $L^p$}
+\chapter{Интегралы, зависящие от параметра}
+
+\section{Несобственный интеграл}
 
 \begin{definition}
-    Комплексное отображение $f \colon X \to \bC$ назовем \textit{измеримым}, если
-    $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$, причем $g$, $h$ измеримы.
-\end{definition}
-
-\begin{definition}
-    Аналогично определим \textit{суммируемые} комплексные отображения.
-\end{definition}
- 
-\begin{definition}
-   Пусть $f \colon X \to \bC$, $f(x) = g(x) + i h(x)$, $g, h \colon X \to \R$. Тогда
-   определим интеграл:
-\[
-    \intl_{E}{f \dd\mu} \defeq \intl_{E}{g \dd\mu} + i \intl_{E}{h \dd\mu}
-.\] 
-\end{definition}
-
-\begin{remark}
-\[
-    \left|\intl_{E}{f \dd\mu}\right| \leqslant \intl_{E}{|f| \dd\mu}
-.\] 
-\end{remark}
-
-\begin{theorem}(Интегральное неравенство Гёльдера)
-    
-    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$, $f, g \colon X \to \bC$
-    -- измеримые почти везде заданные функции.
-    Тогда
-\[
-    \intl_{X}{|f g| \dd\mu} \leqslant \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}
-    \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
-.\] 
-\end{theorem}
-%:: NOTE all proof
-
-\begin{theorem}(Интегральное неравенство Минковского)
-    
-    Пусть $f, g \colon X \to \bC$, $p \geqslant 1$, тогда
-\[
-    \left(\intl_{X}{|f + g|^p \dd\mu}\right)^{\frac{1}{p}} \leqslant
-    \left(\intl_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}} 
-    + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
-.\]  
-\end{theorem}
-%:: NOTE all proof
-
-\begin{definition}
-    Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
-    $1 \leqslant p < +\infty$ положим
-\[
-    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
-    f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
-.\] 
-\end{definition}
-
-\begin{remark}
-    $\cL^p(X, \mu)$ -- линейное пространство.
-\end{remark}
-
-\begin{definition}
-    Зададим на $\cL^p$ отношение эквивалентности: $f \sim g$ тогда и
-    только тогда, когда $f = g$ почти везде. Положим
-\[
-    L^p(X, \mu) \defeq \cL^p(X, \mu) / \sim
-.\] 
-\end{definition}
-
-\begin{definition}
-    В $L^p$ заведем норму: $\displaystyle \norm{[f]} \defeq 
-    \left(\int_{X}{|f|^p \dd\mu}\right)^{\frac{1}{p}}$.
-\end{definition}
-
-\begin{definition}
-    Пусть $f \colon X \to \Rbar$ задана почти везде. Тогда \textit{существенным супремумом
-    $f$} называется
-\[
-    \esssup_{X}{f} \defeq \inf{\{A \in \Rbar \mid f(x) \leqslant A \text{ п.в.}\}}
-.\] 
-\end{definition}
-
-\begin{theorem}(Свойства существенного супремума)
-    \begin{itemize}
-        \item $\esssup_{X}{f} \leqslant \sup_{X}{f}$.
-        \item $f(x) \leqslant \esssup_{X}{f}$ при почти всех $x$.
-        \item $\displaystyle \left|\int_{X}{fg \dd\mu}\right| 
-               \leqslant \esssup_{X}{|f|} \cdot \int_{X}{|g|}$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
-
-\begin{definition}
-    Для $p = \infty$:
-\[
-    \cL^{\infty}(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
-    f \text{ измерима}, \esssup_{X}{f} < +\infty\right\}
-.\] 
-\end{definition}
-
-\begin{remark}
-    $\cL^{\infty}(X, \mu)$ -- линейное пространство.
-\end{remark}
-
-\begin{definition}
-    Пространство $L^{\infty}$ зададим аналогично конечному случаю.
-    Нормой на этом пространстве положим $\esssup$.
-\end{definition}
-
-\begin{theorem}(О вложении пространств $L^p$)
-    
-    Пусть $\mu(X) < +\infty$, $1 \leqslant r < s \leqslant +\infty$.
-    Тогда
-    \begin{itemize}
-        \item $L^r(X, \mu) \subset L^s(X, \mu)$.
-        \item $\norm{f}^s \leqslant \mu(X)^{\frac{1}{s} - \frac{1}{r}}
-               \cdot \norm{f}_r$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
-
-\begin{corollary}
-    Пусть $\mu(E) < +\infty$, $1 \leqslant s < r \leqslant +\infty$, $f_n, f \in L^s$,
-    $f_n \xrightarrow[L^r]{} f$, тогда $f_n \xrightarrow[L^s]{} f$.
-\end{corollary}
-%:: NOTE all proof
-
-\begin{theorem}(О сходимости в $L^p$ и по мере)
-    
-    Пусть $1 \leqslant r < +\infty$, $f_n, f \in L^p$, тогда
-    \begin{itemize}
-        \item $f_n \xrightarrow[L^p]{} f \Lra f_n \underset{\mu}{\Lra} f$.
-        \item $f_n \underset{\mu}{\Lra} f$, либо $f_n \to f$ почти везде, тогда
-            если $\exists g \in L^p\colon~ |f_n| \leqslant g$, то
-            $f_n \xrightarrow[L^p]{} f$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
-
-\begin{remark}
-    $L^{\infty}$ -- полное метрическое пространство.
-\end{remark}
-
-\begin{theorem}(Полнота пространств $L^p$)
-    
-    $\forall 1 \leqslant p \leqslant \infty$ $L^p$ полно.
-\end{theorem}
-%:: NOTE all proof
-
-\begin{definition}
-    Пусть $X$ -- топологическое пространство, тогда множество
-    $A \subset X$ называется всюду плотным, если $\Cl(A) = X$.
-    Иначе говоря, $\Int(X \setminus A) = \varnothing$, 
-    или \\ $\forall x \in X~ \forall U(x)~ U(x) \cap A \neq \varnothing$.
-\end{definition}
-
-\begin{definition}
-    Множество всех ступенчатых функций $g \colon X \to \Rbar$
-    обозначим $St(X)$.
-\end{definition}
-
-\begin{lemma}
-    Пусть $1 \leqslant p \leqslant +\infty$, тогда множество
-    $St(X) \cap L^p$ плотно в $L^p$.
-\end{lemma}
-%:: NOTE all proof
-
-\begin{definition}(Четвертая аксиома отделимости)
-    
-    Топологическое пространство называется \textit{нормальным},
-    если в нем любые два замкнутые непересекающиеся множества
-    отделимы, причем любое одноточечное множество замкнуто.
-\end{definition}
-
-\begin{lemma}(Урысон)
-    
-    Пусть $X$ -- нормальное топологическое пространство, 
-    $F_0, F_1$ -- замкнутые непересекающиеся множества. Тогда
-    существует непрерывная функция $f \colon X \to \R$, такая, что
-    \begin{itemize}
-        \item $0 \leqslant f \leqslant 1$.
-        \item $f\big|_{F_0} = 0$.
-        \item $f\big|_{F_1} = 1$.
-    \end{itemize} 
-\end{lemma}
-%:: NOTE all proof
-
-\begin{definition}
-    \textit{Финитной функцией в $\Rm$} называется функция $f$ такая, что
-\[
-    \exists B(a, r)\colon~ f\big|_B = 0
-.\] 
-    По умолчанию, $f$ непрерывна.
+    Пусть $f \colon [a, b) \to \Rbar$ \textit{локально суммируема} на $[a, b)$, то
+    есть $\forall a \leqslant B < b~ f$ суммируема на $[a, B]$. Тогда \textit{несобственным
+    интегралом} $f$ на $[a, b)$ называется
+    \[
+        \intl_a^{\to b}{f \dd \lambda_1} \defeq \lim_{B \to b_-}{\intl_a^B{f \dd \lambda_1}}
+    .\]
 \end{definition}
 
 \begin{theorem}
-    Множество финитных функций плотно в $L^p$ при $1 \leqslant p < +\infty$.
+    $\displaystyle \intl_a^{\to b}{f \dd \lambda_1}$ сходится абсолютно тогда и только тогда,
+    когда $f$ суммируема на $[a, b)$.
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$\Lla$] Интеграл неотрицательной функции монотонен по множеству, поэтому:
+            \[
+                \intl_a^B{|f| \dd \lambda_1} \leqslant \intl_{[a, b)}{|f| \dd \lambda_1} < +\infty
+            .\]
+            По этой же причине $\displaystyle \intl_a^B{|f| \dd \lambda_1}$ монотонен по $B$.
+            Поэтому существует предел
+            \[
+                \lim_{B \to b_-}{\intl_a^B{|f| \dd \lambda}} \leqslant  
+                \intl_{[a, b)}{|f| \dd \lambda_1} < +\infty
+            .\]
+        \item[$\Lra$] По непрерывности меры $\displaystyle E \mapsto \intl_E{|f| \dd \lambda_1}$ снизу
+            имеем
+            \[
+                +\infty > \lim_{B \to b_-}{\intl_a^B{|f| \dd \lambda_1}} = \intl_{[a, b)}{|f| \dd \lambda_1}
+            .\]
+    \end{itemize}
+\end{proof}
 
-\begin{remark}
-    Условие $p \neq +\infty$ существенно.
-%:: NOTE all example
-\end{remark}
+\section{Дейстия над интегралами с параметром}
+
+\textit{Далее общий контекст такой: $f \colon X \times Y \to \Rbar$,
+    $X$ -- пространство с мерой, $Y$ -- метризуемое пространство, $\forall y_0~ f(x, y_0)$ суммируема на $X$.}
+
+\begin{theorem}(О предельном переходе при равномерной сходимости)
+
+    Пусть $\mu{X} < +\infty$, $y_0$ -- предельная точка $Y$, $\exists \f \colon X \to \R\colon~
+    f(x, y) \rcon \f(x)$ при $y \to y_0$. Тогда $\f$ суммируема на $X$ и более того
+    \[
+        \lim_{y \to y_0}{\intl_X{f(x, y) \dd \mu}} = \intl_X{\f(x) \dd \mu}
+    .\]
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Из равномерной сходимости следует, что 
+            \[
+                \exists U(y_0)\colon~ \forall x~ \forall y \in U~ |f(x, y) - \f(x)| < 1
+            .\]
+            Тогда $\f$ суммируема:
+            \[
+                \intl_X{|\f| \dd \mu} \leqslant \intl_X{(|f| + 1) \dd \mu} 
+                \leqslant \intl_X{|f| \dd \mu} + \mu{X} < +\infty
+            .\]
+        \item Проверим, что интеграл сходится туда, куда мы ожидаем:
+            \[
+                \abs*{\intl_X{f \dd \mu} - \intl_X{\f \dd \mu}} \leqslant \intl_X{\abs*{f - \f} \dd \mu}
+                \leqslant \sup_X{\abs{f - \f}} \cdot \mu{X} \xrightarrow[y \to y_0]{} 0 
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
-    Множество непрерывных $T$-периодических функций будем обозначать $\widetilde{C}([0, T])$.
+    $f \colon X \times Y \to \Rbar$, $y_0$ -- предельная точка $Y$. Тогда $f$ 
+    \textit{удовлетворяет условию $L$-локальности в точке $y_0$} ($f \in L_{loc}(y_0)$), если 
+    $\exists g \colon X \to \Rbar$ -- суммируемая на $X$, $\exists U(y_0)\colon$
+    для почти всех $x \in X$, $\forall y \in U(y_0) \cap Y~ \abs*{f(x, y)} \leqslant g(x)$.
 \end{definition}
 
-\begin{theorem}(О непрерывности сдвига)
-    
-    Пусть $f_h(x) = f(x + h)$. Тогда
-    \begin{itemize}
-        \item $f$ равномерно непрерывна в $\Rm \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-        \item $1 \leqslant p < +\infty$, $f \in L^p \Lra \norm{f_h - f}_p \xrightarrow[h \to 0]{} 0$.
-        \item $f \in \widetilde{C}([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-        \item $1 \leqslant p < +\infty$, $f \in L^p([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-    \end{itemize} 
-\end{theorem}
-%:: NOTE all proof
+\begin{theorem}(О предельном переходе при условии $L_{loc}$)
 
+    Пусть $f \colon X \times Y \to \Rbar$, $\f \colon X \to \Rbar$, $\lim_{y \to y_0}{f(x, y)} = \f(x)$
+    при почти всех $x$, $f \in L_{loc}(y_0)$. Тогда $\f$ суммируема на $X$ и более того
+    \[
+        \lim_{y \to y_0}{\intl_X{f(x, y) \dd \mu}} = \intl_X{\f \dd \mu}
+    .\]
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Будем доказывать по Гейне. Пусть $g$ -- функция из условия $L_{loc}$ для $f$.
+            Тогда вдоль любой последовательности $y_n \to y_0$:
+            \[
+                |f(x, y_n)| \leqslant g(x)
+            .\]
+            Что при предельном переходе по $n \to \infty$ влечет
+            \[
+                |\f(x)| \leqslant g(x) 
+            .\]
+            Отсюда получаем, что $\f$ суммируема на $X$.
+        \item Положим $f_n = f(x, y_n)$. Имеем $f_n \to \f$, $|f_n| \leqslant g$, $g$
+            суммируема. Применяя теорему Лебега о мажорированной сходимости в случае
+            сходимости почти везде, получаем:
+            \[
+                \lim_{y \to y_0}{\intl_X{f \dd \mu}} = \lim_{n \to +\infty}{\intl_X{f_n \dd \mu}} 
+                = \intl_X{\f \dd \mu}
+            .\]
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}(Теорема Лебега о непрерывности интеграла по параметру)
+
+    В условиях предыдущей теоремы, если $f$ непрерывно по $y$ в точке $y_0$, то функция
+    \[
+        \displaystyle J(y) = \intl_X{f(x, y) \dd \mu(x)} 
+    .\] 
+    непрерывна в $y_0$.
+\end{corollary}
+
+\begin{example}
+    $\displaystyle \Gamma(y) = \intl_0^{+\infty}{x^{y - 1} e^{-x} \dd x}$ непрерывна по $y$ на $(0, +\infty)$.
+\end{example}
+\begin{proof}
+    Проверим условие $\Gamma \in L_{loc}(y_0)$. Пусть $0 < \a < y_0 < \b < +\infty$. Тогда
+    \[
+        \forall x \in (0, +\infty)~ \forall y \in (\a, \b)~ \abs*{x^{y - 1}e^{-x}} 
+        \leqslant g(x) = \begin{cases}
+            x^{\b - 1} e^{-x},~ x > 1 \\
+            x^{\a - 1} e^{-x},~ x \leqslant  1
+        \end{cases}
+    .\]
+    $g(x)$, очевидно, суммируема.
+\end{proof}
+
+\begin{theorem}(Правило Лейбница дифференцирования интеграла по параметру)
+
+    Пусть $Y \subset \R$ -- промежуток, $f \colon X \times Y \to \Rbar$, $\forall y~ f(x, y)$
+    суммируема на $X$, $y_0 \in Y$, $J(y) = \intl_X{f(x, y) \dd \mu(x)}$. Кроме того:
+    \begin{itemize}
+        \item Для почти всех $x$, $\forall y \in Y~ \exists f'_y(x, y)$.
+        \item $f'_y(x, y) \in L_{loc}(y_0)$.
+    \end{itemize}
+    Тогда $J(y)$ дифференцируема в $y_0$, причем
+    \[
+        J'(y) = \intl_X{f'_y(x, y) \dd \mu(x)}
+    .\]
+\end{theorem}
+\begin{proof}
+    Положим
+    \[
+        F(x, h) = \frac{f(x, y_0 + h) - f(x, y_0)}{h} \to f'_y(x, y_0)
+    .\]
+    Тогда выражение для производной $J(y)$ можно записать так:
+    \[
+        \frac{J(y_0 + h) - J(y_0)}{h} = \intl_X{F(x, h) \dd \mu(x)}
+    .\]
+    Проверим, что $F(x, h) \in L_{loc}(y_0)$:
+    \[
+        \abs*{F(x, h)} = \abs*{f'_y(x, y + \theta h) \cdot h \cdot h^{-1}} = \abs*{f'_y(x, y + \theta h)}
+    .\]
+    Последнее выражение мажорируется суммируемой функцией по условию $f'_y \in L_{loc}$.
+    Воспользуеся теперь предыдущей теоремой:
+    \[
+        \frac{J(y_0 + h) - J(y_0)}{h} = \intl_X{F(x, h) \dd \mu(x)} \to \intl_X{f'_y(x, y_0) \dd \mu(X)}
+    .\]
+\end{proof}
+
+\begin{example}
+    $\Gamma(y) \in C^{\infty}$.
+\end{example}
+\begin{proof}
+    Проверим, что $\Gamma(y)$ дифференцируема. Сначала формально найдем производную по $y$:
+    \[
+        \Gamma'(y_0) = \intl_0^{+\infty}{x^{y - 1} \ln{x} e^{-x} \dd x} 
+    .\]
+    Проверим условие $L_{loc}$: пусть $0 < \a < y_0 < \b < +\infty$. Тогда
+    \[
+        \abs*{x^{y - 1} \ln{x} e^{-x}} \leqslant g(x) = \begin{cases}
+            x^{\b - 1} \ln{x} e^{-x},~ x \geqslant 1 \\
+            x^{\a - 1} \abs*{\ln{x}} e^{-x},~ x < 1
+        \end{cases}
+    .\]
+    Понятно, что $g(x)$ суммируема. Более того, она была бы суммируема, даже если бы
+    логарифм был не в первой, а в любой степени, не меньшей единицы. Этот факт
+    сразу даёт аналогичный способ доказательства того факта, что $\Gamma \in C^k$ для
+    любого $k$, откуда получается, что $\Gamma \in C^\infty$.
+\end{proof}
+
+\begin{example}(Интеграл Дирихле)
+
+    Пусть $\displaystyle J(y) = \intl_0^{+\infty}{e^{-xy} \frac{\sin{x}}{x} \dd x}$. Тогда
+    $\displaystyle J(y) = \frac{\pi}{2} - \arctan{y}$.
+\end{example}
+\begin{proof}
+    Продифференцируем $J(y)$:
+    \[
+        J'(y) = \intl_0^{+\infty}{-e^{-xy} \sin{x} \dd x} = -\frac{1}{1 + y^2}
+    .\]
+    Обоснуем это действие. Для этого проверим, $L_{loc}(y_0)$ для $0 < \a < y_0 < \b < +\infty$:
+    \[
+        \abs*{e^{-xy} \sin{x}} \leqslant e^{-\a x}
+    .\]
+    Мы получили, что $J(y) = C - \arctan{y}$. Чтобы найти константу, найдем предел
+    \[
+        \lim_{y \to \infty}{J(y)} = \lim_{y \to \infty}{\intl_0^{+\infty}{e^{-xy} \frac{\sin{x}}{x} \dd x}} =
+        \intl_0^{+\infty}{\lim_{y \to \infty}{\parens*{e^{-xy} \frac{\sin{x}}{x}}} \dd x} =
+        \intl_0^{+\infty}{0 \dd x} = 0
+    .\]
+    Чтобы обосновать предельный переход под знаком интеграла, проверим $L_{loc}$:
+    \[
+        \abs*{e^{-xy} \frac{\sin{x}}{x}} \leqslant e^{-\a x}
+    .\]
+    Таким образом, имеем равенство:
+    \[
+        C - \frac{\pi}{2} = 0 \Lra C = \frac{\pi}{2}
+    .\]
+\end{proof}
+
+\section{Действия над несобственными интегралами с параметром}
+
+\textit{Здесь контекст такой: $\displaystyle J(y) = \intl_a^{\to b}{f(x, y) \dd \mu(x)}$,
+$f \colon \langle a, b \rangle \times Y \to \Rbar$, $f$ локально суммируема.}
+
+\begin{definition}
+    Интеграл $J(y)$ \textit{равномерно сходится на $Y$}, если
+    \[
+        \intl_a^t{f(x, y) \dd x} \rcon J(y),~ t \to b_-
+    .\]
+    Или, что то же самое:
+    \[
+        \sup_{y \in Y}{\abs*{\intl_a^t{f(x, y) \dd x} - J(y)}} =
+        \sup_{y \in Y}{\abs*{\intl_t^{\to b}{f(x, y) \dd x}}} \xrightarrow[t \to b_-]{} 0
+    .\]
+\end{definition}
+
+\begin{theorem}(Признак Вейерштрасса)
+
+    Пусть $\forall x, y \in \langle a, b \rangle \times Y~ \abs*{f(x, y)} \leqslant g(x)$, причем
+    $g(x)$ суммируема на $X$. Тогда $J(y)$ сходится равномерно.
+\end{theorem}
+\begin{proof}
+    \[
+        \intl_a^{\to b}{f(x, y) \dd x} \leqslant \intl_a^{\to b}{|g(x)| \dd x} =
+        \intl_a^b{|g(x)| \dd x} < +\infty
+    .\]
+\end{proof}
+
+\textit{Обобщим определение равномерной сходимости.}
+
+\begin{definition}
+    Пусть $f \colon X \times Y \to \R$, $\f \colon X \to \R$, $E \subseteq X$, $y_0$ -- предельная
+    точка $y$. $X$, $Y$ -- хаусдорфовы топологические пространства. Тогда \textit{$f$ равномерно сходится к $\f$ 
+    при $y \to y_0$ на $E$}, если
+    \[
+        \sup_{x \in E}{\abs*{f(x, y) - \f(x)}} \xrightarrow[y \to y_0]{} 0
+    .\]
+\end{definition}
+
+\begin{remark}
+    В определении изменилось только то, что раньше было $Y = \bN$, и $y_0 = +\infty$.
+    Заметим, что ни в каких теоремах, связанных с равномерной сходимостью, 
+    мы на самом деле не пользовались конкретно $Y = \bN$. Поэтому все соответстующие
+    теоремы остаются справедливыми и в новой формулировке.
+\end{remark}
+
+\begin{theorem}(О перестановке предельных переходов)
+
+    Пусть $f \colon T \times Y \to \R$, $T \subseteq \widetilde{T}$, $Y \subseteq \widetilde{Y}$ --
+    метризуемые пространства, $t_0$ -- предельная точка $T$, $y_0$ -- предельная точка $Y$. Кроме того:
+    \begin{itemize}
+        \item $\displaystyle \forall t \in T~ \exists +\infty > L(t) = \lim_{y \to y_0}{f(t, y)}$.
+        \item $\displaystyle \forall y \in Y~ \exists +\infty > J(y) = \lim_{t \to t_0}{f(t, y)}$.
+        \item Хотя бы один из этих пределов равномерный.
+    \end{itemize}
+    Тогда существуют и конечны пределы
+    \[
+        \lim_{t \to t_0}{L(t)} = \lim_{y \to y_0}{J(y)}
+    .\]
+\end{theorem}
+
+\begin{theorem}(О предельном переходе в несобственном интеграле)
+    
+    Пусть $f \colon X \times Y \to \Rbar$, $Y \subseteq \widetilde{Y}$, $y_0 \in \widetilde{Y}$ --
+    предельная точка $Y$. Кроме того:
+    \begin{enumerate}
+        \item При почти всех $x$ $\displaystyle \exists f_0(x) = \lim_{y \to y_0}{f(x, y)}$.
+        \item $f$ локально суммируема и выполняется: 
+            \[
+                \forall t < b~ \intl_a^t{f(x, y) \dd x} = \intl_a^t{f_0(x) \dd x}
+            .\]
+        \item $\displaystyle \forall y~ \exists J(y) = \intl_a^{\to b}{f(x, y) \dd x}$, причем
+            сходится равномерно на $Y$.
+    \end{enumerate}
+    Тогда
+    \[
+        \intl_a^{\to b}{f(x, y) \dd x} \xrightarrow[y \to y_0]{} \intl_a^{\to b}{f_0(x) \dd x}
+    .\]
+\end{theorem}
+\begin{proof}
+    Это в точности предыдущая теорема с точностью до замен:
+    \begin{itemize}
+        \item $T = (a, b)$, $\widetilde{T} = \Rbar$, $t_0 = b$, $Y = Y$, $y_0 = y_0$.
+        \item $\displaystyle f(t, y) = \intl_a^t{f(x, y) \dd x}$.
+        \item $L(t) = \intl_a^t{f_0(x) \dd x}$.
+        \item $J(y) = J(y)$, равномерен именно этот предел.
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    Если в последней теорема заменить первое условие на условие $y \mapsto f(x, y) \in C(y_0)$, 
+    то получится теорема о непрерывности несобственного интеграла по параметру. 
+\end{corollary}
+
+\begin{theorem}(Об интегрировании несобственного интеграла по параметру)
+    Пусть
+    \begin{enumerate}
+        \item $f \colon (a, b) \times Y \to \Rbar$ -- суммируемая на множествах вида $(a, t) \times Y$
+            при $t < b$ функция.
+        \item $\mu{Y} < +\infty$.
+        \item $\displaystyle J(y) = \intl_a^{\to b}{f(x, y) \dd x}$ сходится равномерно.
+    \end{enumerate}
+    Тогда
+    \begin{enumerate}
+        \item $J(y)$ суммируема на $Y$. 
+        \item Сходится интеграл
+            \[
+                \intl_a^{\to b}{\intl_Y{f(x, y) \dd y} \dd x} 
+            .\]
+        \item Выполняется
+            \[
+                \intl_a^{\to b}{\intl_Y{f(x, y) \dd y} \dd x} 
+                = \intl_Y{\intl_a^{\to b}{f(x, y) \dd x} \dd y}
+            .\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{enumerate}
+        \item Положим 
+            \[ 
+                J_t(y) = \intl_a^t{f(x, y) \dd x}
+            .\]
+            По теореме Фубини, $J_t$ суммируема на $Y$. Из равномерной сходимости $J(y)$ следует,
+            что при $t$ достаточно близких к $b$ выполняется:
+            \[
+                \abs*{J(y) - J_t(y)} = \abs*{\intl_t^{\to b}{f(x, y) \dd x}} \leqslant 1
+            .\]
+            Отсюда сразу следует суммируемость $J(y)$ на $Y$:
+            \[
+                \intl_Y{|J(y)| \dd y} \leqslant \intl_Y{|J_t(y)|} + \mu{Y} < +\infty
+            .\]
+        \item Функция $\displaystyle x \mapsto \intl_Y{f(x, y) \dd y}$ суммируема на $(a, b)$ по
+            теореме Фубини. По той же теореме Фубини, справедливо:
+            \[
+                \intl_a^t{\intl_Y{f(x, y) \dd y} \dd x} = \intl_Y{\intl_a^t{f(x, y) \dd x} \dd y} 
+                = \intl_Y{\intl_a^{\to b}{f(x, y) \dd x} \dd y} 
+                - \intl_Y{\intl_t^{\to b}{f(x, y) \dd x} \dd y}
+            .\]
+            Последнее выражение имеет смысл (а вместе с этим, первый интеграл существует) потому, что:
+            \begin{enumerate}
+                \item Интеграл
+                    \[
+                        \intl_a^{\to b}{f(x, y) \dd x} = J(y)
+                    .\]
+                    Является суммируемой на $Y$ функцией.
+                \item Интеграл
+                    \[
+                        \intl_t^{\to b}{f(x, y) \dd x} = J(y) - \intl_a^t{f(x, y) \dd x}
+                    .\]
+                    Является суммируемой на $Y$ функцией.
+            \end{enumerate}
+        \item Проверим последние 2 пункта теоремы:
+            \[
+                \abs*{\intl_a^t{\intl_Y{f}} - \intl_Y{\intl_a^{\to b}{f}}} \leqslant
+                \abs*{\intl_Y{\intl_t^{\to b}{f}}} \leqslant 
+                \sup_{y \in Y}{\abs*{\intl_t^{\to b}{f}}} \cdot \mu{Y} \xrightarrow[t \to b_-]{} 0
+            .\]
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}(Правило Лейбница для несобственного интеграла)
+
+    Пусть 
+    \begin{enumerate}
+        \item $f \colon [a, b) \times \langle c, d \rangle \to \R$, $f \in C$.
+        \item $\displaystyle \forall y~ J(y) = \intl_a^{\to b}{f(x, y) \dd x}$ сходится. 
+        \item $\forall x \forall y~ \exists f'_y(x, y)$, $f'_y \in C$.
+        \item $\displaystyle I(y) = \intl_a^{\to b}{f'_y(x, y) \dd x}$ сходится равномерно.
+    \end{enumerate}
+    Тогда
+    \begin{enumerate}
+        \item $J(y) \in C^1(\langle c, d \rangle)$.
+        \item $J'(y) = I(y)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item По теореме о непрерывности несобственного интеграла $I(y)$ непрерывно зависит от $y$.
+        \item Зафиксируем $s_0, s \in \langle c, d \rangle$. Тогда
+            \begin{align*}
+                \intl_{s_0}^s{I(y) \dd y} 
+                 &= \intl_{s_0}^s{\intl_a^{\to b}{f'_y \dd x} \dd y} =
+                 \intl_a^{\to b}{\intl_{s_0}^s{f'_y(x, y) \dd y} \dd x} \\
+                 &= \intl_a^{\to b}{\parens{f(x, s) - f(x, s_0)} \dd x} = J(s) - J(0)
+             .\end{align*}
+             Первый интеграл существует потому, что $I$ непрерывна и $\mu{Y} < +\infty$. Множества
+             вида $[a, t] \times [s_0, s]$ компактны. $f'_y$ непрерывна, поэтому суммируема на таких множествах.
+             Поэтому работает предыдущая теорема.
+             Мы получили, что $J(s)$ дифференцируема. Кроме того, по теореме Барроу, последнее 
+             равенство означает, что $J'(s) = I(s)$.
+        \end{itemize}
+\end{proof}
 
