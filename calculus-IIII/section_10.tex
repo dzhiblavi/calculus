@@ -34,7 +34,6 @@
     \cdot \left(\intl_{X}{|g|^q \dd\mu}\right)^{\frac{1}{q}}
 .\] 
 \end{theorem}
-%:: NOTE all proof
 
 \begin{theorem}(Интегральное неравенство Минковского)
     
@@ -45,13 +44,12 @@
     + \left(\intl_{X}{|g|^p \dd\mu}\right)^{\frac{1}{p}}
 .\]  
 \end{theorem}
-%:: NOTE all proof
 
 \begin{definition}
     Пусть $\langle X, \cA, \mu \rangle$ -- пространство с мерой. Тогда для
     $1 \leqslant p < +\infty$ положим
 \[
-    \cL^p(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    \cL^p(X, \mu) \defeq \left\{f \colon X \to \bC / \R \mid 
     f \text{ измерима}, \intl_{X}{|f|^p \dd\mu} < +\infty\right\}
 .\] 
 \end{definition}
@@ -89,12 +87,33 @@
                \leqslant \esssup_{X}{|f|} \cdot \int_{X}{|g|}$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Супремум есть в множестве, по которому берется инфимум 
+            в определении существенного супремума.
+        \item Пусть $M = \esssup_{X}{f}$. Тогда по определению инфимума:
+            \[
+                \forall n \in \bN~ f(x) \leqslant M + \frac{1}{n}
+            \]
+            при почти всех $x$. Объединяем все эти неравенства (их
+            счетное число) и получаем требуемое.
+        \item По предыдущему пункту $f$ может быть больше $\esssup_X{f}$ только
+            на множестве $e$ меры $0$. Поэтому
+            \[
+                \abs*{\intl_X{f g \dd \mu}} \leqslant
+                \intl_X{\abs*{f g} \dd \mu} \leqslant
+                \underbrace{\intl_e{\abs*{f g} \dd \mu}}_{= 0} 
+                + \intl_{X \setminus e}{\abs*{f g} \dd \mu} \leqslant
+                \esssup_X{f} \cdot \intl_{X}{\abs*{g} \dd \mu}
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
     Для $p = \infty$:
 \[
-    \cL^{\infty}(X, \mu) \defeq \left\{f \colon \text{п.в. } X \to \bC(\R) \mid 
+    \cL^{\infty}(X, \mu) \defeq \left\{f \colon X \to \bC / \R \mid 
     f \text{ измерима}, \esssup_{X}{f} < +\infty\right\}
 .\] 
 \end{definition}
@@ -118,13 +137,34 @@
                \cdot \norm{f}_r$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Первый пункт очевидным образом следует из второго.
+        \item Пусть $r = +\infty$. Тогда
+            \[
+                \norm{f}_s = \parens*{\intl_X{\abs{f}^s}}^{\frac{1}{s}} \leqslant
+                \parens*{\intl_X{\norm{f}^s_\infty}}^{\frac{1}{s}} = 
+                \norm{f}_\infty \cdot {\mu(X)}^{\frac{1}{s}}
+            .\]
+            Неравенство выполнено потому, что функция почти везде не превосходит
+            свой существенный супремум. Пусть теперь $r < +\infty$:
+            \[
+                \norm{f}^s_s = \intl_X{|f|^s \cdot 1 \dd \mu}
+                \underset{\text{Гельдер}}{\leqslant} \parens*{\intl_X
+                {\parens*{|f|^s}^{\frac{r}{s}}}}^{\frac{s}{r}} \cdot 
+                \parens*{\intl_X{1}}^{\frac{r - s}{s}} =
+                \parens*{\intl_X{|f|^r}}^{\frac{s}{r}} \cdot 
+                {\mu(X)}^{1 - \frac{s}{r}} =
+                \norm{f}_r^s \cdot {\mu(X)}^{1 - \frac{s}{r}}
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Пусть $\mu(E) < +\infty$, $1 \leqslant s < r \leqslant +\infty$, $f_n, f \in L^s$,
     $f_n \xrightarrow[L^r]{} f$, тогда $f_n \xrightarrow[L^s]{} f$.
 \end{corollary}
-%:: NOTE all proof
 
 \begin{theorem}(О сходимости в $L^p$ и по мере)
     
@@ -136,7 +176,45 @@
             $f_n \xrightarrow[L^p]{} f$.
     \end{itemize} 
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Обозначим
+            \[
+                X_n(\e) = X(|f_n - f| \geqslant \e)
+            .\]
+            Тогда на $X_n(\e)$ выполнено:
+            \[
+                1 \leqslant \frac{|f_n - f|^p}{\e^p}
+            .\]
+            Проверим сходимость по мере:
+            \[
+                \mu{X_n(\e)} = \intl_{X_n(\e)}{1 \dd \mu} \leqslant
+                \frac{1}{\e^p} \intl_{X_n(\e)}{|f_n - f|^p \dd \mu} =
+                \frac{1}{\e^p} \norm{f_n - f}_p \xrightarrow[n \to +\infty]{} 0
+            .\]
+        \item Из сходимости по мере имеем сходимость почти везде вдоль
+            подпоследовательности:
+            \[
+                \exists n_k \colon~ f_{n_k} \xrightarrow[n \to +\infty]{} f
+            \]
+            при почти всех $x$. Поскольку $f_{n_k} \to f$, $|f_{n_k}| \leqslant 
+            g$, верно:
+            \[
+                |f| \leqslant g
+            .\]
+            Поэтому:
+            \[
+                |f_n - f|^p \leqslant (2 g)^p
+            .\]
+            Интеграл последней функции конечен, так как $g \in L^p$.
+            В таком случае по теореме Лебега заключаем
+            \[
+                \norm{f_n - f}^p_p = \intl_X{|f_n - f|^p \dd \mu}
+                \xrightarrow[n \to +\infty]{} 0
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{remark}
     $L^{\infty}$ -- полное метрическое пространство.
@@ -146,7 +224,78 @@
     
     $\forall 1 \leqslant p \leqslant \infty$ $L^p$ полно.
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    Докажем утверждение для конечных $p$. 
+    \begin{itemize}
+        \item Пусть $f_n$ -- фундаментальная в $L^p$ последовательность, то есть
+            \[
+                \forall \e > 0 \exists N_\e \colon \forall n, k > N_\e~
+                \norm{f_n - f_k}_p < \e
+            .\]
+            Пользуясь этим фактом, построим последовательности индексов
+            $k_i, n_i$ следующим образом:
+            \[
+                \e = \frac{1}{2^i}~ \exists N_i \colon k_i > n_i > N_i \Lra
+                \norm{f_{n_i} - f_{k_i}}_p < \e
+            .\]
+            Выделим из $n_i$ возрастающую последовательность:
+            \[
+                n_k = \max_{1 \leqslant i \leqslant k}{n_i}
+            .\]
+            Тогда верно неравенство:
+            \[
+                \sum_{k = 1}^{+\infty}{\norm{f_{n_{k + 1}} - f_{n_k}}_p} \leqslant 1
+            .\]
+        \item Зафиксируем функции $f_i$ -- представители соответствующих
+            классов эквивалентности в $\cL^p$. Положим
+            \[
+                S(x) = \sum_{k = 1}^{+\infty}{|f_{n_{k + 1}}(x) - f_{n_k}(x)|}
+                \in [0, +\infty]
+            .\]
+            Оценим частичные суммы ряда:
+            \[
+                \norm{S_N}_p \underset{\triangle}{\leqslant} \sum_{i = 1}^N
+                {\norm{f_{n_{k + 1}} - f_{n_k}}_p} < 1
+            .\]
+            Из этой оценки следует:
+            \[
+                \intl_X{S_N^p} \leqslant 1
+            .\]
+            Из чего по теореме Фату получаем:
+            \[
+                \intl_X{S^p} \leqslant 1
+            .\]
+            Поэтому $S^p$ суммируема, а значит, $S(x)$ конечна почти везде.
+        \item Пусть
+            \[
+                f(x) = f_{n_1} + \sum_{k \geqslant 1}{(f_{n_{k + 1}} - f_{n_k})}
+            .\]
+            При этом
+            \[
+                \sum_{1 \leqslant k \leqslant m - 1}{(f_{n_{k + 1}} - f_{n_k})}
+                = f_{n_m} 
+            .\]
+            Помня про сходимость соответствующего ряда, получаем
+            \[
+                f_{n_m} \to f
+            \]
+            при почти всех $x$.
+        \item Проверим наконец сходимость последовательности. Из равномерной 
+            сходимости имеем:
+            \[
+                \forall \e > 0 \exists N \colon \forall n, m = n_k > N~
+                \norm{f_n - f_m}_p < \e
+            .\]
+            Поэтому справедливо:
+            \[
+                \e^p > \norm{f_n - f_{n_k}}^p_p = \intl_X{|f_{n_k} - f_n|^p \dd \mu}
+            .\]
+            Отсюда по теореме Фату получаем:
+            \[
+                \intl_X{|f_n - f|^p \dd \mu} < \e^p
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
     Пусть $X$ -- топологическое пространство, тогда множество
@@ -162,9 +311,44 @@
 
 \begin{lemma}
     Пусть $1 \leqslant p \leqslant +\infty$, тогда множество
-    $St(X) \cap L^p$ плотно в $L^p$.
+    $St(X)$ плотно в $L^p$.
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $p = +\infty$. Подменим $f \in L^\infty$ на
+            множестве меры ноль так, чтобы
+            \[
+                \esssup_X{f} = \sup_X{f}
+            .\]
+            Тогда по теореме об аппроксимации существуют последовательности 
+            ступенчатых функций $\f_n, \psi_n$ такие, что
+            \[
+                \f_n \rcon f_+,~~ \psi_n \rcon f_-
+            .\]
+            Из равномерной сходимости получаем
+            \[
+                \norm{\f_n - f_+}_\infty \to 0,~~ \norm{\psi_n - f_-}_\infty \to 0
+            .\]
+        \item Пусть теперь $p$ конечно. Рассмотрим неотрицательную $f \in L^p$.
+            По теореме об аппроксимации
+            \[
+                \exists \f_n \to f
+            ,\]
+            причем $\f_n$ возрастают с номером $n$ и неотрицательны. Проверим,
+            что эта последовательность ступенчатых функций аппроксимирует
+            $f$ в смысле $L^p$. Для этого заметим, что поскольку $\f_n \leqslant f$,
+            верно
+            \[
+                |\f_n - f|^p \leqslant |f|^p
+            .\]
+            При этом, $|f|^p$ суммируема. Значит, по теореме Лебега о
+            мажорированной сходимости справедливо:
+            \[
+                \norm{\f_n - f}^p_p = \intl_X{|\f_n - f| \dd \mu} \to 0
+            .\]
+    \end{itemize}
+\end{proof}
 
 \begin{definition}(Четвертая аксиома отделимости)
     
@@ -189,7 +373,7 @@
 \begin{definition}
     \textit{Финитной функцией в $\Rm$} называется функция $f$ такая, что
 \[
-    \exists B(a, r)\colon~ f\big|_B = 0
+    \exists B(a, r)\colon~ f\big|_{\overline{B}} = 0
 .\] 
     По умолчанию, $f$ непрерывна.
 \end{definition}

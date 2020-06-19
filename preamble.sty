@@ -36,6 +36,8 @@
 \usepackage{stackengine}
 \usepackage{chngcntr}
 \usepackage{imakeidx}
+\usepackage{tipa}
+\usepackage{upgreek}
 
 \newcommand{\tle}{\trianglelefteq}
 \newcommand{\tl}{\triangleleft}
@@ -49,7 +51,7 @@
 \renewcommand{\G}{\Gamma}
 \renewcommand{\k}{\kappa}
 \renewcommand{\r}{\rho}
-\newcommand{\s}{\sigma}
+\renewcommand{\s}{\sigma}
 \renewcommand{\l}{\lambda}
 \renewcommand{\o}{\omega}
 \renewcommand{\O}{\Omega}
@@ -88,6 +90,7 @@
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cH}{\mathcal{H}}
+\newcommand{\cX}{\mathcal{X}}
 \newcommand{\bF}{\mathbb{F}}
 \newcommand{\bZ}{\mathbb{Z}}
 \newcommand{\bQ}{\mathbb{Q}}
@@ -115,10 +118,10 @@
 
 % empty line
 \newcommand{\enewline}{
-	$ $ \newline
-	\mbox{}
-	\vspace*{-\parsep}
-	\vspace*{-\baselineskip}
+$ $ \newline
+\mbox{}
+\vspace*{-\parsep}
+\vspace*{-\baselineskip}
 }
 
 \theoremstyle{definition}
@@ -152,6 +155,8 @@
 \DeclareMathOperator{\diver}{div}
 \DeclareMathOperator{\rotor}{rot}
 \DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\median}{med}
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\parens}{(}{)}
@@ -165,6 +170,6 @@
 % graphics include
 \graphicspath{{../assets/}}
 \newcommand{\incfig}[1]{
-    \def\svgwidth{\columnwidth}
-    \import{../assets/}{#1.pdf_tex}
+\def\svgwidth{\columnwidth}
+\import{../assets/}{#1.pdf_tex}
 }
