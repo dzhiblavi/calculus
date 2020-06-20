@@ -129,11 +129,11 @@
 
 \begin{theorem}(О вложении пространств $L^p$)
     
-    Пусть $\mu(X) < +\infty$, $1 \leqslant r < s \leqslant +\infty$.
+    Пусть $\mu(X) < +\infty$, $1 \leqslant s < r \leqslant +\infty$.
     Тогда
     \begin{itemize}
         \item $L^r(X, \mu) \subset L^s(X, \mu)$.
-        \item $\norm{f}^s \leqslant \mu(X)^{\frac{1}{s} - \frac{1}{r}}
+        \item $\norm{f}_s \leqslant \mu(X)^{\frac{1}{s} - \frac{1}{r}}
                \cdot \norm{f}_r$.
     \end{itemize} 
 \end{theorem}
@@ -368,24 +368,199 @@
         \item $f\big|_{F_1} = 1$.
     \end{itemize} 
 \end{lemma}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Переформулируем определение нормальности с точностью до дополнения:
+            для любого замкнутого $F$ и открытого $G$ таких, что $F \subset G$,
+            верно 
+            \[
+                \exists U(F) \colon~ U(F) \subset \overline{U(F)} \subset G
+            .\]
+        \item Из нормальности и дизъюнктности $F_0, F_1$ очевидно включение
+            \[
+                F_0 \subset \underbrace{U(F_0)}_{G_0} \subset \overline{U(F_0)}
+                \subset \underbrace{F_1^C}_{G_1}
+            .\]
+            Повторим, заменив $F_0$ на $\overline{G_0}$:
+            \[
+                \overline{G_0} \subset \underbrace{U(\overline{G_0})}_{G_{1/2}}
+                \subset \overline{U(\overline{G_0})} \subset G_1
+            .\]
+            Аналогичным образом между $\overline{G_0}$ и $G_{1/2}$,
+            $\overline{G_{1/2}}$ и $G_1$ получим $G_{1/4}$ и $G_{3/4}$
+            соответственно. Продолжая этот процесс, определим $G_p$ для
+            всех двоично-рациональных $p$.
+        \item Пусть наконец
+            \[
+                f(x) = \inf{\{\, q \mid x \in G_q \,\}}
+            .\]
+            Из определения $f$ сразу следует
+            \[
+                f\big|_{F_0} = 0,~~ f\big|_{F_1} = 1
+            .\]
+            Осталось проверить непрерывность. Для этого проверим, что открыты
+            все множества вида
+            \[
+                f^{-1}(-\infty, s)
+            \]
+            И замкнуты
+            \[
+                f^{-1}(-\infty, s]
+            .\]
+            Тогда будет выполнено топологическое определение непрерывности для
+            базы топологии, состоящей из интервалов:
+            \[
+                f^{-1}(a, b) = f^{-1}(-\infty, b) \setminus f^{-1}(-\infty, a]
+                \text{ -- открыто}
+            .\]
+            \begin{itemize}
+                \item Проверим открытость $f^{-1}(-\infty, s)$. Для этого
+                    достаточно показать, что
+                    \[
+                        f^{-1}(-\infty, s) = \bigcup_{\substack{q < s \\ 
+                        q \text{ дв. рац.}}}{G_q}
+                    .\]
+                    Действительно, тогда $f^{-1}(-\infty, s)$ открыто как
+                    объединение открытых множеств. Проверим равенство:
+                    \begin{itemize}
+                        \item[$\supset$] $x \in G_q \Lra f(x) \leqslant q < s$.
+                        \item[$\subset$] $f(x) < s \Lra f(x) < q_1 < s$, $q$ -- 
+                            двоично-рациональное. Поскольку $G_p$ монотонны по
+                            $p$ и $f(x) < q_1$, получаем, что $x \in G_{q_1}$.
+                    \end{itemize}
+                \item Проверим замкнутость $f^{-1}(-\infty, s]$. Для этого
+                    покажем
+                    \[
+                        f^{-1}(-\infty, s] = \bigcap_{\substack{q > s \\ 
+                        q \text{ дв. рац.}}}{G_q} = \bigcap_{\substack{q > s \\
+                        q \text{ дв. рац.}}}{\overline{G_q}}
+                    .\]
+                    Последнее выражение -- пересечение замкнутых множеств, замкнуто.
+                    Проверим первое равенство:
+                    \begin{itemize}
+                        \item[$\subset$] $f(x) \leqslant s \Lra \inf{\{\,
+                            q \mid x \in G_q \,\}} \leqslant s$. Поэтому
+                            \[
+                                \forall q > s~ x \in G_q \Lra x \in \bigcap_{q > s}{G_q}
+                            .\]
+                        \item[$\supset$] Раз $x \in G_q$ для любого двоично-рационального 
+                            $q > s$, получаем
+                            \[
+                                f(x) = \inf{\{\, q \mid x \in G_q \,\}} \leqslant s
+                            .\]
+                    \end{itemize}
+                    Проверим второе равенство:
+                    \begin{itemize}
+                        \item[$\subset$] Очевидно.
+                        \item[$\supset$] Зафиксируем двоично-рациональное $r$
+                            такое, что
+                            \[
+                                s < r < s
+                            .\]
+                            Тогда по построению
+                            \[
+                                \overline{G_r} \subset G_q
+                            .\]
+                            Отсюда получаем
+                            \[
+                                \bigcap_{q > s}{G_q} \supset \bigcap_{q > r > s}
+                                {\overline{G_r}} \supset \bigcap_{r > s}{\overline{G_r}}
+                            .\]
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{proof}
 
 \begin{definition}
     \textit{Финитной функцией в $\Rm$} называется функция $f$ такая, что
 \[
     \exists B(a, r)\colon~ f\big|_{\overline{B}} = 0
 .\] 
-    По умолчанию, $f$ непрерывна.
+    По умолчанию, $f$ непрерывна. Множество непрерывных финитных функций
+    обозначается $C_0(\Rm)$.
 \end{definition}
 
 \begin{theorem}
-    Множество финитных функций плотно в $L^p$ при $1 \leqslant p < +\infty$.
+    $C_0(\Rm)$ плотно в $L^p(E, \lambda_m)$ при $1 \leqslant p < +\infty$,
+    $E \in \mathfrak{M}^m$.
 \end{theorem}
-%:: NOTE all proof
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $g \in L^p(E, \lambda_m)$. Нам нужно показать, что
+            \[
+                \forall \e > 0~ \exists f \in C_0(\Rm) \colon~ \norm{g - f\big|_E}_
+                {L^p(E, \lambda_m)} < \e
+            .\]
+            Заменим $g$ на $0$ на дополнении $E$. Это никак не скажется на норме в
+            $L^p(E, \lambda_m)$. Тогда
+            \[
+                \norm{g - f\big|_E}_{L^p(E, \lambda_m)} \leqslant \norm{g - f}_
+                {L^p(\Rm, \lambda_m)}
+            .\]
+            Сократим запись: $\norm{}_{L^p(\Rm, \lambda_m)}$ обозначим как 
+            $\norm{}_p$. Осталось построить функцию $f$ такую, чтобы выполнялось
+            \[
+                \norm{g - f}_p < \e
+            .\]
+        \item Пользуясь теоремой об аппроксимации, приблизим срезки $g$
+            ступенчатыми функциями:
+            \[
+                \exists h_n \colon~ h_n \to g_+
+            .\]
+            Имеем
+            \[
+                h_n \leqslant g,~ g \in L^p
+            .\]
+            Отсюда по теореме о сходимости в $L^p$ и по мере
+            \[
+                \exists h \colon~ \norm{h - g_+}_p < \e    
+            .\]
+            Пусть
+            \[
+                h = \sum_k{c_k \chi_{A_k}}
+            .\]
+            Приблизим характеристические функции ступенчатыми. $A_k$ измеримы,
+            поэтому
+            \[
+                \forall \e > 0~ \exists F_k \subset A_k \subset G_k \colon~
+                \lambda_m(G_k \setminus A_k) < \frac{\e^p}{|c_k|^p k^p}
+            .\]
+            Здесь $F_k$ замкнуто, $G_k$ открыто. По лемме Урысона $\exists f_k$
+            непрерывная такая, что
+            \[
+                0 \leqslant f_k \leqslant 1,~~ f\big|_{G_k} = 1,~~
+                f\big|_{G_k^C} = 0
+            .\]
+            Положим
+            \[
+                f(x) = \sum_k{c_k f_k(x)}
+            .\]
+        \item Убедимся, что $f$ действительно хорошее приближение $g_+$, то есть
+            \[
+                \norm{g_+ - f} < \e
+            .\]
+            Проделав аналогичное действие для $g_-$, получим требуемое приближение
+            $g$ по метрике в $L^p(\Rm, \lambda_m)$. Для начала оценим 
+            $\norm{f_k - \chi_{A_k}}_p$:
+            \[
+                \norm{f_k - \chi_{A_k}}_p = \intl_{\Rm}{|f_k - \chi_{A_k}|^p}
+                \leqslant \intl_{G_k \setminus F_k}{1^p} < \frac{\e^p}{|c_k|^p k^p}
+            .\]
+            Теперь покажем требуемое:
+            \begin{align*}
+                \norm{g_+ - f}_p 
+                &\leqslant \norm{g^+ - \sum_k{c_k \chi_{A_k}}}_p
+                + \norm{\sum_k{c_k \cdot (\chi_{A_k} - f_k)}}_p \\
+                &\leqslant \e + \sum_k{|c_k| \cdot \norm{f_k - \chi_{A_k}}_p} \\
+                &\leqslant \e + \sum_k{|c_k| \cdot \frac{\e}{|c_k| k}} = 2\e
+            .\end{align*}
+    \end{itemize}
+\end{proof}
 
 \begin{remark}
     Условие $p \neq +\infty$ существенно.
-%:: NOTE all example
 \end{remark}
 
 \begin{definition}
@@ -395,13 +570,61 @@
 \begin{theorem}(О непрерывности сдвига)
     
     Пусть $f_h(x) = f(x + h)$. Тогда
-    \begin{itemize}
-        \item $f$ равномерно непрерывна в $\Rm \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-        \item $1 \leqslant p < +\infty$, $f \in L^p \Lra \norm{f_h - f}_p \xrightarrow[h \to 0]{} 0$.
-        \item $f \in \widetilde{C}([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-        \item $1 \leqslant p < +\infty$, $f \in L^p([0, T]) \Lra \norm{f_h - f}_{\infty} \xrightarrow[h \to 0]{} 0$.
-    \end{itemize} 
+    \begin{enumerate}
+        \item $f$ равномерно непрерывна в $\Rm \Lra \norm{f_h - f}_{\infty}
+            \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p \Lra \norm{f_h - f}_p 
+            \xrightarrow[h \to 0]{} 0$.
+        \item $f \in \widetilde{C}([0, T]) \Lra \norm{f_h - f}_{\infty} 
+            \xrightarrow[h \to 0]{} 0$.
+        \item $1 \leqslant p < +\infty$, $f \in L^p([0, T]) \Lra \norm{f_h - f}_
+            {p} \xrightarrow[h \to 0]{} 0$.
+    \end{enumerate} 
 \end{theorem}
-%:: NOTE all proof
-
+\begin{proof}
+    \enewline
+    \begin{enumerate}
+        \item Выпишем опредение равномерной непрерывности:
+            \[
+                \forall \e > 0~\exists \delta\colon \forall x, |h| < \delta~
+                |f(x + h) - f(x)| = |f_h(x) - f(x)| < \e
+            .\]
+            То есть:
+            \[
+                \forall \e > 0~\exists \delta\colon \forall |h| < \delta~
+                \sup_x{|f_h - f|} \leqslant \e \Lra \norm{f_h - f}_\infty 
+                \leqslant \e
+            .\]
+        \item Пользуясь теоремой о полноте $C_0(\Rm)$ в $L^p$ подберем
+            финитную непрерывную $g$ такую, что:
+            \[
+                \norm{f - g}_p < \frac{\e}{3} 
+            .\]
+            Тогда:
+            \[
+                \norm{f_h - f}_p \leqslant \norm{f - g}_p + \norm{g_h - f_h}_p
+                + \norm{g_h - g}_p
+            .\]
+            $\norm{f_h - g_h} = \norm{f - g}$, поэтому:
+            \[
+                \norm{f_h - f} \leqslant \frac{2}{3} \e + \norm{g_h - g}_p
+            .\]
+            Зафиксируем шар $B(0, R + 1)$, содержащий носитель $g$. Пусть
+            $|h| < 1$. Тогда
+            \[
+                \norm{g_h - g}_p = \norm{g_h - g}_{L^p(B(0, R + 1))} \leqslant
+                \norm{g_h - g}_\infty \cdot \parens*{\intl_B{1}}^{\frac{1}{p}} =
+                \underbrace{\norm{g_h - g}_\infty}_{\to 0} \cdot 
+                {\lambda_m(B)}^{\frac{1}{p}} \xrightarrow[|h| \to 0]{} 0
+            .\]
+        \item Функция непрерывна на компакте, а поэтому равномерно непрерывна на
+            нём. Раз так, работает первый пункт теоремы.
+        \item Проведем доказательство, аналогичное доказательству второго пункта
+            с точностью до оценки
+            \[
+                \norm{g_h - g}_p \leqslant \norm{g_h - g}_\infty \cdot 
+                \lambda_m([0, T])^{\frac{1}{p}} \to 0
+            .\]
+    \end{enumerate}
+\end{proof}
 
