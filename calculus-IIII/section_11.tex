@@ -44,7 +44,7 @@
 
 \begin{theorem}(Свойства сходимости в гильбертовом пространстве) 
 
-    Пусть $x_i, y_i \in \cH$. Тогда
+    \label{th:pytha} Пусть $x_i, y_i \in \cH$. Тогда
     \begin{itemize}
         \item $x_n \to x_0, y_n \to y_0 \Lra \scp{x_n}{y_n} \to \scp{x_0}{y_0}$.
         \item $\sum{x_k}$ сходится, тогда
@@ -148,6 +148,203 @@
             \[
                 \scp{x - c_k e_k}{e_k} = \scp{x}{e_k} - c_k \scp{e_k}{e_k} =
                 \scp{x}{e_k} - c_k \norm{e_k}^2 = 0
+            .\]
+    \end{itemize}
+\end{proof}
+
+\section{Ряды Фурье}
+
+\begin{definition}
+    Пусть $\{\,e_k\,\}$ -- ортонормированная система, $x \in \cH$. Тогда
+    \[
+        c_k(x) \defeq \frac{\scp{x}{e_k}}{\norm{e_k}^2}    
+    \]
+    называется \textit{коэффициентом Фурье $x$ по системе $e_k$}.
+\end{definition}
+
+\begin{definition}
+    Ряд
+    \[
+        \sum_k{c_k(x) e_k}
+    \]
+    называется \textit{рядом фурье $x$ по системе $e_k$}.
+\end{definition}
+
+\begin{remark}
+    Ряд Фурье не меняется при перенормировке $e_k$.
+\end{remark}
+
+\begin{theorem}(О свойствах частичных сумм ряда Фурье)
+
+    Пусть $\{\,e_k\,\}$ -- ортонормированная система в $\cH$, $n \in \bN$,
+    $S_n = \sum_{k = 1}^n{c_k(x) e_k}$, $\cL = \Lin{\parens*{e_1, \ldots, e_n}}$.
+    Тогда
+    \begin{itemize}
+        \item $S_n = \cP_\cL(x)$, то есть $x = S_n + z,~~ z \bot \cL$.
+        \item $S_n$ -- елемент наилучшего приближения $x$ в $\cL$, то есть
+            \[
+                \forall y \in \cL~ \norm{x - S_n} \leqslant \norm{x - y}
+            .\]
+        \item $\norm{S_n} \leqslant \norm{x}$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Как и в предыдущей теореме, надо проверить, что $z = x - S_n \bot \cL$.
+            Для этого проверим, что $\forall k = 1..n~ e_k \bot z$.
+            \begin{align*}
+                \scp{z}{e_k} 
+                &= \scp{x}{e_k} - \scp{S_n}{e_k} = \scp{x}{e_k} -
+                \sum_{i = 1}^n{\scp{c_i(x) e_i}{e_k}} = \scp{x}{e_k} -
+                \sum_{i = 1}^n{c_i(x) \scp{e_i}{e_k}} \\
+                &= \scp{x}{e_k} - \scp{x}{e_k} = 0
+            .\end{align*}
+        \item Пусть $y \in \cL$:
+            \begin{align*}
+                \norm{x - y}^2 = \norm{S_n + z - y}^2 = \norm{S_n - y}^2 + \norm{z}^2
+                \geqslant \norm{z}^2 = \norm{S_n - x}^2
+            .\end{align*}
+        \item $\norm{x}^2 = \norm{S_n}^2 + \norm{z}^2 \geqslant \norm{S_n}^2$.
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}(Неравенство Бесселя)
+    В условиях предыдущей теоремы выполняется
+    \[
+        \sum_{k = 1}^{+\infty}{|c_k(x)|^2 \norm{e_k}^2} \leqslant \norm{x}^2
+    .\]
+\end{corollary}
+\begin{proof}
+    Из последнего пункта предыдущей теоремы для любого $n$ имеем
+    \[
+        \norm{x}^2 \geqslant \sum_{k = 1}^n{|c_k(x)|^2 \norm{e_k}^2}
+    .\]
+    Переходя к пределу при $n \to +\infty$, получаем требуемое.
+\end{proof}
+
+\begin{theorem}(Рисс, Фишер)
+    
+    Пусть $\{\,e_k\,\}$ -- ортогональая система в $\cH$, $x \in \cH$. Тогда
+    \begin{itemize}
+        \item Ряд Фурье $x$ сходится в $\cH$.
+        \item $x = \sum_{k = 1}^{+\infty}{c_k(x) e_k} + z,~~ \forall k~ z \bot e_k$.
+        \item $x = \sum_{k = 1}^{+\infty}{c_k(x) e_k} \Llra \norm{x}^2 =
+            \sum_{k = 1}^{+\infty}{|c_k(x)|^2 \norm{e_k}^2}$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Сходимость ортогонального ряда эквивалентная сходимости ряда
+            из квадратов норм его элементов. То есть, сходимость ряда Фурье $x$
+            эквивалентна сходимости ряда
+            \[
+                \sum_{k = 1}^{+\infty}{|c_k(x)|^2 \norm{e_k}^2}
+            .\]
+            Этот ряд сходится потому, что
+            \[
+                \sum_{k = 1}^{+\infty}{|c_k(x)|^2 \norm{e_k}^2} \leqslant \norm{x}^2
+                < +\infty
+            .\]
+        \item $\scp{z}{e_n} = \scp{x}{e_n} - \sum{\scp{c_k(x) e_k}{e_n}} =
+            \scp{x}{e_n} - \scp{x}{e_n} = 0$.
+        \item \begin{itemize}
+            \item[$\Lra$] Это -- третий пункт теоремы \ref{th:pytha}.
+            \item[$\Lla$] Пусть выполнено строгое неравенство. Тогда
+                \[
+                    \norm{\sum{\ldots}} = \norm{x}^2 = \norm{\sum{\ldots}} 
+                    + \norm{z}^2 > \norm{\sum{\ldots}}
+                .\]
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    \textit{Равенством Парсиваля}, или \textit{уравнением замкнутости} называется
+    равенство
+    \[
+        \sum_{k = 1}^{+\infty}{|c_k(x)|^2 \norm{e_k}^2} = \norm{x}^2
+    .\]
+\end{definition}
+
+\begin{definition}
+    Ортогональная система $\{\,e_k\,\}$ называется \textit{базисом}, если
+    \[
+        \forall x \in \cH~ x = \sum_{k = 1}^{+\infty}{c_k(x) e_k}
+    .\]
+\end{definition}
+
+\begin{definition}
+    Ортогональная система $E$ называется \textit{полной}, если
+    \[
+        \not \exists x \in \cH\colon~ E \cup \{x\} \text{ -- ортогональная система}
+    .\]
+\end{definition}
+
+\begin{definition}
+    Ортогональная система называется \textit{замкнутой}, если в ней для любого
+    элемента $\cH$ выполняется равенство Парсиваля.
+\end{definition}
+
+\begin{theorem}(О характеристике базиса)
+    
+    Пусть $\{\,e_k\,\}$ -- ортогональная система. Тогда эквивалентны
+    утверждения
+    \begin{enumerate}
+        \item $\{\,e_k\,\}$ -- базис.
+        \item $\forall x, y \in \cH~ \scp{x}{y} = \sum_{k = 1}^{+\infty}{c_k(x)
+            \overline{c_k(y)} \cdot \norm{e_k}^2}$.
+        \item $\{\,e_k\,\}$ замкнута.
+        \item $\{\,e_k\,\}$ полна.
+        \item $\Lin{\parens*{e_1, \ldots}}$ плотно в $\cH$, то есть
+            \[
+                \Cl(\Lin{\parens*{e_1, \ldots}}) = \cH
+            .\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item[$1 \Lra 2$] Так как система является базисом,
+            \[
+                \scp{x}{y} = \scp{\sum{c_k(x) e_k}}{y}
+            .\]
+            Далее нетрудно получить требуемое:
+            \[
+                \scp{\sum{c_k(x) e_k}}{y} = \sum{c_k(x) \scp{e_k}{y}} =
+                \sum{c_k(x) \cdot \norm{e_k}^2 \overline{c_k(y)}}
+            .\]
+        \item[$2 \Lra 3$] Проверим равенство Парсиваля:
+            \[
+                \norm{x}^2 = \scp{x}{x} = \sum_{k = 1}^{+\infty}{c_k(x) c_k(x) 
+                \norm{e_k}^2} = \sum_{k = 1}^{+\infty}{|c_k(x)| \norm{e_k}^2}
+            .\]
+        \item[$3 \Lra 4$] Надо проверить, что $\forall k~ z \bot e_k \Lra z = 0$.
+            Для начала заметим, что
+            \[
+                \forall k~ c_k(z) = \frac{\scp{z}{e_k}}{\norm{e_k}^2} = 0
+            .\]
+            Воспользуемся условием замкнутости:
+            \[
+                \norm{z}^2 = \sum_{k = 1}^{+\infty}{|c_k(z)|^2 \norm{e_k}^2} = 0
+                \Lra z = 0
+            .\]
+        \item[$4 \Lra 1$] По теореме Рисса-Фишера имеем
+            \[
+                x = \sum_{k = 1}^{+\infty}{c_k(x) e_k} + z,~~ \forall k~ z \bot e_k
+            .\]
+            Система полна, поэтому в $\cH$ нет нелулевых элементов, ортогональных
+            сразу всем $e_k$. То есть, $z = 0$.
+        \item[$1 \Lra 5$] Очевидно, что $\Cl(\cL) \subset \cH$. Проверим, что
+            $x \in \cH \Lra x \in \Cl(\cL)$. По определению базиса имеем
+            \[
+                x = \sum_{k = 1}^{+\infty}{c_k(x) e_k} = \lim_{N \to +\infty}
+                {\sum_{k = 1}^N{c_k(x) e_k}} \in \Cl(\cL)
+            .\]
+        \item[$5 \Lra 4$] Пусть $\forall k~ y \bot e_k$. Тогда
+            \[
+                y \bot \cL \Lra y \bot \cH \Lra y \bot y \Lra \scp{y}{y} = 0 \Lra y = 0
             .\]
     \end{itemize}
 \end{proof}
