@@ -1,0 +1,154 @@
+\section{Гильбертово пространство}
+
+\begin{definition}
+    \textit{Гильбертовым пространством} называется линейное пространство со
+    скалярным произведением, полное как линейное нормированное пространство.
+\end{definition}
+
+\textit{Далее $\cH$ -- гильбертово пространство.}
+
+\begin{definition}
+    Пусть $a_n \in \cH$, тогда ряд
+    \[
+        \sum_{n = 1}^{+\infty}{a_n}
+    \]
+    называется \textit{сходящимся}, если существует предел последовательности
+    \[
+        S_N = \sum_{n = 1}^N{a_n} 
+    .\]
+    Если ряд сходится, то соответствующий предел называется \textit{суммой ряда}.
+\end{definition}
+
+\begin{definition}
+    $x, y \in \cH$ называются \textit{ортогональными}, если их скалярное
+    произведение равно нулю:
+    \[
+        x \bot y \Llra \scp{x}{y} = 0
+    .\]
+\end{definition}
+
+\begin{definition}
+    Элемент $x \in \cH$ называется \textit{ортогональным множеству} $A \subset \cH$,
+    если
+    \[
+        \forall y \in A~ x \bot y
+    .\]
+\end{definition}
+
+\begin{definition}
+    Ряд $\sum{a_n}$ называется \textit{ортогональным}, если
+    \[
+        \forall i, j \neq i~ a_i \bot a_j 
+    .\]
+\end{definition}
+
+\begin{theorem}(Свойства сходимости в гильбертовом пространстве) 
+
+    Пусть $x_i, y_i \in \cH$. Тогда
+    \begin{itemize}
+        \item $x_n \to x_0, y_n \to y_0 \Lra \scp{x_n}{y_n} \to \scp{x_0}{y_0}$.
+        \item $\sum{x_k}$ сходится, тогда
+            \[
+                \forall y \in \cH~ \scp{\sum{x_k}}{y} = \sum{\scp{x_k}{y}}
+            .\]
+        \item $\sum{x_k}$ -- ортогональный ряд. Тогда сходимость этого ряда
+            эквивалентна условию
+            \[
+                \sum{\norm{x_k}^2} < +\infty
+            ,\]
+            и при этом
+            \[
+                \norm{\sum{x_k}}^2 = \sum{\norm{x_k}^2}
+            .\]
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item 
+            \begin{align*}
+                |\scp{x_n}{y_n} - \scp{x_0}{y_0}| 
+                &\leqslant |\scp{x_n}{y_n} - \scp{x_n}{y_0}| + 
+                |\scp{x_n}{y_0} - \scp{x_0}{y_0}| \\
+                &= |\scp{x_n}{y_n - y_0}| + |\scp{x_n - x_0}{y_0}| \\
+                &\leqslant \norm{x_n} \norm{y_n - y_0} + \norm{x_n - x_0} \norm{y_0}
+                \xrightarrow[n \to +\infty]{} 0
+            .\end{align*}
+        \item Обозначим $S_N = \sum_{n = 1}^N{x_n}$, $S = \sum_{n = 1}^{+\infty}{x_n}$.
+            Тогда
+            \[
+                \xymatrix{
+                    \scp{S_N}{y} \ar[d]_{n \to +\infty} & = & \sum_{k = 1}^N
+                                                        {\scp{x_k}{y}} \ar[d]_{n \to +\infty} \\
+                    \scp{S}{y} & \overset{!}{=} & \sum_{k = 1}^{+\infty}{\scp{x_k}{y}}
+                }
+            .\]
+        \item Обозначим $S_N = \sum_{k = 1}^N{x_k}$. Тогда
+            \begin{align*}
+                \norm{S_N}^2 = \scp{S_N}{S_N} = \scp{\sum_{k = 1}^N{x_k}}{\sum_{k = 1}^N{x_k}} =
+                \sum_{k, l = 1}^N{\scp{x_k}{x_l}} = \sum_{k = 1}^N{\scp{x_k}{x_k}} = 
+                \sum_{k = 1}^N{\norm{x_k}^2} = \Sigma_N
+            .\end{align*}
+            Аналогично:
+            \[
+                \norm{S_N - S_M}^2 = |\Sigma_N - \Sigma_M|
+            .\]
+            Таким образом, последовательности $S_n$, $\Sigma_n$ фундаментальны
+            (или не фундаментальны) одновременно. Имея в виду полноту как $\cH$,
+            так и $\R$, получаем, что эти последовательности сходятся (или
+            расходятся) одновременно.
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    Система векторов $\{\,e_k\,\}$ называется \textit{ортогональной},
+    если
+    \[
+        \forall i, j \neq i~ e_i \bot e_j
+    .\]
+\end{definition}
+
+\begin{definition}
+    Система векторов $\{\,e_k\,\}$ называется \textit{ортонормированной},
+    если она ортогональна, причем $\forall k~ \norm{e_k} = 1$.
+\end{definition}
+
+\begin{theorem}(О свойствах разложения по ортогональной системе)
+    
+    Пусть $E = \{\,e_k\,\}$ -- ортогональная система в $\cH$, $x \in \cH$,
+    $x = \sum_{k = 1}^{+\infty}{c_k e_k}$. Тогда
+    \begin{itemize}
+        \item $E$ -- линейно независимая система.
+        \item \label{th:Hortho:2} $c_k = \frac{\scp{x}{e_k}}{\norm{e_k}^2}$.
+        \item $c_k e_k$ есть ортогональная проекция $x$ на прямую
+            $\{\,t e_k\,\}_{t \in \R}$, то есть
+            \[
+                x = c_k e_k + z,~~ z \bot e_k
+            .\]
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть
+            \[
+                \sum_{k = 1}^N{\a_k e_k} = 0
+            .\]
+            Домножим это равенство на $e_j$:
+            \[
+                0 = \sum_{k = 1}^N{\a_k \scp{e_k}{e_j}} = \a_j \norm{e_j} \Lra
+                \a_j = 0
+            .\]
+        \item
+            \begin{align*}
+                \scp{x}{e_m} = \scp{\sum{c_k e_k}}{e_m} = \sum{c_k \scp{e_k}{e_m}} =
+                c_k \scp{e_m}{e_m} \Lra c_k = \frac{\scp{x}{e_m}}{\norm{e_m}^2}
+            .\end{align*}
+        \item Надо проверить, что $z = x - c_k e_k \bot e_k$.
+            \[
+                \scp{x - c_k e_k}{e_k} = \scp{x}{e_k} - c_k \scp{e_k}{e_k} =
+                \scp{x}{e_k} - c_k \norm{e_k}^2 = 0
+            .\]
+    \end{itemize}
+\end{proof}
+
