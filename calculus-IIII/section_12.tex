@@ -394,14 +394,14 @@
     то $S_n(g, x_0) \to 0$. Для начала заметим
     \[
         \frac{\sin{\parens*{n + \frac{1}{2}} t}}{\sin{\frac{t}{2}}} =
-        \cot{\frac{t}{2}} \sin{t} + \cos{nt}
+        \cot{\frac{t}{2}} \sin{nt} + \cos{nt}
     .\]
     Далее имеем
     \begin{align*}
         S_n(h, x_0) 
         &= \intl_{-\pi}^\pi{h(x_0 + t) D_n(t) \dd t} =
         \frac{1}{\pi} \intl_{-\pi}^\pi{(\underbrace{h(x_0 + t) \cot{\frac{t}{2}}}_{h_1(t)}
-        \sin{t} + \underbrace{h(x_0 + t)}_{h_2(t)} \cos{nt}) \dd t} \\ 
+        \sin{nt} + \underbrace{h(x_0 + t)}_{h_2(t)} \cos{nt}) \dd t} \\ 
         &= b_n(h_1) + a_n(h_2) \xrightarrow[n \to +\infty]{} 0
     .\end{align*}
     Чтобы все стало корректно, нужно проверить, что $h_1, h_2 \in L_1$. В случае
