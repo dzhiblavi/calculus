@@ -426,3 +426,92 @@
     всего лишь в окрестности этой точки.
 \end{remark}
 
+\begin{theorem}(Признак Дини)
+
+    Пусть $f \in L_1$, $x_0 \in \R$, $S \in \R/\mathbb{C}$, причем
+    \begin{equation}
+        \intl_0^\pi{\frac{f(x_0 + t) - 2S + f(x_0 - t)}{t} \dd t} < +\infty 
+        \label{eq:diby}
+    \end{equation}
+    Тогда ряд Фурье $f$ в точке $x_0$ сходится к $S$:
+    \[
+        S_n(f, x_0) \xrightarrow[n \to +\infty]{} S
+    .\]
+\end{theorem}
+\begin{proof}
+    Пусть $\f(t) = f(x_0 + t) - 2S + f(x_0 - t)$. Тогда
+    \begin{align*}
+        S_n(f, x_0) - S 
+        &= \intl_{-\pi}^\pi{\parens*{f(x_0 + t) D_n(t) - S D_n(t)} \dd t} = 
+        \intl_{-\pi}^\pi{(f(x_0 + t) - S) D_n(t) \dd t} \\
+        &= \intl_{-\pi}^0 + \intl_{0}^\pi \underset{t \Llra -t}{=} 
+        \intl_{0}^\pi{\f(t) D_n(t) \dd t} = \frac{1}{\pi} \intl_0^\pi{
+        \frac{\f(t)}{2} \parens*{\cot{\frac{t}{2}} \sin{nt} + \cos{nt}} \dd t} \\
+        &= b_n(h_1) + a_n(h_2) \xrightarrow[n \to +\infty]{} 0
+    .\end{align*}
+    И снова, для завершения доказательства осталось показать, что функции
+    \[
+        h_1(t) = \begin{cases}
+            \frac{\f(t)}{2} \cot{\frac{t}{2}},~ t \in (0, \pi) \\
+            0,~ t \in (-\pi, 0)
+        \end{cases},~~
+        h_2(t) = \begin{cases}
+            \frac{\f(t)}{2},~ t \in (0, \pi) \\
+            0,~ t \in (-\pi, 0)
+        \end{cases}
+    \]
+    лежат в $L_1$. Очевидно, что $h_2 \in L_1$:
+    \[
+        \intl_{-\pi}^\pi{|h_2(t)| \dd t} \leqslant 2 \norm{f}_1 + 2S \cdot 2 \pi
+        < +\infty
+    .\]
+    Покажем, что $h_1 \in L_1$:
+    \[
+        \abs*{\frac{\f(t)}{2} \cot{\frac{t}{2}}} \leqslant \abs*{\frac{\f(t)}{t}}
+        < +\infty
+    .\]
+\end{proof}
+
+\begin{remark}
+    Условие \ref{eq:diby} эквивалентно условию:
+    \[
+        \forall \pi > \delta > 0~ \intl_0^\delta{\frac{\f(t)}{t}} < +\infty
+    .\]
+\end{remark}
+
+\begin{corollary}
+    Пусть $f \in L_1$, $x_0 \in [-\pi, \pi]$, причем существует $4$ предела:
+    \[
+        f(x_0 \pm 0),~ \a_\pm = \lim_{t \to \pm 0}{\frac{f(x + t) - f(x \pm 0)}{t}}
+    .\]
+    Тогда
+    \[
+        S_n(f, x_0) \xrightarrow[n \to +\infty]{} \frac{1}{2}(f(x_0 + 0) + f(x_0 - 0))
+    .\]
+\end{corollary}
+\begin{proof}
+    Положим
+    \[
+        S = \frac{1}{2}(f(x_0 + 0) + f(x_0 - 0))
+    .\]
+    И проверим условие признака Дини:
+    \[
+        \intl_0^\pi{\frac{f(x_0 + t) + f(x_0 - t) - f(x_0 + 0) - f(x_0 - 0)}{t} \dd t}
+        \to \a_+ + \a_- < +\infty
+    .\]
+\end{proof}
+
+\begin{corollary}
+    Пусть $f \in L_1$, $f \in C(x_0)$, $\exists f'_\pm(x_0)$. Тогда
+    \[
+        S_n(f, x_0) \xrightarrow[n \to +\infty]{} f(x_0)
+    .\]
+\end{corollary}
+\begin{proof}
+    Непосредственно следует из предыдущего следствия.
+\end{proof}
+
+\begin{corollary}
+    Пусть $f \in C$, $\exists f'$, тогда ряд Фурье $f$ сходится к $f$ почти всюду.
+\end{corollary}
+
