@@ -304,3 +304,125 @@
     .\]
 \end{definition}
 
+\begin{lemma}
+    \[
+        D_n(t) = \frac{\sin{\parens*{n + \frac{1}{2}} t}}{2 \pi \sin{\frac{t}{2}}},~~
+        \Phi_n(t) = \frac{1}{2\pi (n + 1)} \frac{\sin^2{\frac{n + 1}{2} t}}{\sin^2{\frac{t}{2}}}
+    .\]
+\end{lemma}
+\begin{proof}
+    Используя тот факт, что
+    \[
+        2 \sin{\frac{t}{2} \cos{kt}} = \sin{\parens*{k + \frac{1}{2} t}}
+        - \sin{\parens*{k - \frac{1}{2} t}}
+    \]
+    получаем телескопическую сумму:
+    \begin{align*}
+        2 \pi \sin{\frac{t}{2}} \cdot D_n(t) = 2 \pi \sin{\frac{t}{2}} \cdot
+        \frac{1}{\pi} \parens*{\frac{1}{2} + \sum_{k = 1}^n{\cos{kt}}} =
+        \sin{\frac{t}{2}} + \sum_{k = 1}^n{2 \sin{\frac{t}{2}} \cos{kt}} =
+        \sin{\parens*{n + \frac{1}{2}} t}
+    .\end{align*}
+    Для ядра Фейера имеем
+    \[
+        2\pi (n + 1) \Phi_n(t) = \sum_{k = 0}^n{\frac{\sin{\parens*{k + \frac{1}{2}} t}}
+        {\sin{\frac{t}{2}}}}
+    .\]
+    Сравним последнюю сумму с выражением
+    \[
+        \frac{\sin^2{\frac{n + 1}{2} t}}{\sin^2{\frac{t}{2}}}
+    .\]
+    Для этого домножим обе части на $\sin^2{\frac{t}{2}}$.
+    \[
+        2 \sum_{k = 0}^n{\sin^2{\frac{n + 1}{2} t} \sin{\frac{t}{2}}} =
+        \sum_{k = 0}^n{\cos{kt} - \cos{(k + 1) t}} = (1 - \cos{(n + 1) t}) =
+        2 \sin^2{\frac{n + 1}{2} t}
+    .\]
+\end{proof}
+
+\begin{corollary}
+    \enewline
+    \begin{itemize}
+        \item $D_n, \Phi_n$ -- четные функции.
+        \item $\Phi_n \geqslant 0$.
+        \item
+            \[
+                \intl_{-\pi}^\pi{D_n(t) \dd t} = 1,~~
+                \intl_{-\pi}^\pi{\Phi_n(t) \dd t} = 1
+            .\]
+        \item $f \in L_1$, тогда
+            \[
+                S_n(f, x) = \intl_{-\pi}^\pi{f(x + t) D_n(t) \dd t} 
+            .\]
+    \end{itemize}
+\end{corollary}
+\begin{proof}
+    Покажем последнее утверждение. Вычислим частичную сумму:
+    \[
+        S_n(f, x) = \sum_{k = 0}^n{A_k(f, x)} 
+    .\]
+    Помня про представление $A_k(f, x)$ в виде
+    \[
+        A_k(f, x) = \begin{cases}
+            \frac{1}{2\pi} \intl_{-\pi}^\pi{f(x + t) \dd t},~ k = 0 \\
+            \frac{1}{\pi} \intl_{-\pi}^\pi{f(x + t) \cos{kt} \dd t},~ k > 0
+        \end{cases}
+    ,\]
+    получаем требуемое
+\end{proof}
+
+\begin{definition}
+    \textit{Интегралом Дирихле} называется интеграл
+    \[
+        \intl_{-\pi}^\pi{f(x + t) D(t) \dd t}
+    .\]
+\end{definition}
+
+\begin{theorem}(Принцип локализации Римана)
+
+    Пусть $f, g \in L_1$, $x_0 \in \R$, $\delta > 0$, причем
+    \[
+        \forall x \in (x_0 - \delta, x_0 + \delta)~ f(x) = g(x)
+    .\]
+    Тогда ряды Фурье этих функций ведут себя одинаково в $x_0$, то есть
+    \[
+        \abs*{S_n(f, x_0) - S_n(g, x_0)} \xrightarrow[n \to +\infty]{} 0
+    .\]
+\end{theorem}
+\begin{proof}
+    Достаточно проверить, что если $h = 0$ на $(x_0 - \delta, x_0 + \delta)$,
+    то $S_n(g, x_0) \to 0$. Для начала заметим
+    \[
+        \frac{\sin{\parens*{n + \frac{1}{2}} t}}{\sin{\frac{t}{2}}} =
+        \cot{\frac{t}{2}} \sin{t} + \cos{nt}
+    .\]
+    Далее имеем
+    \begin{align*}
+        S_n(h, x_0) 
+        &= \intl_{-\pi}^\pi{h(x_0 + t) D_n(t) \dd t} =
+        \frac{1}{\pi} \intl_{-\pi}^\pi{(\underbrace{h(x_0 + t) \cot{\frac{t}{2}}}_{h_1(t)}
+        \sin{t} + \underbrace{h(x_0 + t)}_{h_2(t)} \cos{nt}) \dd t} \\ 
+        &= b_n(h_1) + a_n(h_2) \xrightarrow[n \to +\infty]{} 0
+    .\end{align*}
+    Чтобы все стало корректно, нужно проверить, что $h_1, h_2 \in L_1$. В случае
+    с $h_2$ это очевидно, проверим, что $h_1 \in L_1$. Для этого промажорируем
+    её функцией из $L_1$:
+    \[
+        |h_1(t)| = \abs*{h(x_0 + t) \cot{\frac{t}{2}}} \leqslant \begin{cases}
+            0,~ |t| < \delta \\
+            |h(x_0 + t)| \cot{\frac{\delta}{2}},~ |t| \geqslant \delta
+        \end{cases}
+    .\]
+\end{proof}
+
+\begin{corollary}
+    С условиях теоремы сходимости рядов Фурье функций $f$ и $g$ в точке $x_0$
+    эквивалентны, причем в случае сходимости суммы одинаковы.
+\end{corollary}
+
+\begin{remark}
+    Для определения всего ряда Фурье нужны значения функции на $[-\pi, \pi]$.
+    Для определения же значения ряда Фурье в конкретной точке нужны значения
+    всего лишь в окрестности этой точки.
+\end{remark}
+
