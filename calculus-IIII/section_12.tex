@@ -1,0 +1,306 @@
+\section{Тригонометрические ряды Фурье}
+
+\begin{definition}
+    \textit{Тригонометрическим полиномом порядка не выше $n$} называется
+    \[
+        T_n(x) = \frac{a_0}{2} + \sum_{k = 1}^n{a_k \cos{kx} + b_k \sin{kx}}
+    .\]
+\end{definition}
+
+\begin{definition}
+    \textit{Тригонометрическим рядом} называется
+    \[
+        T(x) = \frac{a_0}{2} + \sum_{k = 1}^{+\infty}{a_k \cos{kx} + b_k \sin{kx}}
+    .\]
+\end{definition}
+
+\begin{remark}
+    Эквивалентной записью тринометрических полиномов или рядов являются записи
+    \[
+        S_n(x) = \sum_{k = -n}^n{c_k e^{ikx}},~~ S(x) = \sum_{k \in \bZ}{c_k e^{ikx}}
+        \defeq \lim_{n \to +\infty}{S_n(x)}
+    .\]
+\end{remark}
+
+\begin{lemma}
+    Пусть $f$ -- тригонометрический ряд: $S_n \to f$ в $L^1[-\pi, \pi]$. Тогда
+    \[
+        a_k = \frac{1}{\pi}\intl_{-\pi}^\pi{f(t) \cos{kt} \dd t},~
+        b_k = \frac{1}{\pi}\intl_{-\pi}^\pi{f(t) \sin{kt} \dd t},~
+        c_k = \frac{1}{2\pi}\intl_{-\pi}^\pi{f(t) e^{-ikt} \dd t}
+    .\]
+\end{lemma}
+\begin{proof}
+    Докажем первую формулу. Пусть $n > k$:
+    \begin{align*}
+        &\intl_{-\pi}^\pi{S_n(t) \cos{kt} \dd t} = \intl_{-\pi}^\pi{
+            \parens*{\frac{a_0}{2} + \sum_{l = 1}^n{\parens*{a_l \cos{lt} + b_l 
+        \sin{lt}}}} \cos{kt} \dd t} \\
+        &= \intl_{-\pi}^\pi{a_k \cos^2{kt} \dd t} = \pi a_k
+    .\end{align*}
+    \begin{align*}
+        \abs*{\intl_{-\pi}^\pi{S_n(t) \cos{kt} \dd t} - \intl_{-\pi}^\pi{f(t) \cos{kt} \dd t}}
+        &\leqslant \intl_{-\pi}^\pi{\abs*{\cos{kt} (S_n(t) - f(t))} \dd t} =
+        \intl_{-\pi}^\pi{|\cos{kt}| |S_n(t) - f(t)| \dd t} \\
+        &= \intl_{-\pi}^\pi{|S_n(t) - f(t)| \dd t} = \norm{S_n - f} \to 0
+    .\end{align*}
+    Мы только что показали, что
+    \[
+        \pi a_k = \intl_{-\pi}^\pi{S_n(t) \cos{kt} \dd t} \to
+        \intl_{-\pi}^\pi{f(t) \cos{kt} \dd t}
+    ,\]
+    что и требовалось.
+\end{proof}
+
+\begin{definition}
+    Пусть $f \in L^1[-\pi, \pi]$. Тогда \textit{коэффициентами Фурье} функции $f$
+    называются $a_k(f), b_k(f)$, получаемые из предыдущей леммы.
+\end{definition}
+
+\begin{definition}
+    Пусть $f \in L^1[-\pi, \pi]$. Тогда \textit{рядом Фурье} функции $f$
+    называется ряд
+    \[
+        \frac{a_0(f)}{2} + \sum_{k = 1}^{+\infty}{a_k(f) \cos{kt} + b_k(f) \sin{kt}}
+    .\]
+\end{definition}
+
+\begin{remark}
+    Далее будем обозначать
+    \[
+        L_k = L^k[-\pi, \pi]
+    .\]
+\end{remark}
+
+\begin{remark}
+    Для четных функций верно, что $b_k(f) = 0$.
+\end{remark}
+
+\begin{remark}
+    Функциям из $L^1[0, \pi]$ можно сопоставлять ряды
+    \[
+        \frac{a_0}{2} + \sum_k{a_k \cos{kx}},~~ \frac{a_0}{2} + \sum_k{b_k \sin{kx}}
+    .\]
+\end{remark}
+
+\begin{definition}
+    Введем обозначение
+    \[
+        A_k(f, x) = \begin{cases}
+            \frac{a_0(f)}{2},~ k = 0 \\
+            a_k(f) \cos{kx} + b_k(f) \sin{kx},~ k > 0
+        \end{cases}
+    .\]
+\end{definition}
+
+\begin{lemma}
+    \[
+        A_k(f, x) = \begin{cases}
+            \frac{1}{2\pi} \intl_{-\pi}^\pi{f(x + t) \dd t},~ k = 0 \\
+            \frac{1}{\pi} \intl_{-\pi}^\pi{f(x + t) \cos{kt} \dd t},~ k > 0 \\
+        \end{cases}
+    .\]
+\end{lemma}
+\begin{proof}
+    Покажем вторую формулу.
+    \begin{align*}
+        a_k(f) \cos{kx} + b_k(f) \sin{kx} 
+        &= \frac{1}{\pi} \intl_{-\pi}^\pi{\parens*{
+        f(t) \cos{kt} \cos{kx} + f(t) \sin{kt} \sin{kx}} \dd t} \\
+        &= \frac{1}{\pi} \intl_{-\pi}^\pi{f(t) \cos{(k(t - x))} \dd t} =
+        \frac{1}{\pi} \intl_{-\pi}^\pi{f(x + t) \cos{kt} \dd t}
+    .\end{align*}
+\end{proof}
+
+\begin{lemma}
+    \begin{align*}
+        |a_k(f)|, |b_k(f)|, 2|c_k(f)| \leqslant \frac{1}{\pi} \norm{f}_1 \\
+        |A_k(f, x)| \leqslant \begin{cases}
+            \frac{1}{2\pi} \norm{f}_1,~ k = 0 \\
+            \frac{1}{\pi} \norm{f}_1,~ k > 0
+        \end{cases}
+    .\end{align*}
+\end{lemma}
+\begin{proof}
+    Докажем первое неравенство:
+    \[
+        \pi|a_k(f)| = \abs*{\intl_{-\pi}^\pi{f(t) \cos{kt} \dd t}} \leqslant
+        \intl_{-\pi}^\pi{|f(t)| |\cos{kt}| \dd t} \leqslant
+        \intl_{-\pi}^\pi{|f(t)| \dd t} = \norm{f}_1
+    .\]
+\end{proof}
+
+\begin{remark}(Дюбуа-Реймон)
+    Существует $f \in \widetilde{C}[-\pi, \pi]$ и такая точка $x_0$, что
+    ряд Фурье $f$ расходится в $x_0$.
+\end{remark}
+
+\begin{remark}(Колмогоров)
+    Существует $f \in L_1$ такая, что её ряд Фурье расходится всюду.
+\end{remark}
+
+\begin{theorem}(Карлесон)
+    $f \in L^2 \Lra$ ряд Фурье $f$ сходится почти всюду.
+\end{theorem}
+
+\begin{theorem}(Хант)
+    $f \in L^p$, $1 < p < +\infty \Lra$ ряд Фурье $f$ сходится почти всюду.  
+\end{theorem}
+
+\begin{theorem}(Риман, Лебег)
+   
+    Пусть $E$ -- измеримое множество в $\R$ по мере Лебега, $f \in L^1(E, \lambda_1)$,
+    $\lambda \neq 0$ Тогда
+    \[
+        \intl_E{f(t) e^{i \lambda t} \dd t} \xrightarrow[\lambda \to +\infty]{} 0,~~
+        \intl_E{f(t) \cos{\lambda t} \dd t} \xrightarrow[\lambda \to +\infty]{} 0,~~
+        \intl_E{f(t) \sin{\lambda t} \dd t} \xrightarrow[\lambda \to +\infty]{} 0
+    .\]
+\end{theorem}
+\begin{proof}
+    Занулим $f$ на дополнении $E$, это никак не скажется на интеграле по $E$.
+    Теперь гарантированно $f \in L^1(\R, \lambda_1)$.
+    \[
+        \intl_\R{f(t) e^{i \lambda t} \dd t} = \intl_\R{f\parens*{\tau + \frac{\pi}{\lambda}}
+        e^{i \lambda \tau + i \pi} \dd \tau} = -\intl_\R{f\parens*{\tau + \frac{\pi}{\lambda}} 
+        e^{i \lambda \tau}\dd \tau}
+    .\]
+    Поэтому
+    \begin{align*}
+        &2 \intl_\R{f(t) e^{i \lambda t} \dd t} = \intl_\R{\parens*{f(t) -
+        f\parens*{t + \frac{\pi}{\lambda}}} e^{i \lambda \tau} \dd t} \\
+        &\Lra \abs*{\intl_\R{f(t) e^{i \lambda t} \dd t}} \leqslant
+        \frac{1}{2} \intl_\R{\abs*{f(t) - f\parens*{t + \frac{\pi}{\lambda}}}
+        |e^{i \lambda t}| \dd t} = \frac{1}{2} \norm{f - f_{\frac{\pi}{\lambda}}}_1 
+        \xrightarrow[\frac{\pi}{\lambda} \to 0]{} 0
+    .\end{align*}
+    Предельный переход выполнен в силу теоремы о непрерывности сдвига.
+\end{proof}
+
+\begin{remark}
+    $f \in L^1(\Rm), y \in \Rm \Lra I(y) = \intl_{\Rm}{f(x) e^{i \scp{x}{y}} \dd x}
+    \xrightarrow[|y| \to +\infty]{} 0$. Это утверждение тоже называется теоремой
+    Римана-Лебега и доказывается примерно так же, как и только что доказанная
+    теорема, только сдвиг делается такой:
+    \[
+        x = x + \frac{\pi y}{\norm{y}^2} 
+    .\]
+\end{remark}
+
+\begin{definition}
+    \textit{Модулем непрерывности} называется функция
+    \[
+        \omega(f, h) \defeq \sup_{\substack{x, y \in E \\ \norm{x - y} < h}}{|f(x) - f(y)|}
+    .\]
+\end{definition}
+
+\begin{remark}
+    Если $f$ равномерно непрерывна, то $\omega(f, h) \xrightarrow[h \to 0]{} 0$.
+\end{remark}
+
+\begin{remark}
+    Если $f$ дифференцируема на $[a, b]$, то $\omega(f, h) \leqslant \max_{[a, b]}{f'} \cdot h$.
+\end{remark}
+
+\begin{lemma}
+    Пусть $f \in \widetilde{C}[-\pi, \pi]$. Тогда
+    \[
+        |a_k(f)|, |b_k(f)|, 2|c_k(f)| \leqslant \omega\parens*{f, \frac{\pi}{k}}
+    .\]
+    Повторим выкладки из теоремы Римана-Лебега, только вместо интегрирования по $\R$
+    и экспоненты будем писать интергирование по $[-\pi, \pi]$ и косинус. Получим
+    \[
+        \pi a_k(f) = \abs*{\intl_{-\pi}^\pi{f(t) \cos{kt} \dd t}} \leqslant \frac{1}{2}
+        \intl_{-\pi}^\pi{\abs*{f(t) - f\parens*{t + \frac{\pi}{k}}}} \leqslant
+        \frac{1}{2} \intl_{-\pi}^\pi{\omega\parens*{f, \frac{\pi}{k}}\dd t} =
+        \pi \omega\parens*{f, \frac{\pi}{k}}
+    .\]
+\end{lemma}
+
+\begin{definition}
+    Пусть $E = \langle a, b \rangle$, $M \in \R$, $\a \in (0, 1)$. Тогда
+    \textit{классом Липшица с константой $M$ и показателем $\a$}
+    называется класс функций
+    \[
+        \Lip_M(\a) \defeq \{\, f\colon E \to \R \mid \forall x, y \in E~
+        |f(x) - f(y)| \leqslant M |x - y|^\a \,\} 
+    .\]
+\end{definition}
+
+\begin{remark}
+    $f$ дифференцирума, $|f'| \leqslant M \Lra f \in \Lip_M(1)$.
+\end{remark}
+
+\begin{remark}
+    Если $f \in \Lip_M(\a)$, $\a > 1$, то $f \equiv C$.
+\end{remark}
+
+\begin{remark}
+    $f \in \Lip_M(\a) \Lra \omega(f, h) \leqslant M h^\a$.
+\end{remark}
+
+\begin{corollary}
+    Пусть $0 < \a \leqslant 1$, $f \in \Lip_M(\a)$, тогда при $k \neq 0$
+    справедливы оценки
+    \[
+        |a_k(f)|, |b_k(f)|, 2|c_k(f)| \leqslant \frac{M \pi^\a}{k^\a}
+    .\]
+\end{corollary}
+\begin{proof}
+    Очевидно в свете последней леммы и определений.
+\end{proof}
+
+\begin{lemma}
+    Пусть $f \in \widetilde{C}^1[a, b]$, тогда
+    \[
+        a_k(f') = k b_k(f),~~ b_k(f') = -k a_k(f),~~ c_k(f') = ik c_k(f)
+    .\]
+\end{lemma}
+\begin{proof}
+    Проверим последнее равенство.
+    \[
+        2 \pi c_k(f') = \intl_{-\pi}^\pi{f'(x) e^{-ikx}} = f(x) e^{-ikx}\big|_{-\pi}^\pi +
+        ik \intl_{-\pi}^\pi{f(x) e^{-ikx}} = 0 + ik \cdot 2 \pi c_k(f)
+    .\]
+\end{proof}
+
+\begin{corollary}
+    Пусть $f \in \widetilde{C}^r[-\pi, \pi]$. Тогда
+    \begin{itemize}
+        \item $|a_k(f)|, |b_k(f)|, 2|c_k(f)| \leqslant \frac{C}{|k|^r}$.
+        \item Если $f^{(r)} \in \Lip_M(\a)$, то $|a_k(f)|, |b_k(f)|, 2|c_k(f)|
+            \leqslant \frac{M \pi^\a}{|k|^{r + \a}}$.
+    \end{itemize}
+\end{corollary}
+\begin{proof}
+    $f^{(r)}$ непрерывна, поэтому её коэффициенты Фурье стремятся к нулю, а значит,
+    ограничены константой $C$. Кроме того, каждый раз при увеличении порядка
+    производной ``выскакивает'' очередное $k$. Поэтому
+    \[
+        a_k(f) \leqslant \frac{1}{k^r} C 
+    ,\]
+    откуда следует первая оценка. Вторая оценка получается из первой с учетом
+    более строгой оценки на коэффициенты Фурье производной:
+    \[
+        a_k(f^{(r)}) \leqslant \frac{M \pi^\a}{k^\a}
+    .\]
+\end{proof}
+
+\begin{corollary}
+    Если $f \in C^2$, то ряд Фурье $f$ сходится.
+\end{corollary}
+
+\begin{definition}
+    \textit{Ядром Дирихле} называется функия
+    \[
+        D_n(t) = \frac{1}{\pi}\parens*{\frac{1}{2} + \sum_{k = 1}^n{\cos{kt}}},~ n \geqslant 0
+    .\]
+\end{definition}
+
+\begin{definition}
+    \textit{Ядром Фейера} называется функция
+    \[
+        \Phi_n(t) = \frac{1}{n + 1} \sum_{m = 0}^n{D_m(t)}
+    .\]
+\end{definition}
+
