@@ -227,3 +227,64 @@
     \end{enumerate}
 \end{proof}
 
+\begin{corollary}
+    Пусть $f \in L_1$, $f$ непрерывна в $x$. Тогда если ряд Фурье
+    $f$ сходится в $x$, то он сходится к $f(x)$.
+\end{corollary}
+\begin{proof}
+    $\sigma_n(f, x)$ в случае сходимости вычисляет сумму, совпадающую с обычной
+    суммой:
+    \[
+        \xymatrix{
+            \sigma_n(f, x) \ar[r] \ar[d]_{\text{Фейер}} & \text{Ряд Фурье} \\
+            f(x) 
+        }
+    .\]
+\end{proof}
+
+\begin{corollary}
+    $f \in L_1, \forall k~ a_k(f) = 0, b_k(f) = 0 \Lra f = 0$ при почти всех $x$.
+\end{corollary} 
+\begin{proof}
+    $a_k(f), b_k(f) = 0$, поэтому $\sigma_n(f) = 0$, поэтому $f = 0$ из теоремы
+    Фейера.
+\end{proof}
+
+\begin{corollary}
+    Тригонометрическая система полна в $L_2$.
+\end{corollary}
+\begin{proof}
+    Если какой-то элемент $h$ ортогонален всем элементам тригонометрической
+    системы, то очевидно, что $a_k(h) = b_k(h) = 0$. Раз так, по предыдущему
+    следствию $h = 0$ почти везде.
+\end{proof}
+
+\begin{corollary}
+    Пусть $f \in L^1[0, \pi]$. Если ряд Фурье по синусам (косинусам) равен нулю,
+    то $f = 0$ почти везде.
+\end{corollary}
+
+\begin{corollary}
+    $f \in L_2 \Lra S_n(f, x) \xrightarrow[n \to +\infty]{L_2} f(x)$.
+\end{corollary}
+\begin{proof}
+    Следует из полноты.
+\end{proof}
+
+\begin{corollary}
+    Пусть $f, g \in L_2$. Тогда 
+    \begin{itemize}
+        \item $\intl_{-\pi}^\pi{f \overline{g}} = 2\pi \sum_{k \in \bZ}
+            {c_k(f) \overline{c_k(g)}}$.
+        \item $\intl_{-\pi}^\pi{|f|^2} = 2\pi \sum_{k \in \bZ}{|c_k(f)|^2}$.
+        \item $\intl_{-\pi}^\pi{fg} = \pi\parens*{\frac{a_0(f)a_0(g)}{2}
+            + \sum_{k \in \bN}{a_k(f) a_k(g) + b_k(f) b_k(g)}}$.
+        \item $\intl_{-\pi}^\pi{|f|^2} = \pi\parens*{\frac{a_0(f)^2}{2}
+            + \sum_{k \in \bN}{a_k(f)^2 + b_k(f)^2}}$.
+    \end{itemize}
+\end{corollary}
+\begin{proof}
+    Все равенства -- просто разложения по базису элемента Гильбертова
+    пространства.
+\end{proof}
+
