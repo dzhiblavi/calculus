@@ -1,1 +1,102 @@
-\section{Свёртки и аппроксимативные единицы}
+\section{Свёртки}
+
+\begin{definition}
+    Пусть $f, K \in L_1$, тогда \textit{свёрткой} $K$ и $f$ называется
+    \[
+        (f \ast K) (x) = \intl_{-\pi}^\pi{f(t) K(x - t) \dd t}
+        = \intl_{-\pi}^\pi{f(x - t) K(t) \dd t}
+    .\]
+\end{definition}
+
+\begin{lemma}
+    Определение свёртки корректно.
+\end{lemma}
+\begin{proof}
+    Проверим, что измерима функция $\f(x, t) = f(x - t)$. По определению
+    множества вида $\R(f < a)$ измеримы. Но из них тривиальным образом получаются
+%:: NOTE рисунок
+    множества $\R^2(\f < a)$, значит, они тоже измеримы. Теперь функия
+    $g(x, t) = f(x - t) K(t)$ измерима как произведение измеримых функций.
+    Проверим её суммируемость:
+    \[
+        \intl_{[-\pi, \pi]^2}{|g(x, t)| \dd x \d t} = \intl_{-\pi}^\pi{|K(t)| \dd t
+        \intl_{-\pi}^\pi{|f(x - t)| \dd x}} = \norm{f}_1 \norm{K}_1 < +\infty
+    .\]
+    По теореме Фубини при почти всех $x$ функция $f(x - t) K(t)$ суммируема,
+    причем суммируема функция
+    \[
+        x \mapsto \intl_{-\pi}^\pi{f(x - t) K(t) \dd t} 
+    ,\]
+    что и требовалось.
+\end{proof}
+
+\begin{lemma}
+    \enewline
+    \begin{itemize}
+        \item $f \ast K \in L_1$.
+        \item $c_k(f \ast K) = 2 \pi c_k(f) c_k(g)$.
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    Первое утверждение уже доказано в лемме о корректности. Проверим второе.
+    \begin{align*}
+        2\pi c_k(f \ast K) 
+        &= \intl_{-\pi}^\pi{\parens*{\intl_{-\pi}^\pi{
+        f(x - t) K(t) \dd t}} e^{-ikx} \dd x} \underset{\text{Фубини}}{=}
+        \iintl_{[-\pi, \pi]^2}{f(x - t) K(t) e^{-ik (x - t)} e^{-ikt} \dd x \d t} \\
+        &= \intl_{-\pi}^\pi{K(t) e^{-ikt} \dd t \intl_{-\pi}^\pi{
+        f(x - t) e^{-ik (x - t)} \dd x}} = (2\pi)^2 c_k(f) c_k(K)
+    .\end{align*}
+\end{proof}
+
+\begin{remark}
+    $L_1$ -- алгебра относительно умножения $\ast$.
+\end{remark}
+
+\begin{lemma}(Свойства свёртки функций из $L_p$, $L_q$)
+
+    Пусть $p, q \in [1, +\infty]$, $p^{-1} + q^{-1} = 1$, $f \in L_p$, $K \in L_q$.
+    Тогда $f \ast K$ непрерывна, $\norm{f \ast K}_\infty \leqslant \norm{f}_p \norm{K}_q$.
+\end{lemma}
+\begin{proof}
+    Второй пункт выполнен по неравенству Гёльдера. Проверим непрерывность свёртки.
+    В случае $p < +\infty$:
+    \begin{align*}
+        \abs*{(f \ast K)(x + h) - (f \ast K)(x)} = \abs*{\intl_{-\pi}^\pi{
+        \parens*{f(x + h - t) - f(x - t)} K(t) \dd t}} \leqslant
+        \norm{K}_q \norm{f_h - f}_p \xrightarrow[h \to 0]{} 0
+    \end{align*}
+    по теореме о непрерывности сдвига. В случае $p = +\infty$ просто поменяем
+    $f, K$ местами.
+\end{proof}
+
+\begin{lemma}(Свойства свёртки функций из $L_1$, $L_p$)
+    
+    Пусть $K \in L_1$, $f \in L_p$. Тогда $f \ast K \in L_p$.
+\end{lemma}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $p^{-1} + q^{-1} = 1$. Тогда
+            \begin{align*}
+                &\abs*{\intl_{-\pi}^\pi{f(x - t) K(t) \dd t}}^p \leqslant
+                \parens*{\intl_{-\pi}^\pi{|f(x - t)| |K(t)|^{\frac{1}{p}}
+                |K(t)|^{\frac{1}{q}}}}^p \\
+                &\underset{Гёльдер}{\leqslant}
+                \parens*{\intl_{-\pi}^\pi{|f(x - t)|^p |K(t)| \dd t}} 
+                \underbrace{\parens*{\intl_{-\pi}^\pi{|K(t)| \dd t}}^{\frac{p}{q}}}
+                _{= \norm{K}_1^{\frac{p}{q}}}
+            .\end{align*}
+        \item Проверим утверждение леммы:
+            \begin{align*}
+                \norm{f \ast K}^p_p 
+                &= \intl_{-\pi}^\pi{\abs*{\intl_{-\pi}^\pi{
+                f(x - t) K(t) \dd t}}^p \dd x} \leqslant
+                \norm{K}^{\frac{p}{q}}_1 \cdot \intl_{-\pi}^\pi{|K(t)|
+                \intl_{-\pi}^\pi{|f(x - t)|^p \dd x \d t}} \\
+                &= \norm{K}_1^{\frac{p}{q}} \norm{f}^p_p \norm{K}_1
+                = \norm{K}_1^{p} \norm{f}_p^p < +\infty
+            .\end{align*}
+    \end{itemize}
+\end{proof}
+

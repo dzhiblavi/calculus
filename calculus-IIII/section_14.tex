@@ -1,0 +1,229 @@
+\section{Аппроксимативные единицы}
+
+\begin{remark}
+    Относительно $\ast$ не существует единичного элемента. Действительно,
+    пусть $g$ -- этот единичный элемент. Тогда $c_k(f) = c_k(f \ast g) = 2\pi c_k(f) c_k(g)$,
+    откуда $c_k(g) = \frac{1}{2 \pi}$, что не стремится к нулю, хотя из теоремы
+    Римана-Лебега мы знаем обратное.
+\end{remark}
+
+\begin{definition}
+    Будем обозначать
+    \[
+        E_\delta = [-\pi, \pi] \setminus (-\delta, \delta)
+    .\]
+\end{definition}
+
+\begin{definition}
+    Пусть $D \subseteq \R$, $h_0 \in \Rbar$ -- предельная точка $D$. \textit{
+    Апроксимативной единицей (АЕ)} называется семейство функций, параметризованное
+    $D$:
+    \[
+        \{\,K_h\,\}_{h \in D}
+    ,\]
+    если оно обладает свойствами:
+    \begin{enumerate}
+        \item $\forall h \in D~ K_h \in L_1$, $\intl_{-\pi}^\pi{K_h(t) \dd t} = 1$.
+        \item $\exists M > 0\colon \forall h \in D~ \norm{K_h}_1 \leqslant M$.
+        \item $\forall \delta \in (0, \pi)~ \intl_{E_\delta}{|K_h(t)| \dd t} 
+            \xrightarrow[h \to h_0]{} 0$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    В случае $K_h \geqslant 0$ верно $1 \Lra 2$.
+\end{remark}
+
+\begin{definition}
+    Рассмотрим условие $3'$:
+    \[
+        K_h \in L_\infty,~ \forall \delta \in (0, \pi)~ \esssup_{x \in E_\delta}
+        {K_h(x)} \xrightarrow[h \to h_0]{} 0
+    .\]
+    Из этого условия очевидным образом следует условие $3$. Семейство,
+    обладающее свойствами $1, 2, 3'$ называется \textit{усиленной
+    аппроксимативной единицей (УАЕ)}.
+\end{definition}
+
+\begin{remark}
+    Если $K_h$ -- (усиленная) аппроксимативная единица, то
+    \[
+        \frac{|K_h|}{\norm{K_h}_1}
+    \]
+    -- (усиленная) аппроксимативная единица.
+\end{remark}
+\begin{proof}
+    Условия $1, 2$ очевидно выполняются. Проверим $3$, $3'$ доказывается аналогично.
+    Нужно заметить, что
+    \[
+        1 = \abs*{\intl_{-\pi}^\pi{K_h(t) \dd t}} \leqslant \intl_{-\pi}^\pi{|K_h(t)| \dd t}
+        = \norm{K_h}_1
+    ,\]
+    то есть
+    \[
+        \norm{K_h}_1 \geqslant 1 
+    .\]
+    Значит, $|K_h|$ делится на число, большее единицы, то есть уменьшается.
+    Поэтому свойство всё ещё выполняется.
+\end{proof}
+
+\begin{theorem}(О свойствах аппроксимативной единицы)
+    
+    Пусть $K_h$ -- аппроксимативная единица. Тогда
+    \begin{enumerate}
+        \item $f \in \widetilde{C}[-\pi, \pi] \Lra f \ast K_h \rcon_{h -> h_0} f$.
+        \item $f \in L_1 \Lra f \ast K_h \xrightarrow[h \to h_0]{L_1} f$.
+        \item Пусть $K_h$ -- усиленная. Тогда если $f \in L_1$, $f$ непрерывна в
+            $x$, то $f \ast K_h$ непрерывна в $x$, причем
+            \[
+                (f \ast K_h)(x) \xrightarrow[h \to h_0]{} f(x)
+            .\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{enumerate}
+        \item[0.] Заметим, что поскольку $\intl_{-\pi}^\pi{K_h(t) \dd t} = 1$, то
+            \[
+                (f \ast K)(x) - f(x) = \intl_{-\pi}^\pi{(f(x - t) - f(x)) K_h(t) \dd t}
+            .\]
+        \item Раз $f$ непрерывна на компакте, она равномерна непрерывна на нём.
+            Зафиксируем $\e > 0$. Из равномерной непрерывности имеем
+            \[
+                \exists \delta > 0~ \forall |t| < \delta~ \forall x~
+                |f(x - t) - f(x)| < \frac{\e}{2M}
+            .\]
+            В таком случае,
+            \[
+                (f \ast K)(x) - f(x) = \intl_{-\delta}^\delta{} + \intl_{E_\delta} {}
+                = I_1 + I_2
+            .\]
+            Оценим $I_1$:
+            \[
+                |I_1| \leqslant \intl_{-\delta}^\delta{|f(x - t) - f(x)| |K_h(t)| \dd t}
+                \leqslant \frac{\e}{2M} \intl_{-\pi}^\pi{|K_h(t)| \dd t} = \frac{\e}{2}
+            .\]
+            Оценим $I_2$:
+            \[
+                |I_2| \leqslant \intl_{E_\delta}{|f(x - t) - f(x)| |K_h(t)| \dd t}
+                \leqslant 2 \max_{[-\pi, \pi]}{f} \cdot \intl_{E_\delta}{|K_h(t)| \dd t}
+                \xrightarrow[h \to h_0]{} 0
+            .\]
+            Проведенные оценки не зависят от $x$, поэтому сходимость равномерная
+            сразу по всем $x \in [-\pi, \pi]$.
+        \item Пусть
+            \[
+                g(t) = \intl_{-\pi}^\pi{|f(x + t) - f(x)| \dd x}
+            .\]
+            Эта функция непрерывна. Покажем это:
+            \begin{align*}
+                |g(t) - g(t_0)| 
+                &\leqslant \intl_{-\pi}^\pi{|f(x + t) - f(x)|
+                - |f(x + t_0) - f(x)| \dd t} \\
+                &\leqslant
+                \intl_{-\pi}^\pi{|f(x_0 + t) - f(x + t_0)| \dd t}
+                \xrightarrow[t \to t_0]{} 0
+            .\end{align*}
+            Оценим норму:
+            \begin{align*}
+                \norm{f \ast K_h - f}_1 
+                &= \intl_{-\pi}^\pi{\abs*{\intl_{-\pi}^\pi{
+                (f(x - t) - f(x)) K_h(t) \dd t}} \dd x} \leqslant
+                \intl_{-\pi}^\pi{\intl_{-\pi}^\pi{|f(x - t) - f(x)| |K_h(t)| \dd t \d x}} \\
+                &= \intl_{-\pi}^\pi{|K_h(t)| g(-t) \dd t} = \norm{K_h}_1 \cdot
+                \intl_{-\pi}^\pi{\frac{|K_h(t)|}{\norm{K_h}_1} g(-t) \dd t} \\
+                &= \norm{K_h}_1 \cdot \intl_{-\pi}^\pi{g(0 - t) \frac{|K_h(t)|}{\norm{K_h}_1} \dd t}
+                = \norm{K_h}_1 \parens*{g \ast \frac{|K_h|}{\norm{K_h}_1}}(0)
+                \xrightarrow[h \to h_0]{(1)} \norm{K_h}_1 g(0) = 0
+            .\end{align*}
+        \item $f \ast K_h$ непрерывна по свойству свёртки. Из непрерывности $f$
+            имеем:
+            \[
+                \forall \e > 0~ \exists \delta > 0\colon~ \forall |t| < \delta~
+                |f(x - t) - f(x)| < \frac{\e}{2M}
+            .\]
+            Тогда как и в первом пунктуе оценим
+            \[
+                |(f \ast K_h)(x) - f(x)| \leqslant I_1 + I_2
+            .\]
+            $I_1$ оценим аналогично первому пункту.
+            \begin{align*}
+                |I_2| 
+                &\leqslant \esssup_{E_\delta}{K_h} \cdot \intl_{E_\delta}{|f(x - t) - f(x)| \dd t}
+                \leqslant \esssup_{E_\delta}{K_h} \intl_{E_\delta}{(|f(x - t)| + |f(x)|) \dd t} \\
+                &\leqslant \esssup_{E_\delta}{K_h} \cdot 2 \pi |f(x)| \norm{f}_1 
+                \xrightarrow[h \to h_0]{} 0
+            .\end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    $f \in L_p \Lra f \ast K_h \xrightarrow[h \to h_0]{L_p} f$.
+\end{corollary}
+\begin{proof}
+    \begin{align*}
+        \norm{f \ast K_h - f}_p^p 
+        &= \intl_{-\pi}^\pi{\abs*{\intl_{-\pi}^\pi{f(x - t)
+                K_h(t) \dd t}}^p \dd x} \leqslant \intl_{-\pi}^\pi{\parens*{
+                \intl_{-\pi}^\pi{|f(x - t) - f(x)| |K_h(t)|^{\frac{1}{p}} |K_h(t)|^
+        {\frac{1}{q}} \dd t}}^p \dd x} \\
+        &\underset{\text{Гёльдер}}{\leqslant}
+        \intl_{-\pi}^\pi{\parens*{\intl_{-\pi}^\pi{|f(x - t) - f(x)|^p |K_h(t)|
+        \dd t}} \norm{K_h}_1^{\frac{p}{q}} \dd x} \\
+        &= \norm{K_h}_1^{\frac{p}{q}} \cdot \intl_{-\pi}^\pi{g(-t)
+        \frac{|K_h(t)|}{\norm{K_h}_1} \dd t}
+    .\end{align*}
+    Далее как в предыдущей теореме. 
+\end{proof}
+
+\begin{remark}
+    Последний пункт теоремы можно сформулировать по-другому:
+    если $K_h$ -- четная функция, причем существуют и конечны пределы
+    $f(x \pm 0)$, то
+    \[
+        (f \ast K_h)(x) \xrightarrow[h \to h_0]{} \frac{1}{2} (f(x - 0) + f(x + 0))
+    .\]
+\end{remark}
+
+\begin{definition}
+    \textit{Суммами Фейера} называются суммы вида
+    \[
+        \sigma_n(f, x) = \frac{1}{n + 1} \sum_{k = 0}^n{S_k(f, x)}
+    .\]
+\end{definition}
+
+\begin{lemma}
+    $\sigma_n(f, x) = \intl_{-\pi}^\pi{f(x + t) \Phi_n(t) \dd t} =
+    \intl_{-\pi}^\pi{f(x - t) \Phi_n(t)} = f \ast \Phi_n$.
+\end{lemma}
+\begin{proof}
+    Первое равенство очевидно. Второе следует из того факта, что $\Phi_n$ --
+    четная функция.
+\end{proof}
+
+\begin{theorem}(Фейер)
+    \enewline
+    \begin{itemize}
+        \item $f \in \widetilde{C}[-\pi, \pi] \Lra \sigma_n(f) \rcon_{n \to +\infty} f$.
+        \item $1 \leqslant p < +\infty,~ f \in L_p \Lra \sigma_n(f) 
+            \xrightarrow[n \to +\infty]{L_p} f$.
+        \item $f \in L_1, f \in C(x_0) \Lra \sigma_n(f, x_0) \xrightarrow[n \to +\infty]{} f(x_0)$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Утверждения теоремы -- в точности утверждения теоремы о свойствах аппроксимативной
+    единицы (усиленной). Проверим, что $\Phi_n$ -- усиленная аппроксимативная единица.
+    \begin{enumerate}
+        \item $\Phi_n \in C \Lra \Phi_n \in L_\infty \subset L_1,~
+            \intl_{-\pi}^\pi{\Phi_n(t) \dd t} = 1$.
+        \item $\Phi_n \geqslant 0 \Lra $ из (1) следует (2).
+        \item[3'.] $\Phi_n \in L_\infty \Lra \sup = \esssup$:
+            \[
+                \frac{1}{2 \pi (n + 1)} \cdot \sup_{E_\delta}{\frac{\sin^2
+                {\frac{n + 1}{2} x}}{\sin^2{\frac{x}{2}}}} \leqslant
+                \frac{1}{2 \pi (n + 1)} \frac{1}{\sin^2{\frac{\delta}{2}}}
+                \xrightarrow[n \to +\infty]{} 0
+            .\]
+    \end{enumerate}
+\end{proof}
+
