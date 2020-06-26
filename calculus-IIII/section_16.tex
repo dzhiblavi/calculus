@@ -1,0 +1,98 @@
+\section{Преобразование Фурье}
+
+\begin{definition}
+    Пусть $f \in L^1(\Rm, \lambda_m)$. Тогда \textit{преобразованием
+    Фурье $f$} называется функция
+    \[
+        \hat{f}(y) = \intl_{\Rm}{f(x) e^{-2i\pi\scp{x}{y}} \dd x}
+    .\]
+\end{definition}
+
+\begin{theorem}(Свойства преобразования Фурье)
+
+    Пусть $f \in L^1(\Rm, \lambda_m)$, $f_h(x) = f(x - h)$. Тогда
+    \begin{enumerate}
+        \item $\hat{f} \in C(\Rm)$.
+        \item $\hat{f}_h(y) = e^{-2i\pi \scp{y}{h}} \hat{f}(y)$.
+        \item Пусть $g(x) = f(ax), a \neq 0$, тогда $\hat{g}(y) = 
+            \frac{1}{|a|^m}\hat{f}(\frac{y}{a})$.
+        \item $\hat{f}(y) \xrightarrow[|y| \to +\infty]{} 0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{enumerate}
+        \item Пусть
+            \[
+                g(x) = f(x) e^{-2i\pi \scp{x}{y}}
+            .\]
+            Очевидно, что $g(x) \in C(\Rm)$. Если мы покажем, что
+            $\forall y_0~ g \in L_{loc}(y_0)$, то по теореме Лебега
+            мы докажем требуемое:
+            \[
+                |f(x) e^{-2i\pi\scp{x}{y}}| \leqslant |f(x)|
+            .\]
+            $f(x) \in L^1$, поэтому суммируема.
+        \item Очевидно из замены переменной.
+        \item \begin{align*}
+                \hat{g}(y) = \intl_{\Rm}{f(ax) e^{-2i\pi\scp{y}{x}} \dd x} =
+                \frac{1}{|a|^m} \intl_{\Rm}{f(x) e^{-2i\pi\scp{y}{\frac{x}{a}}} \dd x} =
+                \frac{1}{|a|^m} \hat{f}\parens*{\frac{y}{a}}
+            .\end{align*} 
+        \item Теорема Римана-Лебега. \ref{rhi_leb} 
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Пусть $f, g \in L^1(\Rm, \lambda_m)$. \textit{Свёрткой функций $f$ и $g$}
+    называется
+    \[
+        (f \ast g)(x) \defeq \intl_{\Rm}{f(x - u) g(u) \dd u}
+    .\]
+\end{definition}
+
+\begin{remark}
+    Корректность определения и тот факт, что
+    \[
+        \norm{f \ast g}_1 \leqslant \norm{f}_1 \norm{g}_1
+    \]
+    доказываются аналогично свертке функций из $L_p$.
+\end{remark}
+
+\begin{theorem}
+    Пусть $f, g \in L^1(\Rm)$. Тогда
+    \begin{itemize}
+        \item $(f \ast g)^{\wedge} = \hat{f} \cdot \hat{g}$.
+        \item $\intl_{\Rm}{\hat{f}(y) g(y) \dd y} = \intl_{\Rm}{f(y) \hat{g}(y) \dd y}$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item \begin{align*}
+                &(f \ast g)^\wedge(y) = \intl_{\Rm}{\parens*{
+                \intl_{\Rm}{f(x - u) g(u) \dd u}} e^{-2i\pi\scp{y}{x}} \dd x} \\
+                &\underset{\text{Фубини}}{=}
+                \intl_{\Rm}{f(x - u) e^{-2i\pi\scp{y}{x - u}} \dd x}
+                \intl_{\Rm}{g(u) e^{-2i\pi\scp{y}{u}} \dd x} =
+                \hat{f}(y) \hat{g}(y)
+            .\end{align*}
+        \item \begin{align*}
+                \intl_{\Rm}{\parens*{\intl_{\Rm}{f(x) e^{-2i\pi\scp{y}{x}} \dd x}}
+                g(y) \dd y} \underset{\text{Фубини}}{=}
+                \intl_{\Rm}{f(x) \parens*{\intl_{\Rm}{g(y) e^{-2i\pi\scp{y}{x}}
+                \dd y}} \dd x} = \intl_{\Rm}{f(x) \hat{g}(x) \dd x}
+            .\end{align*}
+            Переход, связанный с теоремой Фубини выполнен потому, что
+            функция
+            \[
+                f(x)g(y) e^{-2i\pi\scp{y}{x}}
+            \]
+            суммируема на $\Rm \times \Rm$:
+            \[
+                \intl_{\Rm}{\intl_{\Rm}{|f(x) g(y)|}} \leqslant \intl_{\Rm}{f}
+                \cdot \intl_{\Rm}{g} \leqslant \norm{f}_1 \cdot \norm{g}_1 < +\infty
+            .\]
+    \end{itemize}
+\end{proof}
+
