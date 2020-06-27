@@ -13,6 +13,7 @@
     Пусть $f \in L^1(\Rm, \lambda_m)$, $f_h(x) = f(x - h)$. Тогда
     \begin{enumerate}
         \item $\hat{f} \in C(\Rm)$.
+        \item $|\hat{f}(y)| \leqslant \norm{f}_1$.
         \item $\hat{f}_h(y) = e^{-2i\pi \scp{y}{h}} \hat{f}(y)$.
         \item Пусть $g(x) = f(ax), a \neq 0$, тогда $\hat{g}(y) = 
             \frac{1}{|a|^m}\hat{f}(\frac{y}{a})$.
@@ -33,6 +34,11 @@
                 |f(x) e^{-2i\pi\scp{x}{y}}| \leqslant |f(x)|
             .\]
             $f(x) \in L^1$, поэтому суммируема.
+        \item
+            \[
+                |\hat{f}(y)| = \abs*{\intl_{\Rm}{f(x) e^{-2i\pi \scp{y}{x}} \dd x}}
+                \leqslant \intl_{\Rm}{\abs*{f(x)} \dd x} = \norm{f}_1
+            .\]
         \item Очевидно из замены переменной.
         \item \begin{align*}
                 \hat{g}(y) = \intl_{\Rm}{f(ax) e^{-2i\pi\scp{y}{x}} \dd x} =
@@ -93,6 +99,133 @@
                 \intl_{\Rm}{\intl_{\Rm}{|f(x) g(y)|}} \leqslant \intl_{\Rm}{f}
                 \cdot \intl_{\Rm}{g} \leqslant \norm{f}_1 \cdot \norm{g}_1 < +\infty
             .\]
+    \end{itemize}
+\end{proof}
+
+\begin{lemma}
+    Пусть $f \in L^1(\Rm)$, дифференцируема, причем $\pderv{f}{x_m}$
+    непрерывны и суммруемы на $\Rm$. Тогда для почти всех
+    $u = (x_1, \ldots x_{m - 1}) \in \R^{m - 1}$
+    \[
+        \lim_{t \to \pm \infty}{f(u, t)} = 0
+    .\]
+\end{lemma}
+\begin{proof}
+    По теореме Фубини производные суммируемы по последнему аргументу
+    при почти всех $u$. Тогда
+    \[
+        f(u, t) - f(u, 0) = \intl_0^t{\pderv{f}{x_m}(u, \tau) \dd \tau}
+    .\]
+    Из этого сразу следует существование конечного предела
+    \[
+        f(u, t) \xrightarrow[t \to +\infty]{} f_0
+    .\]
+    Поскольку $f \in L^1(\Rm)$, она суммируема по последнему аргументу (опять же
+    по теореме Фубини). При этом она имеет предел на бесконечности. Поэтому этот
+    предел не может отличаться от нуля:
+    \[
+        f(u, t) \xrightarrow[t \to +\infty]{} 0
+    .\]
+\end{proof}
+
+\begin{theorem}(Преобразование Фурье и дифференцирование)
+   
+    Пусть $f \in L^1(\Rm)$, $g = \pderv{f}{x_k}$.
+    \begin{itemize}
+        \item Если $g$ существует, непрерывна и суммируема на $\Rm$,
+            то $\hat{g}(y) = 2i\pi y_k \hat{f}(y)$.
+        \item Если $|x|f(x)$ суммируема, то $\hat{f} \in C^1(\Rm)$, причем
+            $\pderv{\hat{f}}{y_k}(y) = -2i\pi (x_k f(x))^\wedge$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Пусть $k = m, u = (x_1, \ldots x_{m - 1})$. Тогда
+            \begin{align*}
+                \intl_{-\infty}^\infty{g(u, t) e^{-2i\pi y_m t} \dd t} =
+                \underbrace{f(u, t) e^{-2i\pi y_m t}\big|_{-\infty}^{+\infty}}_{= 0}
+                +\intl_{-\infty}^\infty{2i\pi y_m f(u, t) e^{-2i\pi y_m t} \dd t}
+            .\end{align*}
+            Интегрируя равенство по остальному $\R^{m - 1}$, получаем требуемое:
+            \[
+                \hat{g}(y) = \intl_{\Rm}{g(x) e^{-2i\pi \scp{y}{x}} \dd x} =
+                \intl_{\R^{m - 1}}{\parens*{\intl_{-\infty}^{\infty}{g(u, t) 
+                        e^{-2i\pi y_m t}} \dd t} e^{-2i\pi \sum_{i = 1}^{m - 1}
+                {y_i u_i}} \dd u} = 2i\pi y_k \hat{f}(y)
+            .\]
+        \item Для начала вслепую продифференцируем:
+            \[
+                \hat{f}(y) = \intl_{\Rm}{f(x) e^{-2i\pi \scp{y}{x}} \dd x} \Lra
+                \pderv{\hat{f}}{y_k}(y) = -2i\pi \intl_{\Rm}{x_k f(x) e^{-2i\pi
+                \scp{y}{x}} \dd x} = -2i\pi (x_k f(x))^\wedge
+            .\]
+            Теперь чтобы обосновать корректность осталось показать $L_{loc}$:
+            \[
+                |2i\pi x_k f(x) e^{-2i\pi \scp{y}{x}}| \leqslant \norm{x} f(x)
+            .\]
+    \end{itemize}
+\end{proof}
+
+\begin{lemma}
+    При $k > m$ сходится интеграл
+    \[
+        \intl_{\Rm \setminus B(0, R)}{\frac{1}{|x|^k} \dd x}
+    .\]
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \intl_{\Rm \setminus B(0, R)}{\frac{1}{|x|^k} \dd x} =
+        \intl_{R}^\infty{\intl_0^\pi{\ldots \intl_0^{2\pi}{r^{-k} r^{m - 1}
+        \cdot \sin{\f_1}^{m - 2} \ldots 1 \dd \f^{m - 1}}}} =
+        C \cdot \intl_{R}^\infty{r^{-k + m - 1} \dd r}
+    .\end{align*}
+\end{proof}
+
+\begin{corollary}
+    \enewline
+    \begin{itemize}
+        \item $f \in L^1(\Rm)$, финитная, тогда $\hat{f} \in C^\infty(\Rm)$.
+        \item $f \in C_0^\infty$, тогда $\forall p > 0~ |y|^p \hat{f}(y)$
+            суммируема в $\Rm$.
+    \end{itemize}
+\end{corollary}
+\begin{proof}
+    \enewline
+    \begin{itemize}
+        \item Для финитной функции верно, что $|x|^k f(x)$ суммируема для любого $k$.
+        \item По первому пункту теоремы верно, что для любого $k$:
+            \[
+                \parens*{\pderv{f}{x_k}}^\wedge = 2i\pi y_k \hat{f}(y)
+            .\]
+            Более того, нетрудно понять, что в мультииндексной записи верно:
+            \[
+                \parens*{\hderv{\a}{f}{x^\a}}^\wedge = (2i\pi)^{|\a|} y^\a
+                \hat{f}(y)
+            .\]
+            Поскольку преобразование Фурье ограничено:
+            \[
+                \begin{cases}
+                    |y_1|^n |\hat{f}(y)| < C \\
+                    \vdots \\
+                    |y_m|^n |\hat{f}(y)| < C \\
+                    |\hat{f}(y)| < C
+                \end{cases} \Lra \hat{f}(y) < \frac{(m + 1) C}{1 + |y_1|^n +
+                \ldots + |y_m|^n}
+            .\]
+            Заметим, что
+            \[
+                |y_1| + \ldots + |y_n| \geqslant |y| \Lra \max_{i}{|y_i|^n}
+                \geqslant \abs*{\frac{|y|}{m}}^n
+            .\]
+            Тогда при получаем
+            \[
+                |y|^p |\hat{f}(y)| < \frac{(m + 1) C |y|^p}{1 + |y_1|^n +
+                \ldots + |y_m|^n} \leqslant \frac{(m + 1) C |y|^p}{1 + \parens*{
+                \frac{|y|}{m}}^n}
+            .\]
+            Что при достаточно большом $n$, а именно, при $n - p > m$, по лемме
+            дает требуемое.
     \end{itemize}
 \end{proof}
 

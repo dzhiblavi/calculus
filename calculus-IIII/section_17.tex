@@ -1,0 +1,55 @@
+\section{Формула обращения в $\R$}
+
+\begin{definition}
+    \textit{Интегралом Фурье} называется
+    \[
+        f(x) = \intl_{-\infty}^\infty{\hat{f}(y) e^{2i\pi yx} \dd y}
+    .\]
+\end{definition}
+
+\begin{definition}
+    \textit{Частичным интегралом Фурье} называется
+    \[
+        I_A(f, x) = \intl_{-A}^A{\hat{f}(y) e^{2i\pi yx} \dd y}
+    .\]
+\end{definition}
+
+\begin{lemma}(О ядре Дирихле)
+   
+    Пусть $f \in L^1(\R)$, $x \in \R$. Тогда $\forall A > 0$
+    \[
+        I_A(f, x) = \intl_{-\infty}^\infty{f(x - t) \frac{\sin{2\pi At}}{\pi t} \dd t} 
+    .\]
+\end{lemma}
+\begin{proof}
+    Обозначим $\chi_A = \chi_{[-A, A]}$. Тогда
+    \begin{align*}
+        I_A(f, x) 
+        &= \intl_{-\infty}^\infty{\hat{f}(y) \parens*{\chi_A(y) e^{2i\pi xy}} \dd y}
+        = \intl_{-\infty}^\infty{f(y) \parens*{\chi_A(y) e^{2i\pi xy}}^\wedge(y) \dd y}
+        = \intl_{-\infty}^\infty{f(y) \hat{\chi}_A(y - x) \dd y} \\
+        &= \intl_{-\infty}^\infty{f(x - t) \frac{\sin{2\pi At}}{\pi t}}
+    .\end{align*}
+\end{proof}
+
+\begin{corollary}
+    $\forall \delta > 0~ I_A(f, x) = \intl_{-\delta}^\delta{f(x - t)
+    \frac{\sin{2\pi At}}{\pi t} \dd t} + o(1),~ A \to +\infty$.
+\end{corollary}
+\begin{proof}
+    Учитывая, что $\frac{1}{\pi t} \leqslant \frac{1}{\delta}$, по теореме 
+    Римана-Лебега имеем:
+    \[
+        \intl_{|t| \geqslant \delta}{f(x - t) \frac{\sin{2\pi At}}{\pi t}}
+        \xrightarrow[A \to +\infty]{} 0
+    .\]
+\end{proof}
+
+\begin{remark}
+    Частичные суммы ряда Фурье представимы через ядро Дирихле:
+    \[
+        S_n(f, x) = \intl_{-\pi}^\pi{f(x - t) D_n(t) \dd t} =
+        \intl_{-\pi}^\pi{f(x - t) \frac{\sin{nt}}{\pi t} \dd t} + o(1),~ n \to +\infty
+    .\]
+\end{remark}
+

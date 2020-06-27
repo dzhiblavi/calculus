@@ -100,3 +100,327 @@
     .\end{align*} 
 \end{proof}
 
+\begin{remark}
+    $i(c_k(f) - c_{-k}(f)) = b_k(f)$.
+\end{remark}
+\begin{proof}
+    \[
+        -i(c_k(f) - c_{-k}(f)) = \frac{1}{\pi} \intl_{-\pi}^\pi{f(x)
+        \frac{e^{-ikx} - e^{ikx}}{2i} \dd x} = -b_k(f) 
+    .\]
+\end{proof}
+
+\begin{remark}
+    \[
+        \intl_{-\pi}^\pi{\intl_0^u{e^{ikx} \dd x} \dd u} = -\frac{2\pi}{ik}
+    .\]
+\end{remark}
+\begin{proof}
+    \[
+        \intl_0^u{e^{ikx} \dd x} = \frac{1}{ik}e^{ikx}\big|_{x = 0}^{x = u}
+        = \frac{1}{ik}(e^{iku} - 1)
+    .\]
+    \[
+        \frac{1}{ik}\intl_{-\pi}^\pi{(e^{iku} - 1) \dd u} = -\frac{2\pi}{ik}
+    .\]
+\end{proof}
+
+\begin{corollary}
+    $f \in L_1 \Lra \sum{\frac{b_n(f)}{n}}$ сходится.
+\end{corollary}
+\begin{proof}
+    Пусть $u \in (-\pi, \pi)$, $\chi = \chi_{[0, u]}$. Заметим, что
+    \[
+        \sum_{k = -N}^N{c_k(f) \intl_0^u{e^{ikx} \dd x}} \xrightarrow[N \to +\infty]{}
+        \intl_0^u{f(x) \dd x}
+    .\]
+    Кроме того, имеет место суммируемая мажоранта:
+    \[
+        \abs*{\sum_{k = -N}^N{c_k(f) \intl_0^u{e^{ikx} \dd x}}} \leqslant
+        \intl_{-\pi}^\pi{|f(x)| \underbrace{|S_n(\chi, x)|}_{\leqslant 4} \dd x}
+        \leqslant 4 \norm{f}_1
+    .\]
+    Теперь выполнены условия теоремы Лебега о предельном переходе под знаком
+    интеграла, то есть верно
+    \begin{align*}
+        \intl_{-\pi}^\pi{\intl_0^u{f(x) \dd x} \dd u} 
+        &= \intl_{-\pi}^\pi{
+            \parens*{\lim_{N \to +\infty}{\sum_{k = -N}^N{c_k(f) \intl_0^u{e^{ikx}
+        \dd x}}}} \dd u} 
+        = \lim_{N \to +\infty}{\intl_{-\pi}^\pi{\sum_{k = -N}^N{
+        c_k(f) \intl_0^u{e^{ikx} \dd x}} \dd u}} \\
+        &= \lim_{N \to +\infty}{\sum_{k = -N}^N{c_k(f) \intl_{-\pi}^\pi{
+                \intl_0^u{e^{ikx}\dd x}}}} = \sum_{k \in \bZ}{c_k(f) \intl_{-\pi}^\pi{
+        \intl_0^u{e^{ikx} \dd x}}}
+    .\end{align*}
+    Мы получили сходимость суммы
+    \[
+        \sum_{k \in \bZ}{c_k(f) \intl_{-\pi}^\pi{\intl_0^u{e^{ikx} \dd x}}}
+    .\]
+    Далее
+    \begin{align*}
+        \sum_{k \in \bZ}{c_k(f) \intl_{-\pi}^\pi{\intl_0^u{e^{ikx} \dd x}}} =
+        -\frac{2\pi}{i} \sum_{k \in \bZ}{\frac{c_k(f)}{k}} =
+        -2\pi \sum_{k \in \bN}{\frac{1}{ik} (c_k(f) - c_{-k}(f))}
+        = C \sum_{k \in \bN}{\frac{b_k(f)}{k}}
+    .\end{align*}
+\end{proof}
+
+\begin{definition}
+    \textit{$f_n$ сходится к $f$ в смысле обобщённых функций}, если
+    \[
+        \forall h \in C^\infty~ \intl_{-\pi}^\pi{f_n(x) h(x) \dd x}
+        \xrightarrow[n \to +\infty]{} \intl_{-\pi}^\pi{f(x) h(x) \dd x}
+    .\]
+\end{definition}
+
+\begin{lemma}
+    Пусть $f \in L_1$, тогда $S_n(f, x)$ сходится к $f(x)$ в смысле обобщённых
+    функций.
+\end{lemma}
+\begin{proof}
+    Пусть $f \in L_1$ , $h \in C^\infty \subset L_\infty$. Тогда свёртка
+    $f \ast h$ непрерывна. Кроме того, она гладкая: теорема Лейбница, позволяющая
+    дифференцировать под знаком интеграла, поставляет непрерывность производной.
+    Проверим:
+    \[
+        (f \ast h)'_x(x) = \intl_{-\pi}^\pi{f(t) h'_x(x - t) \dd t}
+    .\]
+    Чтобы переход был корректным, надо проверить $L_{loc}$:
+    \[
+        |f(t) h'(x - t)| \leqslant C |f(t)|
+    .\]
+    Обозначим $\underline{h}(x) = h(-x)$. Тогда
+    \begin{align*}
+        \intl_{-\pi}^\pi{S_n(f, x) h(x) \dd x} 
+        &= \sum_{k = -n}^n{c_k(f) \intl_{-\pi}^\pi{
+        e^{ikx} h(x) \dd x}} = \sum_{k = -n}^n{2\pi c_k(f) c_k(\underline{h})} =
+        \sum_{k = -n}^n{c_k(f \ast \underline{h})} \\
+        &= \sum_{k = -n}^n{c_k(f \ast \underline{h}) e^{ikx}\big|_{x = 0}}
+        \xrightarrow[n \to +\infty]{\text{Дини}} (f \ast \underline{h})(0) =
+        \intl_{-\pi}^\pi{f(t) h(t) \dd t}
+    .\end{align*}
+\end{proof}
+
+\begin{remark}
+    \[
+        c_n(f) = \frac{1}{2\pi} \hat{f}\parens*{\frac{n}{2\pi}}
+    .\]
+\end{remark}
+\begin{proof}
+    Считаем, что $f = 0$ на дополнении $[-\pi, \pi]$.
+    \[
+        c_n(f) = \frac{1}{2\pi} \intl_{-\pi}^\pi{f(x) e^{-inx} \dd x} =
+        \frac{1}{2\pi} \intl_{\R}{f(x) e^{-inx} \dd x} = \frac{1}{2\pi}
+        {\hat{f}\parens*{\frac{n}{2\pi}}}
+    .\]
+\end{proof}
+
+\begin{lemma}(Обобщённое равенство Парсиваля)
+    
+    Пусть $g$ -- измеримая, ограниченная, периодическая функция, $f \in L_1$,
+    $\exists C\colon~ \forall n, x~ |S_n(g, x)| \leqslant C$. Тогда
+    \[
+        \intl_{-\pi}^\pi{f(x) \overline{g(x)} \dd x} =
+        2\pi \sum{c_n(f) \overline{c_n(g)}} =
+        \frac{1}{2\pi} \sum{\hat{f}\parens*{\frac{n}{2\pi}}
+        \hat{g}\parens*{\frac{n}{2\pi}}}
+    .\]
+\end{lemma}
+\begin{proof}
+    Второе равенство следует из первого и предыдущего замечания.
+    Поскольку $g$ ограничено, $g \in L_2$.
+    \begin{align*}
+        \intl_{-\pi}^\pi{f(x) \overline{S_n(g, x)} \dd x} = \intl_{-\pi}^\pi{
+        f(x) \sum_{k = -n}^n{\overline{c_k(g)} e^{-ikx}}} =
+        \sum_{k = -n}^n{\overline{c_k(g)} \cdot 2\pi c_k(f)}
+        \xrightarrow[n \to +\infty]{} 2\pi \sum_{k \in \bZ}{c_k(f) \overline{c_k(g)}}
+    .\end{align*}
+    Осталось проверить, что
+    \[
+        \intl_{-\pi}^\pi{f(x) \overline{S_n(g, x)} \dd x} \xrightarrow[n \to +\infty]{}
+        \intl_{-\pi}^\pi{f(x) \overline{g(x)} \dd x}
+    .\]
+    Из теоремы Фейера известно, что
+    \[
+        S_n(g) \xrightarrow[n \to +\infty]{L_2} g
+    .\]
+    Отсюда следует сходимость по мере:
+    \[
+        S_n(g) \Lra g 
+    .\]
+    Поэтому
+    \[
+        \overline{S_n(g)} \Lra \overline{g}
+    .\]
+    Но тогда
+    \[
+        f(x) \overline{S_n(g)} \Lra f(x) \overline{g(x)}
+    .\]
+    Теперь если мы промажорируем суммируемой функцией подынтегральное выражение,
+    то по теореме Лебега получим требуемое:
+    \[
+        |f(x) \overline{S_n(g)}| \leqslant C|f(x)|
+    .\]
+\end{proof}
+
+\begin{remark}
+    Пусть $g(x) = e^{itx}$. Тогда
+    \[
+        c_n(g) = \frac{\sin{(t - n) \pi}}{(t - n) \pi}
+    .\]
+\end{remark}
+\begin{proof}
+    \[
+        c_n(g) = \frac{1}{2\pi} \intl_{-\pi}^\pi{e^{ix (t - n)}} =
+        \frac{1}{i(t - n)} e^{ix (t - n)}\big|_{x = -\pi}^{x = \pi} =
+        \frac{\sin{(t - n) \pi}}{(t - n) \pi}
+    .\]
+\end{proof}
+
+\begin{theorem}(Котельников, формула отсчёта)
+    
+    Пусть $f \in L^1(\R)$, $f = 0$ на дополнении $[-\pi, \pi]$, $F(t) =
+    \hat{f}\parens*{\frac{t}{2\pi}}$. Тогда
+    \[
+        F(t) = \frac{\sin{\pi t}}{\pi} \sum_{n \in \bZ}{\frac{(-1)^n F(n)}{t - n}}
+    .\]
+\end{theorem}
+\begin{proof}
+    Обозначим $f_0 = f\big|_{[-\pi, \pi]}$. Тогда
+    \begin{align*}
+        \hat{f}\parens*{\frac{t}{2\pi}} = \intl_{-\pi}^\pi{f_0(x) e^{-inx} \dd x}
+    .\end{align*}
+    Для функций $f_0$, $g(x) = e^{itx}$ выполнены условия обобщенного равенства
+    Парсиваля. Тогда
+    \[
+        \hat{f}\parens*{\frac{t}{2\pi}} = \sum_{k \in \bZ}{2\pi c_k(f) \overline{c_k(g)}}
+        = \sum_{n \in \bZ}{\hat{f}\parens*{\frac{n}{2\pi}} \cdot \frac{\sin{(t - n) \pi}}
+        {\pi (t - n)}} = \frac{\sin{\pi t}}{n} \sum_{n \in \bZ}{\frac{(-1)^n F(n)}{t - n}}
+    .\]
+\end{proof}
+
+\begin{theorem}(О равносходимости)
+   
+    Пусть $f \in L^1(\R)$, $f_0 \in \widetilde{L}_1$, $x \in \R$,
+    $\exists U(x)\colon~ f = f_0$ на $U(x)$. Тогда сходимость ряда
+    Фурье в $x$ функции $f_0$ эквивалентна сходимости интеграла Фурье
+    $f$ в $x$, причем в случае сходимости выполняется
+    \[
+        \intl_{\R}{\hat{f}(y) e^{2i\pi yx} \dd y} = \sum_{n \in \bZ}{c_n(f) e^{inx}}
+    .\]
+\end{theorem}
+\begin{proof}
+    Пусть $U(x) = (x - \delta, x + \delta),~ \pi > \delta > 0$. Проверим, что
+    \[
+        \abs*{I_A(f, x) - S_{[2\pi A]}(f, x)} \xrightarrow[A \to +\infty]{} 0
+    .\]
+    Для этого вспомним, что
+    \begin{align*}
+        &I_A(f, x) = \intl_{-\delta}^\delta{f(x - t) \frac{\sin{2 \pi tA}}{\pi t} \dd t}
+        + o(1),~ A \to +\infty, \\ 
+        &S_n(f, x) = \intl_{-\delta}^\delta{f(x - t) \frac{\sin{nt}}{\pi t} \dd t}
+        + o(1),~ A \to +\infty
+    .\end{align*}
+    В случае $2\pi A \in \bN$ доказывать нечего. Пусть $n = [2\pi A]$. Тогда
+    \[
+        |I_A - S_n| \to |I_A - I_{\frac{n}{2\pi}}| \leqslant 
+        \parens*{\intl_{A - \frac{1}{2\pi}}^{A}
+        + \intl_{-A}^{-A + \frac{1}{2\pi}}} |\hat{f}| \dd y \leqslant
+        2 \frac{1}{2\pi} \cdot \max_{|y| > A - \frac{1}{2\pi}}{|\hat{f}(y)|}
+        \xrightarrow[A \to +\infty]{} 0
+    .\]
+\end{proof}
+
+\begin{theorem}(Признак Абеля-Дирихле равномерной сходимости интеграла)
+    
+    Пусть $I = \intl_A^\infty{f(x, t) g(x, t) \dd x}$, $f \in C((a, +\infty) \times
+    [c, d])$, $g$ дифференцируема по $x$, $g'_x$ непрерывна. Тогда $I$ сходится
+    равномерно при выполнении одного из условий:
+    \begin{itemize}
+        \item $\exists C\colon~ \forall B > a~ \forall t \in [c, d]$
+            \[
+                \abs*{\intl_a^B{f(x, t) \dd x}} \leqslant C
+            .\]
+            Кроме этого, $g_t$ монотонна при всех $t \in [c, d]$, причем
+            \[
+                g(x, t) \rcon_{x \to +\infty} 0
+            .\]
+        \item Равномерно сходится интеграл
+            \[
+                \intl_a^\infty{f(x, t) \dd x}
+            .\]
+            Кроме этого, $g_t$ монотонна при всех $t \in [c, d]$ и равномерно
+            ограничена.
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+    \textit{Вариацией функции $f$ на $[a, b]$} называется
+    \[
+        \var_a^b{f} = \sup_{\tau}{\sum_{i \geqslant 1}{|f(t_i) - f(t_{i - 1})|}}
+    .\]
+\end{definition}
+
+\begin{remark}
+    В случае непрерывных функций
+    \[
+        \var_a^b{f} = l(f) = \intl_a^b{|f'(x)| \dd x}
+    .\]
+\end{remark}
+
+\begin{definition}
+    \textit{Функцией ограниченной вариации} называется функция, для которой
+    \[
+        \var_a^b{f} < +\infty
+    .\]
+\end{definition}
+
+\begin{remark}
+    Если $f$ -- функция ограниченной вариации, то найдутся монотонные $g_1, g_2$
+    такие, что $f = g_1 - g_2$.
+\end{remark}
+
+\begin{theorem}(Признак Дирихле-Жордана)
+
+    Пусть $f \in L^1(\R)$ либо $f \in \widetilde{L}_1$, $f$ -- функция ограниченной
+    вариации в $U(x)$, $x \in \R$. Тогда ряд Фурье и интеграл Фурье соответствующих
+    функций в точке $x$ сходится к
+    \[
+        \frac{1}{2}(f(x + 0) + f(x - 0))
+    .\]
+\end{theorem}
+\begin{proof}
+    Проверим утверждение для случая рядов Фурье. Пусть $U(x) = (x - \delta, x + \delta)$.
+    Тогда
+    \[
+        S_n(f, x) = \intl_{-\delta}^\delta{f(x - t) \frac{\sin{nt}}{\pi t} \dd t}
+        + o(1) = \underbrace{\intl_0^\delta{\f(t) \frac{\sin{nt}}{\pi t} \dd t}}_{
+        I_n} + o(1),~ n \to +\infty
+    ,\]
+    где $\f(u) = f(x - u) + f(x + u)$ -- тоже функция ограниченной вариации.
+    Не умаляя общности, учитывая предыдущее замечание, считаем, что
+    $\f$ -- монотонно убывающая неотрицательная функция. Обозначим
+    \[
+        \Phi(u) = \f(u) \chi_{[0, \delta]},~ u \in \R
+    .\]
+    Тогда
+    \begin{align*}
+        I_n 
+        &= \intl_0^\infty{\Phi(u) \frac{\sin{nu}}{\pi u} \dd u} =
+        \underbrace{\intl_0^\infty{\Phi\parens*{\frac{t}{n}} \frac{\sin{nt}}{\pi t} \dd t}}_
+        {I^\ast}
+        \xrightarrow[n \to +\infty]{} \intl_0^\infty{\Phi(0 + 0) \frac{\sin{nt}}
+        {\pi t} \dd t} = \frac{1}{2} \Phi(0 + 0) \\
+        &= \frac{1}{2}(f(x + 0) + f(x - 0))
+    .\end{align*}
+    Осталось обосновать предельный переход. На допредельном уровне верно
+    \[
+        \intl_0^A{\Phi\parens*{\frac{t}{n}} \frac{\sin{nt}}{\pi t} \dd t}
+        \to \intl_0^A{\Phi(0 + 0) \frac{\sin{nt}}{\pi t}}
+    \]
+    потому, что есть суммируемая мажоранта. Кроме того, в $U(0)$ по признаку
+    Дирихле равномерно сходится интеграл $I^\ast$, что завершает обоснование
+    предельного перехода.
+\end{proof}
+
